@@ -55,46 +55,36 @@ display: inline-block;
 <img src="images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
 <h1>Jaws ARIA support</h1>
 
-<p>A Work <em>in progress</em>: Last updated 31 May 2017</p>
-<p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
 <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
 
 <p>Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.</p>
 </header>
+
 <main>
-<h2>How HTML elements are supported by screen readers</h2>
-<p>Typical support patterns of HTML elements by screen readers:</p>
+<h2>How ARIA roles are supported by screen readers</h2>
+<p>Typical support patterns:</p>
 <ul>
-<li>Identification of an element by role as the user moves through the content.</li>
-<li>Announcement of the text content of an element.</li>
-<li>Announcement of the start and end of an element.</li>
-<li>Change in voice as the content of an element is announced.</li>
-<li>Announcement of an elements accessible name and/or description</li>
-<li>Announcement of states and properties.</li>
-<li>Emission of a beep or other sound when an element with a particulat state or property receives <a href="http://juicystudio.com/article/making-ajax-work-with-screen-readers.php#jawsvirtual" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://juicystudio.com/article/making-ajax-work-with-screen-readers.php#jawsvirtual', 'virtual focus');">virtual focus</a>.</li>
-<li>Instructions on how to operate interactive elements such as form controls.</li>
-<li>Navigation of elements by keyboard and &ldquo;quick access&rdquo; lists of a  particular elements, list items are linked to each instance of an  element on the page.</li>
+<li>***TBC***</li>
 </ul>
-<p><strong>Note:</strong> The combination of patterns supported varies from element to element and support for a particular element varies between screen reader software.</p>
 
 <p class="note">JAWS testing - In progress</p>
+
 <table class="alt">
-<caption>
-JAWS HTML Feature support (Firefox on Windows 10)
-</caption>
+<caption>JAWS ARIA role support (chrome on Windows 10)</caption>
 <thead>
 <tr>
-<th scope="col">Element [test file linked]</th>
-<th scope="col">Element represents</th>
-<th scope="col">AURAL UI</th>
+<th scope="col">Role</th>
+<th scope="col">Description</th>
+<th scope="col">Test case</th>
 <th scope="col">Interaction</th>
-<th width="83" scope="col">Element Semantics conveyed?</th>
-<th scope="col">Notes:</th>
+<th scope="col">Supported</th>
+<th scope="col">Notes</th>
 </tr>
 </thead>
+
 <tfoot>
 <tr>
-<th scope="col">Element</th>
+<th scope="col">Role</th>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -102,6 +92,7 @@ JAWS HTML Feature support (Firefox on Windows 10)
 <td>&nbsp;</td>
 </tr>
 </tfoot>
+
 <tbody>
 <tr id="toc-a">
 <TD tabindex="-1" id="index-aria-global">any</TD>
@@ -117,11 +108,7 @@ JAWS HTML Feature support (Firefox on Windows 10)
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>
-<p>Semantics conveyed via navigation (JAWS &lt;15)</p>
-<p>No semantics conveyed (JAWS15+)</p>
-<p>&nbsp;</p>
-</td>
+<td>&nbsp;</td>
 </tr>
 <tr>
 <TD tabindex="-1" id="index-aria-alerTDialog"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#alerTDialog">alertdialog</a></code></TD>
@@ -145,7 +132,7 @@ JAWS HTML Feature support (Firefox on Windows 10)
 <tr>
 <TD tabindex="-1" id="index-aria-article"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#article">article</a></code></TD>
 <TD>A section of a page that consists of a composition that forms an independent part of a document, page, or site.</TD>
-<td>"article" <em>element content</em> "article end"</td>
+<td>&nbsp;</td>
 <td><ul>
 <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
 <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15)</li>
@@ -191,7 +178,7 @@ JAWS HTML Feature support (Firefox on Windows 10)
 <td>No semantics conveyed</td>
 </tr>
 <tr>
-<TD tabindex="-1" id="index-aria-columnheader"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#columnheader">columnheader</a></code></TD>
+<TD tabindex="-1" id="index-aria-columnheader"><code><a href="http://www.w3.org/TR/waiaria-1.1/#columnheader">columnheader</a></code></TD>
 <TD>A cell containing header information for a column.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -204,6 +191,7 @@ JAWS HTML Feature support (Firefox on Windows 10)
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
+td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
@@ -931,653 +919,11 @@ presented as a status bar. See related <code>alert</code>.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr>
-<th scope="row"><a href="test-files/fieldset-legend.html"><code>legend</code></a></th>
-<td>Caption for <a href="http://www.w3.org/TR/html5/forms.html#the-fieldset-element">fieldset</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/ul-li.html"><code>li</code></a></th>
-<td>List item</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li> Next Item in a List <kbd>I</kbd></li>
-<li> Previous Item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-link-element"><code>link [no test]</code></a></th>
-<td>Link metadata</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr id="toc-m">
-<th scope="row"><a href="test-files/main.html"><code>main</code></a></th>
-<td>Main content of a document </td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Move to Main Region <kbd>Q</kbd></li>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/imagemap.html"><code>map</code></a></th>
-<td><a href="http://www.w3.org/TR/html5/embedded-content-0.html#image-map">Image map</a></td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/mark.html"><code>mark</code></a></th>
-<td>Highlight</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/math.html"><code>math</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-menu-element"><code>menu [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-menuitem-element"><code>menuitem [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-meta-element"><code>meta [no test]</code></a></th>
-<td>Text metadata</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/meter.html"><code>meter</code></a></th>
-<td>Gauge</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-
-<tr id="toc-n">
-<th scope="row"><a href="test-files/nav.html"><code>nav</code></a></th>
-<td>Section with navigational links</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td><p>When navigating by this element, Window-Eyes will automatically  read the entire contents of the paragraph that gains focus. By default,  Window-Eyes also hides multiple blank lines that might separate one paragraph  from another. To see these lines, turn "Speak Blank Lines in Smart Paragraph  Mode" on inside the Browse Mode section of the Window-Eyes control panel. </p></td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-noscript-element"><code>noscript [no test]</code></a></th>
-<td>Fallback content for script</td>
-<td><em>none expected</em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-o">
-<th scope="row"><a href="test-files/object.html"><code>object</code></a></th>
-<td>Image, <a href="http://www.w3.org/TR/html5/browsers.html#nested-browsing-context">nested browsing context</a>, or <a href="http://www.w3.org/TR/html5/infrastructure.html#plugin">plugin</a></td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Next Object Tag   <kbd>O</kbd></li>
-<li>Previous Object Tag <kbd>SHIFT+O</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/ol-li.html"><code>ol</code></a></th>
-<td>Ordered list</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
-<li>Next List <kbd>L</kbd></li>
-<li>Previous List <kbd>SHIFT+I</kbd></li>
-<li> Next Item in a List <kbd>I</kbd></li>
-<li>Previous item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/select-option.html"><code>optgroup</code></a></th>
-<td>Group of options in a list box</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/select-option.html"><code>option</code></a></th>
-<td>Option in a list box or combo box control</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/output.html"><code>output</code></a></th>
-<td>Calculated output value</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr id="toc-p">
-<th scope="row"><a href="test-files/p.html"><code>p</code></a></th>
-<td>Paragraph</td>
-<td>element content</td>
-<td>
-<ul>
-<li>List of Paragraphs <kbd>CTRL+INSERT+P</kbd></li>
-<li>Next Paragraph  <kbd>P</kbd></li>
-<li>Previous Paragraph <kbd>SHIFT+P</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>no aural semantics, conveyed via navigation and paragraph list.</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/the-iframe-element.html#the-param-element"><code>param [no test]</code></a></th>
-<td>Parameter for <a href="http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element">object</a></td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element"><code>picture [no test</code></a></th>
-<td>&nbsp;</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/pre.html"><code>pre</code></a></th>
-<td>Block of preformatted text</td>
-<td>element content</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-handler.html#edef_handler_preventDefault"><code>preventDefault</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<tr>
-<th scope="row"><a href="test-files/progress.html"><code>progress</code></a></th>
-<td>Progress bar</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-q">
-<th scope="row"><a href="test-files/q.html"><code>q</code></a></th>
-<td>Quotation</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>?</td>
-</tr>
-
-<tr id="toc-r">
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-rb-element"><code>rb [no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/TR/ruby/#rbc"><code>rbc [no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-rp-element"><code>rp [no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-rt-element"><code>rt [no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-rtc-element"><code>rtc [no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-ruby-element"><code>ruby[no test]</code></a></th>
-<td>&nbsp;</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/samp.html"><code>samp</code></a></th>
-<td>Computer output</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/s.html"><code>s</code></a></th>
-<td>Innacurate text</td>
-<td><em>element content</em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-script-element"><code>script no test]</code></a></th>
-<td>Embedded script</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/section.html"><code>section</code></a></th>
-<td>Generic document or application section</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed unless the section has an accessible name.</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/select-option.html"><code>select</code></a></th>
-<td>List box control</td>
-<td>&nbsp;</td>
-<td><p>List of Combo boxes <kbd>CTRL+INSERT+C</kbd></p>
-<p>&nbsp;</p></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-xforms.html#edef_xforms_select1"><code>select1</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-xforms.html#edef_xforms_send"><code>send</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-structural.html#edef_structural_separator"><code>separator</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-xforms.html#edef_xforms_setfocus"><code>setfocus</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-xforms.html#edef_xforms_setindex"><code>setindex</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/TR/xhtml2/mod-xforms.html#edef_xforms_setvalue"><code>setvalue</code></a></th>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no"></td>
-<td><img src="images/cross.png" alt="no" /></td>
-<td><img src="images/cross.png" alt="no" /></td>
-</tr>-->
-<tr>
-<th scope="row"><a href="test-files/small.html"><code>small</code></a></th>
-<td>Side comment</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/the-video-element.html#the-source-element"><code>source [no test]</code></a></th>
-<td>Media source for <a href="http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element">video</a> or <a href="http://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element">audio</a></td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No UI</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/span.html"><code>span</code></a></th>
-<td>Generic phrasing container</td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/strong.html"><code>strong</code></a></th>
-<td>Importance</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-style-element"><code>style [mo test]</code></a></th>
-<td>Embedded styling information</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/sub-sup.html"><code>sub</code></a></th>
-<td> Subscript</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-summary-element"><code>summary</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<tr>
-<th scope="row"><code><a href="test-files/details-summary.html">summary</a></code></th>
-<td>disclosure widget control/label</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/sub-sup.html"><code>sup</code></a></th>
-<td>Superscript</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><code><a href="test-files/svg.html">svg</a></code></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-t">
-<th scope="row"><p><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>table</code></a></p>
-<p><a href="test-files/tables-complex.html"><code>complex table test</code></a></p></th>
-<td>Data table</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List Tables <kbd>CTRL+INSERT+T</kbd></li>
-<li>Next Table <kbd>T </kbd></li>
-<li>Previous Table <kbd>SHIFT+T</kbd></li>
-<li>Select Table use <kbd>F8</kbd>. To select an entire table, move  to the line that reads, "Table with x columns and y rows," and press <kbd>F8</kbd>.</li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tbody</code></a></th>
-<td>Group of rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>td</code></a></th>
-<td>Data cell in a data table</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Jump to Table Cell (from within a table) <kbd>CTRL+WINDOWS Key+J</kbd></li>
-<li>Return to Previous Cell <kbd>CTRL+SHIFT+WINDOWS Key+J</kbd></li>
-<li>Read current cell <kbd>CTRL+ALT+NUM PAD 5</kbd></li>
-<li>Move to and Read Next Cell <kbd>CTRL+ALT+RIGHT ARROW</kbd></li>
-<li>Move to and Read Prior Cell <kbd>CTRL+ALT+LEFT ARROW</kbd></li>
-<li>Move to and Read Cell Above <kbd>CTRL+ALT+UP ARROW</kbd></li>
-<li>Move to and Read Cell Below <kbd>CTRL+ALT+DOWN ARROW</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-template-element"><code>template [no test]</code></a></th>
-<td>Template</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/textarea.html"><code>textarea</code></a></th>
-<td>Multiline text field</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tfoot</code></a></th>
-<td>Group of footer rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>th</code></a></th>
-<td>Header cell in a data table</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>thead</code></a></th>
-<td>Group of header rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/time.html"><code>time</code></a></th>
-<td>Machine-readable equivalent of date- or time-related data</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-title-element"><code>title [no test]</code></a></th>
-<td>Document title</td>
-<td><em>element content</em></td>
-<td>Read Window Title <kbd>INSERT+T</kbd></td>
-<td>&nbsp;</td>
-<td>Semantics conveyed via navigation and announcement key stroke.</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tr</code></a></th>
-<td>Data table row</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Read Next Row <kbd>WINDOWS Key+ALT+DOWN ARROW</kbd></li>
-<li>Read Prior Row <kbd>WINDOWS Key+ALT+UP ARROW </kbd></li>
-<li>Read Current Row <kbd>ALT+WINDOWS Key+COMMA</kbd></li>
-<li> Read from Beginning of Row to Current Cell <kbd>INSERT+SHIFT+HOME</kbd></li>
-<li>Read from Current Cell to End of Row <kbd>INSERT+SHIFT+PAGE UP</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/video.html"><code>track</code></a></th>
-<td>Timed text track</td>
-<td><em>caption display control</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-
-<tr id="toc-u">
-<th scope="row"><a href="test-files/u.html"><code>u</code></a></th>
-<td>Keywords</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/ul-li.html"><code>ul</code></a></th>
-<td>Unordered List</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
-<li>Next List <kbd>L</kbd></li>
-<li>Previous List <kbd>SHIFT+I</kbd></li>
-<li> Next Item in a List <kbd>I</kbd></li>
-<li>Previous item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-v">
-<th scope="row"><a href="test-files/var.html"><code>var</code></a></th>
-<td>Variable</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="test-files/video.html"><code>video</code></a></th>
-<td>Video Player</td>
-<td><em>Controls and content </em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-w">
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-wbr-element"><code>wbr [no test]</code></a></th>
-<td>Line breaking opportunity</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
 </tbody>
 </table>
 </main>
 <footer>
-<h2>Acknowledgements</h2>
-<p>L&eacute;onie Watson, Matthew Atkins</p>
+<p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
 </footer>
 </body>
 </html>
