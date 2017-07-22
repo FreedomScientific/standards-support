@@ -48,12 +48,13 @@ display: inline-block;
 }
 
 </style>
-<link href="https://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css"/>
-<head>
+<link href="https://w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css"/>
+</head>
+
 <body>
 <header>
-<img src="images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
-<h1>Jaws ARIA role support</h1>
+<img src="images/" width="128" height="128" alt="Missing ARIA logo" id="logo">
+<h1>Jaws ARIA support</h1>
 
 <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
 
@@ -61,16 +62,11 @@ display: inline-block;
 </header>
 
 <main>
-  <p>A Work <em>in progress</em>: Last updated 16 July 2017</p>
-<p>Typical support patterns:</p>
-<ul>
-<li>***TBC***</li>
-</ul>
+  <p>A Work <em>in progress</em>: Last updated 22nd July 2017</p>
 
-<p class="note">JAWS testing - In progress</p>
-
+<h2>ARIA roles</h2>
 <table class="alt">
-<caption>JAWS ARIA role support (chrome on Windows 10)</caption>
+<caption>ARIA roles</caption>
 <thead>
 <tr>
 <th scope="col">Role</th>
@@ -83,32 +79,35 @@ display: inline-block;
 </thead>
 <tbody>
 <tr id="toc-a2">
-<TD tabindex="-1" id="index-aria-alert"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#alert">alert</a></code></TD>
-<TD>A type of <code>live region</code> with important, and usually time-sensitive, information. See related <code>alerTDialog</code> and <code>status</code>.</TD>
+<td tabindex="-1" id="index-aria-alert"><code><a href="https://w3.org/TR/wai-aria-1.1/#alert">alert</a></code></td>
+<td>A type of <code>live region</code> with important, and usually time-sensitive, information. See related <code>alerTDialog</code> and <code>status</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-alerTDialog"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#alerTDialog">alertdialog</a></code></TD>
-<TD>A type of dialog that contains an alert message, where initial focus goes to an element within the dialog. See related <code>alert</code> and <code>dialog</code>.</TD>
+<td tabindex="-1" id="index-aria-alerTDialog"><code><a href="https://w3.org/tr/wai-aria-1.1/#alertdialog">alertdialog</a></code></td>
+<td>A type of dialog that contains an alert message, where initial focus goes to an element within the dialog. See related <code>alert</code> and <code>dialog</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-application"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#application">application</a></code></TD>
-<TD>A structure containing one or more focusable elements requiring user input, such as   keyboard or gesture events, that do not follow a standard interaction   pattern supported by a widget role. - <span class="changed-feature">changed)</span></TD>
+<td tabindex="-1" id="index-aria-application"><code><a href="https://w3.org/tr/wai-aria-1.1/#application">application</a></code></td>
+<td>A structure containing one or more focusable elements requiring user input, such as   keyboard or gesture events, that do not follow a standard interaction   pattern supported by a widget role. - <span class="changed-feature">changed)</span></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-article"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#article">article</a></code></TD>
-<TD>A section of a page that consists of a composition that forms an independent part of a document, page, or site.</TD>
+<td tabindex="-1" id="index-aria-article"><code><a href="https://w3.org/tr/wai-aria-1.1/#article">article</a></code></td>
+<td>A section of a page that consists of a composition that forms an independent part of a document, page, or site.</td>
 <td>&nbsp;</td>
 <td><ul>
 <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
@@ -118,9 +117,10 @@ display: inline-block;
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-banner"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#banner">banner</a></code></TD>
-<TD>A region that contains mostly site-oriented content, rather than page-specific content.</TD>
+<td tabindex="-1" id="index-aria-banner"><code><a href="https://w3.org/tr/wai-aria-1.1/#banner">banner</a></code></td>
+<td>A region that contains mostly site-oriented content, rather than page-specific content.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
@@ -130,9 +130,10 @@ display: inline-block;
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr id="jaws-el-aside" tabindex="-1">
-<TD tabindex="-1" id="index-aria-button"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#button">button</a></code></TD>
-<TD>An input that allows for user-triggered actions when clicked or pressed. See related <code>link</code>.</TD>
+
+<tr>
+<td tabindex="-1" id="index-aria-button"><code><a href="https://w3.org/tr/wai-aria-1.1/#button">button</a></code></td>
+<td>An input that allows for user-triggered actions when clicked or pressed. See related <code>link</code>.</td>
 <td><em>text label</em> "button"</td>
 <td><ul id="button-commands" tabindex="-1">
 <li>List Buttons <kbd>CTRL+INSERT+B</kbd></li>
@@ -142,9 +143,10 @@ display: inline-block;
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-checkbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#checkbox">checkbox</a></code></TD>
-<TD>A checkable input that has three possible values: true, false, or mixed.</TD>
+<td tabindex="-1" id="index-aria-checkbox"><code><a href="https://w3.org/tr/wai-aria-1.1/#checkbox">checkbox</a></code></td>
+<td>A checkable input that has three possible values: true, false, or mixed.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>List Check Boxes <kbd>CTRL+INSERT+X</kbd></li>
@@ -154,34 +156,38 @@ display: inline-block;
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-b">
-<TD tabindex="-1" id="index-aria-cell"><a href="http://www.w3.org/TR/wai-aria-1.1/#cell"><code>cell</code></a> <span class="new-feature" ></span></TD>
-<TD>A cell in a tabular container.</TD>
+<td tabindex="-1" id="index-aria-cell"><a href="https://w3.org/tr/wai-aria-1.1/#cell"><code>cell</code></a> <span class="new-feature" ></span></td>
+<td>A cell in a tabular container.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-columnheader"><code><a href="http://www.w3.org/TR/waiaria-1.1/#columnheader">columnheader</a></code></TD>
-<TD>A cell containing header information for a column.</TD>
+<td tabindex="-1" id="index-aria-columnheader"><code><a href="http://w3.org/TR/waiaria-1.1/#columnheader">columnheader</a></code></td>
+<td>A cell containing header information for a column.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-combobox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#combobox">combobox</a></code></TD>
-<TD>A presentation of a select; usually similar to a textbox where users can type ahead to select an option, or type to enter arbitrary text as a new item in the list. See related <code>listbox</code>.</TD>
+<td tabindex="-1" id="index-aria-combobox"><code><a href="https://w3.org/tr/wai-aria-1.1/#combobox">combobox</a></code></td>
+<td>A presentation of a select; usually similar to a textbox where users can type ahead to select an option, or type to enter arbitrary text as a new item in the list. See related <code>listbox</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-complementary"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#complementary">complementary</a></code></TD>
-<TD>A supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains
-meaningful when separated from the main content.</TD>
+<td tabindex="-1" id="index-aria-complementary"><code><a href="https://w3.org/tr/wai-aria-1.1/#complementary">complementary</a></code></td>
+<td>A supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains
+meaningful when separated from the main content.</td>
 <td><p>"complimentary information" <em></em> "complimentary information end"</p>
 <p>&nbsp;</p></td>
 <td><ul>
@@ -192,9 +198,10 @@ meaningful when separated from the main content.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-contentinfo"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#contentinfo">contentinfo</a></code></TD>
-<TD>A large perceivable region that contains information about the parent document.</TD>
+<td tabindex="-1" id="index-aria-contentinfo"><code><a href="https://w3.org/tr/wai-aria-1.1/#contentinfo">contentinfo</a></code></td>
+<td>A large perceivable region that contains information about the parent document.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
@@ -204,58 +211,65 @@ meaningful when separated from the main content.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-definition"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#definition">definition</a></code></TD>
-<TD>A definition of a term or concept.</TD>
+<td tabindex="-1" id="index-aria-definition"><code><a href="https://w3.org/tr/wai-aria-1.1/#definition">definition</a></code></td>
+<td>A definition of a term or concept.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-dialog"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#dialog">dialog</a></code></TD>
-<TD>A dialog is an application window that is designed to interrupt the current processing of an application in order to prompt the user to enter
-information or require a response. See related <code>alerTDialog</code>.</TD>
+<td tabindex="-1" id="index-aria-dialog"><code><a href="https://w3.org/tr/wai-aria-1.1/#dialog">dialog</a></code></td>
+<td>A dialog is an application window that is designed to interrupt the current processing of an application in order to prompt the user to enter
+information or require a response. See related <code>alerTDialog</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-directory"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#directory">directory</a></code></TD>
-<TD>A list of references to members of a group, such as a static table of contents.</TD>
+<td tabindex="-1" id="index-aria-directory"><code><a href="https://w3.org/tr/wai-aria-1.1/#directory">directory</a></code></td>
+<td>A list of references to members of a group, such as a static table of contents.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-c">
-<TD tabindex="-1" id="index-aria-document"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#document">document</a></code></TD>
-<TD>A region containing related information that is declared as document content, as opposed to a web application.</TD>
+<td tabindex="-1" id="index-aria-document"><code><a href="https://w3.org/tr/wai-aria-1.1/#document">document</a></code></td>
+<td>A region containing related information that is declared as document content, as opposed to a web application.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-feed"><code><a href="https://www.w3.org/TR/wai-aria-1.1/#feed">feed</a></code> <span class="new-feature" ></span></TD>
-<TD>A scrollable list of articles where scrolling may cause articles to be added to or removed from either end of the list.</TD>
+<td tabindex="-1" id="index-aria-feed"><code><a href="https://w3.org/tr/wai-aria-1.1/#feed">feed</a></code> <span class="new-feature" ></span></td>
+<td>A scrollable list of articles where scrolling may cause articles to be added to or removed from either end of the list.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-figure"><a href="https://www.w3.org/TR/wai-aria-1.1/#figure"><code>figure</code></a> <span class="new-feature" ></span></TD>
-<TD>A perceivable section of content that typically contains a graphical document, images, code snippets, or example text. </TD>
+<td tabindex="-1" id="index-aria-figure"><a href="https://w3.org/TR/wai-aria-1.1/#figure"><code>figure</code></a> <span class="new-feature" ></span></td>
+<td>A perceivable section of content that typically contains a graphical document, images, code snippets, or example text. </td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-form"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#form">form</a></code></TD>
-<TD>A landmark region that contains a collection of items and objects that, as a whole, combine to create a form. See related <code>search</code>. </TD>
+<td tabindex="-1" id="index-aria-form"><code><a href="https://w3.org/tr/wai-aria-1.1/#form">form</a></code></td>
+<td>A landmark region that contains a collection of items and objects that, as a whole, combine to create a form. See related <code>search</code>. </td>
 <td>&nbsp;</td>
 <td><ul>
   <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
@@ -265,33 +279,37 @@ information or require a response. See related <code>alerTDialog</code>.</TD>
 <td>&nbsp;</td>
 <td>Need to check whether it needs an accessible name to be announced/navigable</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-grid"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#grid">grid</a></code></TD>
-<TD>A grid is an interactive control which contains cells of tabular data arranged in rows and columns, like a table.</TD>
+<td tabindex="-1" id="index-aria-grid"><code><a href="https://w3.org/tr/wai-aria-1.1/#grid">grid</a></code></td>
+<td>A grid is an interactive control which contains cells of tabular data arranged in rows and columns, like a table.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-gridcell"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#gridcell">gridcell</a></code></TD>
-<TD>A cell in a grid or treegrid.</TD>
+<td tabindex="-1" id="index-aria-gridcell"><code><a href="https://w3.org/tr/wai-aria-1.1/#gridcell">gridcell</a></code></td>
+<td>A cell in a grid or treegrid.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-d">
-<TD tabindex="-1" id="index-aria-group"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#group">group</a></code></TD>
-<TD>A set of user interface objects which are not intended to be included in a page summary or table of contents by assistive technologies.</TD>
+<td tabindex="-1" id="index-aria-group"><code><a href="https://w3.org/tr/wai-aria-1.1/#group">group</a></code></td>
+<td>A set of user interface objects which are not intended to be included in a page summary or table of contents by assistive technologies.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-heading"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#heading">heading</a></code></TD>
-<TD>A heading for a section of the page.</TD>
+<td tabindex="-1" id="index-aria-heading"><code><a href="https://w3.org/tr/wai-aria-1.1/#heading">heading</a></code></td>
+<td>A heading for a section of the page.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>List Headings <kbd>INSERT</kbd>+<kbd>F6 </kbd></li>
@@ -307,9 +325,10 @@ information or require a response. See related <code>alerTDialog</code>.</TD>
 <td>&nbsp;</td>
 <td>requires aria-level attribute with a valid value to announce level</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-img"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#img">img</a></code></TD>
-<TD>A container for a collection of elements that form an image.</TD>
+<td tabindex="-1" id="index-aria-img"><code><a href="https://w3.org/tr/wai-aria-1.1/#img">img</a></code></td>
+<td>A container for a collection of elements that form an image.</td>
 <td>"graphic" <em>alt attribute content</em></td>
 <td><ul>
 <li>List of Graphics <kbd>CTRL+INSERT+G</kbd></li>
@@ -319,10 +338,11 @@ information or require a response. See related <code>alerTDialog</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-link"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#link">link</a></code></TD>
-<TD>An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource. See
-related <code>button</code>.</TD>
+<td tabindex="-1" id="index-aria-link"><code><a href="https://w3.org/tr/wai-aria-1.1/#link">link</a></code></td>
+<td>An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource. See
+related <code>button</code>.</td>
 <td><em></em> "link"</td>
 <td><ul>
 <li>List Links <kbd>INSERT+F7</kbd></li>
@@ -338,17 +358,10 @@ related <code>button</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-details-element"><code>details [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
+
 <tr>
-<TD tabindex="-1" id="index-aria-list"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#list">list</a></code></TD>
-<TD>A group of non-interactive list items. See related <code>listbox</code>.</TD>
+<td tabindex="-1" id="index-aria-list"><code><a href="https://w3.org/tr/wai-aria-1.1/#list">list</a></code></td>
+<td>A group of non-interactive list items. See related <code>listbox</code>.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
@@ -360,26 +373,19 @@ related <code>button</code>.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-listbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#listbox">listbox</a></code></TD>
-<TD>A widget that allows the user to select one or more items from a list of choices. See related <code>combobox</code> and <code>list</code>.</TD>
+<td tabindex="-1" id="index-aria-listbox"><code><a href="https://w3.org/tr/wai-aria-1.1/#listbox">listbox</a></code></td>
+<td>A widget that allows the user to select one or more items from a list of choices. See related <code>combobox</code> and <code>list</code>.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
-<!-- <tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/commands.html#the-dialog-element"><code>dialog [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr> -->
 
 <tr>
-<TD tabindex="-1" id="index-aria-listitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#listitem">listitem</a></code></TD>
-<TD>A single item in a <code>list</code> or <code>directory</code>.</TD>
+<td tabindex="-1" id="index-aria-listitem"><code><a href="https://w3.org/tr/wai-aria-1.1/#listitem">listitem</a></code></td>
+<td>A single item in a <code>list</code> or <code>directory</code>.</td>
 <td><em></em></td>
 <td><ul>
   <li>Next Item in a List <kbd>I</kbd></li>
@@ -388,17 +394,19 @@ related <code>button</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-log"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#log">log</a></code></TD>
-<TD>A type of live region where new information is added in meaningful order and old information may disappear. See related <code>marquee</code>. </TD>
+<td tabindex="-1" id="index-aria-log"><code><a href="https://w3.org/tr/wai-aria-1.1/#log">log</a></code></td>
+<td>A type of live region where new information is added in meaningful order and old information may disappear. See related <code>marquee</code>. </td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-main"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#main">main</a></code></TD>
-<TD>The main content of a document.</TD>
+<td tabindex="-1" id="index-aria-main"><code><a href="https://w3.org/tr/wai-aria-1.1/#main">main</a></code></td>
+<td>The main content of a document.</td>
 <td><em></em></td>
 <td><ul>
   <li>Move to Main Region <kbd>Q</kbd></li>
@@ -409,65 +417,73 @@ related <code>button</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-e">
-<TD tabindex="-1" id="index-aria-marquee"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#marquee">marquee</a></code></TD>
-<TD>A type of live region where non-essential information changes frequently. See related <code>log</code>.</TD>
+<td tabindex="-1" id="index-aria-marquee"><code><a href="https://w3.org/tr/wai-aria-1.1/#marquee">marquee</a></code></td>
+<td>A type of live region where non-essential information changes frequently. See related <code>log</code>.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-math"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#math">math</a></code></TD>
-<TD>Content that represents a mathematical expression. </TD>
+<td tabindex="-1" id="index-aria-math"><code><a href="https://w3.org/tr/wai-aria-1.1/#math">math</a></code></td>
+<td>Content that represents a mathematical expression. </td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-f">
-<TD tabindex="-1" id="index-aria-menu"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menu">menu</a></code></TD>
-<TD>A type of widget that offers a list of choices to the user.</TD>
+<td tabindex="-1" id="index-aria-menu"><code><a href="https://w3.org/tr/wai-aria-1.1/#menu">menu</a></code></td>
+<td>A type of widget that offers a list of choices to the user.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-menubar"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menubar">menubar</a></code></TD>
-<TD>A presentation of menu that usually remains visible and is usually presented horizontally.</TD>
+<td tabindex="-1" id="index-aria-menubar"><code><a href="https://w3.org/tr/wai-aria-1.1/#menubar">menubar</a></code></td>
+<td>A presentation of menu that usually remains visible and is usually presented horizontally.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-menuitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitem">menuitem</a></code></TD>
-<TD>An option in a group of choices contained by a <code>menu</code> or <code>menubar</code>.</TD>
+<td tabindex="-1" id="index-aria-menuitem"><code><a href="https://w3.org/tr/wai-aria-1.1/#menuitem">menuitem</a></code></td>
+<td>An option in a group of choices contained by a <code>menu</code> or <code>menubar</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-menuitemcheckbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox">menuitemcheckbox</a> </code></TD>
-<TD>A checkable menuitem that has three possible values: true, false, or mixed.</TD>
+<td tabindex="-1" id="index-aria-menuitemcheckbox"><code><a href="https://w3.org/tr/wai-aria-1.1/#menuitemcheckbox">menuitemcheckbox</a> </code></td>
+<td>A checkable menuitem that has three possible values: true, false, or mixed.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-menuitemradio"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemradio">menuitemradio</a></code></TD>
-<TD>A checkable menuitem in a group of <code>menuitemradio</code> roles, only one of which can be checked at a time.</TD>
+<td tabindex="-1" id="index-aria-menuitemradio"><code><a href="https://w3.org/tr/wai-aria-1.1/#menuitemradio">menuitemradio</a></code></td>
+<td>A checkable menuitem in a group of <code>menuitemradio</code> roles, only one of which can be checked at a time.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-h">
-<TD tabindex="-1" id="index-aria-navigation"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#navigation">navigation</a></code></TD>
-<TD>A collection of navigational elements (usually links) for navigating the document or related documents.</TD>
+<td tabindex="-1" id="index-aria-navigation"><code><a href="https://w3.org/tr/wai-aria-1.1/#navigation">navigation</a></code></td>
+<td>A collection of navigational elements (usually links) for navigating the document or related documents.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+) </li>
@@ -477,49 +493,55 @@ related <code>button</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-none"><code><a href="https://www.w3.org/TR/wai-aria-1.1/#none">none</a></code> <span class="new-feature" ></span></TD>
-<TD>An element whose implicit native role semantics will not be mapped to the accessibility <abbr title="Application Programing Interfaces">API</abbr>. See synonym <a href="#index-aria-presentation">presentation</a></TD>
+<td tabindex="-1" id="index-aria-none"><code><a href="https://w3.org/TR/wai-aria-1.1/#none">none</a></code> <span class="new-feature" ></span></td>
+<td>An element whose implicit native role semantics will not be mapped to the accessibility <abbr title="Application Programing Interfaces">API</abbr>. See synonym <a href="#index-aria-presentation">presentation</a></td>
 <td><em><strong>none expected</strong></em></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-note"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#note">note</a></code></TD>
-<TD>A section whose content is parenthetic or ancillary to the main content of the resource.</TD>
+<td tabindex="-1" id="index-aria-note"><code><a href="https://w3.org/tr/wai-aria-1.1/#note">note</a></code></td>
+<td>A section whose content is parenthetic or ancillary to the main content of the resource.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-option"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#option">option</a></code></TD>
-<TD>A selectable item in a select list.</TD>
+<td tabindex="-1" id="index-aria-option"><code><a href="https://w3.org/tr/wai-aria-1.1/#option">option</a></code></td>
+<td>A selectable item in a select list.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-presentation"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#presentation">presentation</a></code></TD>
-<TD>An element whose implicit native role semantics will not be mapped to the accessibility API.</TD>
+<td tabindex="-1" id="index-aria-presentation"><code><a href="https://w3.org/tr/wai-aria-1.1/#presentation">presentation</a></code></td>
+<td>An element whose implicit native role semantics will not be mapped to the accessibility API.</td>
 <td><em><strong>none expected</strong></em></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-i">
-<TD tabindex="-1" id="index-aria-progressbar"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#progressbar">progressbar</a></code></TD>
-<TD>An element that displays the progress status for tasks that take a long time.</TD>
+<td tabindex="-1" id="index-aria-progressbar"><code><a href="https://w3.org/tr/wai-aria-1.1/#progressbar">progressbar</a></code></td>
+<td>An element that displays the progress status for tasks that take a long time.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-radio"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#radio">radio</a></code></TD>
-<TD>A checkable input in a group of radio roles, only one of which can be checked at a time.</TD>
+<td tabindex="-1" id="index-aria-radio"><code><a href="https://w3.org/tr/wai-aria-1.1/#radio">radio</a></code></td>
+<td>A checkable input in a group of radio roles, only one of which can be checked at a time.</td>
 <td>"radio button checked/not checked" <em>label content</em> "x of y" where x = position in radio group, y = number of radio buttons in group.</td>
 <td>
 <ul>
@@ -532,18 +554,20 @@ related <code>button</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-radiogroup"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#radiogroup">radiogroup</a></code></TD>
-<TD>A group of radio buttons.</TD>
+<td tabindex="-1" id="index-aria-radiogroup"><code><a href="https://w3.org/tr/wai-aria-1.1/#radiogroup">radiogroup</a></code></td>
+<td>A group of radio buttons.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-region"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#region">region</a></code></TD>
-<TD>A large perceivable section of a web page or document, that the author feels is important enough to be included in a page summary or table of
-contents, for example, an area of the page containing live sporting event statistics.</TD>
+<td tabindex="-1" id="index-aria-region"><code><a href="https://w3.org/tr/wai-aria-1.1/#region">region</a></code></td>
+<td>A large perceivable section of a web page or document, that the author feels is important enough to be included in a page summary or table of
+contents, for example, an area of the page containing live sporting event statistics.</td>
 <td>&nbsp;</td>
 <td><p>If the region has an accessible name then:</p>
   <ul>
@@ -554,49 +578,55 @@ contents, for example, an area of the page containing live sporting event statis
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-row"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#row">row</a></code></TD>
-<TD><p>A row of cells in a tabular container.</p></TD>
+<td tabindex="-1" id="index-aria-row"><code><a href="https://w3.org/tr/wai-aria-1.1/#row">row</a></code></td>
+<td><p>A row of cells in a tabular container.</p></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-rowgroup"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#rowgroup">rowgroup</a></code></TD>
-<TD>A group containing one or more row elements in a grid.</TD>
+<td tabindex="-1" id="index-aria-rowgroup"><code><a href="https://w3.org/tr/wai-aria-1.1/#rowgroup">rowgroup</a></code></td>
+<td>A group containing one or more row elements in a grid.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-rowheader"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#rowheader">rowheader</a></code></TD>
-<TD>A cell containing header information for a row in a grid.</TD>
+<td tabindex="-1" id="index-aria-rowheader"><code><a href="https://w3.org/tr/wai-aria-1.1/#rowheader">rowheader</a></code></td>
+<td>A cell containing header information for a row in a grid.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-scrollbar"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#scrollbar">scrollbar</a></code></TD>
-<TD>A graphical object that controls the scrolling of content within a viewing area, regardless of whether the content is fully displayed within the
-viewing area.</TD>
+<td tabindex="-1" id="index-aria-scrollbar"><code><a href="https://w3.org/tr/wai-aria-1.1/#scrollbar">scrollbar</a></code></td>
+<td>A graphical object that controls the scrolling of content within a viewing area, regardless of whether the content is fully displayed within the
+viewing area.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/forms.html#date-and-time-state-(type=datetime)"><code>input [datetime]</code></a></th>
+<!--
+<tr>
+<th scope="row"><a href="http://w3.org/html/wg/drafts/html/master/forms.html#date-and-time-state-(type=datetime)"><code>input [datetime]</code></a></th>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>-->
+
 <tr>
-<TD tabindex="-1" id="index-aria-search"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#search">search</a></code></TD>
-<TD>A landmark region that contains a collection of items and objects that, as a whole, combine to create a search facility. See related <code>form </code>.</TD>
+<td tabindex="-1" id="index-aria-search"><code><a href="https://w3.org/tr/wai-aria-1.1/#search">search</a></code></td>
+<td>A landmark region that contains a collection of items and objects that, as a whole, combine to create a search facility. See related <code>form </code>.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
@@ -606,9 +636,10 @@ viewing area.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-searchbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#searchbox">searchbox</a></code> <span class="new-feature" ></span></TD>
-<TD>A type of textbox intended for specifying search criteria.</TD>
+<td tabindex="-1" id="index-aria-searchbox"><code><a href="https://w3.org/tr/wai-aria-1.1/#searchbox">searchbox</a></code> <span class="new-feature" ></span></td>
+<td>A type of textbox intended for specifying search criteria.</td>
 <td>&nbsp;</td>
 <td><ul>
   <li>List Edit Boxes <kbd>CTRL+INSERT+E</kbd></li>
@@ -619,9 +650,10 @@ viewing area.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-separator"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#separator">separator</a></code></TD>
-<TD>A divider that separates and distinguishes sections of content or groups of menuitems.</TD>
+<td tabindex="-1" id="index-aria-separator"><code><a href="https://w3.org/tr/wai-aria-1.1/#separator">separator</a></code></td>
+<td>A divider that separates and distinguishes sections of content or groups of menuitems.</td>
 <td>"separator"</td>
 <td><ul>
   <li>Move to Next Separator <kbd>DASH</kbd></li>
@@ -630,9 +662,10 @@ viewing area.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-slider"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#slider">slider</a></code></TD>
-<TD>A user input where the user selects a value from within a given range.</TD>
+<td tabindex="-1" id="index-aria-slider"><code><a href="https://w3.org/tr/wai-aria-1.1/#slider">slider</a></code></td>
+<td>A user input where the user selects a value from within a given range.</td>
 <td><em>label content</em> "left, right slider to decrease or increase use the arrow keys" <em>current value</em></td>
 <td><p>If the slider has the appropriate scripted event handlers:</p>
   <ul>
@@ -645,17 +678,9 @@ viewing area.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
-<!--<tr>
-<th scope="row"><a href="test-files/input-month.html"><code>input [month]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
 <tr>
-<TD tabindex="-1" id="index-aria-spinbutton"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#spinbutton">spinbutton</a></code></TD>
-<TD>A form of range that expects the user to select from among discrete choices.</TD>
+<td tabindex="-1" id="index-aria-spinbutton"><code><a href="https://w3.org/tr/wai-aria-1.1/#spinbutton">spinbutton</a></code></td>
+<td>A form of range that expects the user to select from among discrete choices.</td>
 <td>
 <p>"edit, spin box" <em>label content</em></p>
 <p>&nbsp;</p>
@@ -672,66 +697,74 @@ viewing area.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-status"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#status">status</a></code></TD>
-<TD>A container whose content is advisory information for the user but is not important enough to justify an alert, often but not necessarily
-presented as a status bar. See related <code>alert</code>.</TD>
+<td tabindex="-1" id="index-aria-status"><code><a href="https://w3.org/tr/wai-aria-1.1/#status">status</a></code></td>
+<td>A container whose content is advisory information for the user but is not important enough to justify an alert, often but not necessarily
+presented as a status bar. See related <code>alert</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-switch"><a href="http://www.w3.org/TR/wai-aria-1.1/#switch"><code>switch</code></a> <span class="new-feature" ></span></TD>
-<TD> A type of checkbox that represents on/off values, as opposed to checked/unchecked values.</TD>
+<td tabindex="-1" id="index-aria-switch"><a href="https://w3.org/tr/wai-aria-1.1/#switch"><code>switch</code></a> <span class="new-feature" ></span></td>
+<td> A type of checkbox that represents on/off values, as opposed to checked/unchecked values.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-tab"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#tab">tab</a></code></TD>
-<TD>A grouping label providing a mechanism for selecting the tab content that is to be rendered to the user.</TD>
+<td tabindex="-1" id="index-aria-tab"><code><a href="https://w3.org/tr/wai-aria-1.1/#tab">tab</a></code></td>
+<td>A grouping label providing a mechanism for selecting the tab content that is to be rendered to the user.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-table"><a href="http://www.w3.org/TR/wai-aria-1.1/#table"><code>table</code></a> <span class="new-feature" ></span></TD>
-<TD>A section containing data arranged in rows and columns. The table role is intended for tabular containers which are not interactive. </TD>
+<td tabindex="-1" id="index-aria-table"><a href="https://w3.org/tr/wai-aria-1.1/#table"><code>table</code></a> <span class="new-feature" ></span></td>
+<td>A section containing data arranged in rows and columns. The table role is intended for tabular containers which are not interactive. </td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-tablist"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#tablist">tablist</a></code></TD>
-<TD>A list of tab elements, which are references to tabpanel elements.</TD>
+<td tabindex="-1" id="index-aria-tablist"><code><a href="https://w3.org/tr/wai-aria-1.1/#tablist">tablist</a></code></td>
+<td>A list of tab elements, which are references to tabpanel elements.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-tabpanel"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#tabpanel">tabpanel</a></code></TD>
-<TD>A container for the resources associated with a <code>tab</code>, where each <code>tab</code> is contained in a <code>tablist</code>.</TD>
+<td tabindex="-1" id="index-aria-tabpanel"><code><a href="https://w3.org/tr/wai-aria-1.1/#tabpanel">tabpanel</a></code></td>
+<td>A container for the resources associated with a <code>tab</code>, where each <code>tab</code> is contained in a <code>tablist</code>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD id="index-aria-term" tabindex="-1"><a href="https://www.w3.org/TR/wai-aria-1.1/#term"><code>term</code></a> <span class="new-feature" ></span></TD>
-<TD>A word or phrase with a corresponding definition. See related <a href="#index-aria-definition">definition</a>.</TD>
+<td id="index-aria-term" tabindex="-1"><a href="https://w3.org/TR/wai-aria-1.1/#term"><code>term</code></a> <span class="new-feature" ></span></td>
+<td>A word or phrase with a corresponding definition. See related <a href="#index-aria-definition">definition</a>.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-textbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#textbox">textbox</a></code></TD>
-<TD>Input that allows free-form text as its value.</TD>
+<td tabindex="-1" id="index-aria-textbox"><code><a href="https://w3.org/tr/wai-aria-1.1/#textbox">textbox</a></code></td>
+<td>Input that allows free-form text as its value.</td>
 <td>&nbsp;</td>
 <td>
 <ul>
@@ -743,57 +776,55 @@ presented as a status bar. See related <code>alert</code>.</TD>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-timer"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#timer">timer</a></code></TD>
-<TD>A type of live region containing a numerical counter which indicates an amount of elapsed time from a start point, or the time remaining until an end point.</TD>
+<td tabindex="-1" id="index-aria-timer"><code><a href="https://w3.org/tr/wai-aria-1.1/#timer">timer</a></code></td>
+<td>A type of live region containing a numerical counter which indicates an amount of elapsed time from a start point, or the time remaining until an end point.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-toolbar"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#toolbar">toolbar</a></code></TD>
-<TD>A collection of commonly used function buttons represented in compact visual form.</TD>
+<td tabindex="-1" id="index-aria-toolbar"><code><a href="https://w3.org/tr/wai-aria-1.1/#toolbar">toolbar</a></code></td>
+<td>A collection of commonly used function buttons represented in compact visual form.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<!--<tr>
-<th scope="row"><a href="test-files/input-week.html"><code>input [week]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
+
 <tr>
-<TD tabindex="-1" id="index-aria-tooltip"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#tooltip">tooltip</a></code></TD>
-<TD>A contextual popup that displays a description for an element.</TD>
+<td tabindex="-1" id="index-aria-tooltip"><code><a href="https://w3.org/tr/wai-aria-1.1/#tooltip">tooltip</a></code></td>
+<td>A contextual popup that displays a description for an element.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-k">
-<TD tabindex="-1" id="index-aria-tree"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#tree">tree</a></code></TD>
-<TD>A type of list that may contain sub-level nested groups that can be collapsed and expanded.</TD>
+<td tabindex="-1" id="index-aria-tree"><code><a href="https://w3.org/tr/wai-aria-1.1/#tree">tree</a></code></td>
+<td>A type of list that may contain sub-level nested groups that can be collapsed and expanded.</td>
 <td><em></em></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr>
-<TD tabindex="-1" id="index-aria-treegrid"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#treegrid">treegrid</a></code></TD>
-<TD>A grid whose rows can be expanded and collapsed in the same manner as for a tree.</TD>
+<td tabindex="-1" id="index-aria-treegrid"><code><a href="https://w3.org/tr/wai-aria-1.1/#treegrid">treegrid</a></code></td>
+<td>A grid whose rows can be expanded and collapsed in the same manner as for a tree.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
+
 <tr id="toc-l">
-<TD tabindex="-1" id="index-aria-treeitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#treeitem">treeitem</a></code></TD>
-<TD>An option item of a tree. This is an element within a tree that may be expanded or collapsed if it contains a sub-level group of treeitems.</TD>
+<td tabindex="-1" id="index-aria-treeitem"><code><a href="https://w3.org/tr/wai-aria-1.1/#treeitem">treeitem</a></code></td>
+<td>An option item of a tree. This is an element within a tree that may be expanded or collapsed if it contains a sub-level group of treeitems.</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -801,6 +832,7 @@ presented as a status bar. See related <code>alert</code>.</TD>
 </tr>
 </tbody>
 <tfoot>
+
 <tr>
 <th scope="col">Role</th>
 <td>&nbsp;</td>
@@ -812,8 +844,125 @@ presented as a status bar. See related <code>alert</code>.</TD>
 </tfoot>
 </table>
 </main>
+
+<h2>ARIA states</h2>
+<table class="alt">
+<caption>ARIA states support</caption>
+<thead>
+<tr>
+<th scope="col">State</th>
+<th scope="col">Description</th>
+<th scope="col">Test case</th>
+<th scope="col">Interaction</th>
+<th scope="col">Supported</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-busy"><code>aria-busy</code></a></td>
+<td>Indicates an element is being modified</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-checked"><code>aria-checked</code></a></td>
+<td>Indicates the checked state of an element</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-current"><code>aria-current</code></a></td>
+<td>Indicates an element is the current item in a collection</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-disabled"><code>aria-disabled</code></a></td>
+<td>Indicates an element is perceivable but disabled</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-expanded"><code>aria-expanded</code></a></td>
+<td>Indicates the current expansion state of an element</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-grabbed"><code>aria-grabbed</code></a></td>
+<td>Indicates an element's grabbed state in a drag and drop operation</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>Deprecated in ARIA 1.1</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-hidden"><code>aria-hidden</code></a></td>
+<td>Indicates whether an element is exposed to the accessibility API</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-invalid"><code>aria-invalid</code></a></td>
+<td>Indicates the entered data does not conform to the expected format</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-pressed"><code>aria-pressed</code></a></td>
+<td>Indicates the current pressed state of an element</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+  
+<tr>
+<td><a href="https://w3.org/TR/wai-aria-1.1/#aria-selected"><code>aria-selected</code></a></td>
+<td>Indicates the current selected state of an element</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+<th scope="col">State</th> 
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+
 <footer>
-<p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
+<p><strong>Editors:</strong> Steve Faulkner, Léonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
 </footer>
 </body>
 </html>
