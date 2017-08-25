@@ -55,7 +55,7 @@ display: inline-block;
 <img src="images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
 <h1>Jaws HTML support</h1>
 
-<p>A Work <em>in progress</em>: Last updated 16 July 2017</p>
+<p>A Work <em>in progress</em>: Last updated 19 August 2017</p>
 <p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
 <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
 
@@ -121,7 +121,18 @@ JAWS ARIA Feature support (Firefox on Windows 10)
 </ul>
 </td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td><code>link</code> role announced before link text when cursored to, after via tab.</td>
+<td><p><code>link</code> role announced before link text when cursored to, after via tab.</p>
+  <UL>
+    <LI>By Default, JAWS speaks the on screen text of a link, but you can set JAWS   to instead speak Title text, assigned by the page author within the HTML code.   Title text normally provides supplemental information about the link.   
+    <LI>By default, JAWS announces the link type, but you can disable this, so JAWS   announces same page links, send mail links, and ftp links as "link," or "Visited   Link." </LI>
+  </UL>
+  <p>JAWS announces the type of link as follows:</p>
+  <UL>
+    <LI><strong>Link:</strong> This indicates a link that has not been visited.   
+    <LI><strong>Visited Link:</strong> This indicates a link that has been visited. This is   determined by your browser history, not by which links have been selected on the   current Web page. 
+    <LI><strong>Same Page Link:</strong> This indicates a link that moves you to another   location on the same page.   
+    <LI><strong>Send Mail Link:</strong> This indicates a link that opens a new e-mail message   using your default e-mail program. <LI><strong>FTP Link:</strong> This indicates a link that points to a FTP (File Transfer   Protocol) server. </LI>
+  </UL></td>
 </tr>
 <tr id="toc-a2">
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/a-no-href.html"><code>a</code></a> with no href</th>
@@ -164,7 +175,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 </td>
 <td>
 <p>No semantics conveyed by default</p>
-<p>Note that expansions are not announced by default and that expansions provided using the title attribute are not available to keyboard only users. Refer to <a href="http://www.paciellogroup.com/blog/2013/01/using-the-html-title-attribute-updated/">Using the HTML title attribute</a>.</p>
+<p>Note that expansions are not announced by default and that expansions provided using the <code>title</code> attribute are not available to keyboard only users. Refer to <a href="http://www.paciellogroup.com/blog/2013/01/using-the-html-title-attribute-updated/">Using the HTML title attribute</a>.</p>
 </td>
 </tr>
 <tr>
@@ -178,10 +189,21 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/area.html"><code>area</code></a></th>
 <td>Hyperlink or dead area on an image map</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td><p>&quot;graphic&quot;<em>, alt content </em>(when navigated using the <kbd>arrow</kbd> keys or the link navigation keys.)</p>
+  <p><em>alt content</em>, &quot;image map&quot; (when navigated using the <code>tab</code> key.</p></td>
+<td><ul>
+  <li>List Links <kbd>INSERT+F7</kbd></li>
+  <li>Next Link <code><kbd>TAB</kbd></code></li>
+  <li>Prior Link <kbd>SHIFT+TAB</kbd></li>
+  <li>Next Visited <kbd>Link V</kbd></li>
+  <li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
+  <li>Open Link <kbd>ENTER</kbd></li>
+  <li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
+  <li>Next Non Link Text <kbd>N</kbd></li>
+  <li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
+</ul></td>
+<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
+<td>Although area elements are links they are not conveyed as links aurally. </td>
 </tr>
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/article.html"><code>article</code></a></th>
@@ -189,9 +211,9 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>"article" <em>element content</em> "article end"</td>
 <td>
 <ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+)</li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+)</li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
@@ -206,9 +228,9 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 </td>
 <td>
 <ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+)</li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+)</li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
@@ -235,7 +257,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>Base URL and default target <a href="http://www.w3.org/TR/html5/browsers.html#browsing-context">browsing context</a> for <a data-anolis-xref="attr-hyperlink-target" href="http://www.w3.org/TR/html5/links.html#attr-hyperlink-target">hyperlinks</a> and <a data-anolis-xref="attr-fs-target" href="http://www.w3.org/TR/html5/forms.html#attr-fs-target">forms</a></td>
 <td><em><strong>none expected</strong></em></td>
 <td>No special commands</td>
-<td>&nbsp;</td>
+<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
 <td><strong>No UI</strong></td>
 </tr>
 <tr>
@@ -302,7 +324,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <tr id="toc-c">
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/canvas.html"><code>canvas</code></a></th>
 <td>Scriptable bitmap canvas</td>
-<td><em>element content</em></td>
+<td><em>&quot;graphic&quot; element content</em></td>
 <td><p>No special commands</p></td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
 <td><p>The canvas is 'transparent' for screen reader users. HTML content included in the <a href="http://www.paciellogroup.com/blog/2015/02/html5-canvas-sub-dom/">HTML5 canvas sub DOM</a> is announced and navigable by screen reader users and is navigable by keyboard users.</p>
@@ -359,10 +381,11 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/datalist.html"><code>datalist</code></a></th>
 <td>Container for options for <a data-anolis-xref="attr-input-list" href="http://www.w3.org/TR/html5/forms.html#attr-input-list">combo box control</a></td>
+<td><p>&quot;edit, has popup, type in text&quot; <em>value</em> - in Firefox. </p>
+  <p>&quot;combobox, to change the selection use the arrow keys&quot; - in Chrome</p></td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
+<td>In Firefox the popup is displayed, no announcement of display, but can be navigated into and label is announced and number of items is announced e.g. &quot;1 of 2&quot;</td>
 </tr>
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dd</code></a></th>
@@ -499,12 +522,12 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/footer.html"><code>footer</code></a></th>
 <td>Footer for a page or section</td>
-<td>&nbsp;</td>
+<td>"content information" <em>element content</em> "content information end"</td>
 <td>
 <ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+) </li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+) </li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
@@ -547,7 +570,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>Container for document metadata</td>
 <td><em><strong>none expected</strong></em></td>
 <td>No special commands</td>
-<td>&nbsp;</td>
+<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
 <td><strong>No UI</strong></td>
 </tr>
 <tr>
@@ -556,9 +579,9 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>&nbsp;</td>
 <td>
 <ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+)</li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+)</li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
@@ -582,7 +605,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>Root element</td>
 <td><em><strong>none expected</strong></em></td>
 <td>No special commands</td>
-<td>&nbsp;</td>
+<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
 <td>&nbsp;</td>
 </tr>
 <tr id="toc-i">
@@ -668,7 +691,7 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>Colour picker control</td>
 <td>&nbsp;</td>
 <td>no special commands?</td>
-<td>&nbsp;</td>
+<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
 <td>Identified as button by JAWS but not navigable using button navigation keys.</td>
 </tr>
 <tr>
@@ -995,9 +1018,9 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>
 <ul>
 <li>Move to Main Region <kbd>Q</kbd></li>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+) </li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+) </li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td>&nbsp;</td>
@@ -1066,9 +1089,9 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>&nbsp;</td>
 <td>
 <ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
+<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+) </li>
+<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+) </li>
+<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
 </ul>
 </td>
 <td>&nbsp;</td>
