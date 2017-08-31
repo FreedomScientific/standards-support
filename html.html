@@ -175,16 +175,16 @@
             <td>
               <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/abbr.html"><code>abbr</code> test</a>
             </td>
-            <td>an abbreviation</td>
+            <td>An abbreviation</td>
             <td><em>Element content</em></td>
             <td>
-            <p>No special commands</p>
-            <p>JAWS can read <code>title</code> text associated with abbreviations on web pages. <br>
-            To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  group. Next, expand the Reading group and use the abbreviation and acronym options</p>
+              <p>No special commands</p>
+              <p>JAWS can read <code>title</code> text associated with abbreviations on web pages. <br>
+              To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  group. Next, expand the Reading group and use the abbreviation and acronym options</p>
             </td>
             <td>
-            <p>By default <img src="images/cross.png" class="status-icon" alt="no"></p>
-            <p>via preference<img src="images/tick.png" class="status-icon" alt="yes"></p>
+              <p>By default <img src="images/cross.png" class="status-icon" alt="no"></p>
+              <p>Via preference<img src="images/tick.png" class="status-icon" alt="yes"></p>
             </td>
             <td>
               <p>No semantics conveyed by default</p>
@@ -232,304 +232,470 @@
             <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
             <td>Although area elements are links they are not conveyed as links aurally.</td>
           </tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/article.html"><code>article</code></a></th>
-<td>Self-contained syndicatable or reusable composition</td>
-<td>"article" <em>element content</em> "article end"</td>
-<td>
-<ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Included as a navigable region</td>
-</tr>
-<tr id="jaws-el-aside" tabindex="-1">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/aside.html"><code>aside</code></a></th>
-<td>Sidebar for tangentially related content</td>
-<td>
-<p>"complimentary information" <em>element content</em> "complimentary information end"</p>
-<p>&nbsp;</p>
-</td>
-<td>
-<ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Included as a navigable region</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/audio.html"><code>audio</code></a></th>
-<td>Audio player</td>
-<td>&nbsp;</td>
-<td>If the audio element has a <code>controls</code> attribute the buttons in the UI are navigable using <a href="#button-commands">button</a> commands.</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-b">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/b.html"><code>b</code></a></th>
-<td>Keywords</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-base-element"><code>base</code></a></th>
-<td>Base URL and default target <a href="http://www.w3.org/TR/html5/browsers.html#browsing-context">browsing context</a> for <a data-anolis-xref="attr-hyperlink-target" href="http://www.w3.org/TR/html5/links.html#attr-hyperlink-target">hyperlinks</a> and <a data-anolis-xref="attr-fs-target" href="http://www.w3.org/TR/html5/forms.html#attr-fs-target">forms</a></td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/bdi.html"><code>bdi</code></a></th>
-<td>Text directionality isolation</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/bdo.html"><code>bdo</code></a></th>
-<td>Text directionality formatting</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/blockquote-cite.html"><code>blockquote</code></a></th>
-<td>A section quoted from another source</td>
-<td>"blockquote" <em>element content</em> "blockquote end"</td>
-<td>
-<ul>
-<li>List Block quotes <kbd>CTRL+INSERT+Q</kbd></li>
-<li>Next Blockquote <kbd>Q</kbd></li>
-<li>Previous Blockquote <kbd>SHIFT+Q</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Semantics conveyed via navigation and element name announcement</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-body-element"><code>body</code></a></th>
-<td>Document body</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td><p>No semantics conveyed</p>
-<p>Is included in focus order in most browsers.</p></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/br.html"><code>br</code></a></th>
-<td>Line break, e.g. in poem or postal address</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><em>line break?</em></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/button.html"><code>button</code></a></th>
-<td>Button control</td>
-<td><em>text label</em> "button"</td>
-<td>
-<ul id="button-commands" tabindex="-1">
-<li>List Buttons <kbd>CTRL+INSERT+B</kbd></li>
-<li>Next Button <kbd>B</kbd></li>
-<li>Previous button <kbd>B</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Semantics conveyed via navigation and element name announcement</td>
-</tr>
-<tr id="toc-c">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/canvas.html"><code>canvas</code></a></th>
-<td>Scriptable bitmap canvas</td>
-<td><em>&quot;graphic&quot; element content</em></td>
-<td><p>No special commands</p></td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td><p>The canvas is 'transparent' for screen reader users. HTML content included in the <a href="http://www.paciellogroup.com/blog/2015/02/html5-canvas-sub-dom/">HTML5 canvas sub DOM</a> is announced and navigable by screen reader users and is navigable by keyboard users.</p>
-</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>caption</code></a></th>
-<td>Table caption</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Announced when a table is navigated to. Used as table title in the table list (List Tables  <kbd>CTRL+INSERT+T</kbd>) dialog.</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/blockquote-cite.html"><code>cite</code></a></th>
-<td>Reference to a creative work</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/code.html"><code>code</code></a></th>
-<td>Computer code</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/tabular-data.html#the-col-element"><code>col [no test]</code></a></th>
-<td>Table column</td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/tables-complex.html"><code>colgroup</code></a></th>
-<td>Group of columns in a table</td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-d">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/data.html"><code>data</code></a></th>
-<td>Machine-readable equivalent</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/datalist.html"><code>datalist</code></a></th>
-<td>Container for options for <a data-anolis-xref="attr-input-list" href="http://www.w3.org/TR/html5/forms.html#attr-input-list">combo box control</a></td>
-<td><p>&quot;edit, has popup, type in text&quot; <em>value</em> - in Firefox. </p>
-  <p>&quot;combobox, to change the selection use the arrow keys&quot; - in Chrome</p></td>
-<td>&nbsp;</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>In Firefox the popup is displayed, no announcement of display, but can be navigated into and label is announced and number of items is announced e.g. &quot;1 of 2&quot;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dd</code></a></th>
-<td>Content for corresponding <a href="http://www.w3.org/TR/html5/grouping-content.html#the-dt-element">dt</a> element(s)</td>
-<td><em>Element content</em></td>
-<td>&nbsp;</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Included as part of <code>dt</code> list item, user must use <kbd>arrow down</kbd> for content to be announced. If user navigates via list item navigation (Next Item in a List <kbd>I</kbd>)  from <code>dt</code> then <code>dd</code> content will not be announced.</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/del-ins.html"><code>del</code></a></th>
-<td>A removal from the document</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-details-element"><code>details [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<tr>
-<th scope="row"><code><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/details-summary.html">details</a></code></th>
-<td>disclosure widget container</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dfn.html"><code>dfn</code></a></th>
-<td>Defining instance of a term</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<!-- <tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/commands.html#the-dialog-element"><code>dialog [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr> -->
 
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/div.html"><code>div</code></a></th>
-<td>Generic flow container</td>
-<td><em>Element content</em></td>
-<td>
-<ul>
-<li>Move to Next Division   <kbd>Z</kbd></li>
-<li>Move to Prior Division  <kbd>SHIFT+Z</kbd></li>
-<li>List Divisions  <kbd>CTRL+INSERT+Z</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dl</code></a></th>
-<td>Association list consisting of zero or more name-value groups</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
-<li>Next List <kbd>L</kbd></li>
-<li>Previous List <kbd>SHIFT+I</kbd></li>
-<li> Next Item in a List <kbd>I</kbd></li>
-<li>Previous item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dt</code></a></th>
-<td>Legend for corresponding <a href="http://www.w3.org/TR/html5/grouping-content.html#the-dd-element">dd</a> element(s)</td>
-<td><em>Element content</em></td>
-<td>
-<ul>
-<li>Next Item in a List <kbd>I</kbd></li>
-<li> Previous Item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Identified as a list item</td>
-</tr>
-<tr id="toc-e">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/em.html"><code>em</code></a></th>
-<td>Stress emphasis</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/embed.html"><code>embed</code></a></th>
-<td><a href="http://www.w3.org/TR/html5/infrastructure.html#plugin">Plugin</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-f">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/fieldset-legend.html"><code>fieldset</code></a></th>
-<td>Group of form controls</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
+
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/sections.html#the-article-element"><code>article</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/article.html"><code>article</code> test</a>
+            </td>
+            <td>Self-contained syndicatable or reusable composition</td>
+            <td>"article" <em>element content</em> "article end"</td>
+            <td>
+              <ul>
+                <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+)</li>
+                <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
+                <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Included as a navigable region</td>
+          </tr>
+          <tr id="jaws-el-aside" tabindex="-1">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/sections.html#the-aside-element"><code>aside</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/aside.html"><code>aside</code> test</a>
+              </td>
+            <td>Sidebar for tangentially related content</td>
+            <td>
+              <p>"Complimentary information" <em>element content</em> "complimentary information end"</p>
+              <p>&nbsp;</p>
+            </td>
+            <td>
+              <ul>
+                <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+)</li>
+                <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
+                <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Included as a navigable region</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/semantics-embedded-content.html#the-audio-element"><code>audio</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/audio.html"><code>audio</code> test</a>
+              </td>
+            <td>Audio player</td>
+            <td>&nbsp;</td>
+            <td>
+              If the audio element has a <code>controls</code> attribute the buttons in the UI are navigable using <a href="#button-commands">button</a> commands.
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-b">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-b-element"><code>b</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/b.html"><code>b</code> test</a>
+            </td>
+            <td>Keywords</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/document-metadata.html#the-base-element"><code>base</code></a>
+            </td>
+            <td>
+              Base URL and default target
+              <a href="https://www.w3.org/TR/html5/browsers.html#browsing-context">browsing context</a> for
+              <a data-anolis-xref="attr-hyperlink-target" href="https://www.w3.org/TR/html5/links.html#attr-hyperlink-target">hyperlinks</a>
+              and <a data-anolis-xref="attr-fs-target" href="https://www.w3.org/TR/html5/forms.html#attr-fs-target">forms</a>
+            </td>
+            <td><em>None expected</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td><strong>No UI</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-bdi-element"><code>bdi</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/bdi.html"><code>bdi</code> test</a>
+            </td>
+            <td>Text directionality isolation</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-bdo-element"><code>bdo</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/bdo.html"><code>bdo</code> test</a>
+            </td>
+            <td>Text directionality formatting</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/grouping-content.html#the-blockquote-element"><code>blockquote</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/blockquote-cite.html"><code>blockquote</code> test</a>
+            </td>
+            <td>A section quoted from another source</td>
+            <td>"Blockquote" <em>element content</em> "blockquote end"</td>
+            <td>
+              <ul>
+                <li>List Block quotes <kbd>CTRL+INSERT+Q</kbd></li>
+                <li>Next Blockquote <kbd>Q</kbd></li>
+                <li>Previous Blockquote <kbd>SHIFT+Q</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Semantics conveyed via navigation and element name announcement.</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/sections.html#the-body-element"><code>body</code></a>
+            </th>
+            <td>
+              <a href="https://www.w3.org/html/wg/drafts/html/master/sections.html#the-body-element"><code>body</code> test</a>
+            </td>
+            <td>Document body</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>
+              <p>No semantics conveyed</p>
+              <p>Is included in focus order in most browsers.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-br-element"><code>br</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/br.html"><code>br</code></a>
+            </td>
+            <td>Line break, e.g. in poem or postal address</td>
+            <td>&nbsp;</td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><em>Line break?</em></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/rendering.html#the-button-element-rendering"><code>button</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/button.html"><code>button</code> test</a>
+              </td>
+            <td>Button control</td>
+            <td><em>text label</em> "button"</td>
+            <td>
+              <ul id="button-commands" tabindex="-1">
+                <li>List Buttons <kbd>CTRL+INSERT+B</kbd></li>
+                <li>Next Button <kbd>B</kbd></li>
+                <li>Previous button <kbd>B</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Semantics conveyed via navigation and element name announcement</td>
+          </tr>
+          <tr id="toc-c">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/semantics-scripting.html#the-canvas-element"><code>canvas</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/canvas.html"><code>canvas</code> test</a>
+            </td>
+            <td>Scriptable bitmap canvas</td>
+            <td><em>&quot;graphic&quot; element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>
+              The canvas is 'transparent' for screen reader users. HTML content included in the <a href="https://www.paciellogroup.com/blog/2015/02/html5-canvas-sub-dom/">HTML5 canvas sub DOM</a> is announced and navigable by screen reader users and is navigable by keyboard users.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/tabular-data.html#the-caption-element"><code>caption</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>caption</code> test</a>
+            </td>
+            <td>Table caption</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>
+              Announced when a table is navigated to. Used as table title in the table list (List Tables <kbd>CTRL+INSERT+T</kbd>) dialog.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-cite-element"><code>cite</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/blockquote-cite.html"><code>cite</code> test</a>
+            </td>
+            <td>Reference to a creative work</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-code-element"><code>code</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/code.html"><code>code</code></a>
+            </td>
+            <td>Computer code</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/tabular-data.html#the-col-element"><code>col</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>Table column</td>
+            <td><em>None expected</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/tabular-data.html#the-colgroup-element"><code>colgroup</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/tables-complex.html"><code>colgroup</code> test</a>
+            </td>
+            <td>Group of columns in a table</td>
+            <td><em>None expected</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-d">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-data-element"><code>data</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/data.html"><code>data</code> test</a>
+            </td>
+            <td>Machine-readable equivalent</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/sec-forms.html#the-datalist-element"><code>datalist</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/datalist.html"><code>datalist</code> test</a>
+            </td>
+            <td>
+              Container for options for <a data-anolis-xref="attr-input-list" href="https://w3c.github.io/html/sec-forms.html#the-list-attribute">combo box control</a>
+            </td>
+            <td>
+              <p>&quot;edit, has popup, type in text&quot; <em>value</em> - in Firefox. </p>
+              <p>&quot;combobox, to change the selection use the arrow keys&quot; - in Chrome</p>
+            </td>
+            <td>&nbsp;</td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>
+              In Firefox the popup is displayed, no announcement of display, but can be navigated into and label is announced and number of items is announced e.g. &quot;1 of 2&quot;
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/grouping-content.html#the-dd-element"><code>dd</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dd</code> test</a>
+              </td>
+            <td>
+              Content for corresponding <a href="https://w3c.github.io/html/grouping-content.html#the-dt-element">dt</a> element(s)
+            </td>
+            <td><em>Element content</em></td>
+            <td>&nbsp;</td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>
+              Included as part of <code>dt</code> list item, user must use <kbd>arrow down</kbd> for content to be announced. If user navigates via list item navigation (Next Item in a List <kbd>I</kbd>) from <code>dt</code> then <code>dd</code> content will not be announced.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/edits.html#the-del-element"><code>del</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/del-ins.html"><code>del</code> test</a>
+            </td>
+            <td>A removal from the document</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/interactive-elements.html#the-details-element"><code>details</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/details-summary.html"><code>details</code> test</a>
+            </td>
+            <td>Disclosure widget container</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-dfn-element"><code>dfn</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dfn.html"><code>dfn</code> test</a>
+            </td>
+            <td>Defining instance of a term</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <!-- <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/interactive-elements.html#the-dialog-element"><code>dialog</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr> -->
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/grouping-content.html#the-div-element"><code>div</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/div.html"><code>div</code> test</a>
+            </td>
+            <td>Generic flow container</td>
+            <td><em>Element content</em></td>
+            <td>
+              <ul>
+                <li>Move to Next Division   <kbd>Z</kbd></li>
+                <li>Move to Prior Division  <kbd>SHIFT+Z</kbd></li>
+                <li>List Divisions <kbd>CTRL+INSERT+Z</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/grouping-content.html#the-dl-element"><code>dl</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dl</code> test</a>
+            </td>
+            <td>Association list consisting of zero or more name-value groups</td>
+            <td>&nbsp;</td>
+            <td>
+              <ul>
+                <li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
+                <li>Next List <kbd>L</kbd></li>
+                <li>Previous List <kbd>SHIFT+I</kbd></li>
+                <li> Next Item in a List <kbd>I</kbd></li>
+                <li>Previous item in a List <kbd>SHIFT+I</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/grouping-content.html#the-dt-element"><code>dt</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/dl-dt-dd.html"><code>dt</code> test</a>
+            </td>
+            <td>
+              Legend for corresponding <a href="http://www.w3.org/TR/html5/grouping-content.html#the-dd-element">dd</a> element(s)
+            </td>
+            <td><em>Element content</em></td>
+            <td>
+              <ul>
+                <li>Next Item in a List <kbd>I</kbd></li>
+                <li>Previous Item in a List <kbd>SHIFT+I</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Identified as a list item</td>
+          </tr>
+          <tr id="toc-e">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-em-element"><code>em</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/em.html"><code>em</code> test</a>
+            </td>
+            <td>Stress emphasis</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://w3c.github.io/html/semantics-embedded-content.html#the-embed-element"><code>embed</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/embed.html"><code>embed</code> test</a>
+            </td>
+            <td>
+              <a href="https://w3c.github.io/html/infrastructure.html#plugins">Plugins</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-f">
+            <th scope="row">
+              <a href=https://w3c.github.io/html/sec-forms.html#the-fieldset-element""><code>fieldset</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/fieldset-legend.html"><code>fieldset</code> test</a>
+              </td>
+            <td>Group of form controls</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
           <tr>
             <th scope="row">
               <a href="https://w3c.github.io/html/grouping-content.html#the-figcaption-element"><code>figcaption</code></a>
