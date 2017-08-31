@@ -101,7 +101,7 @@
         <tfoot>
           <tr>
             <th scope="col">Element</th>
-
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1379,259 +1379,393 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td><img src="images/cross.png" alt="no" /></td>
 <td><img src="images/cross.png" alt="no" /></td>
 </tr>-->
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/small.html"><code>small</code></a></th>
-<td>Side comment</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/the-video-element.html#the-source-element"><code>source [no test]</code></a></th>
-<td>Media source for <a href="http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element">video</a> or <a href="http://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element">audio</a></td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No UI</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/span.html"><code>span</code></a></th>
-<td>Generic phrasing container</td>
-<td><em>none expected</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/strong.html"><code>strong</code></a></th>
-<td>Importance</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-style-element"><code>style [mo test]</code></a></th>
-<td>Embedded styling information</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/sub-sup.html"><code>sub</code></a></th>
-<td> Subscript</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-summary-element"><code>summary</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<tr>
-<th scope="row"><code><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/details-summary.html">summary</a></code></th>
-<td>disclosure widget control/label</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/sub-sup.html"><code>sup</code></a></th>
-<td>Superscript</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><code><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/svg.html">svg</a></code></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-t">
-<th scope="row"><p><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>table</code></a></p>
-<p><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/tables-complex.html"><code>complex table test</code></a></p></th>
-<td>Data table</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List Tables <kbd>CTRL+INSERT+T</kbd></li>
-<li>Next Table <kbd>T </kbd></li>
-<li>Previous Table <kbd>SHIFT+T</kbd></li>
-<li>Select Table use <kbd>F8</kbd>. To select an entire table, move  to the line that reads, "Table with x columns and y rows," and press <kbd>F8</kbd>.</li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tbody</code></a></th>
-<td>Group of rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>td</code></a></th>
-<td>Data cell in a data table</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Jump to Table Cell (from within a table) <kbd>CTRL+WINDOWS Key+J</kbd></li>
-<li>Return to Previous Cell <kbd>CTRL+SHIFT+WINDOWS Key+J</kbd></li>
-<li>Read current cell <kbd>CTRL+ALT+NUM PAD 5</kbd></li>
-<li>Move to and Read Next Cell <kbd>CTRL+ALT+RIGHT ARROW</kbd></li>
-<li>Move to and Read Prior Cell <kbd>CTRL+ALT+LEFT ARROW</kbd></li>
-<li>Move to and Read Cell Above <kbd>CTRL+ALT+UP ARROW</kbd></li>
-<li>Move to and Read Cell Below <kbd>CTRL+ALT+DOWN ARROW</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-template-element"><code>template [no test]</code></a></th>
-<td>Template</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/textarea.html"><code>textarea</code></a></th>
-<td>Multiline text field</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tfoot</code></a></th>
-<td>Group of footer rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>th</code></a></th>
-<td>Header cell in a data table</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>thead</code></a></th>
-<td>Group of header rows in a data table</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/time.html"><code>time</code></a></th>
-<td>Machine-readable equivalent of date- or time-related data</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-title-element"><code>title [no test]</code></a></th>
-<td>Document title</td>
-<td><em>element content</em></td>
-<td>Read Window Title <kbd>INSERT+T</kbd></td>
-<td>&nbsp;</td>
-<td>Semantics conveyed via navigation and announcement key stroke.</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tr</code></a></th>
-<td>Data table row</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Read Next Row <kbd>WINDOWS Key+ALT+DOWN ARROW</kbd></li>
-<li>Read Prior Row <kbd>WINDOWS Key+ALT+UP ARROW </kbd></li>
-<li>Read Current Row <kbd>ALT+WINDOWS Key+COMMA</kbd></li>
-<li> Read from Beginning of Row to Current Cell <kbd>INSERT+SHIFT+HOME</kbd></li>
-<li>Read from Current Cell to End of Row <kbd>INSERT+SHIFT+PAGE UP</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/video.html"><code>track</code></a></th>
-<td>Timed text track</td>
-<td><em>caption display control</em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-
-<tr id="toc-u">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/u.html"><code>u</code></a></th>
-<td>Keywords</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/ul-li.html"><code>ul</code></a></th>
-<td>Unordered List</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
-<li>Next List <kbd>L</kbd></li>
-<li>Previous List <kbd>SHIFT+I</kbd></li>
-<li> Next Item in a List <kbd>I</kbd></li>
-<li>Previous item in a List <kbd>SHIFT+I</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-v">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/var.html"><code>var</code></a></th>
-<td>Variable</td>
-<td><em>element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/video.html"><code>video</code></a></th>
-<td>Video Player</td>
-<td><em>Controls and content </em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-w">
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/text-level-semantics.html#the-wbr-element"><code>wbr [no test]</code></a></th>
-<td>Line breaking opportunity</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-</tbody>
-</table>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-small-element"><code>small</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/small.html"><code>small</code> test</a>
+            </td>
+            <td>Side comment</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-source-element"><code>source</code></a>
+            </th>
+            <td>
+              no test
+            </td>
+            <td>
+              Media source for
+              <a href="https://www.w3.org/TR/html5/embedded-content-0.html#the-video-element">video</a>
+              or
+              <a href="https://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element">audio</a>
+            </td>
+            <td><em>none expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No UI</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-span-element"><code>span</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/span.html"><code>span</code> test</a>
+            </td>
+            <td>Generic phrasing container</td>
+            <td><em>none expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-strong-element"><code>strong</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/strong.html"><code>strong</code> test</a>
+            </td>
+            <td>Importance</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/document-metadata.html#the-style-element"><code>style</code></a>
+            </th>
+            <td>
+              no test
+            </td>
+            <td>Embedded styling information</td>
+            <td><em>none expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><strong>No UI</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-sub-and-sup-elements"><code>sub</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/sub-sup.html"><code>sub</code> test</a>
+            </td>
+            <td> Subscript</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/interactive-elements.html#the-summary-element">
+                <code>summary</code>
+              </a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/details-summary.html"><code>summary</code> test</a>
+            </td>
+            <td>disclosure widget control/label</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-sub-and-sup-elements"><code>sup</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/sub-sup.html"><code>sup</code> test</a>
+            </td>
+            <td>Superscript</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#svg"><code>svg</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/svg.html"><code>svg</code> test</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-t">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-table-element">
+                <code>table</code>
+              </a>
+            </th>
+            <td>
+              <p>
+                <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>table</code> test</a>
+              </p>
+              <p>
+                <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/tables-complex.html">complex <code>table</code> test</a>
+              </p>
+            </td>
+            <td>Data table</td>
+            <td>&nbsp;</td>
+            <td>
+              <ul>
+                <li>List Tables <kbd>CTRL+INSERT+T</kbd></li>
+                <li>Next Table <kbd>T </kbd></li>
+                <li>Previous Table <kbd>SHIFT+T</kbd></li>
+                <li>Select Table use <kbd>F8</kbd>. To select an entire table, move  to the line that reads, "Table with x columns and y rows," and press <kbd>F8</kbd>.</li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-tbody-element"><code>tbody</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tbody</code> test</a>
+            </td>
+            <td>Group of rows in a data table</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-td-element"><code>td</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>td</code> test</a>
+            </td>
+            <td>Data cell in a data table</td>
+            <td>&nbsp;</td>
+            <td>
+            <ul>
+              <li>Jump to Table Cell (from within a table) <kbd>CTRL+WINDOWS Key+J</kbd></li>
+              <li>Return to Previous Cell <kbd>CTRL+SHIFT+WINDOWS Key+J</kbd></li>
+              <li>Read current cell <kbd>CTRL+ALT+NUM PAD 5</kbd></li>
+              <li>Move to and Read Next Cell <kbd>CTRL+ALT+RIGHT ARROW</kbd></li>
+              <li>Move to and Read Prior Cell <kbd>CTRL+ALT+LEFT ARROW</kbd></li>
+              <li>Move to and Read Cell Above <kbd>CTRL+ALT+UP ARROW</kbd></li>
+              <li>Move to and Read Cell Below <kbd>CTRL+ALT+DOWN ARROW</kbd></li>
+            </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-scripting.html#the-template-element"><code>template</code></a>
+            </th>
+            <td>
+              no test
+            </td>
+            <td>Template</td>
+            <td><em>none expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><strong>No UI</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/rendering.html#the-textarea-element-rendering"><code>textarea</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/textarea.html"><code>textarea</code> test</a>
+            </td>
+            <td>Multiline text field</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-tfoot-element"><code>tfoot</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tfoot</code> test</a>
+            </td>
+            <td>Group of footer rows in a data table</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-th-element"><code>th</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>th</code> test</a>
+            </td>
+            <td>Header cell in a data table</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-thead-element"><code>thead</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>thead</code> test</a>
+            </td>
+            <td>Group of header rows in a data table</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-time-element"><code>time</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/time.html"><code>time</code> test</a>
+            </td>
+            <td>Machine-readable equivalent of date- or time-related data</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/document-metadata.html#the-title-element"><code>title</code></a>
+            </th>
+            <td>
+              no test
+            </td>
+            <td>Document title</td>
+            <td><em>element content</em></td>
+            <td>Read Window Title <kbd>INSERT+T</kbd></td>
+            <td>&nbsp;</td>
+            <td>Semantics conveyed via navigation and announcement key stroke.</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/tabular-data.html#the-tr-element"><code>tr</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/table-caption-thead-tbody-tfoot-tr-th-td.html"><code>tr</code> test</a>
+            </td>
+            <td>Data table row</td>
+            <td>&nbsp;</td>
+            <td>
+            <ul>
+              <li>Read Next Row <kbd>WINDOWS Key+ALT+DOWN ARROW</kbd></li>
+              <li>Read Prior Row <kbd>WINDOWS Key+ALT+UP ARROW </kbd></li>
+              <li>Read Current Row <kbd>ALT+WINDOWS Key+COMMA</kbd></li>
+              <li> Read from Beginning of Row to Current Cell <kbd>INSERT+SHIFT+HOME</kbd></li>
+              <li>Read from Current Cell to End of Row <kbd>INSERT+SHIFT+PAGE UP</kbd></li>
+            </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-track-element"><code>track</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/video.html"><code>track</code> test</a>
+            </td>
+            <td>Timed text track</td>
+            <td><em>caption display control</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-u">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-u-element"><code>u</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/u.html"><code>u</code> test</a>
+            </td>
+            <td>Keywords</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/grouping-content.html#the-ul-element"><code>ul</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/ul-li.html"><code>ul</code> test</a>
+            </td>
+            <td>Unordered List</td>
+            <td>&nbsp;</td>
+            <td>
+              <ul>
+                <li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
+                <li>Next List <kbd>L</kbd></li>
+                <li>Previous List <kbd>SHIFT+I</kbd></li>
+                <li>Next Item in a List <kbd>I</kbd></li>
+                <li>Previous item in a List <kbd>SHIFT+I</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-v">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-var-element"><code>var</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/var.html"><code>var</code> test</a>
+            </td>
+            <td>Variable</td>
+            <td><em>element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-video-element"><code>video</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/video.html"><code>video</code> test</a>
+            </td>
+            <td>Video Player</td>
+            <td><em>Controls and content</em></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-w">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-wbr-element"><code>wbr</code></a>
+            </th>
+            <td>
+              no test
+            </td>
+            <td>Line breaking opportunity</td>
+            <td><em>none expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><strong>No UI</strong></td>
+          </tr>
+        </tbody>
+      </table>
 
     </main>
     <footer>
