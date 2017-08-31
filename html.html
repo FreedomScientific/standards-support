@@ -111,63 +111,95 @@
           </tr>
         </tfoot>
         <tbody>
-<tr id="toc-a">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/a-href.html"><code>a</code></a> with href</th>
-<td>a hyperlink</td>
-<td><em>element content</em> "link"</td>
-<td>
-<ul>
-<li>List Links <kbd>INSERT+F7</kbd></li>
-<li>Next Link <code><kbd>TAB</kbd></code></li>
-<li>Prior Link <kbd>SHIFT+TAB</kbd></li>
-<li>Next Visited <kbd>Link V</kbd></li>
-<li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
-<li>Open Link <kbd>ENTER</kbd></li>
-<li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
-<li>Next Non Link Text <kbd>N</kbd></li>
-<li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
-</ul>
-</td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td><p><code>link</code> role announced before link text when cursored to, after via tab.</p>
-  <UL>
-    <LI>By Default, JAWS speaks the on screen text of a link, but you can set JAWS   to instead speak Title text, assigned by the page author within the HTML code.   Title text normally provides supplemental information about the link.   
-    <LI>By default, JAWS announces the link type, but you can disable this, so JAWS   announces same page links, send mail links, and ftp links as "link," or "Visited   Link." </LI>
-  </UL>
-  <p>JAWS announces the type of link as follows:</p>
-  <UL>
-    <LI><strong>Link:</strong> This indicates a link that has not been visited.   
-    <LI><strong>Visited Link:</strong> This indicates a link that has been visited. This is   determined by your browser history, not by which links have been selected on the   current Web page. 
-    <LI><strong>Same Page Link:</strong> This indicates a link that moves you to another   location on the same page.   
-    <LI><strong>Send Mail Link:</strong> This indicates a link that opens a new e-mail message   using your default e-mail program. <LI><strong>FTP Link:</strong> This indicates a link that points to a FTP (File Transfer   Protocol) server. </LI>
-  </UL></td>
-</tr>
-<tr id="toc-a2">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/a-no-href.html"><code>a</code></a> with no href</th>
-<td>an anchor</td>
-<td><em>Element content</em></td>
-<td>
-<ul>
-<li>JAWS &lt;15
-<ul>
-<li>List of Anchors <kbd>CTRL+INSERT+A</kbd></li>
-<li>Next Anchor <kbd>A</kbd></li>
-<li>Previous Anchor <kbd>SHIFT+A</kbd></li>
-</ul>
-</li>
-<li>JAWS 15+ no special commands</li>
-</ul>
-</td>
-<td>
-<p>JAWS &lt;15<img src="images/tick.png" width="16" height="16" alt="yes"></p>
-<p>JAWS 15+ <img src="images/cross.png" width="16" height="16" alt="no"></p>
-</td>
-<td>
-<p>Semantics conveyed via navigation (JAWS &lt;15)</p>
-<p>No semantics conveyed (JAWS 15+)</p>
-<p>&nbsp;</p>
-</td>
-</tr>
+          <tr id="toc-a">
+            <th scope="row">
+              <a href="https://w3c.github.io/html/textlevel-semantics.html#the-a-element"><code>a</code></a>
+            </th>
+            <td>
+              <p>
+                <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/a-href.html"><code>a</code> with <code>href</code> test</a>
+              </p>
+              <p>
+                <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/a-no-href.html"><code>a</code> with no <code>href</code> test</a>
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>With <code>href</code>:</strong> a hyperlink
+              </p>
+              <p>
+                <strong>With no <code>href</code>:</strong> an anchor
+              </p>
+            </td>
+            <td>
+              <p>
+                <strong>With <code>href</code>:</strong> <em>element content</em> "link"
+              </p>
+              <p>
+                <strong>With no <code>href</code>:</strong> <em>element content</em>
+              </p>
+            </td>
+            <td>
+              <p><strong>With <code>href</code>:</strong></p>
+              <ul>
+                <li>List Links <kbd>INSERT+F7</kbd></li>
+                <li>Next Link <code><kbd>TAB</kbd></code></li>
+                <li>Prior Link <kbd>SHIFT+TAB</kbd></li>
+                <li>Next Visited <kbd>Link V</kbd></li>
+                <li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
+                <li>Open Link <kbd>ENTER</kbd></li>
+                <li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
+                <li>Next Non Link Text <kbd>N</kbd></li>
+                <li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
+              </ul>
+              <p>
+                <strong>With no <code>href</code>:</strong>
+              </p>
+              <ul>
+                <li>JAWS &lt;15
+                  <ul>
+                    <li>List of Anchors <kbd>CTRL+INSERT+A</kbd></li>
+                    <li>Next Anchor <kbd>A</kbd></li>
+                    <li>Previous Anchor <kbd>SHIFT+A</kbd></li>
+                  </ul>
+                </li>
+                <li>JAWS 15+ no special commands</li>
+              </ul>
+            </td>
+            <td>
+              <p>
+                <strong>With <code>href</code>:</strong>
+                <img src="images/tick.png" class="status-icon" alt="yes">
+              </p>
+              <p>
+                With no <code>href</code>:
+              </p>
+              <p>JAWS &lt;15<img src="images/tick.png" class="status-icon" alt="yes"></p>
+              <p>JAWS 15+ <img src="images/cross.png" class="status-icon" alt="no"></p>
+            </td>
+            <td>
+              <p>
+                <strong>With <code>href</code>:</strong>
+              </p>
+              <p>Link role announced before link text when cursored to, after via tab.
+              </p>
+              <ul>
+                <li>By Default, JAWS speaks the on screen text of a link, but you can set JAWS to instead speak Title text, assigned by the page author within the HTML code. Title text normally provides supplemental information about the link.</li>
+                <li>By default, JAWS announces the link type, but you can disable this, so JAWS announces same page links, send mail links, and FTP links as "link," or "Visited Link."</li>
+              </ul>
+              <p>JAWS announces the type of link as follows:</p>
+              <ul>
+                <li><strong>Link:</strong> This indicates a link that has not been visited.</li>
+                <li><strong>Visited Link:</strong> This indicates a link that has been visited. This is determined by your browser history, not by which links have been selected on the current Web page.</li>
+                <li><strong>Same Page Link:</strong> This indicates a link that moves you to another location on the same page.</li>
+                <li><strong>Send Mail Link:</strong> This indicates a link that opens a new e-mail message using your default e-mail program. <li><strong>FTP Link:</strong> This indicates a link that points to a FTP (File Transfer Protocol) server.</li>
+              </ul>
+
+              <p><strong>With no <code>href</code>:</strong></p>
+              <p>Semantics conveyed via navigation (JAWS &lt;15)</p>
+              <p>No semantics conveyed (JAWS 15+)</p>
+            </td>
+          </tr>
           <tr>
             <th scope="row">
               <a href="https://w3c.github.io/html/textlevel-semantics.html#the-abbr-element"><code>abbr</code></a>
@@ -232,8 +264,6 @@
             <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
             <td>Although area elements are links they are not conveyed as links aurally.</td>
           </tr>
-
-
           <tr>
             <th scope="row">
               <a href="https://w3c.github.io/html/sections.html#the-article-element"><code>article</code></a>
