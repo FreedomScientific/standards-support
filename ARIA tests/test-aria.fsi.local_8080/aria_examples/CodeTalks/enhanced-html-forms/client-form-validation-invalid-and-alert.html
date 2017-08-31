@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/client-form-validation-invalid-and-alert.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:10 GMT -->
+<head>
+<title>Contact form</title>
+<script type="application/javascript">
+  function removeOldAlert()
+  {
+    var oldAlert = document.getElementById("alert");
+    if (oldAlert)
+      document.body.removeChild(oldAlert);
+  }
+
+  function addAlert(aMsg)
+  {
+    removeOldAlert();
+    var newAlert = document.createElement("div");
+    newAlert.setAttribute("role", "alert");
+    newAlert.setAttribute("id", "alert");
+    var msg = document.createTextNode(aMsg);
+    newAlert.appendChild(msg);
+    document.body.appendChild(newAlert);
+  }
+
+  function checkValidity(aID, aSearchTerm, aMsg)
+  {
+    var elem = document.getElementById(aID);
+    var invalid = (elem.value.indexOf(aSearchTerm) < 0);
+    if (invalid) {
+      elem.setAttribute("aria-invalid", "true");
+      addAlert(aMsg);
+    } else {
+      elem.setAttribute("aria-invalid", "false");
+      removeOldAlert();
+    }
+  }
+</script>
+</head>
+<body>
+<form method="post" action="../../../../external.html?link=http://test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/post.php">
+<fieldset><legend>Please enter your contact details</legend>
+<label for="name">Your name (required):</label>
+<input name="name" id="name" aria-required="true" onblur="checkValidity('name', ' ', 'Invalid name entered!');"/><br />
+<label for="email">E-Mail address (required):</label>
+<input name="email" id="email" aria-required="true" onblur="checkValidity('email', '@', 'Invalid e-mail address');"/><br />
+
+<label for="website">Website (optional):</label>
+<input name="website" id="website"/>
+</fieldset>
+<label for="message">Please enter your message (required):</label><br />
+<textarea name="message" id="message" rows="5" cols="80" aria-required="true"></textarea><br />
+<input type="submit" name="submit" value="Send message"/>
+<input type="reset" name="reset" value="Reset form"/>
+</form>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/client-form-validation-invalid-and-alert.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:10 GMT -->
+</html>

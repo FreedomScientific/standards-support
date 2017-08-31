@@ -1,0 +1,2 @@
+To see an example of an aria dialog, tab to the toolbar, then arrow to the options button and press space bar.
+In order to use the list of messages grid, you must tab to it. Setting focus from the virtual buffer will not produce the desired result. Note: all you can really do in the grid is to arrow around and hear the header information for each item.

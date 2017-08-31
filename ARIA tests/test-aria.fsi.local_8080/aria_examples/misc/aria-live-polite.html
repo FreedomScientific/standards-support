@@ -1,0 +1,45 @@
+<!doctype HTML>
+<html>      
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-live-polite.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:07 GMT -->
+<head>
+    <title>Live Region Sample</title>
+</head>
+<body>
+    <form name="selectRegionOptions">
+        <div id="relevant" role="radiogroup" aria-label="select the value of aria-relevant">
+            <span>Select the aria-relevant value:</span>
+            <input type="radio" name="relevant" value="all" aria-label="all" />
+            <input type="radio" name="relevant" value="additions" aria-label="additions" />
+            <input type="radio" name="relevant" value="removals" aria-label="removals" />
+            <input type="radio" name="relevant" value="none" aria-label="none" />
+        </div>
+    </form>
+    <div>
+        <script type="text/javascript">
+            var rad = document.selectRegionOptions.relevant;
+            for (var i = 0; i < rad.length; i++) {
+                rad[i].onclick = function () {
+                    var liveRegion = document.getElementById('tst1');
+                    if (liveRegion) {
+                        liveRegion.setAttribute('aria-relevant', this.value);
+                    }
+                };
+            }
+
+            var intVal = 0,
+            intFN = function () {
+                setInterval(function () {
+                    document.getElementById('tst1').innerHTML = (intVal++);
+                }, 2000);
+            };
+        </script>
+        <button onclick="intFN()"> Test </button>
+    </div>
+
+    <div aria-live="polite" aria-relevant="all" id="tst1"></div>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-live-polite.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:07 GMT -->
+</html>

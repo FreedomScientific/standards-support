@@ -1,0 +1,3 @@
+Use arrow keys, tab keys, and quick nav keys to move to the various checkboxes.
+Make sure that checking and unchecking each checkbox works.
+Note: the last two checkboxes have the invalid and required states set on them, respectively. The double speaking is because the text of the checkbox and its state are the same, so this is not a bug.

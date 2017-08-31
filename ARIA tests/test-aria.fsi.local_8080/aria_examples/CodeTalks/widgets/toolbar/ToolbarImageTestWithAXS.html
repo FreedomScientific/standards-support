@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarImageTestWithAXS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:00 GMT -->
+<head>
+<title>Toolbar Image Test with AXS</title>
+<style type="text/css">
+img {
+	border-style:none;
+	margin:10px;
+}
+
+img[hasfocus=true]{
+  border-top: yellow 5px solid;
+  border-left: yellow 5px solid;
+  border-bottom: yellow 5px solid;
+  border-right:  yellow 5px solid;
+}
+
+#infoText{
+	background-color: #E6E6E6;
+	width: 320px; 
+}
+</style>
+
+
+<script type="text/javascript" src="axs.js"></script>
+<script type="text/javascript" src="script/toolbarKeyCap.js"></script>
+<script type="text/javascript">
+var currentId = 1;
+
+function RemoveChildFocus()
+{
+	var focusedChild = document.getElementById("b"+currentId);
+	focusedChild.setAttribute("hasfocus",false);
+	
+	// Needed to update IE styling
+	focusedChild.className += "";
+}
+
+function AddChildFocus()
+{
+	var focusedChild = document.getElementById("b"+currentId);
+	focusedChild.setAttribute("hasfocus",true);
+	
+	// Needed to update IE styling
+	focusedChild.className += "";
+}
+
+function ExecuteButtonAction(i)
+{
+	document.getElementById(i).onclick();
+	return;
+}
+
+function getCurrentButtonID()
+{
+	return "b"+currentId;
+}
+
+function getNextButtonID()
+{	
+	if (currentId < 3)
+	{
+		RemoveChildFocus();
+		currentId = currentId + 1;
+		AddChildFocus();
+	}
+	return "b"+currentId;
+}
+
+function getPrevButtonID()
+{
+	if (currentId > 1)
+	{
+		RemoveChildFocus();
+		currentId = currentId - 1;
+		AddChildFocus();
+	}
+	return "b"+currentId;
+}
+
+
+function updateText(text)
+{
+	infoObj = document.getElementById('infoText');
+	infoObj.innerHTML = text;
+}
+  
+</script>
+
+</head>
+<body role="application">
+
+<!--Pick the widget type from ARIA Taxonomy-->
+<div role="toolbar" multiselectable="false" tabindex="0" aria-activedescendant="b1" id="customToolbar" 
+     onblur="RemoveChildFocus()"
+     onfocus="AddChildFocus()"
+     controls="infoText"
+     > 
+     <img src="img/btn1.gif" title="Home" role="button" id="b1" alt="Home" onClick="updateText('Home was invoked');">
+     <img src="img/btn2.gif" title="Refresh" role="button" id="b2" alt="Refresh" onClick="updateText('Refresh was invoked');">
+     <img src="img/btn3.gif" title="Help" role="button" id="b3" alt="Help" onClick="updateText('Help was invoked');"></div>
+
+
+<div id="infoText" role="status" aria-live="rude"  aria-relevant="text"></div>
+<div id="additional Content">
+<p>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent dui leo, molestie in, egestas et, facilisis non, ligula. Nulla bibendum fringilla arcu. Vestibulum blandit augue a erat. Aliquam metus urna, hendrerit at, pulvinar vitae, eleifend vel, massa. Praesent dictum orci id lacus. Cras urna. Ut tellus metus, convallis vitae, hendrerit eget, pharetra eget, mi. Curabitur magna magna, consequat sit amet, convallis et, elementum eget, mi. Cras erat. Mauris id mauris quis nunc tincidunt pellentesque. Pellentesque condimentum. Morbi mattis dui venenatis lacus. Praesent ut metus at neque tempor porttitor. Praesent odio risus, tincidunt sit amet, ornare eu, condimentum eget, dui. Curabitur blandit faucibus nunc.
+</p>
+<p>
+Suspendisse vel nibh eu lectus dignissim dapibus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In mattis tempus diam. Ut commodo pretium massa. Vestibulum dignissim pretium justo. Morbi pharetra metus ac diam. Donec tincidunt arcu vitae turpis. Vestibulum suscipit, velit vitae congue venenatis, ligula massa venenatis ante, dapibus gravida neque orci ut urna. Nulla rhoncus tincidunt nunc. Quisque at tortor. Curabitur accumsan, dui vel pellentesque hendrerit, lacus sapien dapibus diam, at tincidunt lectus nulla sed erat. Proin accumsan eros et augue. Nam eu sem. Curabitur dolor libero, rutrum vel, volutpat in, consectetuer aliquam, urna. Donec lacus tortor, ultricies quis, mollis at, volutpat ut, turpis. Suspendisse potenti. Donec eget lorem id purus cursus laoreet. Phasellus urna. Aenean eu leo sed turpis tempus iaculis.
+</p>
+<p>
+Duis vel justo varius quam adipiscing luctus. Quisque felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam faucibus justo nec quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut nec nisi eget justo lobortis dictum. Morbi purus neque, accumsan non, lacinia vel, dignissim eu, nulla. Proin placerat sagittis dolor. Nullam nisl. Nullam accumsan malesuada dui. Nam vitae est eu lectus cursus iaculis. Ut ullamcorper faucibus velit. Nulla facilisi. Proin nisl purus, ultrices eu, interdum in, euismod et, urna. Pellentesque faucibus risus quis massa.
+</p></div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarImageTestWithAXS.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:01 GMT -->
+</html>

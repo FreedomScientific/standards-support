@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/combobox/combo-editable.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:59 GMT -->
+<head>
+<title>ARIA Combobox</title>
+<style type="text/css">
+.dropStyle {
+  border: thin solid black;
+  background-color:white;
+  color:black;
+  position:absolute;
+  width:15em;
+}
+.item {
+}
+.focus {
+  background-color:navy;
+  color:white;
+}
+
+.item[aria-disabled="true"] {
+  color: grey;
+}
+.offscreen {
+   position: absolute;
+  left: -9000px;
+  width: 0;
+  overflow: hidden;
+}
+
+</style>
+<script type="text/javascript">
+//<!--
+
+var KEY_UP = 38;
+var KEY_DOWN = 40;
+var KEY_ENTER = 13;
+var ELEMENT_NODE = 1;
+var KEY_ESCAPE = 27;
+var KEY_F4 = 115;
+
+/* called via button to toggle drop down open; does not set focus to any item
+*/
+function openCombo(event,inputId, comboId) {
+  var iField = document.getElementById(inputId);
+  if (gComboEx == null) {
+      gComboEx = document.getElementById(comboId);
+  }
+  var cb = gComboEx;
+  var bComboShow = cb.style.display == "block";
+  if (!bComboShow) {
+    // position combo and show
+    showCombo(iField,cb);
+    gItemNum = -1; // no item has focus - combo is open
+  }
+  else {
+    setStyle(cb,"display","none","");
+    // reset current item
+    gItemNum = -1;
+  }
+  //set focus into input field  (may want to change this to set focus to first item when opened)
+  gFocusItem = iField;
+  setTimeout("doFocus();",0);
+}
+
+/* position and show the combo
+*/
+function showCombo(iField,cb) {
+  // position combo and show
+  var offTop= (iField.offsetTop + iField.offsetHeight) + "px";
+  var offLeft = iField.offsetLeft + "px";
+  setStyle(cb,"top", offTop, "");
+  setStyle(cb,"left", offLeft, "");
+  setStyle(cb,"display", "block", "");
+  return;
+}
+
+var gItemNum = 0;  // global to store the current item selected in the combo
+var gComboEx  = null;
+
+function focusCombo(event, iField, comboId) {
+  var key=event.keyCode;
+  var bEventContinue = true;
+  if (gComboEx == null) {
+    gComboEx = document.getElementById(comboId);
+  }
+    var cb = gComboEx;
+  if (key == KEY_DOWN || key == KEY_F4) {
+    bEventContinue = false;
+
+    var bComboShow = cb.getAttribute("style.display") == "block";
+    if (!bComboShow) {
+      showCombo(iField,cb);
+    }
+    // set focus to first item
+      var items = cb.childNodes;
+      var iLen = items.length;
+      // find first elem with class == "item"
+      var i = 0;
+      while(items[i] != null && i<iLen) {
+        if (items[i].nodeType == ELEMENT_NODE  && items[i].className == "item") {
+          gFocusItem = items[i];
+          break;
+        }
+        i++;
+      }
+
+      gItemNum = 0;
+      setTimeout("doFocus();",0);
+      bEventContinue = false;
+    } // end of if key down
+    else if (key == KEY_ENTER) {
+      //  add the current value to the list if it does not already exist
+      bEventContinue = false;
+      if (iField.value != null && iField.value.length > 0) {
+        focusItem(event,gComboEx, iField);
+      }
+      // else do nothing no data in input field
+    } // end of if KEY_ENTER
+    else if (key == KEY_ESCAPE) {
+          if (iField.value != null && iField.value.length > 0) {
+            bEventContinue=true; // do nothing, let input field handle event
+          }
+          else {
+            bEventContinue = false;
+            setStyle(gComboEx,"display","none","");
+            // reset current item
+            gItemNum = -1;
+          }
+    }
+
+  return bEventContinue;
+}
+
+function focusItem(event,combo, iField)  {
+  var curValue = iField.value;
+  var focusItem = null;
+  var elems = getItems(combo);
+  var eLen = elems.length;
+   var bFound = false;
+  for (var i=0 ; i<eLen; i++ ) {
+    if (elems[i].hasChildNodes() && elems[i].firstChild.nodeValue == curValue) {
+      bFound = true;
+      focusItem =elems[ i];
+      gItemNum = i;
+      break;
+    }
+  }
+  if (!bFound) {
+    focusItem = addItem(combo,curValue, elems.length);
+    gItemNum = elems.length;
+  }
+  if (focusItem != null) {
+    gFocusItem = focusItem;
+    if (gComboEx.getAttribute("style.display") != "block") {
+      // position
+      var offTop= (iField.offsetTop + iField.offsetHeight) + "px";
+      var offLeft = iField.offsetLeft + "px";
+      setStyle(combo,"top", offTop, "");
+      setStyle(combo,"left", offLeft, "");
+    }
+    else {
+      // hide
+      setStyle(combo,"display", "none", "");
+    }
+    setStyle(combo,"display", "block", "");
+    setTimeout("doFocus();",0);
+
+
+
+  }
+  // else - do nothing
+
+}
+
+function addItem(combo, curValue, count) {
+  var newDiv = document.createElement("div");
+  var newText = document.createTextNode(curValue);
+  newDiv.appendChild(newText);
+  newDiv.setAttribute("tabindex", "-1");
+  newDiv.setAttribute("class", "item");
+  newDiv.setAttribute("onclick", "gItemNum=" +count +";");
+  newDiv.setAttribute("role", "listitem");
+   combo.appendChild(newDiv);
+  return newDiv;
+}
+
+function doComboNav(event, combo, inputId) {
+  var key = event.keyCode;
+  var bEventContinue = true;
+  if (gComboEx == null) {
+    gComboEx = combo;
+  }
+  if (key == KEY_UP || key==KEY_DOWN) {
+    bEventContinue = false;
+    var nextItemIdx = 0;
+    // simple loop thru childNodes to  find element nodes with class=="item"
+    // does NOT  recurse into nodes
+    var elems = getItems(gComboEx);
+    var eLen = elems.length;
+    if (key==KEY_UP) {
+      nextItemIdx = gItemNum -1; //nextItemIdx = (gItemNum + (eLen-1)) % eLen;
+    }
+    else {
+      nextItemIdx = (gItemNum +1);   //% eLen;
+      if (nextItemIdx == eLen) {
+        nextItemIdx = -1;
+      }
+    }
+    gItemNum = nextItemIdx;
+    if (gItemNum == -1 ) {
+      // set focus to input field
+      gFocusItem = document.getElementById(inputId);
+    }
+    else {
+      gFocusItem = elems[nextItemIdx];
+    }
+    setTimeout("doFocus();",0);
+
+  } // end of if up down arrows
+  else if (key == KEY_ENTER || (!event.keyCode && event.button >=0 ) ) {
+    //get the value and put into input field
+    var elems = getItems(gComboEx);
+    var focusItem = elems[gItemNum];
+    if (focusItem != null && focusItem.getAttribute("aria-disabled") !="true") {
+      var textNode = focusItem.firstChild;  // BIG assumption that only one child
+      var data = textNode.nodeValue;
+      var iField = document.getElementById(inputId);
+      iField.value = data;
+      setStyle(gComboEx,"display","none","");
+      gItemNum = 0;
+      gFocusItem = iField;
+      setTimeout("doFocus();", 0);
+    }
+  }
+  else if (key == KEY_ESCAPE ) {
+    // close the combobox
+    bEventContinue=false;
+    setStyle(combo,"display","none","");
+    // reset current item
+    gItemNum = 0;
+    // set focus to input field
+    gFocusItem=document.getElementById(inputId);
+    setTimeout("doFocus();",0);
+  }
+
+  return bEventContinue;
+}
+
+function getItems(combo) {
+  var elems = new Array();
+  // simple loop thru childNodes to find element nodes with class=="item"
+  // does NOT  recurse into nodes
+  var elems = new Array();
+  var items=combo.childNodes;
+  var iLen = items.length;
+  for (var i=0; i<iLen; i++) {
+    if (items[i].nodeType == ELEMENT_NODE && (items[i].getAttribute("class") == "item" || items[i].getAttribute("class") == "item focus")) {
+      elems[elems.length] = items[i];
+    }
+  }
+  return elems;
+}
+
+
+
+
+
+
+/*----------------------------------------------------- helper JS -----------------------------------------------------*/
+function setStyle(theObj, styleName, styleValue, priority) {
+  var bSuccess = false;
+
+  try {
+    if (theObj.style && theObj.style.setProperty) {
+      theObj.style.setProperty(styleName, styleValue,priority);
+      bSuccess = true;
+    }
+  } catch (ex) {
+    alert('exception caught setting style: ' + ex.message); // cannot do anything try the next method
+  }
+  if (!bSuccess) {
+    try {
+      theObj.style[styleName] = styleValue;
+      bSuccess = true;
+    } catch (exNext) {
+      alert('exception caught setting direct style: ' + exNext.message); // cannot do anything
+    }
+  }
+  return bSuccess;
+} // end of setStyle
+
+// global to store the item to be focused
+gFocusItem =null;
+gLastFocusItem = null;
+function doFocus()
+{
+  if (gFocusItem != null) {
+    gFocusItem.focus();
+    if (gLastFocusItem && gLastFocusItem.className == 'item focus')
+      gLastFocusItem.className = 'item';
+    if (gFocusItem && gFocusItem.className == 'item')
+      gFocusItem.className = 'item focus';
+    gLastFocusItem = gFocusItem;
+    gFocusItem=null;
+  }
+}
+
+/*-----------------------------------------------------end helper JS -----------------------------------------------------*/
+
+//-->
+</script>
+</head>
+<body role="application">
+<p>This example requires Firefox 3 or later to work with screen readers -- it uses ARIA properties without namespaces, which is now the correct markup.</p>
+<p>Here is an editable DHTML combobox. With focus in the text field, press F4 or alt-down arrow to open the drop down or use the
+button.  Type in a new entry and press enter to add to the drop down list. Pressing the escape key will close the list.</p>
+
+<p>To do: add support for incremental find while the list is open</p>
+
+<label for="cat" style="float:left;">Editable Combo: &nbsp;</label>
+<div role="combobox">
+  <input type="text" style="width:20em;" id="cat"
+         onkeydown="return focusCombo(event, this, 'combo');"
+         role="textfield" aria-haspopup="true" />
+  <label for="dropButton" class="offscreen">Combo drop down button</label>
+  <button id="dropButton" onclick="openCombo(event, 'cat', 'combo');">v</button>
+  <div role="list"  style="display:none" id="combo" class="dropStyle"
+       onkeydown="return doComboNav(event,this,'cat');"
+       onclick="doComboNav(event,this,'cat');">
+    <div tabindex="-1" class="item" onclick="gItemNum=0;" role="listitem">cat</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=1;" role="listitem">catacomb</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=2;" role="listitem">catamaran</div>
+
+    <div tabindex="-1" class="item" onclick="gItemNum=3;" role="listitem">catamount</div>
+    <div tabindex="-1" class="item" aria-disabled="true"  onclick="gItemNum=4;" role="listitem">catatonic</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=5;" role="listitem">catch</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=6;" role="listitem">caterpillar</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=7;" role="listitem">cathedral</div>
+    <div tabindex="-1" class="item" onclick="gItemNum=8;" role="listitem">catholic</div>
+
+  </div>
+</div>
+<p id="revision">$Revision: 180 $</p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/combobox/combo-editable.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:00 GMT -->
+</html>

@@ -1,0 +1,5 @@
+Note: application mode is set for this example. The best practice is for the page to set focus to a control within the application, but this page does not do that. So please ignore that issue.
+Tab to the combobox and try to change the value by typing, pressing down arrow, pressing alt down arrow, etc.
+Make sure jaws reads the updated value of the combobox with say line and insert tab.
+Tab and shift tab to the combo box after assigning a value.
+Note: In Firefox, pressing down arrow when the combobox is closed will open the list as though alt down arrow were pressed.

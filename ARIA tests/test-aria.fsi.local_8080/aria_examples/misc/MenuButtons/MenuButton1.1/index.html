@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:15 GMT -->
+<head>
+	<meta charset="utf-8" />
+	<title>MenuButton Example</title>
+	<link rel="stylesheet" href="app.css" type="text/css" />
+	<script src="../../../../../code.jquery.com/jquery-2.2.3.js"
+					integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="
+					crossorigin="anonymous"></script>
+
+	<script src="app.js"></script>
+</head>
+<body>
+    <h1>Menu Button Example</h1>
+    <p>The Authoring Guide for ARIA has changed their recommendations between ARIA 1.0 and ARIA 1.1 with regard to the menu button.  This example implements the 1.1 design pattern.</p>
+    <br />
+    <button aria-expanded="false" role="button" class="menubutton" id="move-btn" type="button" aria-haspopup="true">Move To</button>
+
+    <p>some text between the button and the list</p>
+    <ul id="menuitems" class="menu hidden" aria-hidden="true" role="menu" aria-label="folders" tabindex="-1">
+        <li role="menuitem" tabindex="-1">Inbox</li>
+        <li role="menuitem" tabindex="-1">Archive</li>
+        <li role="menuitem" tabindex="-1">Trash</li>
+    </ul>
+    <div>
+        <h1>Some interactions you should try</h1>
+        <ul>
+            <li>With focus on the button</li>
+            <ul>
+                <li>Space and Enter: open the menu and place focus on the first menu item.</li>
+                <li>(Optional) Down Arrow: opens the menu and moves focus to the first menu item.</li>
+            </ul>
+            <li>With focus on a menu item</li>
+            <ul>
+                <li>Enter and optionally Space: activate the menu item with focus (perform the command or open the submenu associated with the menu item).</li>
+                <li>Down Arrow and Up Arrow: move focus to the next and previous items, respectively, optionally wrapping from last to first and vice versa.</li>
+                <li>Home and End: If arrow key wrapping is not supported, move focus to first and last items.</li>
+                <li>Right Arrow: Perform the first of the following actions that applies:</li>
+                <ul>
+                    <li>If the menu item with focus opens a submenu, open the submenu and place focus on the first item in the submenu.</li>
+                    <li>If the menu item with focus is contained in a submenu opened from an item in a menubar, close the current menu and open the submenu associated with the next item in the menubar that has an associated submenu.</li>
+                    <li>Either move focus to the next item in the current menu or do nothing.</li>
+                </ul>
+                <li>Left Arrow: Perform the first of the following actions that applies:</li>
+                <ul>
+                    <li>If the menu item with focus is contained in a submenu opened from an item in a menubar, close the current menu and open the submenu associated with the previous item in the menubar that has an associated submenu.</li>
+                    <li>If the menu item with focus is contained in a submenu, close the current menu and place focus on the menu item from which the submenu was opened.</li>
+                    <li>Either move focus to the previous item in the current menu or do nothing.</li>
+                </ul>
+                <li>Any key that corresponds to a printable character: Move focus to the next menu item in the current menu whose label begins with that printable character.</li>
+                <li>Escape: Close the menu and return focus to the element or context, e.g., menu button or parent menu item, from which the menu was opened.</li>
+                <li>Tab: Close the menu and all open parent menus and move focus to the next element in the tab sequence.</li>
+                <li>Shift + Tab: Close the menu and all open parent menus and move focus to the previous element in the tab sequence.</li>
+            </ul>
+        </ul>
+        <p>
+            All of these keyboard interactions follow the
+            <a href="../../../../../external.html?link=http://w3c.github.io/aria/practices/aria-practices.html#menubutton">WAI-ARIA Design Pattern for Menu Button.</a>
+        </p>
+    </div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:16 GMT -->
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/status.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:26 GMT -->
+<head>
+
+<title>
+role status test </title>
+
+<script type="text/javascript">
+
+window.onload = runExample;
+
+var minimumTime = 1000;
+
+var index=0;
+
+var phase=0;
+
+var lrID = "myLiveRegion1";
+
+var messagesArray = new Array("0","1","2","3");
+
+var updatesArray = new Array("a","b","c","d");
+
+
+function updateLiveRegion(liveRegionID)
+{
+   
+if (phase==0)
+{
+      
+addNode(liveRegionID);
+      
+}
+   
+else 
+if (phase==1)
+{
+      
+changeNode(liveRegionID);
+      
+}
+   
+else
+{
+      
+removeNode(liveRegionID);
+      
+}
+   
+}
+
+
+function addNode(liveRegionID)
+{
+   
+targetNode = document.getElementById(liveRegionID);
+   
+liNode = document.createElement("li");
+   liNode.textContent = messagesArray[index];
+   liNode.innerText = messagesArray[index]; 
+//User innerText for IE compatibility
+   
+targetNode.appendChild(liNode);
+   
+index++;
+   
+}
+
+
+function changeNode(liveRegionID)
+{
+   
+targetNode = document.getElementById(liveRegionID);
+   
+targetNode.getElementsByTagName("li")[index].textContent = updatesArray[index];
+   
+targetNode.getElementsByTagName("li")[index].innerText = updatesArray[index];
+   
+index++;
+   
+}
+
+
+function removeNode(liveRegionID)
+{
+   
+targetNode = document.getElementById(liveRegionID);
+   
+if (targetNode.firstChild) 
+{
+      
+targetNode.removeChild(targetNode.firstChild);
+      
+}
+   
+index++;
+   
+}
+
+
+function runExample()
+{
+   
+updateLiveRegion(lrID);
+   
+if (index > 3)
+{
+      
+index=0;
+      
+phase++;
+      
+if (phase > 2)
+{
+         
+phase = 0;
+         
+}
+      
+if (phase == 2)
+{
+         
+index=-1;
+         
+}
+      
+}
+   
+window.setTimeout(runExample, minimumTime);
+   
+}
+
+
+function setMinimumTime()
+{
+   
+minimumTimeStr = document.getElementById("throttle").options[document.getElementById("throttle").selectedIndex].text;
+   
+minimumTime = minimumTimeStr * 1000;
+   
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div>
+
+<label for="throttle">Minimum number of seconds before a change</label>
+
+<select id="throttle" onblur="setMinimumTime();" onchange="setMinimumTime();">
+
+<option>1</option>
+
+<option>2</option>
+
+<option>3</option>
+
+<option>4</option>
+
+<option>5</option>
+
+<option>6</option>
+
+<option>7</option>
+
+<option>8</option>
+
+<option>9</option>
+
+<option>10</option>
+
+</select>
+<hr/>
+
+</div>
+
+<h1>
+status test </h1>
+
+<p>
+
+<div>
+<span id="myLiveRegion1" role="status"></span>
+</div>
+
+</p>
+
+</body>
+
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/status.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:26 GMT -->
+</html>

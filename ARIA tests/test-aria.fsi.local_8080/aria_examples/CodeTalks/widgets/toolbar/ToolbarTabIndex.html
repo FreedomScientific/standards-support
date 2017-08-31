@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:57 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Toolbar Managing Focus with TabIndex</title>
+<style>
+#customToolbar{
+border: black 2px solid;
+padding:8px;
+width: 395px;
+}
+
+img{
+border: white 2px solid;
+}
+</style>
+<script type="text/javascript" src="axs.js"> </script>
+<script type="text/javascript">
+axs.debug=1;
+
+var toolbarCommands={
+	//Initialize things after the page is fully loaded
+	init:function(){
+		axs.keyreg("left",toolbarCommands.Prev,{args:[""],node:axs.id("customToolbar"),des:"Move to previous button"});
+		axs.keyreg("right",toolbarCommands.Next,{args:[""],node:axs.id("customToolbar"),des:"Move to next button"});
+		axs.keyreg("enter",toolbarCommands.AddArtist,{args:[""],node:axs.id("customToolbar"),des:"Executes current action"});
+	},
+	//Ajax in the new content
+	Prev:function(){
+			var tb = document.getElementById('customToolbar');
+		  buttonid = getPrevButtonID();  // This is an author defined function
+
+	},
+	Next:function(){
+		var tb = document.getElementById('customToolbar');
+		buttonid = getNextButtonID();   // This is an author defined function
+	},
+	Execute:function(){
+		ExecuteButtonAction(getCurrentButtonID());
+	}
+}
+
+axs.ae(window,'load',toolbarCommands.init);
+</script>
+<script type="text/javascript">
+var currentId = 1;
+var elementType = "p";
+var numChildren = 5;
+var FOCUS_OFF_ATTRIBUTES = "white 2px solid";
+var FOCUS_ON_ATTRIBUTES = "yellow 2px solid";
+function ClearChildFocus()
+{
+	var focusedChild = document.getElementById(elementType+currentId);
+	focusedChild.setAttribute("hasfocus",false);
+	focusedChild.style.border = FOCUS_OFF_ATTRIBUTES;
+	if(focusedChild)
+	{
+//	focusedChild.setAttribute("tabindex","-1");
+
+	// Needed to update IE styling
+	focusedChild.className += "";
+	}
+}
+
+function RemoveChildFocus()
+{
+
+	var focusedChild = document.getElementById(elementType+currentId);
+	focusedChild.setAttribute("hasfocus",false);
+	focusedChild.style.border = FOCUS_OFF_ATTRIBUTES;
+	if(focusedChild)
+	{
+//	focusedChild.setAttribute("tabindex","-1");
+	// Needed to update IE styling
+	focusedChild.className += "";
+	}
+	return false;
+}
+
+function AddChildFocus(childId)
+{
+
+	var focusedChild = document.getElementById(elementType+childId);
+	if(focusedChild==null)
+	{
+		return;
+	}
+
+	window.setTimeout(function () { focusedChild.focus(); },0);  // focusItem must be in scope
+//	focusedChild.setAttribute("tabindex","0");
+	focusedChild.style.border = FOCUS_ON_ATTRIBUTES;
+
+	// Needed to update IE styling
+	focusedChild.className += "";
+	currentId=childId;
+}
+
+function ExecuteButtonAction(i)
+{
+	document.getElementById(i).onclick();
+	return;
+}
+
+function getCurrentButtonID()
+{
+	return elementType+currentId;
+}
+
+function getNextButtonID()
+{
+	if (currentId < numChildren)
+	{
+		RemoveChildFocus();
+		currentId = currentId + 1;
+		AddChildFocus(currentId);
+	}
+	return elementType+currentId;
+}
+
+function getPrevButtonID()
+{
+	if (currentId > 1)
+	{
+		RemoveChildFocus();
+		currentId = currentId - 1;
+		AddChildFocus(currentId);
+	}
+	return elementType+currentId;
+}
+
+
+function clickSettings()
+{
+	window.location.href="SettingsPage.html";
+	updateText('Settings was invoked');
+}
+
+function clickCreate()
+{
+	window.location.href="CreatePage.html";
+	updateText('Create was invoked');
+}
+
+function clickPlay()
+{
+	window.location.href="PlayPage.html";
+	updateText('Play was invoked');
+}
+
+function clickLogout()
+{
+	window.location.href="LoginPage.html";
+
+}
+
+function saveToYouTube()
+{
+
+}
+
+function selectPreviousItem()
+{
+
+}
+
+function selectNextItem()
+{
+}
+
+
+</script>
+</head>
+<body>
+  <div role="toolbar" multiselectable="false" tabindex="0" id="customToolbar"
+   onblur="ClearChildFocus()"
+   onfocus="AddChildFocus(currentId)">
+
+     	<img src="img/p1.jpg" title="Play" role="button" id="p1" alt="Play"
+     	tabindex=-"-1";
+        onmouseout="ClearChildFocus()"
+        onmouseover="AddChildFocus(1)"
+
+        onClick="play();">
+
+        <img src="img/p2.jpg" title="Stop" role="button" id="p2" alt="Stop"
+     	tabindex=-"-1";
+        onmouseout="ClearChildFocus()"
+        onmouseover="AddChildFocus(2)"
+
+        onClick="stop();">
+
+        <img src="img/p3.jpg" title="Previous" role="button" id="p3" alt="Previous"
+     	tabindex=-"-1";
+        onmouseout="ClearChildFocus()"
+        onmouseover="AddChildFocus(3)"
+
+        onClick="selectPreviousItem();">
+
+        <img src="img/p4.jpg" title="Forward" role="button" id="p4" alt="Forward"
+     	tabindex=-"-1";
+        onmouseout="ClearChildFocus()"
+        onmouseover="AddChildFocus(4)"
+
+        onClick="selectNextItem();">
+
+        <img src="img/p5.jpg" title="Save to YouTube" role="button" id="p5" alt="Save to YouTube"
+     	tabindex=-"-1";
+        onmouseout="ClearChildFocus()"
+        onmouseover="AddChildFocus(5)"
+
+        onClick="saveToYoutube();">
+        </div>
+</div>
+<p>
+<input type="button" value="test"></input>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:00 GMT -->
+</html>
+

@@ -1,0 +1,357 @@
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/grid/grid.sample.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+<head>
+    <title>ARIA Simple Grid Sample</title>
+    <style>
+        BODY {}
+         h3 {margin-bottom:2px}
+    </style>
+
+    <script type="text/javascript">
+        var sap = {ui:{keycodes:{SPACE:32, 
+                                 ENTER:13, 
+                                 PAGE_UP : 33,
+	                             PAGE_DOWN : 34,
+	                             END : 35,
+	                             HOME : 36,
+	                             ARROW_LEFT : 37,
+	                             ARROW_UP : 38,
+	                             ARROW_RIGHT : 39,
+	                             ARROW_DOWN : 40,
+	                             TAB : 9
+                                 }}};
+        var grids = [];
+        function getGrid(id) {
+            if (!grids[id]) {
+                var grid = {};
+                grid.focusedCell = null;
+                grid.selectedRow = -1;
+                grid.firstVisibleRow = 1;
+                grid.table = document.getElementById(id);
+                grid.pageSize=4,
+                grid.rows=9;
+                cells = grid.table.getElementsByTagName("TD");
+                for (var n=0;n<cells.length;n++) {
+                    if (cells[n].getAttribute("editable")=="true") cells[n].tabIndex=0;
+                }
+                grids[id] = grid;
+            }
+            return grids[id];
+        }
+        function handleFocus(id, evt) { 
+            var grid = getGrid(id);
+            if (grid) {
+                if (!grid.focusedCell) {
+                    grid.focusedCell = {row:1,col:0};
+                } else {
+                    blurCell(grid.focusedCell,grid);
+                }
+                focusCell(grid.focusedCell,grid);
+                grid.table.tabIndex = "-1";
+                
+            }
+        }
+        function handleClick(id, evt) { 
+            var grid = getGrid(id);
+            if (grid) {
+                var clickedCell = evt.target?evt.target:evt.srcElement;
+                if (clickedCell.tagName=="TD") {
+                    if (grid.focusedCell) {
+                       blurCell(grid.focusedCell,grid);
+                    }
+                    if (grid.selectedRow > -1) {
+                        deselectRow(grid.selectedRow,grid);
+                    }
+                    grid.focusedCell = {row:clickedCell.parentNode.rowIndex,col:clickedCell.cellIndex};
+                    focusCell(grid.focusedCell,grid);
+                    grid.selectedRow = grid.focusedCell.row;
+                    selectRow(grid.selectedRow,grid);
+                }
+            }
+        }
+        function blurCell(cell,grid) {
+            var td = grid.table.rows[cell.row].cells[cell.col];
+            if (td.getAttribute("editable")=="true") return
+            td.tabIndex = "-1";
+        }
+        function focusCell(cell,grid) {
+            var tr = grid.table.rows[cell.row];
+            var td = tr.cells[cell.col];
+            td.tabIndex = "0";
+            td.focus();
+        }
+        function scrollTop(grid) {
+            grid.firstVisibleRow = 1;
+            scrollRow(grid);
+        }
+        function scrollBottom(grid) {
+            grid.firstVisibleRow = grid.table.rows.length;
+            scrollRow(grid);
+        }
+        function scrollDown(numberofrows,grid) {
+            grid.firstVisibleRow = grid.firstVisibleRow + numberofrows;
+            scrollRow(grid);
+        }
+       
+        function scrollUp(numberofrows,grid) {
+            grid.firstVisibleRow = grid.firstVisibleRow-numberofrows;
+            scrollRow(grid);
+        }
+         function scrollRow(grid) {
+            if (grid.firstVisibleRow<1)grid.firstVisibleRow=1;
+            if (grid.firstVisibleRow>=grid.table.rows.length)grid.firstVisibleRow=grid.table.rows.length-grid.pageSize;
+            var startRow = grid.firstVisibleRow;
+            for (var n=1;n<grid.table.rows.length;n++) {
+                var tr = grid.table.rows[n];
+                if (n >= startRow && n<startRow+grid.pageSize) {
+                    tr.style.display = "";
+                } else {
+                    tr.style.display="none";
+                }
+            }
+        }
+        function selectRow(row,grid) {
+            var tr = grid.table.rows[row];
+            tr.style.backgroundColor="orange";
+            for (var i=0;i<tr.cells.length;i++) {
+                tr.cells[i].setAttribute("aria-selected","true");
+            }
+        }
+        function deselectRow(row,grid) {
+            var tr = grid.table.rows[row];
+            tr.style.backgroundColor="";
+            for (var i=0;i<tr.cells.length;i++) {
+                tr.cells[i].setAttribute("aria-selected","false");
+            }
+        }
+        function handleKeyDown(id, evt) { 
+            var grid = getGrid(id);
+                keyCode = evt.keyCode,
+                evtTarget = evt.target ? evt.target : evt.srcElement;
+            if (keyCode == sap.ui.keycodes.ARROW_LEFT) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.col-1<0?grid.focusedCell.col=0:grid.focusedCell.col--;
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.ARROW_RIGHT) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.col+1>grid.table.rows[grid.focusedCell.row].cells.length-1?grid.focusedCell.col=grid.table.rows[grid.focusedCell.row].cells.length-1:grid.focusedCell.col++;
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.ARROW_UP) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row-1<1?grid.focusedCell.row=1:grid.focusedCell.row--;
+                if (grid.focusedCell.row<grid.firstVisibleRow) {
+                    scrollUp(1,grid);
+                }
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.ARROW_DOWN) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row+1>grid.table.rows.length-1?grid.focusedCell.row=grid.table.rows.length-1:grid.focusedCell.row++;
+                if (grid.focusedCell.row>=grid.firstVisibleRow+grid.pageSize) {
+                    scrollDown(1,grid);
+                }
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.HOME && evt.ctrlKey) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row=1;
+                scrollTop(grid);
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.END && evt.ctrlKey) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row=grid.table.rows.length-1;
+                scrollBottom(grid);
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.HOME) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.col=grid.table.col=0;
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.END) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.col=grid.table.col=grid.table.rows[grid.focusedCell.row].cells.length-1;
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.PAGE_UP) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row=grid.focusedCell.row-grid.pageSize;
+                if (grid.focusedCell.row<=1) grid.focusedCell.row = 1;
+                if (grid.firstVisibleRow>1) {
+                    scrollUp(grid.pageSize,grid);
+                }
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.PAGE_DOWN) {
+                blurCell(grid.focusedCell,grid);
+                grid.focusedCell.row=grid.focusedCell.row+grid.pageSize;
+                if (grid.focusedCell.row> grid.table.rows.length-1) grid.focusedCell.row = grid.table.rows.length-1;
+                if (grid.firstVisibleRow+grid.pageSize<grid.table.rows.length-grid.pageSize) {
+                    scrollDown(grid.pageSize,grid);
+                } else {
+                    scrollDown(grid.firstVisibleRow + (grid.table.rows.length-grid.pageSize) ,grid);
+                }
+                focusCell(grid.focusedCell,grid);
+            } else if (keyCode == sap.ui.keycodes.SPACE) {
+                if (grid.selectedRow>-1) {
+                   deselectRow(grid.selectedRow,grid);
+                }
+                if (grid.selectedRow != grid.focusedCell.row) {
+                    grid.selectedRow = grid.focusedCell.row;
+                    selectRow(grid.selectedRow,grid);
+                }
+            } 
+            if (keyCode != sap.ui.keycodes.TAB){
+                evt.cancelBubble = true;
+                if (evt.preventDefault)
+                    evt.preventDefault();
+                if (evt.stopPropagation) {
+                    evt.stopPropagation();
+                } else {
+                    evt.cancelBubble = true;
+                    evt.returnValue = false;
+                }  
+            } else {
+                grid.table.tabIndex = "0";
+                blurCell(grid.focusedCell,grid);
+               
+            }
+        }
+    </script>
+
+</head>
+<body role="application">
+    <h1>
+        Accessible ARIA Grid</h1>
+    <p>
+        This example requires Firefox 3 or later to work with screen readers.</p>
+    <h3 id="grid-1-header">
+        Selectable Grid with Text with 9 Rows</h3>
+    <table id="grid-1" border="1" tabindex="0" onfocus="handleFocus('grid-1',event);" onclick="handleClick('grid-1',event);"
+        onkeydown="handleKeyDown('grid-1',event);" role="grid" aria-labelledby="grid-1-header">
+        <col style="width:150" />
+        <col style="width:150" />
+        <col style="width:150" />
+        <col style="width:150" />
+        <thead>
+            <tr role="row">
+                <th role="columnheader" id="grid-1-title_id">
+                    Title</th>
+                <th role="columnheader" id="grid-1-isbn_id">
+                    ISBN-Number</th>
+                <th role="columnheader" id="grid-1-author_id">
+                    Author</th>
+                <th role="columnheader" id="grid-1-price_id">
+                    Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr role="row">
+                <td headers="grid-1-title_id" role="gridcell">
+                    A Question of Love</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    978-3-453-40540-0</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Nora Roberts</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 9.99</td>
+            </tr>
+            <tr role="row">
+                <td headers="grid-1-title_id" role="gridcell">
+                    Piece of Peace</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    978-3-453-477740-0</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Gunther Poison</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 13.95</td>
+            </tr>
+            <tr role="row">
+                <td headers="name_id" role="gridcell">
+                    International Law</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    029-11-131978-07-0</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Daniela Hunter</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 11.95</td>
+            </tr>
+            <tr role="row">
+                <td headers="name_id" role="gridcell">
+                    My Name is Benny</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    007-01-206603-00</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Benjamin Schutz</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 12.50</td>
+            </tr>
+            <tr role="row" style="display:none">
+                <td headers="name_id" role="gridcell">
+                    The Charming Butler</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    007-02-206983-77</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Naomi Jackson</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 14.50</td>
+            </tr>            
+            <tr role="row" style="display:none">
+                <td headers="name_id" role="gridcell">
+                    Lofts</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    010-12-656922-70</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Bud Atkinson</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 22.99</td>
+            </tr>            
+            <tr role="row" style="display:none">
+                <td headers="name_id" role="gridcell">
+                    DOM Objects</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    234-12-081733-67</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Nurdogan Ghant</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 29.10</td>
+            </tr>            
+            <tr role="row" style="display:none">
+                <td headers="name_id" role="gridcell">
+                    One Man Show</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    282-02-1839812-72</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Rose Wood</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $9.30</td>
+            </tr>            
+            <tr role="row" style="display:none">
+                <td headers="name_id" role="gridcell">
+                    Sugar Fly</td>
+                <td headers="grid-1-isbn_id" role="gridcell">
+                    081-01-123093-02</td>
+                <td headers="grid-1-author_id" role="gridcell">
+                    Naomi Jackson</td>
+                <td headers="grid-1-price_id" role="gridcell">
+                    $ 20.50</td>
+            </tr>            
+        </tbody>
+    </table>
+     <br />
+     <br />
+     <p>
+     <b>Implemented features:</b><br/>
+            <ul>
+                <li>Tab/Shift Tab focus in and out of the control.</li>
+                <li>Arrow Key Navigation moves over the cells.</li>
+                <li>Home/End Navigation goes to firstand last cell in the row 
+                <li>Ctrl Home/End moves to the first and last row</li>
+                <li>PageUp/PageDown moves one page up/down</li>
+                <li>Space or enter selects a row.</li>
+            </ul>
+            <b>Missing features:</b>
+            <ul>
+                <li>Range selection with space and Shift Arrow Keys</li>
+                <li>Multiple selection with space and Ctrl Arrow Keys</li>
+            </ul>    
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/grid/grid.sample.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+</html>

@@ -1,0 +1,4 @@
+Use semicolon (';') to move to the next landmark.
+Use jawsKey + ctrl + semicolon (';') to activate the list of landmarks. Make sure that the landmarks which say they are nested in the document are actually nested in the landmarks tree. Make sure that moving to a landmark from the dialog works correctly.
+Make sure jaws announces the correct number of landmarks when the page loads.
+Make sure jaws announces the name of the form landmark, which is "contact info".

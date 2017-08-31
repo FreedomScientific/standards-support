@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/chat_notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:14 GMT -->
+<head>
+    <title>Notes on the "AJAX Chat" Demo</title>
+</head>
+<body>
+<h1>
+Notes on the "AJAX Chat" Demo
+</h1>
+<h2>Introduction</h2>
+<p>
+The "AJAX Chat" demo provides an example of using accessible live regions for a chat application. For a real deployment of such a system, the JavaScript should connect to an actual chat server; in this example, the other chat users are scripted bots and there is no actual chat server being used. Also, for a real chat system, the user should be able to have the entire conversation logged as well as have the chat window stop scrolling.
+</p>
+<h2>Overview of the Structure</h2>
+<p>
+The page is composed of two main DIV elements: "chatArea" and "userControlsArea". "chatArea" contains "chatRegion" where the chat messages will appear and "userListRegion" where the names of the users will show up. "userControlsArea" contains the controls for the user (input blank and button).
+</p>
+
+<h2>Accessibility Features</h2>
+<p>
+"chatRegion" is a "polite" live region that has "control='sendButton'"; this means that when the "sendButton" is used, the message that is sent as a result will be immediately read back to the user. However, messages from other users are polite and will not interrupt each other (nor the user) as these messages will be read back in the order in which they are received. Also, note that atomic has been set to "false"; the default value for atomic is "true", and not changing it to "false" would have caused the entire "chatRegion" to be read out when a new message is added to it.
+</p>
+<p>
+"userListRegion" has live set to "off"; this is because users joining/leaving the channel are announced directly in the "chatRegion" and the "userListRegion" is only intended to be used as a quick check to see who is online. If the "userListRegion" were not set to "off", then information about joining/leaving would be given twice; that redundancy would be distracting and annoying for AT users.
+</p>
+<p>
+"statusRegion" has "live='assertive'"; this gives users immediate feedback when they have made an error (such as typing a message that will be rejected because it is too long). If users do not have an AT that can support accessible AJAX or if they have turned that feature off, errors will still be given as alert boxes if they ignore the error shown in the "statusRegion" and try to send a message that has problems.
+</p>
+
+<h2>Expected Behavior</h2>
+<p>
+As the user types, if they make a mistake, the "statusRegion" will display a warning. Since the "statusRegion" is "assertive", this warning will be delivered to the user as soon as possible and will interrupt other messages. This gives users information about mistakes right when they are made.
+</p>
+<p>
+When new messages appear in the "chatRegion", they will be read out in the order they appear and will not interrupt anyting that the user is doing since the "chatRegion" is marked as "polite". However, if a message comes from the users themselves, that message will be given priority as it is the result of a control for the "chatRegion" - this means that users will still have immediate feedback about what they just did.
+</p>
+<h2>Additional Information</h2>
+<p>
+Things that can trigger a warning in the "statusRegion":
+<ul>
+<li>choosing a username that contains whitespace</li>
+<li>choosing a username that contains more than 16 characters</li>
+<li>sending a message that is greater than 72 characters</li>
+<li>sending a blank message</li>
+</ul>
+</p>
+<p>
+If you just let the chatroom run for a while, the bots will chat.
+</p>
+<p>
+If you want to see more users joining the chatroom, type something that contains the phrase "more users" (such as "I wish there were more users here."). If you want them to leave, type something that contains the phrase "fewer users."
+</p>
+<p>
+You can try to get some interesting responses by typing sentences that contain keywords such as "mozilla", "fire vox", "click speak", and "accessibility".
+</p>
+
+
+<h2>Issues</h2>
+<p>This section documents the issues with that I have found with the current WAI ARIA markup for live regions in trying to design this application. These are issues which I feel are important but are not sufficiently addressed in the current standard.</p>
+<p>
+"chatRegion" should technically have "control='sendButton sendText'" as the user pressing enter while in the "sendText" input blank would have the same effect as clicking the "sendButton" and the system should exhibit the same behavior. However, if the user merely tabs out of the "sendText" blank after typing something but without pressing enter, the value of the blank will be still be changed (according to the onChange event), and it will look like the user did something with the control. This presents a problem since the AT will need some way to know whether a control is really controlling a live region or if the onChange event for a particular control and an update to a live region that it controls is merely a coincidence (imagine a user tabbing out of the input blank after having typed something but without pressing enter and having some other user send a message at about the same time - both events happened, but the change in the input blank was not the cause for the new message that appeared in the blank). By not setting "sendText" in the controls=[idlist], if a user were to type a message and press enter, that change would be polite and would not be read to the user until the previous messages were all read. This is a problem as it does not give users immediate feedback about the results of their actions.
+</p>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/chat_notes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:14 GMT -->
+</html>

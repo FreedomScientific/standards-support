@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" role="application">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/TPG/Samples/aria/tree/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:02 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../../../tpglib/JS/Controls/Tree/css/tree.css" />
+<script type="text/javascript" src="../../../tpglib/JS/jquery-1.4.1.js"></script>
+<script type="text/javascript" src="../../../tpglib/JS/utilities-3.js"></script>
+<script type="text/javascript" src="../../../tpglib/JS/Controls/Tree/Tree.js"></script>
+
+<title>Sample Tree </title>
+</head>
+<body>
+<div>
+<h1>Tree Example</h1>
+<a href="#">Placeholder link 1</a>
+<h2 id="documentsTreeLbl">My Documents</h2>
+<p>This tree widget allows multiple nodes to be selected.</p>
+	<ul  class="tpgTree multiSelectable" id='documentsTree' aria-labelledby='documentsTreeLbl'>
+		<li class='branchNode collapsedFirst'>
+			<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_first.png' alt='collapse Invoices branch' /><span class='branchLabel treeItem collapsed'><span>Invoices</span></span>
+			<ul  class='collapsedGroup'>
+	
+			<li class='branchNode collapsedMid'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse January branch' /><span class='branchLabel treeItem collapsed'><span>January</span></span>
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice A</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice B</span></span>
+				</li>
+				<li class='leafLast'>
+				<span class='treeItem leafLabel'><span>Invoice C</span></span>
+	
+				</li>
+				</ul>
+			</li>
+			<li class='branchNode collapsedMid'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse February branch' /><span class='branchLabel treeItem collapsed'><span>February</span></span>
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice D</span></span>
+	
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice E</span></span>
+				</li>
+				<li class='leafLast'>
+				<span class='treeItem leafLabel'><span>Invoice F</span></span>
+				</li>
+				</ul>
+	
+			</li>
+			<li class='branchNode collapsedLast'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse March branch' /><span class='branchLabel treeItem collapsed'><span>March</span></span>
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice G</span></span>
+				</li>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Invoice H</span></span>
+				</li>
+				<li class='leafLast'>
+				<span class='treeItem leafLabel'><span>Invoice I</span></span>
+				</li>
+				</ul>
+			</li>
+	
+			</ul>
+		</li>
+		<li class='branchNode collapsedMid'>
+			<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Job Applications branch' /><span class='branchLabel treeItem collapsed'><span>Job Applications</span></span>
+			<ul  class='collapsedGroup'>
+	
+			<li class='branchNode collapsedMid'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Unhandled branch' /><span class='branchLabel treeItem collapsed'><span>Unhandled</span></span>
+	
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application A</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application B</span></span>
+				</li>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application C</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application D</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application E</span></span>
+	
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application F</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Application G</span></span>
+				</li>
+				<li class='leafLast'>
+	
+				<span class='treeItem leafLabel'><span>Application H</span></span>
+				</li>
+				</ul>
+			</li>
+			<li class='branchNode collapsedMid'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Accepted branch' /><span class='branchLabel treeItem collapsed'><span>Accepted</span></span>
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Peter Merchant</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Susan Jennings</span></span>
+				</li>
+				<li class='leafLast'>
+				<span class='treeItem leafLabel'><span>John Smith</span></span>
+	
+				</li>
+				</ul>
+			</li>
+			<li class='branchNode collapsedLast'>
+				<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse Declined branch' /><span class='branchLabel treeItem collapsed'><span>Declined</span></span>
+				<ul  class='collapsedGroup'>
+	
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>John Doe</span></span>
+	
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Jack Smith</span></span>
+				</li>
+				<li class='leafMid'>
+				<span class='treeItem leafLabel'><span>Hannah Boyd</span></span>
+				</li>
+				<li class='branchNode collapsedLast'>
+	
+					<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse Reconsider? branch' /><span class='branchLabel treeItem collapsed'><span>Reconsider?</span></span>
+					<ul  class='collapsedGroup'>
+	
+					<li class='leafMid'>
+					<span class='treeItem leafLabel'><span>Sandra johnson</span></span>
+					</li>
+					<li class='leafMid'>
+					<span class='treeItem leafLabel'><span>Steve Faulkner</span></span>
+	
+					</li>
+					<li class='leafMid'>
+					<span class='treeItem leafLabel'><span>Hans Hillen</span></span>
+					</li>
+					<li class='leafLast'>
+					<span class='treeItem leafLabel'><span>Jason Maple</span></span>
+					</li>
+					</ul>
+	
+				</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		<li class='branchNode collapsedMid'>
+			<img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Manuals branch' /><span class='branchLabel treeItem collapsed'><span>Manuals</span></span>
+			<ul  class='collapsedGroup'>
+	
+			<li class='leafMid'>
+			<span class='treeItem leafLabel'><span>Fax</span></span>
+			</li>
+			<li class='leafMid'>
+			<span class='treeItem leafLabel'><span>Copier</span></span>
+			</li>
+			<li class='leafMid'>
+	
+			<span class='treeItem leafLabel'><span>Scanner</span></span>
+			</li>
+			<li class='leafLast'>
+			<span class='treeItem leafLabel'><span>Laptop</span></span>
+			</li>
+			</ul>
+		</li>
+		<li class='leafMid'>
+	
+		<span class='treeItem leafLabel'><span>Welcome Letter</span></span>
+		</li>
+		<li class='leafMid'>
+		<span class='treeItem leafLabel'><span>Getting Started</span></span>
+		</li>
+		<li class='leafLast'>
+		<span class='treeItem leafLabel'><span>Trouble Shooting</span></span>
+	
+		</li>
+	</ul>
+<a href="#">Placeholder link 2</a>
+<h2 id="secondTreeLbl">More Documents</h2>
+<p>This tree only allows one node to be selected at a time </p> 
+<ul class="tpgTree" id='secondTree' aria-labelledby='secondTreeLbl'>
+    <li class='branchNode collapsedFirst'>
+        <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_first.png' alt='collapse Invoices branch' /><span class='branchLabel treeItem collapsed'><span>Invoices</span></span>
+        <ul  class='collapsedGroup'>
+
+        <li class='branchNode collapsedMid'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse January branch' /><span class='branchLabel treeItem collapsed'><span>January</span></span>
+            <ul  class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Invoice A</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Invoice B</span></span>
+            </li>
+            <li class='leafLast'>
+            <span class='treeItem leafLabel'><span>Invoice C</span></span>
+
+            </li>
+            </ul>
+        </li>
+        <li class='branchNode collapsedMid'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse February branch' /><span class='branchLabel treeItem collapsed'><span>February</span></span>
+            <ul  class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Invoice D</span></span>
+
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Invoice E</span></span>
+            </li>
+            <li class='leafLast'>
+            <span class='treeItem leafLabel'><span>Invoice F</span></span>
+            </li>
+            </ul>
+
+        </li>
+        <li class='branchNode collapsedLast'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse March branch' /><span class='branchLabel treeItem collapsed'><span>March</span></span>
+            <ul class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel' >Invoice G</span>
+            </li>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Invoice H</span></span>
+            </li>
+            <li class='leafLast'>
+            <span class='treeItem leafLabel'><span>Invoice I</span></span>
+            </li>
+            </ul>
+        </li>
+
+        </ul>
+    </li>
+    <li class='branchNode collapsedMid'>
+        <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Job Applications branch' /><span class='branchLabel treeItem collapsed'><span>Job Applications</span></span>
+        <ul  class='collapsedGroup'>
+
+        <li class='branchNode collapsedMid'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Unhandled branch' /><span class='branchLabel treeItem collapsed'><span>Unhandled</span></span>
+
+            <ul  class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application A</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application B</span></span>
+            </li>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application C</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application D</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application E</span></span>
+
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application F</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Application G</span></span>
+            </li>
+            <li class='leafLast'>
+
+            <span class='treeItem leafLabel'><span>Application H</span></span>
+            </li>
+            </ul>
+        </li>
+        <li class='branchNode collapsedMid'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Accepted branch' /><span class='branchLabel treeItem collapsed'><span>Accepted</span></span>
+            <ul  class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Peter Merchant</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Susan Jennings</span></span>
+            </li>
+            <li class='leafLast'>
+            <span class='treeItem leafLabel'><span>John Smith</span></span>
+
+            </li>
+            </ul>
+        </li>
+        <li class='branchNode collapsedLast'>
+            <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse Declined branch' /><span class='branchLabel treeItem collapsed'><span>Declined</span></span>
+            <ul  class='collapsedGroup'>
+
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>John Doe</span></span>
+
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Jack Smith</span></span>
+            </li>
+            <li class='leafMid'>
+            <span class='treeItem leafLabel'><span>Hannah Boyd</span></span>
+            </li>
+            <li class='branchNode collapsedLast'>
+
+                <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_last.png' alt='collapse Reconsider? branch' /><span class='branchLabel treeItem collapsed'><span>Reconsider?</span></span>
+                <ul  class='collapsedGroup'>
+
+                <li class='leafMid'>
+                <span class='treeItem leafLabel'><span>Sandra johnson</span></span>
+                </li>
+                <li class='leafMid'>
+                <span class='treeItem leafLabel'><span>Steve Faulkner</span></span>
+
+                </li>
+                <li class='leafMid'>
+                <span class='treeItem leafLabel'><span>Hans Hillen</span></span>
+                </li>
+                <li class='leafLast'>
+                <span class='treeItem leafLabel'><span>Jason Maple</span></span>
+                </li>
+                </ul>
+
+            </li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li class='branchNode collapsedMid'>
+        <img class='twisty'  src='../../../tpglib/JS/Controls/Tree/images/collapsed_mid.png' alt='collapse Manuals branch' /><span class='branchLabel treeItem collapsed'><span>Manuals</span></span>
+        <ul  class='collapsedGroup'>
+
+        <li class='leafMid'>
+        <span class='treeItem leafLabel'><span>Fax</span></span>
+        </li>
+        <li class='leafMid'>
+        <span class='treeItem leafLabel'><span>Copier</span></span>
+        </li>
+        <li class='leafMid'>
+
+        <span class='treeItem leafLabel'><span>Scanner</span></span>
+        </li>
+        <li class='leafLast'>
+        <span class='treeItem leafLabel'><span>Laptop</span></span>
+        </li>
+        </ul>
+    </li>
+    <li class='leafMid'>
+
+    <span class='treeItem leafLabel'><span>Welcome Letter</span></span>
+    </li>
+    <li class='leafMid'>
+    <span class='treeItem leafLabel'><span>Getting Started</span></span>
+    </li>
+    <li class='leafLast'>
+    <span class='treeItem leafLabel'><span>Trouble Shooting</span></span>
+
+    </li>
+</ul>
+<a href="#">Placeholder link 3</a>
+</div>
+<h2>Instructions For Both Widgets:</h2>
+<ul>
+	<li>Use the tab key or mouse to move focus to the tree.</li>
+	<li>use the up and down arrow keys to navigate between tree items.</li>
+	<li>Use the left and right arrow keys to expand or collapse a branch.</li>
+	<li>Multiple selection can be achieved in the following ways:
+		<ul>
+			<li>Clicking on a tree item label, or moving to it using the arrow keys, will destroy the current selection and select the newly focused tree item.</li>
+			<li>Clicking on the visual checkboxes next of a tree item label will add or remove the tree item to the current selection (for mouse users only).</li>
+			<li>Holding down the Ctrl key when navigating the tree with the arrow keys will keep the current selection in tact, and will only move focus. To add or remove a tree item to the current selection, hold down the Ctrl key and press the Space bar. Similarly, holding down Ctrl when clicking on a tree item label will achieve the same for mouse users.</li>
+			<li>Holding down the Shift key when using arrow key navigation will create a contiguous selection. Similarly, mouse users can hold down the shift key when clicking on a tree item label.</li>
+		</ul>
+	</li>
+</ul>
+<h2>ARIA Used</h2>
+
+<ul>
+	<li>Roles: tree, treeitem, group</li>
+	<li>States / properties : aria-expanded, aria-selected, aria-hidden, aria-multiselectable</li>
+</ul>
+
+<h2>Issues</h2>
+<ul>
+	<li>In Internet Explorer using Ctrl or Shift in combination with mouse clicks will incorrectly select the the text of the tree besides selecting the actual treeitems.</li>
+	<li>For Mac based browsers, Ctrl + Click and Ctrl + Space will trigger a context menu</li>
+	<li>Opera support very buggy</li>
+</ul>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/TPG/Samples/aria/tree/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:05 GMT -->
+</html>

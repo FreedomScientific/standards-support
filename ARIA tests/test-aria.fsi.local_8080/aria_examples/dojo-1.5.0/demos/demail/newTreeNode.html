@@ -1,0 +1,22 @@
+<div class="dijitTreeNode subNode" waiRole="presentation">
+	<div dojoAttachPoint="rowNode" class="dijitTreeRow" waiRole="presentation" 
+		dojoAttachEvent="onmouseenter:_onMouseEnter, onmouseleave:_onMouseLeave">
+		<div dojoAttachPoint="detailNode" class="subNodeDetail">${detail}</div>
+		<img src="%24%7b_blankGif%7d.html" alt="" dojoAttachPoint="expandoNode" 
+			class="dijitTreeExpando" waiRole="presentation">
+		<span dojoAttachPoint="expandoNodeText" 
+			class="dijitExpandoText" waiRole="presentation"></span>
+		<span dojoAttachPoint="contentNode" 
+			class="dijitTreeContent" waiRole="presentation">
+			<img src="%24%7b_blankGif%7d.html" alt="" dojoAttachPoint="iconNode" 
+				class="dijitTreeIcon" waiRole="presentation">
+			<span dojoAttachPoint="labelNode" 
+				class="dijitTreeLabel" wairole="treeitem" tabindex="-1" 
+				waiState="selected-false" 
+				dojoAttachEvent="onfocus:_onLabelFocus, onblur:_onLabelBlur"></span>
+		</span>
+	</div>
+	<div dojoAttachPoint="containerNode" 
+		class="dijitTreeContainer" waiRole="presentation" 
+		style="display: none;"></div>
+</div>

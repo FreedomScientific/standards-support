@@ -1,0 +1,5 @@
+JAWS should announce the toolbar as part of the virtual buffer.
+In forms mode, use the left and right arrow keys to move between the toolbar buttons.
+Note: for the last button in the toolbar, jaws may announce "forward". This is the description of this button (probably an error by the author). But this is not a jaws bug.
+
+BL:  I corrected the issue with the last button saying "forward"  The author had set the title attribute to "forward" and alt to "save to youtube" I set the title to "save to youtube".

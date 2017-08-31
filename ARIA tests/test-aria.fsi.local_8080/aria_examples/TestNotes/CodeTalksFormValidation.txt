@@ -1,0 +1,3 @@
+Make sure to enter invalid information when testing. JAWS should speak alerts when you tab away.
+JAWS should announce the required fields as required, both in and out of forms mode.
+When you enter invalid data, then tab away and back, jaws should announce the edits as having a state of "invalid entry".

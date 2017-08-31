@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/simple-slider.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:24 GMT -->
+<head>
+<title>ARIA Slider</title>
+<script>
+<!--
+function displaySlider(slider)
+{
+  var valueNow = parseInt(slider.getAttribute("aria-valuenow"));
+  var valueMin = parseInt(slider.getAttribute("aria-valuemin"));
+  var valueMax = parseInt(slider.getAttribute("aria-valuemax"));
+
+  // I'm sure there's something better than using a loop, but I don't feel like looking it up right now
+  var sliderText = "(";
+  for (var count = valueMin; count < valueNow; count ++) {
+    sliderText += "-";
+  }
+  sliderText += "|";
+  for (var count = valueNow; count < valueMax; count ++) {
+    sliderText += "-";
+  }
+  sliderText += ")";
+  slider.firstChild.data = sliderText;
+  return false;
+}
+
+function handleSliderKey(slider, event)
+{
+  var valueNow = parseInt(slider.getAttribute("aria-valuenow"));
+  var valueMin = parseInt(slider.getAttribute("aria-valuemin"));
+  var valueMax = parseInt(slider.getAttribute("aria-valuemax"));
+  var delta = 0;
+  var kLeft = 37;
+  var kRight = 39;
+  var kHome = 36;
+  var kEnd = 35;
+  if (event.keyCode == kLeft) {
+    delta = -5;
+  }
+  else if (event.keyCode == kRight) {
+    delta = 5;
+  }
+  else if (event.keyCode == kHome) {
+    delta = -( valueNow - valueMin );
+  }
+  else if (event.keyCode == kEnd) {
+    delta = valueMax - valueNow
+  }
+  else {
+    return true;
+  }
+
+  valueNow += delta;
+  if (valueNow < valueMin) {
+    valueNow = valueMin;
+  }
+  if (valueNow > valueMax) {
+    valueNow = valueMax;
+  }
+  slider.setAttribute("aria-valuenow", valueNow);
+
+  displaySlider(slider);
+}
+-->
+</script>
+</head>
+
+<body onload="displaySlider(document.getElementById('slider1'));">
+  <p>This example requires Firefox 3 or later to work with screen readers -- it uses ARIA properties without namespaces, which is now the correct markup.</p>
+  <p>Here's a slider that you can focus and modify using left/right/home/end. It's not pretty, this is just here to show what's basically possible. It can also be made to look like a desktop slider by using positioned images.</p>
+  0
+  <span tabindex="0" role="slider" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"
+                     id="slider1" title="My slider" onkeydown="return handleSliderKey(this, event)">
+    --
+  </span>
+  100
+  <p id="revision">$Revision: 180 $</p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/simple-slider.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:24 GMT -->
+</html>

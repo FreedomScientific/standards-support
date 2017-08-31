@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/tooltip/tooltip.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:01 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<style>
+  [role='tooltip'] { width: 60%; border: 1px solid black; background-color: beige; }
+  [aria-hidden='true'] { display: none; }
+</style>
+<script>
+  function showTip(id) {
+    tip = document.getElementById(id);
+    tip.removeAttribute('aria-hidden');
+    tip.className+=''; // kludge
+  }
+  function hideTip(id) {
+    tip = document.getElementById(id);
+    tip.setAttribute('aria-hidden','true');
+    tip.className+=''; // kludge
+  }
+  function keyDown(e) {
+    var kc = (window.event)? event.keyCode : e.keyCode;
+    var Esc = (window.event) ? 27 : e.DOM_VK_ESCAPE;
+    if(kc==Esc) {
+      hideTip('desc');
+      return false;
+    }
+    return true;
+  }
+</script>
+</head><body>
+  <p>
+      Hello this link has a tooltip:
+    <a href="../../../../../external.html?link=http://www.google.com/" aria-describedby="desc"
+      onfocus="showTip('desc');"
+      onblur="hideTip('desc');"
+        onmouseover="showTip('desc');"
+        onmouseout="hideTip('desc');"
+        onkeydown="return keyDown(event);"
+     >
+      Google
+     </a>
+    <span aria-hidden="true" id="desc" role="tooltip">Some tooltip</span>
+  </p>
+<p id="revision">$Revision: 180 $</p>
+
+</body>
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/tooltip/tooltip.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:01 GMT -->
+</html>

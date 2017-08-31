@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="../../../../../../../../external.html?link=http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/tpg/Samples/aria/slider/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:28 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ARIA Slider Examples - TPG</title>
+<link rel="stylesheet" type="text/css" href="../../../tpglib/JS/Controls/Slider/css/Slider.css" />
+<link rel="stylesheet" type="text/css" href="css/sliderdemo.css" />
+<script type="text/javascript"  src="../../../tpglib/JS/Utilities.js"></script>
+<script type="text/javascript"  src="../../../tpglib/JS/Controls/Slider/Slider.js"></script>
+</head>
+
+<body>
+<form action="../../../../../../../../external.html?link=http://test-aria.fsi.local:8080/aria_examples/jquery/src/tpg/Samples/aria/slider/index.html" method="get" >
+<h1>Aria Slider Examples - the Paciello Group</h1>
+<p>
+This page contains several examples involving the TPG slider. Note that these sliders do not perform any action, and their labels are just examples.
+</p>
+<p>Read the <a href="../../../../../../../../external.html?link=http://www.paciellogroup.com/blog/?p=69">associated article</a></p>
+
+<div class="samples">
+<h2>Basic Sliders</h2>
+
+<p>Using a text input element</p> 
+<label id="simple1Lbl"  for="simple1">Volume</label>
+<input id="simple1" type="text" maxlength="3" class="tpgSlider tpg_thickness-1em tpg_railLength-15em tpg_thumbFocus-false tpg_range-0-100 tpg_valueText-% tpg_labelledby-simple1Lbl tpg_dynamicLabel-true" />
+<h2>Using a select element</h2>
+<label id="s1SelectLbl" for="s1Select" >Food Quality</label>
+<select id="s1Select" class="tpgSlider tpg_thickness-1em tpg_railLength-25em tpg_chunkStepSize-1 tpg_labelledby-s1SelectLbl tpg_removeInput-true ">
+   <option value="1">terrible</option>
+   <option value="2">bad</option>
+   <option value="3">decent</option>
+   <option value="4">good</option>
+   <option value="5">excellent</option>
+</select>
+<h2>Focus Placement</h2>
+<p>Thumb is Focusable</p>
+
+<label id="s5Lbl"  for="s5">Filesize</label>
+<input id="s5" type="text" maxlength="4" class=" tpgSlider tpg_thickness-1em tpg_railLength-20em tpg_thumbFocus-true tpg_range-0-1000 tpg_labelledby-s5Lbl tpg_dynamicLabel tpg_valueText-MB" />
+
+<p>rail is focusable</p>
+<label id="s2SelectLbl" for="s2Select">The staff was helpful</label>
+<select id="s2Select" class="tpgSlider tpg_thickness-1em tpg_railLength-25em tpg_chunkStepSize-1 tpg_labelledby-s2SelectLbl tpg_removeInput-true tpg_dynamicLabel-true">
+   <option value="1">Strongly disagree</option>
+   <option value="2">Disagree</option>
+   <option value="3">Neutral</option>
+   <option value="4">Agree</option>
+   <option value="5">Strongly agree</option>
+</select>
+
+<h2>scaling</h2>
+<p>To see the different scaling effects, increase your browser's text size. In Firefox, use the 'CTRL +(plus)' shortcut. In Internet Explorer the text size can be changed under 'view &gt; text size' in the browser menu.</p>
+<p>Fixed width, fixed height</p>
+<label id="s1Lbl" for="s1" >Red</label>
+<input id="s1" type="text" maxlength="4" class=" tpgSlider tpg_thickness-16px tpg_railLength-200px tpg_thumbFocus-false tpg_range-0-55 tpg_chunkStepSize-20 tpg_valueText-% tpg_labelledby-s1Lbl tpg_dynamicLabel-true" />
+<p>Fixed width, relative height</p>
+<label id="s2Lbl"  for="s2">Green</label>
+<input id="s2" type="text" maxlength="4" class="  tpgSlider tpg_thickness-1em tpg_railLength-200px tpg_thumbFocus-false tpg_range-0-255 tpg_labelledby-s2Lbl" />
+<p>Relative width, relative height</p>
+<label id="s3Lbl"  for="s3">Blue</label>
+<input id="s3" type="text" maxlength="4" class="tpgSlider tpg_thickness-1em tpg_railLength-12.5em tpg_range-0-255 tpg_labelledby-s3Lbl" />
+
+<h2>Vertical Slider</h2>
+<label id="s4Lbl"  for="s5">Minimum Filesize</label>
+<input id="s4" type="text" maxlength="4" class=" tpgSlider tpg_thickness-1em tpg_dynamicLabel-true tpg_railLength-10em tpg_range-0-255 tpg_valueText-MB tpg_orientation-ttb tpg_labelledby-s4Lbl" />
+
+<h2>Using custom limits</h2>
+<input id="simple1xx" type="text" maxlength="3" class="tpgSlider tpg_thickness-1em tpg_railLength-15em tpg_thumbFocus-false tpg_range-200-1000  tpg_stepSize-50 tpg_chunkStepSize-2 tpg_minLimit-300 tpg_maxLimit-800 tpg_valueText-% tpg_labelledby-simple1Lbl tpg_dynamicLabel-true" />
+
+<label id="simple2xxLbl"  for="simple2xx">Volume</label>
+<input id="simple2xx" type="text" maxlength="3" class="tpgSlider tpg_thickness-1em tpg_railLength-15em tpg_thumbFocus-false tpg_range-1000-10000 tpg_stepSize-100 tpg_valueText-% tpg_labelledby-simple2xxLbl tpg_dynamicLabel-true" />
+
+</div>
+</form>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/tpg/Samples/aria/slider/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:35 GMT -->
+</html>

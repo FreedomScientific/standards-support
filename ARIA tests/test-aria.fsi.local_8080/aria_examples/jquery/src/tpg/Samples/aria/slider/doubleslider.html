@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="../../../../../../../../external.html?link=http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/TPG/Samples/aria/slider/doubleslider.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:35 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ARIA Double Slider Examples - TPG</title>
+<link rel="stylesheet" type="text/css" href="../../../tpglib/JS/Controls/Slider/css/Slider-2.css" />
+<link rel="stylesheet" type="text/css" href="css/sliderdemo-2.css" />
+<script type="text/javascript"  src="../../../tpglib/JS/Utilities-2.js"></script>
+<script type="text/javascript"  src="../../../tpglib/JS/Controls/Slider/Slider-2.js"></script>
+</head>
+
+<body>
+<h1>Aria Double Slider Examples - the Paciello Group</h1>
+<p>
+This page contains several examples involving the TPG double slider. Note that these sliders do not perform any action, and their labels are just examples.
+</p>
+<p>Read the <a href="../../../../../../../../external.html?link=http://www.paciellogroup.com/blog/?p=76">associated article</a></p>
+
+<div id="dateSlider" class="tpgDoubleSlider tpg_orientation-ttb tpg_thickness-1em tpg_railLength-15em tpg_chunkStepSize-2 tpg_minElem-s1DblSelectStart tpg_maxElem-s1DblSelectEnd tpg_dynamicLabel-true">
+<label for="s1DblSelectStart" id="s1DblSelectStartLbl">Must leave after</label>
+<select id="s1DblSelectStart" class=" tpg_labelledby-s1DblSelectStartLbl">
+		<option value="1am">1am</option>
+		<option value="2am">2am</option>
+		<option value="3am">3am</option>
+		<option value="4am">4am</option>
+		<option value="5am">5am</option>
+		<option value="6am">6am</option>
+		<option value="7am">7am</option>
+		<option value="8am">8am</option>
+		<option selected="selected" value="9am">9am</option>
+		<option value="10am">10am</option>
+		<option value="11am">11am</option>
+		<option value="Noon">Noon</option>
+		<option value="1pm">1pm</option>
+		<option value="2pm">2pm</option>
+		<option value="3pm">3pm</option>
+		<option value="4pm">4pm</option>
+		<option value="5pm">5pm</option>
+		<option value="6pm">6pm</option>
+		<option value="7pm">7pm</option>
+		<option value="8pm">8pm</option>
+		<option value="9pm">9pm</option>
+		<option value="10pm">10pm</option>
+		<option value="11pm">11pm</option>
+		<option value="midnight">Midnight</option>
+		
+</select>
+<label for="s1DblSelectEnd" id="s1DblSelectEndLbl">Must leave before</label>
+<select id="s1DblSelectEnd" class="tpg_labelledby-s1DblSelectEndLbl">
+		<option value="1am">1am</option>
+		<option value="2am">2am</option>
+		<option value="3am">3am</option>
+		<option value="4am">4am</option>
+		<option value="5am">5am</option>
+		<option value="6am">6am</option>
+		<option value="7am">7am</option>
+		<option value="8am">8am</option>
+		<option value="9am">9am</option>
+		<option value="10am">10am</option>
+		<option value="11am">11am</option>
+		<option value="Noon">Noon</option>
+		<option value="1pm">1pm</option>
+		<option value="2pm">2pm</option>
+		<option value="3pm">3pm</option>
+		<option value="4pm">4pm</option>
+		<option value="5pm">5pm</option>
+		<option value="6pm">6pm</option>
+		<option value="7pm">7pm</option>
+		<option value="8pm">8pm</option>
+		<option value="9pm" selected="selected">9pm</option>
+		<option value="10pm">10pm</option>
+		<option value="11pm">11pm</option>
+		<option value="midnight">Midnight</option>
+</select>
+
+<p>Horizontal double slider</p> 
+<div id="doubleSlider1" class="sliderDiv tpgDoubleSlider tpg_dynamicLabel-true tpg_railLength-15em tpg_range-0-500 tpg_valueText-MB">
+	<label id="ds1MinLbl"  for="ds1Min">Minimum Filesize</label>
+	<input id="ds1Min" type="text" maxlength="4" class=" tpg_labelledby-ds1MinLbl tpg_defaultValue-20" />
+	<input id="ds1Max" type="text" maxlength="4" class=" tpg_labelledby-ds1MaxLbl tpg_defaultValue-400" />
+	<label id="ds1MaxLbl" for="ds1Max" >Maximum Filesize</label> 
+</div>
+
+<p>Vertical double slider, thumbs not bound</p> 
+<div id="priceRange" class="sliderDiv tpgDoubleSlider tpg_thickness-1em tpg_dynamicLabel-true tpg_railLength-15em tpg_range-100-1000 tpg_stepSize-50 tpg_valueText-dollar tpg_orientation-vertical tpg_bindThumbs-true">
+	<label id="ds2MinLbl"  for="ds2Min">Minimum Amount</label>
+	<input id="ds2Min" type="text" maxlength="4" class=" tpg_labelledby-ds2MinLbl" />
+	<input id="ds2Max" type="text" maxlength="4" class=" tpg_labelledby-ds2MaxLbl" />
+	<label id="ds2MaxLbl"  for="ds2Max">maximum Amount</label> 
+</div>
+
+</div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/jquery/src/TPG/Samples/aria/slider/doubleslider.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:37 GMT -->
+</html>

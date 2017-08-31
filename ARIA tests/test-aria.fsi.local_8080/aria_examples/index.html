@@ -1,0 +1,1392 @@
+<html>
+
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:05 GMT -->
+<head>
+  <title> ARIA examples </title>
+</head>
+
+<body>
+
+<nav aria-labelledby="toc">
+  <h1 id="toc"> Table of Content </h1>
+  <ul>
+    <li> <a href="#roles">Roles </a>
+      <ul>
+        <li> <a href="#controls"> Controls</a>
+          <ul>
+            <li> <a href="#alertdialog"> <code> alertdialog </code> </a>  </li>
+            <li> <a href="#application"> <code> application </code> </a>  </li>
+            <li> <a href="#article"> <code> article </code> </a>  </li>
+            <li> <a href="#button"> <code> button </code> </a>  </li>
+            <li> <a href="#checkbox"> <code> checkbox</code> </a>  </li>
+            <li> <a href="#grid"> <code> columnheader </code> </a>  </li>
+            <li> <a href="#combobox"> <code> combobox </code> </a>  </li>
+            <li> <a href="#definition"> <code> definition</code> </a>  </li>
+            <li> <a href="#dialog"> <code> dialog </code> </a>  </li>
+            <li> <a href="#directory"> <code> directory </code> </a>  </li>
+            <li> <a href="#document"> <code> document </code> </a>  </li>
+            <li> <a href="#grid"> <code> grid </code> </a>  </li>
+            <li> <a href="#grid"> <code> gridcell</code> </a>  </li>
+            <li> <a href="#group"> <code> group </code> </a>  </li>
+            <li> <a href="#heading"> <code> heading </code> </a>  </li>
+            <li> <a href="#img"> <code> img </code> </a>  </li>
+            <li> <a href="#link"> <code> link </code> </a>  </li>
+            <li> <a href="#list"> <code> list </code> </a>  </li>
+            <li> <a href="#listbox"> <code> listbox </code> </a>  </li>
+            <li> <a href="#list"> <code> listitem </code> </a>  </li>
+            <li> <a href="#math"> <code> math </code> </a>  </li>
+            <li> <a href="#menu"> <code> menu </code> </a>  </li>
+            <li> <a href="#menu"> <code> menubar </code> </a>  </li>
+            <li> <a href="#menu"> <code> menuitem  </code> </a>  </li>
+            <li> <a href="#menu"> <code> menuitemcheckbox </code> </a>  </li>
+            <li> <a href="#menu"> <code> menuitemradio  </code> </a>  </li>
+            <li> <a href="#note"> <code> note </code> </a>  </li>
+            <li> <a href="#presentation"> <code> presentation </code> </a>  </li>
+            <li> <a href="#progressbar"> <code> progressbar </code> </a>  </li>
+            <li> <a href="#radio"> <code> radio & radiogroup</code> </a>  </li>
+            <li> <a href="#region"> <code> region </code> </a>  </li>
+            <li> <a href="#grid"> <code> row </code> </a>  </li>
+            <li> <a href="#grid"> <code> rowgroup </code> </a>  </li>
+            <li> <a href="#grid"> <code> rowheader </code> </a>  </li>
+            <li> <a href="#separator"> <code> separator </code> </a>  </li>
+            <li> <a href="#scrollbar"> <code> scrollbar </code> </a>  </li>
+            <li> <a href="#slider"> <code> slider </code> </a>  </li>
+            <li> <a href="#spinbutton"> <code> spinbutton </code> </a>  </li>
+            <li> <a href="#tab"> <code> tab & tablist & tabpanel </code> </a>  </li>
+            <li> <a href="#textbox"> <code> textbox </code> </a>  </li>
+            <li> <a href="#toolbar"> <code> toolbar </code> </a>  </li>
+            <li> <a href="#tooltip"> <code> tooltip </code> </a>  </li>
+            <li> <a href="#tree"> <code> tree & treeitem </code> </a>  </li>
+            <li> <a href="#treegrid"> <code>  treegrid </code> </a>  </li>
+          </ul>
+        </li>
+        <li> <a href="#regions"> Regions</a>  </li>
+        <li> <a href="#liveregions"> Live Regions </a>
+          <ul>
+            <li> <a href="#alert"> <code> alert </code> </a>  </li>
+            <li> <a href="#arialive"> <code> aria-live</code> </a>  </li>
+            <li> <a href="#log"> <code> log </code> </a>  </li>
+            <li> <a href="#marquee"> <code> marquee</code> </a>  </li>
+            <li> <a href="#status"> <code> status</code> </a>  </li>
+            <li> <a href="#timer"> <code> timer </code> </a>  </li>
+          </ul>
+        </li>
+      </ul>
+    <li> <a href="#states_and_properties"> States and Properties</a>
+      <ul>
+        <li> <a href="#controls_related"> Control Related </a>
+          <ul>
+            <li> <a href="#aria_autocomplete"> <code> aria-autocomplete</code> </a>  </li>
+            <li> <a href="#aria_checked"> <code> aria-checked </code> </a>  </li>
+            <li> <a href="#aria_disabled"> <code> aria-disabled </code> </a>  </li>
+            <li> <a href="#aria_expanded"> <code> aria-expanded   </code> </a>  </li>
+            <li> <a href="#aria_haspopup"> <code> aria-haspopup  </code> </a>  </li>
+            <li> <a href="#aria_hidden"> <code> aria-hidden </code> </a>  </li>
+            <li> <a href="#aria_invalid"> <code> aria-invalid   </code> </a>  </li>
+            <li> <a href="#aria_label"> <code> aria-label </code> </a>  </li>
+            <li> <a href="#aria_level"> <code> aria-level </code> </a>  </li>
+            <li> <a href="#aria_multiline"> <code> aria-multiline </code> </a>  </li>
+            <li> <a href="#aria_multiselectable"> <code> aria-multiselectable </code> </a>  </li>
+            <li> <a href="#aria_orientation"> <code> aria-orientation </code> </a>  </li>
+            <li> <a href="#aria_pressed"> <code> aria-pressed   </code> </a>  </li>
+            <li> <a href="#aria_readonly"> <code> aria-readonly  </code> </a>  </li>
+            <li> <a href="#aria_required"> <code> aria-required  </code> </a>  </li>
+            <li> <a href="#aria_selected"> <code> aria-selected  </code> </a>  </li>
+            <li> <a href="#aria_sort"> <code> aria-sort </code> </a>  </li>
+            <li> <a href="#aria_valuemax"> <code> aria-valuemax  </code> </a>  </li>
+            <li> <a href="#aria_valuemin"> <code> aria-valuemin </code> </a>  </li>
+            <li> <a href="#aria_valuenow"> <code> aria-valuenow </code> </a>  </li>
+            <li> <a href="#aria_valuetext"> <code> aria-valuetext </code> </a>  </li>
+          </ul>
+        </li>
+        <li> <a href="#liveregions_related"> Live Regions Related </a>
+          <UL>
+            <li> <a href="#aria_atomic"> <code> aria-atomic </code> </a>  </li>
+            <li> <a href="#aria_busy"> <code> aria-busy </code> </a>  </li>
+            <li> <a href="#aria_live"> <code> aria-live </code> </a>  </li>
+            <li> <a href="#aria_relevant"> <code> aria-relevant </code> </a>  </li>
+          </UL>
+        </li>
+        <li> <a href="#relationships_and_associations"> Relationships and associations </a>
+          <UL>
+            <li> <a href="#aria_activedescendant"> <code> aria-activedescendant </code> </a>  </li>
+            <li> <a href="#aria_controls"> <code> aria-controls </code> </a>  </li>
+            <li> <a href="#aria_describedby"> <code> aria-describedby </code> </a>  </li>
+            <li> <a href="#aria_flowto"> <code> aria-flowto </code> </a>  </li>
+            <li> <a href="#aria_labelledby"> <code> aria-labelledby </code> </a>  </li>
+            <li> <a href="#aria_owns"> <code> aria-owns</code> </a>  </li>
+            <li> <a href="#aria_posinset"> <code> aria-posinset </code> </a>  </li>
+            <li> <a href="#aria_setsize"> <code> aria-setsize </code> </a>  </li>
+          </UL>
+        </li>
+      </ul>
+    </li>
+    <li> <a href="#complex_examples"> Complex examples </a>
+      <UL>
+        <li> <a href="#dojo_widgets"> Dojo-1.5.0 widgets form example  </a>  </li>
+        <li> <a href="#dojo_mail"> Dojo-1.5.0 mail example </a>  </li>
+        <li> <a href="#jquery"> JQuery examples </a>  </li>
+      </UL>
+    </li>
+    <li> <a href="#new_from_web"> New ARIA examples from different sources around the web </a>
+      <UL>
+        <li> <a href="#whatsock"> <code> Examples from whatsock.com </code> </a>  </li>
+        <li> <a href="#misc"> <code> Miscellaneous </code> </a>  </li>
+      </UL>
+    </li>
+  </ul>
+</nav>
+
+<p>
+  The examples on this page come from the following sources/toolkits:
+  <ul>
+    <li>
+      <a href="../../external.html?link=http://wiki.codetalks.org/">CodeTalks</a>
+    </li>
+    <li>
+      <a href="../../external.html?link=http://cksource.com/">CKEditor 3.6.5</a>
+    </li>
+    <li>
+      dojo-1.5.0
+    </li>
+    <li>
+      extJS-3.2.1)
+    </li>
+    <li>
+      XGWT (Google Web Toolkit)
+    </li>
+    <li>
+      JQuery
+    </li>
+    <li>
+      YUI2 (Yahoo User Interface)
+    </li>
+    <li>
+      YUI3 (Yahoo User Interface)
+    </li>
+  </ul>
+</p>
+
+<h1 id="roles"> Roles </h1>
+
+<p>
+  The following ARIA roles are taken from <a href="../../external.html?link=http://www.w3.org/TR/wai-aria/roles#role_definitions">http://www.w3.org/TR/wai-aria/roles#role_definitions</a>.
+</p>
+<p>
+  Certain roles may only exist in combination with one another. A grid, for example, must contain gridcell objects to make a properly formed ARIA grid control. In cases where a control must be formed using two or more roles, these roles are listed under a single heading. These include grids, lists, menus, radio buttons, tables, tabs, and trees.
+</p>
+<p>
+  Regions, even though they are technically roles, have their own sections and are not listed individually.
+</p>
+<p>
+  Those roles designated as "abstract" in the WAI-ARIA role ontology have been removed from the following set of examples because abstract roles are used for the ontology only and "Authors are instructed not to use this role in content." The abstract roles are:
+  <ul>
+    <li> <code> command </code> </li>
+    <li> <code> composite </code> </li>
+    <li> <code> input </code> </li>
+    <li> <code> landmark </code> </li>
+    <li> <code> range </code> </li>
+    <li> <code> roletype </code> </li>
+    <li> <code> section </code> </li>
+    <li> <code> sectionhead </code> </li>
+    <li> <code> select </code> </li>
+    <li> <code> structure </code> </li>
+    <li> <code> widget </code> </li>
+    <li> <code> window </code> </li>
+  </ul>
+</p>
+
+<h2 id="controls"> Controls </h2>
+
+<h3 id="alertdialog"> <code> alertdialog </code> </h3>
+
+<p> A type of dialog that contains an alert message, where initial focus goes to an element within the dialog
+  <dl>
+    <dt>
+      <a href="yui_2.9.0/examples/container/container-ariaplugin_clean.html">YUI2 example (external)</a>
+    </dt>
+    <dd> Activate the "show dialog 3 button". </dd>
+  </dl>
+</p>
+
+<h3 id="application"> <code> application </code> </h3>
+
+<p> See examples of CodeTalks combobox, codeTalks grid.htm, and CodeTalks alerts.
+  <dl>
+    <dt>  <a href="misc/applicationModeTest.html"> Example </a>  </dt>
+  </dl>
+</p>
+
+<h3 id="article"> <code> article </code> </h3>
+
+<p> A section of a page that consists of a composition that forms an independent part of a document,
+  page, or site. An article is not a navigational landmark, but may be nested to form a discussion
+  where assistive technologies could pay attention to article nesting to assist the user in
+  following the discussion. An article could be a forum post, a magazine or newspaper article,
+  a web log entry, a user-submitted comment, or any other independent item of content.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="button"> <code> button </code> </h3>
+
+<p> An input that allows for user-triggered actions when clicked or pressed.
+    <dl>
+      <dt>  <a href="CodeTalks/widgets/button/button.html">CodeTalks example</a> </dt>
+      <dt>   <a href="yui_2.9.0/examples/button/btn_example01_clean.html">YUI2 example (external)</a> </dt>
+    </dl>
+</p>
+
+<h3 id="checkbox"> <code> checkbox </code> </h3>
+
+<p> A checkable input that has three possible values: true, false, or mixed.
+    <dl>
+      <dt> <a href="codetalks/widgets/checkbox/checkbox.html">CodeTalks example 1</a>  </dt>
+      <dd> <a href="TestNotes/CodeTalksCheckbox1.txt">Test Notes</a> </dd>
+
+      <dt> <a href="codetalks/widgets/checkbox/checkbox2.html">CodeTalks example 2</a> </dt>
+      <dd> <a href="TestNotes/CodeTalksCheckbox2.txt">Test Notes</a> </dd>
+
+      <dt> <a href="codetalks/widgets/checkbox/checkbox-tristate.html">CodeTalks tri-state checkbox example</a>  </dt>
+      <dd> <a href="TestNotes/CodeTalksTriStateCheckbox.txt">Test Notes</a> </dd>
+    </dl>
+</p>
+
+<h3 id="combobox"> <code> combobox </code> </h3>
+
+<p> the combined presentation of a single line textfield with a listbox popup. The combobox may be editable.
+  <dl>
+    <dt> <a href="codetalks/widgets/combobox/combo-editable.html">CodeTalks example </a> </dt>
+    <dd> <a href="TestNotes/CodeTalksEditCombo.txt">Test notes</a> </dd>
+  </dl>
+</p>
+
+<h3 id="definition"> <code> definition </code> </h3>
+
+<p> A definition of a term or concept.
+  <dl>
+    <dt>  No examples  </dt>
+  </dl>
+</p>
+
+<h3 id="dialog"> <code> dialog </code> </h3>
+
+<p> A dialog is an application window that is designed to interrupt the current processing of an application
+    in order to prompt the user to enter information or require a response.
+  <dl>
+    <dt>  <a href="dojo-1.5.0/demos/mail/demo.html"> Dojo-1.5.0mail example </a>  </dt>
+    <dd>  <a href="testnotes/DojoMailExample.txt"> Test notes </a>   </dd>
+    <dt>  <a href="yui_2.9.0/examples/container/container-ariaplugin_clean.html"> YUI2 example (external) </a> </dt>
+  </dl>
+</p>
+
+<h3 id="directory"> <code> directory </code> </h3>
+
+<p> A list of references to members of a group, such as a static table of contents.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="document"> <code> document </code> </h3>
+
+<p> A region containing related information that is declared as document content, as opposed to a web application.
+</p>
+
+<p> To JAWS, a document role is relevant when the document is embedded within a page containing a body tag with the role of "application".
+  <dl>
+    <dt> <a href="misc/applicationModeTest.html"> example </a>  </dt>
+  </dl>
+</p>
+
+<h3 id="grid"> <code> grid </code> </h3>
+
+<p> Grids are a composite control made up of the following ARIA roles
+  <dl>
+    <dt> columnheader </dt>
+    <dd> A cell containing header information for a column. </dd>
+    <dt> grid </dt>
+    <dd> A grid is an interactive control which contains cells of tabular data arranged in rows and columns, like a table. </dd>
+    <dt> gridcell </dt>
+    <dd> A cell in a grid or treegrid. </dd>
+    <dt> row </dt>
+    <dd> A row of cells in a grid. </dd>
+    <dt> rowgroup </dt>
+    <dd> A group containing one or more row elements in a grid. </dd>
+    <dt> rowheader </dt>
+    <dd> A cell containing header information for a row in a grid. </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt>  <a href="codetalks/widgets/DatePicker/datepicker.sample.html"> CodeTalks Datepicker Example </a> </dt>
+    <dd>  <a href="TestNotes/CodetalksDatePicker.txt"> Test notes </a> </dd>
+    <dt>  <a href="codetalks/widgets/grid/grid.html"> CodeTalks Example 1 </a> </dt>
+    <dd>  <a href="TestNotes/CodetalksGrid1.txt"> Test notes </a>  </dd>
+    <dt>  <a href="codetalks/widgets/grid/grid.sample.html"> CodeTalks Example 2 </a> </dt>
+    <dd>  <a href="TestNotes/CodetalksGrid2.txt"> Test notes </a> </dd>
+  </dl>
+</p>
+
+<h3 id="group"> <code> group </code> </h3>
+
+<p> A set of user interface objects which are not intended to be included in a page summary or table of contents by assistive technologies.
+  <dl>
+    <dt>  <a href="CodeTalks/widgets/button/button.html"> CodeTalks example </a>   </dt>
+    <dd>  <a href="TestNotes/CodeTalksGroup.txt"> Test notes </a>   </dd>
+    <dt>  <a href="jquery/src/group_issue.html"> JQuery group example </a>   </dt>
+    <dd>  Make sure the group label isn't read twice when tabbing to the edit field.  </dd>
+  </dl>
+</p>
+
+<h3 id="heading"> <code> heading </code> </h3>
+
+<p> A heading for a section of the page.
+  <dl>
+    <dt>  <a href="misc/heading.html"> Authoring practices heading example </a>  </dt>
+  </dl>
+</p>
+
+<h3 id="img"> <code> img </code> </h3>
+
+<p> A container for a collection of elements that form an image.
+  <dl>
+    <dt>  No examples </dt>
+  </dl>
+</p>
+
+<h3 id="link"> <code> link </code> </h3>
+
+<p> An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource. Also see button.
+  <dl>
+    <dt> <a href="codetalks/widgets/link/link.html"> CodeTalks Example 1 </a>  </dt>
+    <dd> <a href="TestNotes/CodeTalksLink.txt"> Test notes </a> </dd>
+    <dt> <a href="codetalks/widgets/link/link.sample.html"> CodeTalks Example 2 </a> </dt>
+  </dl>
+</p>
+
+<h3 id="list"> <code> list & listitem </code> </h3>
+
+<p> A list is a non-interactive composite element made up of the following roles:
+  <dl>
+    <dt> list </dt>
+    <dd> A group of non-interactive list items. Also see listbox. </dd>
+    <dt> listitem </dt>
+    <dd> A single item in a list or directory. </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/enhanced-html-forms/list.html"> CodeTalks example </a> </dt>
+  </dl>
+</p>
+
+<h3 id="listbox"> <code> listbox </code> </h3>
+
+<p> A listbox is a composite control made up of the following roles:
+  <dl>
+    <dt>  listbox  </dt>
+    <dd>  A control that allows the user to select one or more items from a list of choices. Also see combobox and list. </dd>
+    <dt>  option  </dt>
+    <dd>  A selectable item in a select list. Authors MUST ensure elements with role option are contained in, or owned by, an element with the role listbox. </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/widgets/listbox/listbox.html"> CodeTalks example </a> </dt>
+  </dl>
+</p>
+
+<h3 id="math"> <code> math </code> </h3>
+
+<p>
+Content that represents a mathematical expression. Content with the role math is intended to be marked up in an accessible
+format such as MathML [MATHML], or with another type of textual representation such as TeX or LaTeX, which can be readily
+converted to an accessible format by assistive technologies. Please see the
+<a href="../../external.html?link=http://www.w3.org/TR/wai-aria/roles#role_definitions">definition of ARIA roles</a> for more information.
+</p>
+
+<p>
+  <dl>
+    <dt>  <a href="misc/math.html">Authoring practices math example</a>  </dt>
+  </dl>
+</p>
+
+<h3 id="menu"> <code> menu </code> </h3>
+
+<p> Menus are a composite control made up of the following ARIA roles.
+  <dl>
+    <dt> menu </dt>
+    <dd> A type of control that offers a list of choices to the user. A menu is often a list of common actions or functions that a user can invoke.
+         The menu role is appropriate when a list of menu items is presented in a manner similar to a menu on a desktop application.
+    </dd>
+    <dt> menubar </dt>
+    <dd> A presentation of menu that usually remains visible and is usually presented horizontally. The menubar role is used to create
+         a menu bar similar to those found in Windows, Mac, and Gnome desktop applications. A menu bar is used to create a consistent
+         set of frequently used commands. Authors SHOULD ensure that menubar interaction is similar to the typical menu bar interaction
+         in a desktop graphical user interface.
+    </dd>
+    <dt> menuitem </dt>
+    <dd> An option in a group of choices contained by a menu or menubar. Authors MAY disable a menu item with the aria-disabled attribute.
+         If the menu item has its aria-haspopup attribute set to true, it indicates that the menu item may be used to launch a sub-level
+         menu, and authors SHOULD display a new sub-level menu when the menu item is activated.
+    </dd>
+    <dt> menuitemcheckbox </dt>
+    <dd> A checkable menuitem that has three possible values: true, false, or mixed. </dd>
+    <dt> menuitemradio </dt>
+    <dd> A checkable menuitem in a group of menuitemradio roles, only one of which can be checked at a time. </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt>  <a href="codetalks/widgets/grid/grid.html"> CodeTalks grid Example </a> </dt>
+    <dd>  <a href="TestNotes/CodetalksGrid1.txt"> Test notes </a> </dd>
+    <dt>  <a href="yui_2.9.0/examples/menu/menuwaiaria_source.html"> YUI2 example (external) </a> </dt>
+    <dt>  <a href="../../external.html?link=http://whatsock.com/modules/aria_tabs_menu_modules/demo.htm"> Whatsock menu example (menu section) (external) </a>   </dt>
+    <dt>  <a href="jquery/src/aegisdemo/index.html"> JQuery menubar example (select menubar tab) </a>  </dt>
+		<dt>  <a href="misc/ARIAMenu/menu.html"> A locally hosted copy of OpenAjax Alliance Accessibility Task Force Example 25 - Menubar without role='application'</a>   </dt>
+    <dt>  <a href="../../external.html?link=http://oaa-accessibility.org/example/25/"> OpenAjax Alliance Accessibility Task Force Example 25 - Menubar </a>   </dt>
+    <dt>  <a href="../../external.html?link=http://oaa-accessibility.org/example/26/"> OpenAjax Alliance Accessibility Task Force Example 26 - Menubar: ARIA CSS Selectors </a>   </dt>
+    <dt>  <a href="dojo-2010-11-19/dijit/tests/test_Menu.html"> DOJO menu example </a> </dt>
+  </dl>
+</p>
+
+<h3 id="note"> <code> note </code> </h3>
+
+<p> A section whose content is parenthetic or ancillary to the main content of the resource.
+  <dl>
+    <dt>  No examples  </dt>
+  </dl>
+</p>
+
+<h3 id="presentation"> <code> presentation </code> </h3>
+
+<p> An element whose implicit native role semantics will not be mapped to the accessibility API.
+</p>
+
+<p> In JAWS, elements with the role of "presentation" are not rendered in the virtual buffer.
+  <dl>
+  	<dt> <a href="misc/presentation%20table%20-%20multiple%20rows.html"> table with role=&quot;presentation&quot;</a> </dt>
+  	<dt> <a href="misc/presentation%20nested%20table.html"> table with nested table that has role=&quot;presentation&quot;</a> </dt>
+    <dt> <a href="misc/presentation%20list.html"> &lt;ul&gt; with role =&quot;presentation&quot;</a> </dt>
+  </dl>
+</p>
+
+<h3 id="progressbar"> <code> progressbar </code> </h3>
+
+<p> An element that displays the progress status for tasks that take a long time.
+  <dl>
+    <dt> <a href="codetalks/widgets/progressbar/progressbar-with-assertive.html"> CodeTalks example </a> </dt>
+    <dd> <a href="testNotes/codetalksProgressbar.txt"> Test notes </a> </dd>
+</dl>
+</p>
+
+<h3 id="radio"> <code> radio </code> & <code> radiogroup </code> </h3>
+
+<p> A set of radio buttons is a composite control made up of the following ARIA roles:
+  <dl>
+    <dt> radio </dt>
+    <dd> A checkable input in a group of radio roles, only one of which can be checked at a time.
+         Authors SHOULD ensure that elements with role radio are explicitly grouped in order to
+         indicate which ones affect the same value. This is achieved by enclosing the radio elements
+         in an element with role radiogroup. If it is not possible to make the radio buttons DOM
+         children of the radiogroup, authors SHOULD use the aria-owns attribute on the radiogroup
+         element to indicate the relationship to its children.
+    </dd>
+    <dt> radio group </dt>
+    <dd> A group of radio buttons. A radiogroup is a type of select list that can only have a single
+    entry checked at any one time. Authors SHOULD enforce that only one radio button in a group
+    can be checked at the same time. When one item in the group is checked, the previously checked
+    item becomes unchecked (its aria-checked attribute becomes false).
+    </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/widgets/radio/radio1.html">CodeTalks example</a> </dt>
+  </dl>
+</p>
+
+<h3 id="region"> <code> region </code> </h3>
+
+<p> A large perceivable section of a web page or document, that the author feels is important
+    enough to be included in a page summary or table of contents, for example, an area of the
+    page containing live sporting event statistics.
+    <dl>
+      <dt> No example </dt>
+    </dl>
+</p>
+
+<h3 id="separator"> <code> separator </code> </h3>
+
+<p> A divider that separates and distinguishes sections of content or groups of menuitems.
+    This is a visual separator between sections of content. For example, separators are
+    found between groups of menu items in a menu or as the moveable separator between two
+    regions in a split pane.
+    <dl>
+      <dt> No examples </dt>
+    </dl>
+</p>
+
+<h3 id="scrollbar"> <code> scrollbar </code> </h3>
+
+<p> A graphical object that controls the scrolling of content within a viewing area,
+    regardless of whether the content is fully displayed within the viewing area.
+    <dl>
+      <dt> No examples </dt>
+    </dl>
+</p>
+
+<h3 id="slider"> <code> slider </code> </h3>
+
+<p> A user input where the user selects a value from within a given range.
+  <dl>
+    <dt> <a href="codetalks/widgets/slider/simple-slider.html">CodeTalks example 1</a> </dt>
+    <dt> <a href="codetalks/widgets/slider/pretty-slider-background-images.html">CodeTalks example 2</a> </dt>
+    <dt> <a href="codetalks/widgets/slider/pretty-slider-dual-inline-img.html">CodeTalks example 3</a> </dt>
+    <dt> <a href="jquery/src/tpg/Samples/aria/slider/index.html">TPG example</a> </dt>
+    <dt> <a href="jquery/src/TPG/Samples/aria/slider/doubleslider.html">TPG double slider example</a> </dt>
+    <dt> <a href="slider/slider.html">Slider example from OpenAjax</a> </dt>
+    <dt> <a href="slider/slider1.html">Slider example from OpenAjax updated</a> </dt>
+  </dl>
+</p>
+
+<h3 id="spinbutton"> <code> spinbutton </code> </h3>
+
+<p> A form of range that expects a user to select from amongst discrete choices. A spinbutton
+ typically allows the user to select from the given range through the use of an up and down button
+ on the keyboard. Visibly, the current value is incremented or decremented until a maximum or
+ minimum value is reached. Authors SHOULD ensure this functionality is accomplished programmatically
+ through the use of up and down arrows on the keyboard.
+</p>
+
+<p> In JAWS, this control would be called a "spinbox".
+  <dl>
+    <dt> <a href="dojo-2010-11-19/dijit/tests/form/test_Spinner.html">dojo-2010-11-19 spinner example</a> </dt>
+  </dl>
+</p>
+
+<h3 id="tab"> <code> tab & tablist & tabpanel </code> </h3>
+
+<p> A set of Tabs is a composite control made up of the following ARIA ROLES:
+  <dl>
+    <dt> tab </dt>
+    <dd> A grouping label providing a mechanism for selecting content that is to be rendered to the user. </dd>
+    <dt> tablist </dt>
+    <dd> A list of tab elements, which are references to tabpanel elements. </dd>
+    <dt> tabpanel </dt>
+    <dd> A container for the resources associated with a tab, where each tab is contained in a tablist. </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/widgets/tabpanel/tablist.sample.html">CodeTalks example 1</a> </dt>
+    <dd> <a href="TestNotes/CodeTalksTabList1.txt">Test notes</a> </dd>
+    <dt> <a href="codetalks/widgets/tabpanel/tabpanel1.html">CodeTalks example 2</a> </dt>
+    <dt> <a href="dojo-1.5.0/demos/castle/demo.html">Dojo-1.5.0castle example</a> </dt>
+    <dd> <a href="testnotes/dojoCastle.txt">Test notes</a> </dd>
+    <dt> <a href="yui_2.9.0/examples/tabview/tabview-ariaplugin_clean.html">YUI2 example (external)</a> </dt>
+    <dt> <a href="../../external.html?link=http://developer.yahoo.com/yui/3/examples/node-focusmanager/node-focusmanager-2_clean.html">YUI3 example (external)</a> </dt>
+  </dl>
+</p>
+
+<h3 id="textbox"> <code> textbox </code> </h3>
+
+<p> Input that allows free-form text as its value. </p>
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="toolbar"> <code> toolbar </code> </h3>
+
+<p> A collection of commonly used function buttons represented in compact visual form.
+  <dl>
+    <dt> <a href="codetalks/widgets/toolbar/ToolbarTabIndex.html">CodeTalks example 1</a> </dt>
+    <dd> <a href="testNotes/CodeTalksToolbar1.txt">Test notes</a> </dd>
+    <dt> <a href="codetalks/widgets/toolbar/ToolbarImageTest.html">CodeTalks example 2</a> </dt>
+    <dd> <a href="testNotes/CodeTalksToolbar2.txt">Test notes</a> </dd>
+    <dt> <a href="codetalks/widgets/toolbar/ToolbarImageTestWithAXS.html">CodeTalks example 3</a> </dt>
+    <dt> <a href="codetalks/widgets/toolbar/ToolbarActiveDescendant.html">CodeTalks example 4</a> </dt>
+    <dt> <a href="../../external.html?link=http://developer.yahoo.com/yui/3/examples/node-focusmanager/node-focusmanager-1_clean.html">YUI3 example (external)</a> </dt>
+  </dl>
+</p>
+
+<h3 id="tooltip"> <code> tooltip </code> </h3>
+
+<p> A contextual popup that displays a description for an element. </p>
+<p>
+  <dl>
+    <dt> <a href="codetalks/widgets/tooltip/tooltip.html">CodeTalks example</a> </dt>
+    <dd> <a href="testnotes/CodeTalksTooltip.txt">Test notes</a> </dd>
+  </dl>
+</p>
+
+<h3 id="tree"> <code> tree & treeitem </code> </h3>
+
+<p> A tree is a composite control made up of the following ARIA roles:
+  <dl>
+    <dt> tree </dt>
+    <dd> A type of list that may contain sub-level nested groups that can be collapsed and expanded. </dd>
+    <dt> treeitem </dt>
+    <dd> This is an element within a tree that may be expanded or collapsed if it contains
+         a sub-level group of treeitems. A collection of treeitems to be expanded and collapsed
+         are enclosed in an element with the group role. Authors MUST ensure elements with role
+         treeitem are contained in, or owned by, an element with the role group or tree.
+    </dd>
+  </dl>
+</p>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/widgets/tree/tree.html">CodeTalks example</a> </dt>
+    <dt> <a href="dojo-1.5.0/demos/demail/demo.html">Dojo-1.5.0demail example</a> </dt>
+    <dd> <a href="testnotes/DojoDemail.txt">Test notes</a> </dd>
+    <dt> <a href="jquery/src/TPG/Samples/aria/tree/index.html">TPG tree example</a> </dt>
+  </dl>
+</p>
+
+
+<h3 id="treegrid"> <code> treegrid </code> </h3>
+
+<p> A grid whose rows can be expanded and collapsed in the same manner as for a tree.
+  <dl>
+    <dt> <a href="codetalks/widgets/treegrid/treegrid.sample2.html">CodeTalks example as an application</a> <br>
+         <a href="codetalks/widgets/treegrid/treegrid.no.app.html">CodeTalks example as a document</a>
+    </dt>
+  </dl>
+</p>
+
+<h2 id="regions"> Regions </h2>
+
+<dl>
+  <dt> application </dt>
+  <dd> A region declared as a web application, as opposed to a web document. </dd>
+
+  <dt> banner </dt>
+  <dd> A region that contains mostly site-oriented content, rather than page-specific content. </dd>
+
+  <dt> complementary </dt>
+  <dd> A supporting section of the document, designed to be complementary to the main content at a
+    similar level in the DOM hierarchy, but remains meaningful when separated from the main content.
+  </dd>
+
+  <dt> contentinfo </dt>
+  <dd> A large perceivable region that contains information about the parent document. Examples
+      of information included in this region of the page are copyrights and links to privacy statements.
+  </dd>
+
+  <dt> form </dt>
+  <dd> A landmark region that contains a collection of items and objects that, as a whole, combine to
+      create a form. Also see search.
+  </dd>
+
+  <dt> main </dt>
+  <dd> The main content of a document. </dd>
+
+  <dt> navigation </dt>
+  <dd> A collection of navigational elements (usually links) for navigating the document or related documents. </dd>
+
+  <dt> search </dt>
+  <dd> A landmark region that contains a collection of items and objects that, as a whole, combine to create
+      a search facility. Also see form.
+  </dd>
+</dl>
+
+<p>
+  <dl>
+    <dt> <a href="codetalks/landmarks/test-all-minimal.html">CodeTalks example</a> </dt>
+    <dd> <a href="testNotes/codeTalksLandmarks.txt">Test notes</a> </dd>
+  </dl>
+</p>
+
+<h2 id="liveregions"> Live Regions </h2>
+
+<p>A live region does not require one of the following ARIA roles.</p>
+
+<p>If an element on the page has the aria-live attribute, this is sufficient to make the element a live region.</p>
+
+<br>
+
+<p>Also, the attributes of aria-atomic and aria-relevant are important in the processing of live regions.
+When aria-atomic is present and it is true, the entire contents of the live region are treated as an update
+even if only part of the region has changed.  If ARIA-atomic is false, only the new information is treated
+as an update.
+</p>
+
+<p>aria-relevant controls the type of changes that are handled by the live region.
+aria-relevant="all,additions,removals,text" are possible and determine if all changes, additions only,
+removals, or textual changes only are handled by the live region.
+</p>
+
+<h3 id="arialive"> aria-live </h3>
+
+<p>This is a div tag with aria-live="polite".</p>
+
+<p>The "add entry and speak all" button adds an entry to the bottom of the page and speaks all the content
+in the live region (aria-atomic="true"). </p>
+
+<p> The "add entry" button sets aria-atomic="false" and then adds an entry.  So only the newly added entry
+is spoken</p>
+  <dl>
+    <dt> <a href="misc/dynamicContent1.html">Simple example of a live region which uses aria-atomic (Firefox only)</a> </dt>
+    <dt> <a href="misc/aria-live-polite.html">Simple Live Region with adjustable aria-relevant</a> </dt>
+  </dl>
+
+<h3 id="alert"> alert </h3>
+
+<p> A message with important, and usually time-sensitive, information. Also see alertdialog and status.
+</p>
+
+<p>
+Alerts are assertive live regions and will be processed as such by assistive technologies.
+Neither authors nor user agents are required to set or manage focus to them in order for them
+to be processed. Since alerts are not required to receive focus, content authors SHOULD NOT
+require users to close an alert. </p>
+
+<p> Internet Explorer only supports alerts if they are made visible by the web page author.
+ Adding an element with a role of alert fails to trigger the alert in IE. For more on this,
+ see this <a href="../../external.html?link=http://blog.paciellogroup.com/2012/06/html5-accessibility-chops-aria-rolealert-browser-support/">article.</a>
+  <dl>
+    <dt> <a href="misc/alert%20with%20list%20item.html">Simple Alert that contains a list</a> </dt>
+
+    <dt> <a href="../../external.html?link=http://test.cita.uiuc.edu/aria/alert/alert1.php">ARIA Authoring practices example (external site)</a> </dt>
+    <dd> <a href="TestNotes/AuthoringPracticesAlert.txt">Test notes</a> </dd>
+
+    <dt> <a href="CodeTalks/widgets/alert/alert.html">CodeTalks alert buttons example</a> </dt>
+    <dd> <a href="TestNotes/CodeTalksAlert.txt">Test notes</a> </dd>
+
+    <dt> <a href="codetalks/enhanced-html-forms/client-form-validation-invalid-and-alert.html">CodeTalks form validation alert example</a> </dt>
+    <dd> <a href="testnotes/CodeTalksFormValidation.txt">Test notes</a> </dd>
+  </dl>
+</p>
+
+<h3 id="log"> log </h3>
+
+<p> A type of live region where new information is added in meaningful order and old information
+  may disappear. Also see marquee. Examples include chat logs, messaging history, game log, or an
+  error log. In contrast to other live regions, in this role there is a relationship between the
+  arrival of new items in the log and the reading order. The log contains a meaningful sequence
+  and new information is added only to the end of the log, not at arbitrary points.
+  <dl>
+    <dt> <a href="codetalks/live/chat.html">CodeTalks chat example</a> </dt>
+    <dd> <a href="codetalks/live/chat_notes.html">CodeTalks notes</a> </dd>
+
+    <dt> <a href="../../external.html?link=https://addons.mozilla.org/en-US/firefox/addon/16/">ChatZilla (external)</a> </dt>
+    <dd> ChatZilla says it uses the aria-log role for its chats. </dd>
+  </dl>
+</p>
+
+<h3 id="marquee"> marquee </h3>
+
+<p> A type of live region where non-essential information changes frequently. Also see log.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="status"> status </h3>
+
+<p> A container whose content is advisory information for the user but is not important
+    enough to justify an alert. Also see alert.
+    <dl>
+      <dt> <a href="codetalks/widgets/toolbar/ToolbarImageTest.html">CodeTalks image toolbar example</a> </dt>
+      <dd> <a href="testNotes/CodeTalksToolbar2.txt">Test notes</a> </dd>
+    </dl>
+</p>
+
+<h3 id="timer"> timer </h3>
+
+<p> A type of live region containing a numerical counter which indicates an amount of elapsed
+    time from a start point, or the time remaining until an end point. Note: Elements with the
+    role timer maintain the default aria-live value of off.
+    <dl>
+      <dt> No examples </dt>
+    </dl>
+</p>
+
+<h1 id="states_and_properties"> States and properties </h1>
+
+<p> These states were taken from the ARIA specification at
+    <a href="../../external.html?link=http://www.w3.org/TR/wai-aria/states_and_properties">http://www.w3.org/TR/wai-aria/states_and_properties</a>
+</p>
+
+<p> Note that states do not always have to appear on elements with ARIA roles. </p>
+
+<h2 id="controls_related"> Control Related </h2>
+
+<h3 id="aria_autocomplete"> aria-autocomplete </h3>
+
+<p> Indicates whether user input completion suggestions are provided.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="aria_checked"> aria-checked </h3>
+
+<p> Indicates the current "checked" state of checkboxes, radio buttons, and other
+    widgets. Also see aria-pressed and aria-selected.
+    <dl>
+      <dt> <a href="#checkbox">See checkbox examples.</a> </dt>
+    </dl>
+</p>
+
+<h3 id="aria_disabled"> aria-disabled </h3>
+
+<p> Indicates that the element is perceivable but disabled, so it is not editable
+    or otherwise operable. Also see aria-hidden and aria-readonly.
+    <dl>
+      <dt> No examples </dt>
+    </dl>
+</p>
+
+<h3 id="aria_expanded"> aria-expanded </h3>
+
+<p> Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
+  <dl>
+    <dt> <a href="#tree">See tree examples</a> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_haspopup"> aria-haspopup </h3>
+
+<p> Indicates that the element has a popup context menu or sub-level menu.
+  <dl>
+    <dt> <a href="#menu">See menu examples</a> </dt>
+    <dt> <a href="misc/MenuButtons/MenuButton1.0/index.html">Menu Button example following the ARIA 1.0 authoring practices</a> </dt>
+    <dt> <a href="misc/MenuButtons/MenuButton1.1/index.html">Menu Button example following the ARIA 1.1 authoring practices</a> </dt>
+    <dt> <a href="../../external.html?link=http://davidtheclark.github.io/react-aria-menubutton/demo/">react-aria-menubutton demo using the 1.0 authoring practices (external link)</a> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_hidden"> aria-hidden </h3>
+
+<p> Indicates that the element is not visible or perceivable to any user as implemented by the author. Also see aria-disabled.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="aria_invalid"> aria-invalid </h3>
+
+<p> Indicates the entered value does not conform to the format expected by the application.
+  <dl>
+    <dt> <a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_label"> aria-label </h3>
+
+<p> Defines a string value that labels the current element. Also see aria-labelledby.
+  <dl>
+    <dt> <a href="codetalks/enhanced-html-forms/label.html">CodeTalks example</a> </dt>
+    <dt> <a href="codetalks/landmarks/test-all-minimal.html">CodeTalks example</a> </dt>
+    <dd> <a href="testNotes/codeTalksLandmarks.txt">Test notes</a> </dd>
+  </dl>
+</p>
+
+<h3 id="aria_level"> aria-level </h3>
+
+<p> Defines the hierarchical level of an element within a structure.
+  <dl>
+    <dt> <a href="#tree">See tree examples</a> </dt>
+    <dt> <a href="#heading">see heading examples</a> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_multiline"> aria-multiline </h3>
+
+<p> Indicates whether a text box accepts only a single line, or if it can accept multiline input.
+  <dl>
+    <dt> <a href="misc/aria-multiline.html"> Full regression test set </a></dt>
+  </dl>
+</p>
+
+<h3 id="aria_multiselectable"> aria-multiselectable </h3>
+
+<p> Indicates that the user may select more than one item from the current selectable descendants.
+  <dl>
+    <dt> No examples <!-- a href="/dojo-2010-11-19/dijit/tests/form/test_multiselect.html">dojo-2010-11-19 multiselect example</a --> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_orientation"> aria-orientation </h3>
+
+<p> Indicates whether the element and orientation is horizontal or vertical.
+  <dl>
+    <dt> No examples </dt>
+  </dl>
+</p>
+
+<h3 id="aria_pressed"> aria-pressed </h3>
+
+<p> Indicates the current "pressed" state of toggle buttons. Also see aria-checked and aria-selected.
+  <dl>
+    <dt> <a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a> </dt>
+  </dl>
+</p>
+
+<h3 id="aria_readonly"> aria-readonly </h3>
+
+<p>
+Indicates that the element is not editable, but is otherwise operable. Also see aria-disabled.
+</p>
+<p>
+<dl>
+<dt>
+No examples
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_required"> aria-required </h3>
+
+<p>
+Indicates that user input is required on the element before a form may be submitted.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/enhanced-html-forms/required.html">CodeTalks example</a>
+</dt>
+<dt>
+<a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_selected"> aria-selected </h3>
+<p>
+Indicates the current "selected" state of various widgets. Also see aria-checked and aria-pressed.
+</p>
+<p>
+<dl>
+<dt>
+<a href="yui_2.9.0/examples/tabview/tabview-ariaplugin_clean.html">YUI2 tabs example (external)</a>
+</dt>
+<dt>
+<a href="../../external.html?link=http://developer.yahoo.com/yui/3/examples/node-focusmanager/node-focusmanager-2_clean.html">YUI3 tabs example (external)</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_sort"> aria-sort </h3>
+
+<p>
+Indicates if items in a table or grid are sorted in ascending or descending order.
+</p>
+<p>
+<dl>
+<dt>
+No examples
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_valuemax"> aria-valuemax </h3>
+
+<p>
+Defines the maximum allowed value for a range widget.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_valuemin"> aria-valuemin </h3>
+
+<p>
+Defines the minimum allowed value for a range widget.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_valuenow"> aria-valuenow </h3>
+<p>
+Defines the current value for a range widget. Also see aria-valuetext.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#dojoWidgetsForm">See Dojo-1.5.0widgets form example</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_valuetext"> aria-valuetext </h3>
+
+<p>
+Defines the human readable text alternative of aria-valuenow for a range widget.
+</p>
+<p>
+<dl>
+<dt>
+<a href="jquery/src/tpg/Samples/aria/slider/index.html">TPG slider example</a>
+</dt>
+<dd>
+See the "food quality" slider.
+</dd>
+</dl>
+</p>
+
+<h2 id="liveregions_related"> Live Regions Related</h2>
+
+<h3 id="aria_atomic"> aria-atomic </h3>
+
+<p>
+Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. Also see aria-relevant.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/live/atomic_true.html">CodeTalks example</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_busy" > aria-busy </h3>
+
+<p>
+Indicates whether an element, and its subtree, are currently being updated.
+</p>
+<p>
+<dl>
+<dt>
+No examples
+</dt>
+</dl>
+</p>
+
+<h3  id="aria_live" > aria-live </h3>
+
+<p>
+Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
+</p>
+<p>
+All ARIA live regions, other than those implied by roles such as alert, log, marquee, status, and timer, use the aria-live attribute.
+</p>
+<p>
+<dl>
+<dt>
+<a href="misc/aria-busy-simple.html">live region example that Sets aria-busy to true, updates the live region and then turns off aria-busy.</a>
+</dt>
+<dt>
+<a href="codetalks/live/live_assertive.html">CodeTalks assertive live region example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksLiveAssertive.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/live/labelledby.html">CodeTalks live region with label example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksLiveWithLabel.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/live/live_multiple-regions.html">CodeTalks multiple live region example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksMultipleLiveRegions.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/live/live_nested-regions.html">CodeTalks nested live regions example</a>
+</dt>
+<dt>
+<a href="codetalks/live/live_off.html">CodeTalks off live region example</a>
+</dt>
+<dt>
+<a href="codetalks/live/live_polite.html">CodeTalks polite live region example</a>
+</dt>
+<dt>
+<a href="misc/liveTable.html">Live table example</a>
+</dt>
+<dd>
+<a href="testnotes/liveTable.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+
+<h3 id="aria_relevant" > aria-relevant </h3>
+
+<p>
+Indicates what user agent change notifications (additions, removals, etc.) assistive technologies will monitor within a live region. Also see aria-atomic.
+</p>
+<p>
+At present, Jaws does not support aria-relevant in IE or Firefox. There is a technical problem in Firefox which prevents us from supporting these changes. It is unknown at this time if we can support aria-relevant in IE.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/live/relevant_removals.html">CodeTalks removals example</a>
+</dt>
+</dl>
+</p>
+
+<h2 id="drag_n_drop"> Drag and Drop </h2>
+
+<p>
+A drag and drop operation is a combination of the following two ARIA states.
+<dl>
+<dt>
+aria-dropeffect
+</dt>
+<dd>
+Indicates what functions can be performed when the dragged object is released on the drop target. This allows assistive technologies to convey the possible drag options available to users, including whether a pop-up menu of choices is provided by the application. Typically, drop effect functions can only be provided once an object has been grabbed for a drag operation as the drop effect functions available are dependent on the object being dragged.
+</dd>
+<dt>
+aria-grabbed
+</dt>
+<dd>
+Indicates an element's "grabbed" state in a drag-and-drop operation.
+</dd>
+</dl>
+</p>
+<p>
+<dl>
+	<dt>
+		<a href="misc/DragAndDrop/dragdrop.html"> Tic Tac Toe game</a>
+	</dt>
+	<dt>
+		<a href="misc/DragAndDrop/dnd/example.html"> Another simple drag and drop example</a>
+	</dt>
+</dl>
+</p>
+
+<h2 id="relationships_and_associations"> Relationships and associations </h2>
+
+<p>
+This section lists attributes that indicate relationships or associations between elements which cannot be readily determined from the document structure.
+</p>
+
+<h3 id="aria_activedescendant"> aria-activedescendant </h3>
+
+<p>
+Identifies the currently active descendant of a composite widget.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#tree">See trees examples</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_controls"> aria-controls </h3>
+
+<p>
+Identifies the element (or elements) whose contents or presence are controlled by the current element. Also see aria-owns.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/live/controls.html">CodeTalks example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksControls.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+
+<h3 id="aria_describedby"> aria-describedby </h3>
+
+<p>
+Identifies the element (or elements) that describes the object. Also see aria-labelledby.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/enhanced-html-forms/describedby.html">code talks example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksDescribedBy.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/enhanced-html-forms/describedby-display-none.html">code talks description display none example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksDescribedByDisplayNone.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/enhanced-html-forms/describedby-hidden.html">code talks description hidden example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksDescribedByHidden.txt">Test notes</a>
+</dd>
+<dt>
+<a href="codetalks/enhanced-html-forms/img-description.html">code talks image with description example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksImageDescribedBy.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+
+<h3 id="aria_flowto"> aria-flowto </h3>
+
+<p>
+Identifies the next element (or elements) in the recommended reading order of content, overriding the general default to read in document source order.
+</p>
+<p>
+<dl>
+<dt>
+<a href="misc/ARIA-FlowTo.html">2 simple examples</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_labelledby"> aria-labelledby </h3>
+
+<p>
+Identifies the element (or elements) that labels the current element. Also see aria-label and aria-describedby.
+</p>
+<p>
+<dl>
+<dt>
+<a href="codetalks/enhanced-html-forms/labelledby.html">CodeTalks example</a>
+</dt>
+<dd>
+<a href="testnotes/CodeTalksLabelledBy.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+
+<h3 id="aria_owns"> aria-owns </h3>
+
+<p>
+Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship between DOM elements where the DOM hierarchy cannot be used to represent the relationship. Also see aria-controls.
+</p>
+<p>
+<dl>
+<dt>
+No examples
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_posinset"> aria-posinset </h3>
+
+<p>
+Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. Also see aria-setsize.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#tree">See trees examples</a>
+</dt>
+<dt>
+<a href="#listBox">See listbox examples</a>
+</dt>
+</dl>
+</p>
+
+<h3 id="aria_setsize"> aria-setsize </h3>
+
+<p>
+Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. Also see aria-posinset.
+</p>
+<p>
+<dl>
+<dt>
+<a href="#tree">See trees examples</a>
+</dt>
+<dt>
+<a href="#listBox">See listbox examples</a>
+</dt>
+</dl>
+</p>
+
+<h1 id="complex_examples"> Complex examples </h1>
+
+<div id="dojoWidgetsForm">
+
+<h2 id="dojo_widgets"> Dojo-1.5.0widgets form example </h2>
+
+<p>
+The following example contains the ARIA roles: alert, button,checkbox, combobox, group, listbox, listitem, radio, radiogroup, slider, spinbutton, textbox, and toolbar. It contains the following ARIA states: aria-invalid, aria-labelledby, aria-pressed, aria-required, aria-valuemax, aria-valuemin, and aria-valuenow.
+</p>
+<p>
+<dl>
+<dt>
+<a href="dojo-1.5.0/demos/form/demo.html">Dojo-1.5.0widgets form example</a>
+</dt>
+<dd>
+<a href="testnotes/DojoFormWidgets.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+</div>
+
+<h2 id="dojo_mail"> Dojo-1.5.0mail example </h2>
+
+<p>
+The following example contains the ARIA roles: alert, aplication, button, checkbox, columnheader, combobox, dialog, grid, gridcell, menu, menuitem, row, tab, tablist, textbox, toolbar, tree, and treeitem. It contains the following states: aria-checked, aria-expanded, aria-haspopup, aria-level, aria-pressed, aria-required, and aria-activedescendant.
+</p>
+<p>
+<dl>
+<dt>
+<a href="dojo-1.5.0/demos/mail/demo.html">Dojo-1.5.0mail example</a>
+</dt>
+<dd>
+<a href="testnotes/DojoMailExample.txt">Test notes</a>
+</dd>
+</dl>
+</p>
+
+<h2 id="jquery"> JQuery examples </h2>
+
+<p>
+The following example has a set of tabs, and each tab represents an ARIA role with an example. The roles include application, slider, progressbar, menubar, button, dialog, checkbox, tab, tablist, tree, treeitem.
+</p>
+<p>
+<dl>
+<dt>
+<a href="jquery/src/aegisdemo/index.html">JQuery examples</a>
+</dt>
+</dl>
+</p>
+
+<h1 id="new_from_web"> New ARIA examples from different sources around the web </h1>
+
+<h2 id="whatsock"> Examples from whatsock.com </h2>
+
+<a href="whatsock.com/auto_suggestion_search_field_module/demo.html">An edit combo example</a>
+<br>
+
+<h2 id="misc"> Miscellaneous </h2>
+
+<a href="misc/status.html">A role=status example</a>
+<br>
+<a href="../../external.html?link=http://citrixdemo3:8080/aria_examples/ckeditor/_samples/index.html">CKEditor examples</a>
+<br>
+<h1>ARIA 1.1</h1>
+<p>These examples illustrate some of the new ARIA 1.1 roles and states.</p>
+<h3 id="aria_current"> aria-current</h3>
+<dl>
+<dt>
+<a href="aria%201.1/aria-current/index.html">Simple set of links which uses aria-current</a>
+</dt>
+<dt>
+<a href="aria%201.1/aria-current/tab/tabpanel.html">Simple tab control with aria-current</a>
+</dt>
+</dl>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:52 GMT -->
+</html>

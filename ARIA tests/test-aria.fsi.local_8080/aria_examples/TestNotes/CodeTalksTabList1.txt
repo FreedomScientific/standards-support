@@ -1,0 +1,5 @@
+Use left and right arrows to change tabs.
+JAWS should go into forms mode when tabbing to a tab list.
+After the first time you change tabs, jaws should then announce the selected tab in the virtual buffer. (The example does not set the selected attribute until focus goes to the tab list)
+Note: when pressing enter or spacebar to activate a tab, this does not actually change the selected tab. You must enter forms mode, then use the arrow keys to change tabs. This is a flaw in the page, not jaws.
+Also note: after pressing enter to go into forms mode on a tab, jaws may announce the tab you have clicked on, not the tab which is selected (the active tab). This is also a flaw in the page.

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/label.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<body>
+  <h1>Testing aria-label</h1>
+  <p>The aria-label should always override any native markup for the label -- the accessible name for any widget below should be "My foo" and not "Don't use":</p>
+  <label for="input">Don't use:</label> <input type="text" id="input" aria-label="My text field"/>
+  <input type="button" value="Don't use" aria-label="My button">
+  <img src="broken.html" border="1" alt="Don't use" aria-label="My image">
+  <textarea aria-label="My textarea"></textarea>
+  <select aria-label="My select">
+   <option aria-label="My option">Don't use</option>
+  </select>
+</body>

@@ -1,0 +1,691 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"  
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/treegrid/treegrid.no.app.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:06 GMT -->
+<head>
+<title>ARIA Simple Treegrid Sample</title>
+
+<style>
+    
+    body  { 
+    font-family: Arial;
+    font-size: 0.8em;
+    }
+
+    :focus	{
+    outline: 2px solid orange;
+    }
+
+    html:focus, body:focus {
+    outline: 0px;
+    }
+
+    h3 
+    {
+    margin-bottom: 2px
+    }
+
+    table 
+    {
+    width: 50%;
+    }
+
+    th 
+    {
+    width: 40%;
+    text-align: left;
+    text-indent: 3px;
+    font-size: 1em;
+    border: 1px solid silver;          	
+    }
+
+    td
+    {
+    padding:3px;
+    margin:3px;
+    border: 1px solid silver;     	
+    }
+
+    caption 
+    {
+    font-size: 1.1em;
+    font-weight: bold;
+    border: 1px solid silver;  
+    background-color: silver;   
+    padding:3px;
+    }
+    
+    input
+    {
+    text-align: right;
+    width: 4em;
+    }    
+
+    .numeric 
+    {
+    text-align: right;
+    width: 20%;
+    }
+
+    .numeric:focus
+    {
+    background-color: Yellow; 
+    color: Black;
+    }        
+     
+    .selected 
+    {
+    background-color: Blue;
+    color: White;
+    }
+
+    .expand
+    {
+    font-size: 1.1em;
+    font-weight: bold;
+    vertical-align: text-bottom;
+    cursor: pointer;    	
+    }
+
+</style>
+
+<script type="text/javascript">
+
+        var sap = {ui:{keycodes:{SPACE: 32, 
+                                 ENTER: 13, 
+                                 PAGE_UP : 33,
+	                             PAGE_DOWN : 34,
+	                             END : 35,
+	                             HOME : 36,
+	                             ARROW_LEFT : 37,
+	                             ARROW_UP : 38,
+	                             ARROW_RIGHT : 39,
+	                             ARROW_DOWN : 40,
+	                             TAB: 9,
+	                             F2: 113,
+	                             ESC: 27
+                                 }}};
+
+        var grids = [];
+        var editActive = false;
+        var oNewChild = null;
+        var buffer = "";
+
+        window.onload = init;  //execute a init on load for the test case
+        
+        function init() {
+            initGrid('grid-1');
+            document.getElementById('begin').focus();
+        }
+        
+        // Handlers --------------------------------------------------------------------
+
+        // this will init the grid and set some general event handlers
+        function initGrid(id) {
+
+            var grid = getGrid(id);
+
+            document.getElementById(id).onclick = function(event) { return handleClick(event, id) };
+            document.getElementById(id).onkeydown = function(event) {  return handleKeyDown(event, id) };
+            
+            if (grid) {
+                if (!grid.focusedCell) {
+                    grid.focusedCell = { row: 1, col: 0 };
+                    focusCell(grid.focusedCell, grid);
+                } else {
+                    blurCell(grid.focusedCell, grid);
+                }
+            }                
+        }
+
+        function handleClick(e, id) {
+            var grid = getGrid(id);
+            if (grid) {
+                if (!e) e = window.event; // IE
+                var clickedEl = e.target ? e.target : e.srcElement;
+
+                switch (clickedEl.nodeName) {
+                                
+                    // get actual focused Row/Col
+                    case "DIV":     
+                        blurCell(grid.focusedCell, grid);              
+                        grid.focusedRow = clickedEl.parentNode.parentNode.rowIndex;
+                        // get actual focused Col
+                        var row = grid.table.rows[grid.focusedRow];
+                        for (var i = 0; i < row.cells.length; i++) {
+                            if (row.cells[i] == clickedEl.parentNode) {
+                                grid.focusedCol = i;
+                                break;
+                            }
+                        }
+                        // update grid
+                        grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };
+                        // focus the new cell
+                        focusCell(grid.focusedCell, grid)
+                        break;                         
+
+                    case "TD":
+                        blurCell(grid.focusedCell, grid); 
+                        grid.focusedRow = clickedEl.parentNode.rowIndex;
+                        var row = grid.table.rows[grid.focusedRow];
+                        for (var i = 0; i < row.cells.length; i++) {
+                            if (row.cells[i] == clickedEl) {
+                                grid.focusedCol = i;
+                                break;
+                            }
+                        }
+                        // update grid
+                        grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };
+                        // focus the new cell
+                        focusCell(grid.focusedCell, grid)
+                        break;                        
+
+                    case "SPAN":
+                        blurCell(grid.focusedCell, grid); 
+                        grid.focusedRow = clickedEl.parentNode.parentNode.rowIndex;
+                        grid.focusedCol = 0; // always
+                        toggleRow(grid);
+                        // update grid
+                        grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };
+                        // focus the new cell
+                        focusCell(grid.focusedCell, grid)                                                
+                        break;
+                                        
+                    default:
+                        break;
+                }
+                                                                                         
+            }
+            
+            return true;
+        }
+
+
+        function handleKeyDown(e, id) {
+
+            var grid = getGrid(id);
+
+            if (!e) e = window.event; // IE
+            keyCode = e.keyCode;
+            evtTarget = e.target ? e.target : e.srcElement;
+
+            if (editActive == false) { // only when not in edit mode
+
+                if (e.ctrlKey && keyCode == sap.ui.keycodes.ARROW_RIGHT) {
+                    if (evtTarget.getAttribute("aria-expanded") == "false") toggleRow(grid);
+                }
+                else if (e.ctrlKey && keyCode == sap.ui.keycodes.ARROW_LEFT) {
+                    if (evtTarget.parentNode.getAttribute("ca") == "ti") focusPreviousRow(grid);
+                    else {if (evtTarget.getAttribute("aria-expanded") == "true") toggleRow(grid); }                                           
+                }
+
+                else if (keyCode == sap.ui.keycodes.ARROW_LEFT) focusPreviousCell(grid);
+                else if (keyCode == sap.ui.keycodes.ARROW_RIGHT) focusNextCell(grid);
+                else if (keyCode == sap.ui.keycodes.ARROW_UP) focusPreviousRow(grid);
+                else if (keyCode == sap.ui.keycodes.ARROW_DOWN) focusNextRow(grid);
+
+                else if (e.ctrlKey && keyCode == sap.ui.keycodes.HOME) focusFirstRow(grid);
+                else if (e.ctrlKey && keyCode == sap.ui.keycodes.END) focusLastRow(grid);
+
+                else if (keyCode == sap.ui.keycodes.HOME) focusFirstCell(grid);
+                else if (keyCode == sap.ui.keycodes.END) focusLastCell(grid);
+
+                else if (keyCode == sap.ui.keycodes.SPACE) setLeadSelection(grid);
+            }
+
+            if (keyCode == sap.ui.keycodes.F2)    startEdit(e);
+            if (keyCode == sap.ui.keycodes.ESC)   cancelEdit(e);
+            if (keyCode == sap.ui.keycodes.ENTER) endEdit(e);
+
+            if ((e.shiftKey && e.keyCode == sap.ui.keycodes.TAB) || e.keyCode == sap.ui.keycodes.TAB) {
+                if (editActive) endEdit(e);
+                blurCell(grid.focusedCell, grid);
+                // restore entry point on table exit for next time focus is set back to grid
+                var td = grid.table.rows[grid.focusedCell.row].cells[grid.focusedCell.col];
+                if (td) td.tabIndex = "0";
+            }
+            
+            return true;            
+        }
+
+        // Logic ---------------------------------------------------------------                               
+        
+        function getGrid(id) {
+            if (!grids[id]) {
+                var grid = {};                
+                grid.focusedRow = 1;
+                grid.focusedCol = 0;
+                grid.focusedCell = null;
+                grid.selectedRow = -1;                                  
+                grid.table = document.getElementById(id);
+                grids[id] = grid;
+            }
+            return grids[id];
+        }
+
+               
+        function toggleRow(grid) {
+            var row = grid.table.rows[grid.focusedRow];     
+            if (row && row.getAttribute("ca")=="to") {
+                    var expandableRow = grid.table.rows[row.rowIndex+1];
+                    while (expandableRow && expandableRow.getAttribute("ca") == "ti") {
+                        var td = row.firstChild;
+                        if (td.nodeName != "TD") td = td.nextSibling; // handle text node for FF
+                        if (td.getAttribute("aria-expanded") == "false") {
+                            expandRow(expandableRow);
+                            td.setAttribute("aria-expanded", "true");
+                            td.getElementsByTagName("SPAN")[0].innerHTML = "-";
+                        } else {
+                        collapseRow(expandableRow);
+                            td.setAttribute("aria-expanded", "false");
+                            td.getElementsByTagName("SPAN")[0].innerHTML = "+";
+                        }
+                        expandableRow = grid.table.rows[expandableRow.rowIndex + 1];
+                    }
+            }
+        }
+
+        function selectRow(row, grid) {
+            var tr = grid.table.rows[row];
+            tr.setAttribute("class", "selected");
+            for (var i = 0; i < tr.cells.length; i++) {
+                tr.cells[i].setAttribute("aria-selected", "true");
+            }
+        }
+        function deselectRow(row, grid) {
+            var tr = grid.table.rows[row];
+            tr.setAttribute("class", "");
+            for (var i = 0; i < tr.cells.length; i++) {
+                tr.cells[i].setAttribute("aria-selected", "false");
+            }
+        }        
+        
+        function expandRow(row) {
+            row.style.display = "";
+            row.setAttribute("aria-hidden","false");
+        }
+        function collapseRow(row) {
+            row.style.display = "none";
+            row.setAttribute("aria-hidden","true");
+        }
+        
+        function blurCell(cell,grid) {
+            var td = grid.table.rows[cell.row].cells[cell.col];
+            if (td) td.tabIndex = "-1";
+        }
+        function focusCell(cell, grid) {
+            var td = grid.table.rows[cell.row].cells[cell.col];
+            if (td) {
+                td.tabIndex = "0";
+                td.focus();
+            }
+        }
+
+        function focusNextRow(grid) {
+
+            row = grid.table.rows[grid.focusedRow];
+
+            try {
+
+                for (i=0; i<=row.cells.length-1; i++) {
+                    row.cells[i].tabIndex = "-1";
+                }    // remove tab index from all actual row members (cells)
+
+                if (grid.table.rows[row.rowIndex + 1]) // find next row
+                    nextRow = grid.table.rows[row.rowIndex + 1];
+                else // must be at the end
+                    nextRow = grid.table.rows[grid.table.rows.length - 1];
+                
+                //skip non-visible rows
+                while (nextRow && nextRow.style.display == "none") {
+                    nextRow = grid.table.rows[nextRow.rowIndex + 1];
+                }
+
+                if (nextRow) {
+
+                    if (nextRow.cells[grid.focusedCol]) {
+                        nextRow.cells[grid.focusedCol].tabIndex = "0";
+                        nextRow.cells[grid.focusedCol].focus();
+                    }
+                    else {
+                        nextRow.cells[0].tabIndex = "0";
+                        nextRow.cells[0].focus();
+                    }
+                    grid.focusedRow = nextRow.rowIndex;
+                    grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };
+                }
+            }
+            
+            catch (Error) { }
+
+        }
+        
+        function focusPreviousRow(grid) {
+
+            row = grid.table.rows[grid.focusedRow];
+
+            try {
+
+                for (i=0; i<=row.cells.length-1; i++) {
+                    row.cells[i].tabIndex = "-1";
+                }  // remove tab index from all actual row members (cells)
+
+                if (grid.table.rows[row.rowIndex - 1]) // find previous row
+                    previousRow = grid.table.rows[row.rowIndex - 1];
+                else // must be at the begin
+                    previousRow = grid.table.rows[0];
+
+                //skip non-visible rows
+                while (previousRow && previousRow.style.display == "none") {
+                    previousRow = grid.table.rows[previousRow.rowIndex - 1];
+                }
+
+                if (previousRow) {
+
+                    if (previousRow.cells[grid.focusedCol]) {
+                        previousRow.cells[grid.focusedCol].tabIndex = "0";
+                        previousRow.cells[grid.focusedCol].focus();
+                    }
+                    else {
+                        previousRow.cells[0].tabIndex = "0";
+                        previousRow.cells[0].focus();
+                    }
+
+                    grid.focusedRow = previousRow.rowIndex;
+                    grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };
+                }
+            }
+            
+            catch (Error) { }
+
+        }
+        
+        function focusNextCell(grid) {
+            var row = grid.table.rows[grid.focusedRow];            
+            try {            
+                if (row.cells.length>1) {
+                    if (grid.focusedCol<row.cells.length-1) {
+                        var cell=row.cells[grid.focusedCol];
+                        cell.tabIndex="-1";
+                        grid.focusedCol++;
+                        var cell=row.cells[grid.focusedCol];
+                        cell.tabIndex="0";
+                        cell.focus();
+                    }
+                }
+            }
+            catch (Error) { }
+        }
+        
+        function focusPreviousCell(grid) {
+            var row = grid.table.rows[grid.focusedRow];
+            try { 
+                if (row.cells.length>1) {
+                    if (grid.focusedCol>0) {
+                        var cell=row.cells[grid.focusedCol];
+                        cell.tabIndex="-1";
+                        grid.focusedCol--;
+                        var cell=row.cells[grid.focusedCol];
+                        cell.tabIndex="0";
+                        cell.focus();
+                    }
+                }
+            }
+            catch (Error) { }
+        }
+
+        function focusFirstCell(grid) {
+            blurCell(grid.focusedCell, grid);
+            grid.focusedCell.col = grid.table.col = 0;
+            focusCell(grid.focusedCell, grid);
+        }        
+        function focusLastCell(grid) {
+            blurCell(grid.focusedCell, grid);
+            grid.focusedCell.col = grid.table.col = grid.table.rows[grid.focusedCell.row].cells.length - 1;
+            focusCell(grid.focusedCell, grid);
+        }
+
+        function focusFirstRow(grid) {
+            blurCell(grid.focusedCell, grid);
+            grid.focusedRow = 1; // 1: do not jump to Headers; 1 is always visible
+            grid.focusedCol = 0;
+            grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };     
+            focusCell(grid.focusedCell, grid);        
+        }
+        function focusLastRow(grid) {
+            var idx;
+            blurCell(grid.focusedCell, grid);
+            // jump to last visible(!) row
+            if (grid.table.rows[grid.table.rows.length - 1].getAttribute("aria-hidden") == "true") idx = grid.table.rows.length - 2;                
+            else idx = grid.table.rows.length - 1;
+            grid.focusedRow = idx;
+            grid.focusedCol = 0;
+            grid.focusedCell = { row: grid.focusedRow, col: grid.focusedCol };    
+            focusCell(grid.focusedCell, grid);
+        }   
+             
+        function setLeadSelection(grid) {
+            if (grid.selectedRow == -1) { // nothing is selected
+                grid.selectedRow = grid.focusedRow;
+                selectRow(grid.selectedRow, grid);
+            }
+            else { // somehing was selected
+                //if in a selected row
+                if (grid.selectedRow == grid.focusedRow) {
+                    deselectRow(grid.selectedRow, grid);
+                    grid.selectedRow = -1;
+                }
+                else {
+                    deselectRow(grid.selectedRow, grid);
+                    grid.selectedRow = grid.focusedRow;
+                    selectRow(grid.selectedRow, grid);
+                }
+            }        
+        }
+
+        function startEdit(e) {
+            if (window.event) evtTarget = e.srcElement; // IE
+            else evtTarget = e.target;
+            if (editActive == true) return; // don't do double editing
+            else {
+                if (evtTarget.getAttribute("ca") == "te") {
+                    editActive = true; // always
+                    var div = evtTarget.firstChild;
+                    // associate blur handler
+                    div.onblur = endEdit;                     
+                    //write in buffer for undo
+                    buffer = trim(div.innerHTML);
+                    //invoke edit on content
+                    div.setAttribute("contentEditable", editActive);
+                    div.focus();
+                    selectNodeContents(div);                                            
+                }
+            }
+        }
+        function endEdit(e) {
+            if (editActive == false) return; // don't do anything when not editing
+            else {
+                if (window.event) evtTarget = e.srcElement; // IE
+                else evtTarget = e.target;
+                editActive = false;
+                evtTarget.setAttribute("contentEditable", editActive);
+                evtTarget.parentNode.focus();
+                deselectNodeContents(evtTarget);
+            }
+        }
+        function cancelEdit(e) {
+            if (editActive == false) return; // don't do anything when not editing
+            else {
+                if (window.event) evtTarget = e.srcElement; // IE
+                else evtTarget = e.target;
+                editActive = false; // always
+                evtTarget.setAttribute("contentEditable", editActive);
+                evtTarget.innerHTML = buffer; //restore div, get value info from buffer
+                evtTarget.parentNode.focus();                
+                deselectNodeContents(evtTarget);                
+            }
+        }
+     
+
+        //Helpers ------------------------------------------------------------------
+        
+        function trim(str) {
+            return str.replace(/^\s+/, '').replace(/\s+$/, '');
+        }
+
+        function selectNodeContents(o) {
+            if (document.all && !window.opera) { //IE
+                r = document.body.createTextRange();
+                r.moveToElementText(o);
+                r.select();
+            }
+            else { //FF
+                r = document.createRange();
+                r.selectNodeContents(o);
+                var s = window.getSelection();
+                s.removeAllRanges();
+                s.addRange(r);
+            }
+        }
+        
+        function deselectNodeContents(o) {
+            if (document.all && !window.opera) { //IE
+                r = document.body.createTextRange();
+                r.moveToElementText(o);
+                r.collapse(true);                
+            }
+            else { //FF .. needs to be improved
+                var s = window.getSelection();
+                s.removeAllRanges();
+            }            
+        }                       
+
+    </script>
+
+</head>
+<body>
+
+    <h1>Accessible ARIA Treegrid</h1>
+    
+    <p>This example requires Firefox 3 / Internet Explorer 8 or later versions to work with screen readers.</p>
+             
+    <span id="begin" tabindex="0">Begin of Example</span> 
+    
+    <p></p>
+   
+    <table id="grid-1" role="treegrid" aria-labelledby="grid-1-header" border="1">
+        <caption id="grid-1-header">List of Books in Our Book Store</caption>   
+        <thead>
+            <tr ca="tr" role="row" aria-level="1">
+             <th id="grid-1-isbn_id">Book Name / ISBN</th><th id="grid-1-author_id">Author</th><th id="grid-1-price_id" class="numeric" >Price ($)</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" id="table_entry" role="gridcell" colspan="3" aria-expanded="false" tabindex="0">
+                   <span class="expand">+</span> A Question of Love</td>                  
+           </tr>
+           <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">978-3-453-40540-0</td>
+                <td headers="grid-1-author_id" role="gridcell">Nora Roberts</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>9.99</div></td>
+            </tr>                                     
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                    <span class="expand">+</span> Piece of Peace</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">978-3-453-477740-0</td>
+                <td headers="grid-1-author_id" role="gridcell">Gunther Poison</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>13.95</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                  <span class="expand">+</span> International Law</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">029-11-131978-07-0</td>
+                <td headers="grid-1-author_id" role="gridcell">Daniela Hunter</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>11.95</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                  <span class="expand">+</span> My Name is Benny</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">007-01-206603-00</td>
+                <td headers="grid-1-author_id" role="gridcell">Benjamin Schutz</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>12.50</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                  <span class="expand">+</span> The Charming Butler</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">007-02-206983-77</td>
+                <td headers="grid-1-author_id" role="gridcell">Naomi Jackson</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>14.50</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                  <span class="expand">+</span> Lofts</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">010-12-656922-70</td>
+                <td headers="grid-1-author_id" role="gridcell">Bud Atkinson</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>22.99</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                  <span class="expand">+</span> DOM Objects</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">234-12-081733-67</td>
+                <td headers="grid-1-author_id" role="gridcell">Nurdogan Ghant</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>29.10</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                   <span class="expand">+</span> One Man Show</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">            
+                <td headers="grid-1-isbn_id" role="gridcell">282-02-1839812-72</td>
+                <td headers="grid-1-author_id" role="gridcell">Rose Wood</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>9.30</div></td>
+            </tr>            
+            <tr  ca="to" role="row" aria-level="1">
+                <td headers="grid-1-title_id" role="gridcell" colspan="3" aria-expanded="false">
+                   <span class="expand">+</span> Sugar Fly</td>
+            </tr>            
+            <tr ca="ti" role="row" style="display:none" aria-hidden="true" aria-level="2">
+                <td headers="grid-1-isbn_id" role="gridcell">081-01-123093-02</td>
+                <td headers="grid-1-author_id" role="gridcell">Naomi Jackson</td>
+                <td headers="grid-1-price_id" class="numeric" role="gridcell" ca="te"><div>20.50</div></td>
+            </tr>            
+        </tbody>
+    </table>
+    
+    <p></p>
+              
+    <span id="end" tabindex="0">End of Example</span>              
+     
+    <p></p>
+    
+    <b>Implemented Features:</b><br />
+    
+    <ul>
+        <li>Tab/Shift Tab focus in and out of the control</li>
+        <li>Arrow Key Navigation moves over the cells</li>        
+        <li>Home/End Navigation moves to first and last cell in the row</li>
+        <li>Ctrl Home/End moves to the first and last row</li>                            
+        <li>Ctrl + Right Arrow expands a cell, Ctrl + Left Arrow collapses a expandable cell or moves focus up 
+        to the parent cell with the expand property.</li>
+        <li>Space selects or deselects a row</li>
+        <li>F2 brings a cell of column "Price" in edit mode, Return ends edit mode, ESC cancels edit mode</li>
+    </ul>         
+         
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/treegrid/treegrid.no.app.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:06 GMT -->
+</html>

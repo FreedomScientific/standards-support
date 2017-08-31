@@ -1,0 +1,3 @@
+This example uses application mode, which means it is treated like a desktop app, i.e., no virtual buffer. There are two controls: a grid with editable table cells and a document containing information about using the table and the menus. Since the example uses application mode, the document will be announced as an "embedded document". When the document has focus, you will be able to navigate in the virtual buffer.
+Follow the given instructions for using the grid/spreadsheet and the menus.
+Note: When activating an item in the menus, such as those items under the "Totals" menu, which launches a dialog, dismissing the dialog will cause focus to return to the application object and not to the previously focused table cell. This is not a jaws bug.

@@ -1,0 +1,3416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" >
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-dual-inline-img.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:27 GMT -->
+<head>
+  <title>ARIA Example: Slider 2 Example</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+
+  <style type="text/css">
+  
+    div.codebox {
+      background-color: #E0E0E0;
+      color: black;
+      font-family: monospace;
+      padding: .5em;
+      margin: .5em;
+      border: black medium solid;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+  
+  function changeSourceCodeView(node_link, sc_id  ) {
+   
+     var node_sc = document.getElementById( sc_id );
+	 
+	 if( node_sc ) 
+	   if( node_sc.style.display == "none" ) {
+	      node_sc.style.display = "block";
+		  node_link.innerHTML = node_link.innerHTML.replace(/Show/, "Hide");
+	   } else {
+	      node_sc.style.display = "none";	 
+		  node_link.innerHTML = node_link.innerHTML.replace(/Hide/, "Show");
+	   } // endif
+     else 
+	   alert("Id not found");
+  }
+  
+  </script>
+
+  <style type="text/css">
+/* CSS Document */
+
+.label {
+  margin: 0;
+  padding: 0;
+  margin-top: 2em;
+  margin-bottom: .5em;  
+  clear: both;
+  font-weight: bold;
+}
+
+
+div.slider {
+  margin: 0;
+  padding: 0;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 540px;
+  height: 20px;
+  border: 2px solid black;
+  background-color: #A0A0A0;
+}
+
+div.slider img  {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: -30em;
+  top: -30em;
+}
+
+.hidden {
+  position: absolute;
+  top: -20em;
+  left: -200em;
+}
+  </style>
+
+  <script type="text/javascript">
+/**
+ *
+ * The Globale Variables
+ */
+
+if (!window.Node) {
+  var Node = {            // If there is no Node object, define one
+    ELEMENT_NODE: 1,    // with the following properties and values.
+    ATTRIBUTE_NODE: 2,  // Note that these are HTML node types only.
+    TEXT_NODE: 3,       // For XML-specific nodes, you need to add
+    COMMENT_NODE: 8,    // other constants here.
+    DOCUMENT_NODE: 9,
+    DOCUMENT_FRAGMENT_NODE: 11
+  }
+} 
+
+
+var KEY_PAGEUP   = 33;
+var KEY_PAGEDOWN = 34;
+var KEY_END      = 35;
+var KEY_HOME     = 36;
+
+var KEY_LEFT     = 37;
+var KEY_UP       = 38;
+var KEY_RIGHT    = 39;
+var KEY_DOWN     = 40;
+
+var KEY_SPACE    = 32;
+var KEY_TAB      = 9;
+
+var KEY_BACKSPACE = 8;
+var KEY_DELETE    = 46;
+var KEY_ENTER     = 13;
+var KEY_INSERT    = 45;
+var KEY_ESCAPE    = 27;
+
+var KEY_F1        = 112;
+var KEY_F2        = 113;
+var KEY_F3        = 114;
+var KEY_F4        = 115;
+var KEY_F5        = 116;
+var KEY_F6        = 117;
+var KEY_F7        = 118;
+var KEY_F8        = 119;
+var KEY_F9        = 120;
+var KEY_F10       = 121;
+
+var KEY_M         = 77;
+
+var NS_XHTML = "../../../../../external.html?link=http://www.w3.org/1999/xhtml"
+var NS_STATE = "../../../../../external.html?link=http://www.w3.org/2005/07/aaa";
+
+// **********************************************
+// *
+// * Commonly used helper functions
+// *
+// **********************************************
+
+/**
+ *
+ * nextSiblingElement
+ * 
+ * @contructor
+ */
+ 
+function nextSiblingElement( node ) {
+
+  var next_node = node.nextSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * previousSiblingElement 
+ * 
+ * @param ( node ) node object for which you are looking for the next sibling element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+function previousSiblingElement( node ) {
+
+  var next_node = node.previousSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.previousSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * firstChildElement 
+ * 
+ * @param ( node ) node object for which you are looking for the first child element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+function firstChildElement( node ) {
+
+  var next_node = node.firstChild;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * getTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function getTextContentOfNode( node ) {
+
+  var next_node = node.firstChild;
+  var str = "";
+
+  while( next_node ) {
+		
+	  if( (next_node.nodeType == Node.TEXT_NODE ) &&
+		  (next_node.length > 0 )
+		 )
+	    str += next_node.data;
+	  
+	  
+	  next_node = next_node.nextSibling;
+	  
+  }  // endwhile
+
+  return str;
+  
+}
+
+/**
+ *
+ * setTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function setTextContentOfNode( node, text ) {
+
+   // Generate a new text node with the text value
+    var text_node = document.createTextNode(text);
+  
+    // Remove child nodes to remove text
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    } // while
+
+    // Append new text to the container element
+    node.appendChild( text_node );
+
+}
+  </script>
+
+  <script type="text/javascript">
+// JavaScript Document
+// This module is to abstract browser dependencies
+// This makes the widget code cleaner and earier to read by making most browser specfic coding
+// in one place rather han scatered throghot documents
+var ARIA_STATE = "aria-";
+
+//
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+//
+// The state variable keeps track of current state of checkbox
+function WebBrowser() {
+
+}
+
+
+//
+// keyCode is a function to get the keycode from a keypress event
+//
+// @param ( event object) event is an event object
+//
+// @return ( keycode ) 
+
+WebBrowser.prototype.keyCode = function( event ) {
+  var e = event || window.event;
+  
+  return e.keyCode;
+}  
+
+/**
+ * OnClick Event Simulator
+ *
+ * @param ( node ) DOM node object
+ * @return nothing
+ */
+
+if( document.createEvent ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+    // W3C DOM Events way to trigger a "click" event
+    var e = document.createEvent('MouseEvents');
+    e.initEvent( 'click', true, true );
+
+    node.dispatchEvent( e );
+
+  } 
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+  
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+
+    var e = document.createEventObject();
+    node.fireEvent( "onclick", e );
+
+  } // endif
+
+}
+
+if ( document.addEventListener ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+    if( clickHandler )
+      document.addEventListener( "click",     clickHandler, true );
+		
+    if( downHandler )
+      document.addEventListener( "mousedown", downHandler,  true );
+
+    if( moveHandler )
+      document.addEventListener( "mousemove", moveHandler,  true );
+		
+		if( upHandler)
+      document.addEventListener( "mouseup",   upHandler,    true );
+
+  }
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+	if( upHandler)
+      document.removeEventListener( "mouseup",   upHandler,    true );
+			
+    if( moveHandler )
+      document.removeEventListener( "mousemove", moveHandler,  true );
+		
+    if( downHandler )
+      document.removeEventListener( "mousedown", downHandler,  true );
+			
+    if( clickHandler )
+      document.removeEventListener( "click",     clickHandler, true );
+
+  }
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   node.setCapture();
+   if( clickHandler)
+	   node.attachEvent( "onclick", clickHandler );
+		 
+   if( downHandler)
+     node.attachEvent( "onmousedown", downHandler );
+		 
+   if( moveHandler )
+	   node.attachEvent( "onmousemove", moveHandler );
+		 
+   if( upHandler )
+	   node.attachEvent( "onmouseup", upHandler );
+
+  } // endif
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   if( upHandler )
+     node.detachEvent( "onmouseup", upHandler );
+		 
+   if( moveHandler )
+     node.detachEvent( "onmousemove", moveHandler );
+		 
+   if( downHandler)
+     node.detachEvent( "onmousedown", downHandler );
+		 
+   if( clickHandler)
+     node.detachEvent( "onclick", clickHandler );
+		 
+     node.releaseCapture();
+
+  } // endif
+
+
+}
+
+
+
+
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+	return event.target;
+  }
+  
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.attrName;
+  }
+  
+ 
+  WebBrowser.prototype.charCode = function(event) {
+     return event.charCode;
+  }
+
+  WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+	return node.offsetLeft;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function( node ) {
+	return node.offsetTop;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.pageX;	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.pageY;	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		node.style.left = left+"px";
+		node.style.top = top+"px";
+  }
+
+
+} else {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.cancelBubble = true; 
+    event.returnValue = false;
+    return false;
+  }
+
+  WebBrowser.prototype.charCode = function(event) {
+    return window.browser.keyCode( event );
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+    return event.srcElement;
+  }
+
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.propertyName;
+  }
+    
+  WebBrowser.prototype.calculateOffsetLeft = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+	  offset += node.offsetLeft;
+	  node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+		offset = offset + node.offsetTop;
+		node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		offsetx = 0;
+		offsety = 0;
+		nnode = node.offsetParent
+		while( nnode ) {
+			offsetx = offsetx + nnode.offsetLeft;
+			offsety = offsety + nnode.offsetTop;
+			nnode = nnode.offsetParent;
+		}
+		node.style.left = left-offsetx+"px";
+		node.style.top = top-offsety+"px";
+  }
+  
+};
+
+
+if (document.addEventListener) {
+
+     // Functions for W3C Standards compliant implementation of adding event handlers
+
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.addEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.removeEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+      returnValue = true;
+    };
+
+} else {
+
+  if(document.attachEvent) {
+
+     // IE Specific Event handler functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+     };
+
+    WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+    };
+
+  } else {
+
+     // For browsers that do not support W3C or IE event functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+       return false;
+     };
+
+  }
+
+}
+
+var browser = new WebBrowser();
+
+  </script>
+
+  <script type="text/javascript">
+// JavaScript Document
+// Widgets is a way to initialize widgets in the ARIA examples
+
+ 
+function Widgets() {
+  this.widgets = new Array();
+}
+
+/**
+ * add is member of the Widgets Object 
+ * and used add a widget ot the list of widgets to be intitialized 
+ * as part of the onload event
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.add = function(obj) {
+  this.widgets[this.widgets.length] = obj;
+}
+
+/**
+ * init is member of the Widgets Object 
+ * and is called by the onload event to initialize widgets in the web resource
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.init = function() {
+   	
+   for(var i = 0; i < this.widgets.length; i++ )
+     this.widgets[i].init();
+}
+
+var widgets = new Widgets();
+
+function initApp() {
+  widgets.init();
+}
+
+  </script>
+
+  <script type="text/javascript">
+
+/* 
+ * moveSliderLower
+ *
+ * @param ( slider object ) slider object
+ * @param 
+ *
+ * @return none
+ */
+
+function moveSliderLower( slider, value ) {
+
+  var value_min    = slider.node_lower.getAttribute("aria-valuemin");
+	var value_max    = slider.node_higher.getAttribute("aria-valuemax");
+	var value_range  = value_max - value_min;
+	
+	var value_higher = slider.node_higher.getAttribute("aria-valuenow");
+
+	if( value ) {
+		
+		if(value > value_higher)
+		  value = value_higher;
+			
+		if(value < value_min)
+		  value = value_min;
+			
+	  slider.node_lower.setAttribute("aria-valuenow", value );	
+	  slider.node_higher.setAttribute("aria-valuemin", value );	
+		
+	}  // endif	
+	
+	var top  = browser.calculateOffsetTop( slider.node );
+	var left = browser.calculateOffsetLeft( slider.node );
+	var width = slider.node.clientWidth;
+	
+	top -= 25;
+	left = left - 30 + (( slider.node_lower.getAttribute("aria-valuenow").valueOf() - value_min ) * width) / value_range;
+	
+	slider.node_lower.style.position = "absolute";
+    slider.node_lower.style.top  = top + "px";
+    slider.node_lower.style.left = left + "px";
+	
+    setTextContentOfNode(slider.node_lower_text, value);
+    slider.node_lower_text.style.position = "absolute";
+    slider.node_lower_text.style.top  = top + 80 + "px";
+    slider.node_lower_text.style.left = left + "px";
+}
+
+/* 
+ * moveSliderHigher
+ *
+ * @param ( id ) id of text to style
+ *
+ * @return none
+ */
+
+function moveSliderHigher( slider, value ) {
+	
+  var value_min    = slider.node_lower.getAttribute("aria-valuemin");
+  var value_max    = slider.node_higher.getAttribute("aria-valuemax");
+  var value_range  = value_max - value_min;
+
+  var value_lower  = slider.node_lower.getAttribute("aria-valuenow");
+
+  if( value ) {
+		
+     if(value < value_lower)
+       value = value_lower;
+			
+     if(value > value_max)
+       value = value_max;
+			
+     slider.node_higher.setAttribute("aria-valuenow", value );	
+     slider.node_lower.setAttribute( "aria-valuemax", value );	
+		
+  }  // endif
+	
+  var top  = browser.calculateOffsetTop( slider.node );
+  var left = browser.calculateOffsetLeft( slider.node );
+  var width = slider.node.clientWidth;
+	
+  top -= 25;
+  left = left + (( slider.node_higher.getAttribute("aria-valuenow").valueOf() - value_min ) * width) / value_range;
+
+  slider.node_higher.style.position = "absolute";
+  slider.node_higher.style.top = top + "px";
+  slider.node_higher.style.left = left + "px";
+
+  setTextContentOfNode(slider.node_higher_text, value);
+  
+  slider.node_higher_text.style.position = "absolute";
+  slider.node_higher_text.style.top  = top + 80 + "px";
+  slider.node_higher_text.style.left = left + "px";
+  
+}
+
+/* 
+ * SliderRange Object
+ *
+ * @param ( id ) id of text to style
+ *
+ * @return none
+ */
+
+function SliderRange( id, id_lower, id_higher ) {
+
+  this.id = id;
+  this.id_lower  = id_lower;
+  this.id_higher = id_higher
+  this.id_lower_text  = id_lower + "_text";
+  this.id_higher_text = id_higher + "_text";
+	
+  this.mouse_down = false;
+
+}
+
+/* 
+ * Init
+ *
+ * @member SliderRange
+ * @param ( id ) id of text to style
+ *
+ * @return none
+ */
+
+SliderRange.prototype.init = function() {
+
+  this.node        = document.getElementById(this.id);
+  this.node_lower  = document.getElementById(this.id_lower);
+  this.node_higher = document.getElementById(this.id_higher);
+  this.node_lower_text  = document.getElementById(this.id_lower_text);
+  this.node_higher_text = document.getElementById(this.id_higher_text);
+
+  this.value_min = this.node_lower.getAttribute("aria-valuemin");
+  this.value_max = this.node_higher.getAttribute("aria-valuemax");
+  this.value_range = this.value_max - this.value_min;
+
+  // Initialize position of the pointers
+  moveSliderLower( this, this.node_lower.getAttribute("aria-valuenow") );
+  moveSliderHigher( this, this.node_higher.getAttribute("aria-valuenow") );
+
+  var obj1 = this.node_lower;
+  var obj2 = this.node_higher;
+
+  // add focus and blur event handlers
+  browser.addEvent(this.node_lower,  "focus", function(event) {handleSliderFocusEvent(event, obj1 );}, false);
+  browser.addEvent(this.node_lower,  "blur",  function(event) {handleSliderBlurEvent(event, obj1 );}, false);
+
+  browser.addEvent(this.node_higher, "focus", function(event) {handleSliderFocusEvent(event, obj2 );}, false);
+  browser.addEvent(this.node_higher, "blur", function(event) {handleSliderBlurEvent(event, obj2 );}, false);
+
+  var obj = this;
+
+  // add keyboard event handlers
+  browser.addEvent(this.node_lower,  "keydown", function(event) {handleLowerSliderKeyDownEvent(event, obj );}, false);
+  browser.addEvent(this.node_higher, "keydown", function(event) {handleHigherSliderKeyDownEvent(event, obj );}, false);
+
+  // add mouse event handlers
+  browser.addEvent(this.node_lower,  "mousedown", function(event) {handleLowerSliderMouseDownEvent(event, obj );}, false);
+  browser.addEvent(this.node_higher, "mousedown", function(event) {handleHigherSliderMouseDownEvent(event, obj );}, false);
+
+
+}
+
+// handleSliderKeyDownEvent
+// 
+function handleLowerSliderKeyDownEvent(event, slider ) {
+	  var e = event || window.event;
+
+    if( e.ctrlKey || e.shiftKey || e.altKey )
+		  return true;
+
+    switch( e.keyCode ) {
+		
+      case KEY_END:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuenow"));
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+           break;
+
+      case KEY_HOME:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuemin"));
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+		       break;
+
+      case KEY_PAGEUP:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) + 10;
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+           break;
+		  
+	  case KEY_PAGEDOWN:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) - 10;
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+
+	  case KEY_UP:
+	  case KEY_RIGHT:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) + 1;
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+		  
+	  case KEY_DOWN:
+    case KEY_LEFT:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) - 1;
+					 moveSliderLower( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+ 
+    } // end switch
+		  
+  return true;
+   
+}
+
+
+// handleSliderKeyDownEvent
+// 
+function handleHigherSliderKeyDownEvent(event, slider ) {
+  var e = event || window.event;
+
+  if( e.ctrlKey || e.shiftKey || e.altKey )
+    return true;
+
+  switch( e.keyCode ) {
+		
+      case KEY_END:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuemax"));
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+           break;
+
+      case KEY_HOME:
+			     var value = new Number(slider.node_lower.getAttribute("aria-valuenow"));
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+
+      case KEY_PAGEUP:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) + 10;
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+		  
+	    case KEY_PAGEDOWN:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) - 10;
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+
+	    case KEY_UP:
+	    case KEY_RIGHT:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) + 1;
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+		  
+	    case KEY_DOWN:
+      case KEY_LEFT:
+			     var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) - 1;
+					 moveSliderHigher( slider, value );
+					 return browser.stopPropagation( event);
+		   break;
+ 
+    } // end switch
+		  
+  return true;
+   
+}
+
+
+
+// handleLowerSliderMouseDownEvent
+// 
+function handleLowerSliderMouseDownEvent(event, slider ) {
+  var e = event || window.event;
+
+
+  slider.node_lower.src = "images/slider2.html";
+  slider.node_lower.focus();
+
+  slider.mouse_down = true;
+  slider.move_function = function( event ) { handleLowerSliderMouseMoveEvent(event, slider ); }; 
+  slider.up_function = function( event ) { handleLowerSliderMouseUpEvent(event, slider ); }; 
+
+  browser.setMouseCapture( slider.node_lower, null, null, slider.move_function, slider.up_function );
+
+  return browser.stopPropagation( e );
+
+}
+
+// handleLowerSliderMouseDownEvent
+// 
+function handleLowerSliderMouseMoveEvent(event, slider ) {
+  var e = event || window.event;
+
+  if (e.type == "mousemove" && slider.mouse_down)  {
+	  
+	pointer_page_x = Math.round( browser.pageX( e) );
+	slider_page_x = Math.round(browser.calculateOffsetLeft( slider.node ));
+	button_width = Math.round((slider.node_lower.offsetWidth) / 2 );
+	
+	diff = pointer_page_x - slider_page_x + button_width;
+	
+	if( diff > 0 ) {
+		
+	  value_min   = Math.round(slider.node_lower.getAttribute("aria-valuemin"));	
+	  value_max   = Math.round(slider.node_lower.getAttribute("aria-valuemax"));	
+	  slider_max  = Math.round(slider.node_higher.getAttribute("aria-valuemax"));	
+	  value_size = slider_max - value_min;
+		
+      // calculate the percentage of the slider bar where the user clicked
+      value_now = value_min + Math.round(( diff * value_size )/ slider.node.offsetWidth);
+   
+	  if( value_now > value_max )
+	    value_now = value_max;
+	  
+	} else {
+		
+	  value_now =  slider.node_lower.getAttribute("aria-valuemin"); 	
+	  
+	}
+   
+    moveSliderLower( slider, value_now );
+	
+	return browser.stopPropagation( e );
+     
+  }  //endif
+  
+  return browser.stopPropagation( e );
+
+}
+
+// handleLowerSliderMouseUpEvent
+//
+function handleLowerSliderMouseUpEvent(event, slider ) {
+  var e = event || window.event;
+
+  slider.node_lower.src = "images/slider2a.gif";
+
+  slider.mouse_down = false;
+  browser.releaseMouseCapture( slider.node_lower, null, null, slider.move_function, slider.up_function );
+
+  return browser.stopPropagation( e );
+
+}
+
+
+// handleHigherSliderMouseDownEvent
+// 
+function handleHigherSliderMouseDownEvent(event, slider ) {
+  var e = event || window.event;
+
+  // Update impage to show focus is on slider
+  slider.node_higher.src = "images/slider2.html";
+  // Move keyboard focus to slider
+  slider.node_higher.focus();
+
+  slider.mouse_down = true;
+  slider.move_function = function( event ) { handleHigherSliderMouseMoveEvent(event, slider ); }; 
+  slider.up_function = function( event ) { handleHigherSliderMouseUpEvent(event, slider ); }; 
+
+  browser.setMouseCapture( slider.node_higher, null, null, slider.move_function, slider.up_function );
+
+  return browser.stopPropagation( e );
+
+}
+
+// handleHigherSliderMouseDownEvent
+// 
+function handleHigherSliderMouseMoveEvent(event, slider ) {
+  var e = event || window.event;
+
+  if (e.type == "mousemove" && slider.mouse_down)  {
+	  
+	pointer_page_x = Math.round( browser.pageX( e) );
+	slider_page_x = Math.round(browser.calculateOffsetLeft( slider.node ));
+	button_width = Math.round((slider.node_higher.offsetWidth) / 2 );
+	
+	diff = pointer_page_x - slider_page_x - button_width;
+	
+	if( diff > 0 ) {
+		
+	  value_min   = Math.round(slider.node_higher.getAttribute("aria-valuemin"));	
+	  value_max   = Math.round(slider.node_higher.getAttribute("aria-valuemax"));	
+	  slider_min  = Math.round(slider.node_lower.getAttribute("aria-valuemin"));	
+	  value_size = value_max - slider_min;
+		
+      // calculate the percentage of the slider bar where the user clicked
+      value_now = slider_min + Math.round(( diff * value_size )/ slider.node.offsetWidth);
+   
+	  if( value_now < value_min )
+	    value_now = value_min;
+	  
+	} else {
+		
+	  value_now =  slider.node_higher.getAttribute("aria-valuemin"); 	
+	  
+	}
+   
+    moveSliderHigher( slider, value_now );
+	
+	return browser.stopPropagation( e );
+     
+  }  //endif
+  
+  return browser.stopPropagation( e );
+
+}
+
+// handleHigherSliderMouseUpEvent
+//
+function handleHigherSliderMouseUpEvent(event, slider ) {
+  var e = event || window.event;
+
+  slider.node_higher.src = "images/slider2a.gif";
+
+  slider.mouse_down = false;
+  browser.releaseMouseCapture( slider.node_higher, null, null, slider.move_function, slider.up_function );
+
+  return browser.stopPropagation( e );
+
+}
+
+
+// handleSliderFocusEvent
+//
+function handleSliderFocusEvent(event, node ) {
+  var e = event || window.event;
+
+  node.src = "images/slider2.html";
+  
+  return browser.stopPropagation( e );
+
+}
+
+
+// handleSliderBlurEvent
+//
+function handleSliderBlurEvent(event, node ) {
+  var e = event || window.event;
+
+  node.src = "images/slider2a.gif";
+  
+  return browser.stopPropagation( e );
+
+}
+
+
+  </script>
+
+
+
+<body onLoad="initApp()">
+
+  <h1>Dual Slider Example using in-line images</h1>
+  
+  
+     <p>
+	 Based on example from <a href="../../../../../external.html?link=http://test.cita.uiuc.edu/aria/slider/slider2.php">iCITA ARIA Slider</a><br />
+	 <a target="_validationreport" href="javascript:(function(){ var str = ''; if (document.innerHTML) str += document.innerHTML; else { if (document.doctype) { str += '&lt;!DOCTYPE '; str += document.doctype.name; if (document.doctype.publicId) { str += ' PUBLIC &quot;' + document.doctype.publicId + '&quot;'; if (document.doctype.systemId) str += ' &quot;' + document.doctype.systemId + '&quot;'; } else if (document.doctype.systemId) { str += ' SYSTEM &quot;' + document.doctype.systemId + '&quot;'; } str += '>\n'; } var dummy = document.createElementNS('http://www.w3.org/1999/xhtml', 'div'); dummy.appendChild(document.documentElement); str += dummy.innerHTML; } var form = document.createElementNS('http://www.w3.org/1999/xhtml', 'form'); form.enctype = 'multipart/form-data'; form.method = 'post'; form.acceptCharset = 'utf-8'; form.action = 'http://html5.validator.nu/'; form.innerHTML = '&lt;input name=&quot;parser&quot;/>&lt;input name=&quot;showsource&quot; value=&quot;yes&quot;/>&lt;textarea name=&quot;content&quot;>&lt;/textarea>'; form.parser.value = document.createElement('div').tagName == 'DIV' ? 'html' : 'xml'; form.content.value = str; if (document.documentElement) document.documentElement.appendChild(form); else document.appendChild(form); form.submit(); })()">Validate DOM (HTML5)</a></p>
+
+<div role="application">
+  <script type="text/javascript">
+	  var slider1 = new SliderRange("sr1", "sr1_low", "sr1_high");
+	  widgets.add(slider1);
+  </script>
+
+  <h3 id="label_1" class="label">Year Range Slider Example 1: 1900 - 2008</h3>
+
+	
+	<div 
+	  class="slider" 
+		id="sr1">
+		
+        <img id="sr1_low" 
+		  src="images/slider2a.gif" 
+          role="slider"
+		  tabindex="0"
+		  aria-labelledby="sr1_low_label"
+		  aria-valuenow="1950"
+		  aria-valuemin="1900"
+		  aria-valuemax="2000"
+		  aria-controls="sr1_high"
+	  />
+    <div id="sr1_low_text" role="presentation">1950</div>
+
+    <img  id="sr1_high" 
+	   	  src="images/slider2a.gif" 
+          role="slider"
+		  tabindex="0"
+		  aria-labelledby="sr1_high_label"
+		  aria-valuenow="2000"
+		  aria-valuemin="1950"
+		  aria-valuemax="2008"
+		  aria-controls="sr1_low"
+	  />
+	  <div id="sr1_high_text" role="presentation">2000</div>
+
+  </div>
+  
+  <div id="sr1_low_label"  class="hidden">Lower limit of date range 1</div>
+
+  <div id="sr1_high_label" class="hidden">Upper limit of date range 1</div>
+</div><h2>Keyboard Shortcuts</h2>
+<ul>
+    <li>Left / Down: Decrease (one unit)</li>
+    <li>Right / Up: Increase (one unit)</li>
+    <li>PgUp / Pgdown: Large change (10 units)</li>
+    <li>Home: Set slider to minimum</li>
+
+    <li>End: Set slider to maximum</li>
+    <li>Tab: Navigate between slider controls</li>
+</ul>
+
+<h2>ARIA Roles and Properties</h2>
+
+<ul>
+    <li>Roles:
+	<ul>
+	<li><code>application</code></li>
+
+    <li><code>slider</code></li>
+	</ul>
+	</li>
+	
+    <li>States and properties: 
+        <ul>
+            <li><code>aria-labelledby</code></li>
+            <li><code>aria-valuenow</code></li>
+            <li><code>aria-valuemax</code></li>
+
+            <li><code>aria-valuemin</code></li>
+            <li><code>aria-presentation</code></li>
+            <li><code>aria-controls</code></li>
+        </ul>
+    </li>
+</ul>
+
+  <h2>HTML Source Code</h2>
+
+  <p><a id="lsc"href="#lsc" onclick="changeSourceCodeView(this, 'sc')">Show HTML Source Code: slider2_inline.inc</a></p>
+  <div id="sc" class="codebox" style="display: none">
+&lt;div role="application"&gt;
+<br>
+&#160;&#160;&lt;script type="text/javascript"&gt;
+<br>
+&#160;&#160;&#160;&#160;var slider1 = new SliderRange("sr1", "sr1_low", "sr1_high");
+<br>
+&#160;&#160;&#160;&#160;widgets.add(slider1);
+<br>
+&#160;&#160;&lt;/script&gt;
+
+<br>
+
+<br>
+&#160;&#160;&lt;h3 id="label_1" class="label"&gt;Year Range Slider Example 1: 1900 - 2008&lt;/h3&gt;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&lt;div 
+<br>
+&#160;&#160;&#160;&#160;class="slider" 
+<br>
+&#160;&#160;&#160;&#160;id="sr1"&gt;
+<br>
+
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;img id="sr1_low" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;src="images/slider2a.gif" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;role="slider"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-labelledby="sr1_low_label"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuenow="1950"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuemin="1900"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuemax="2000"
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-controls="sr1_high"
+<br>
+&#160;&#160;&#160;&#160;/&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;div id="sr1_low_text" role="presentation"&gt;1950&lt;/div&gt;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&lt;img&#160;&#160;id="sr1_high" 
+<br>
+&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;src="images/slider2a.gif" 
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;role="slider"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-labelledby="sr1_high_label"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuenow="2000"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuemin="1950"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-valuemax="2008"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-controls="sr1_low"
+<br>
+&#160;&#160;&#160;&#160;/&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&lt;div id="sr1_high_text" role="presentation"&gt;2000&lt;/div&gt;
+<br>
+
+<br>
+&#160;&#160;&lt;/div&gt;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&lt;div id="sr1_low_label"&#160;&#160;class="hidden"&gt;Lower limit of date range 1&lt;/div&gt;
+
+<br>
+&#160;&#160;&lt;div id="sr1_high_label" class="hidden"&gt;Upper limit of date range 1&lt;/div&gt;
+<br>
+&lt;/div&gt;  </div>
+  <h2>Javascript Source Code</h2>
+  <p><a id="lsc1"href="#lsc1" onclick="changeSourceCodeView(this, 'sc1')">Show Javascript Source Code: globals.js</a></p>
+  <div id="sc1" class="codebox" style="display: none">
+
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+/**
+<br>
+ *
+<br>
+ * The Globale Variables
+<br>
+ */
+<br>
+
+<br>
+if (!window.Node) {
+<br>
+
+&#160;&#160;var Node = {&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// If there is no Node object, define one
+<br>
+&#160;&#160;&#160;&#160;ELEMENT_NODE: 1,&#160;&#160;&#160;&#160;// with the following properties and values.
+<br>
+&#160;&#160;&#160;&#160;ATTRIBUTE_NODE: 2,&#160;&#160;// Note that these are HTML node types only.
+<br>
+&#160;&#160;&#160;&#160;TEXT_NODE: 3,&#160;&#160;&#160;&#160;&#160;&#160; // For XML-specific nodes, you need to add
+<br>
+&#160;&#160;&#160;&#160;COMMENT_NODE: 8,&#160;&#160;&#160;&#160;// other constants here.
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_NODE: 9,
+
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_FRAGMENT_NODE: 11
+<br>
+&#160;&#160;}
+<br>
+} 
+<br>
+
+<br>
+
+<br>
+var KEY_PAGEUP&#160;&#160; = 33;
+<br>
+var KEY_PAGEDOWN = 34;
+<br>
+
+var KEY_END&#160;&#160;&#160;&#160;&#160;&#160;= 35;
+<br>
+var KEY_HOME&#160;&#160;&#160;&#160; = 36;
+<br>
+
+<br>
+var KEY_LEFT&#160;&#160;&#160;&#160; = 37;
+<br>
+var KEY_UP&#160;&#160;&#160;&#160;&#160;&#160; = 38;
+<br>
+
+var KEY_RIGHT&#160;&#160;&#160;&#160;= 39;
+<br>
+var KEY_DOWN&#160;&#160;&#160;&#160; = 40;
+<br>
+
+<br>
+var KEY_SPACE&#160;&#160;&#160;&#160;= 32;
+<br>
+var KEY_TAB&#160;&#160;&#160;&#160;&#160;&#160;= 9;
+<br>
+
+<br>
+
+var KEY_BACKSPACE = 8;
+<br>
+var KEY_DELETE&#160;&#160;&#160;&#160;= 46;
+<br>
+var KEY_ENTER&#160;&#160;&#160;&#160; = 13;
+<br>
+var KEY_INSERT&#160;&#160;&#160;&#160;= 45;
+<br>
+var KEY_ESCAPE&#160;&#160;&#160;&#160;= 27;
+<br>
+
+<br>
+
+var KEY_F1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 112;
+<br>
+var KEY_F2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 113;
+<br>
+var KEY_F3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 114;
+<br>
+var KEY_F4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 115;
+<br>
+var KEY_F5&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 116;
+<br>
+var KEY_F6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 117;
+
+<br>
+var KEY_F7&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 118;
+<br>
+var KEY_F8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 119;
+<br>
+var KEY_F9&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 120;
+<br>
+var KEY_F10&#160;&#160;&#160;&#160;&#160;&#160; = 121;
+<br>
+
+<br>
+var KEY_M&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = 77;
+
+<br>
+
+<br>
+var NS_XHTML = "http://www.w3.org/1999/xhtml"
+<br>
+var NS_STATE = "http://www.w3.org/2005/07/aaa";
+<br>
+
+<br>
+// **********************************************
+<br>
+// *
+<br>
+// * Commonly used helper functions
+<br>
+// *
+<br>
+
+// **********************************************
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * nextSiblingElement
+<br>
+ * 
+<br>
+ * @contructor
+
+<br>
+ */
+<br>
+ 
+<br>
+function nextSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.nextSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * previousSiblingElement 
+<br>
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the next sibling element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+
+<br>
+ */
+<br>
+ 
+<br>
+function previousSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.previousSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.previousSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * firstChildElement 
+<br>
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the first child element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+
+<br>
+ */
+<br>
+ 
+<br>
+function firstChildElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * getTextContentOfNode
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+
+<br>
+ 
+<br>
+function getTextContentOfNode( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+&#160;&#160;var str = "";
+<br>
+
+<br>
+&#160;&#160;while( next_node ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;if( (next_node.nodeType == Node.TEXT_NODE ) &amp;&amp;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;(next_node.length &gt; 0 )
+<br>
+&#160;&#160;&#160;&#160; )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;str += next_node.data;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return str;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * setTextContentOfNode
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+<br>
+ 
+
+<br>
+function setTextContentOfNode( node, text ) {
+<br>
+
+<br>
+&#160;&#160; // Generate a new text node with the text value
+<br>
+&#160;&#160;&#160;&#160;var text_node = document.createTextNode(text);
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Remove child nodes to remove text
+<br>
+&#160;&#160;&#160;&#160;while (node.firstChild) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;node.removeChild(node.firstChild);
+
+<br>
+&#160;&#160;&#160;&#160;} // while
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// Append new text to the container element
+<br>
+&#160;&#160;&#160;&#160;node.appendChild( text_node );
+<br>
+
+<br>
+}
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+
+  <p><a id="lsc2"href="#lsc2" onclick="changeSourceCodeView(this, 'sc2')">Show Javascript Source Code: browser.js</a></p>
+  <div id="sc2" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+// JavaScript Document
+<br>
+// This module is to abstract browser dependencies
+<br>
+// This makes the widget code cleaner and earier to read by making most browser specfic coding
+<br>
+// in one place rather han scatered throghot documents
+<br>
+var ARIA_STATE = "aria-";
+<br>
+
+<br>
+//
+<br>
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+<br>
+//
+<br>
+// The state variable keeps track of current state of checkbox
+<br>
+function WebBrowser() {
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+//
+<br>
+// keyCode is a function to get the keycode from a keypress event
+<br>
+//
+<br>
+// @param ( event object) event is an event object
+<br>
+//
+<br>
+// @return ( keycode ) 
+<br>
+
+<br>
+
+WebBrowser.prototype.keyCode = function( event ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return e.keyCode;
+<br>
+}&#160;&#160;
+<br>
+
+<br>
+/**
+<br>
+ * OnClick Event Simulator
+
+<br>
+ *
+<br>
+ * @param ( node ) DOM node object
+<br>
+ * @return nothing
+<br>
+ */
+<br>
+
+<br>
+if( document.createEvent ) {
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+&#160;&#160;&#160;&#160;// W3C DOM Events way to trigger a "click" event
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEvent('MouseEvents');
+<br>
+&#160;&#160;&#160;&#160;e.initEvent( 'click', true, true );
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;node.dispatchEvent( e );
+
+<br>
+
+<br>
+&#160;&#160;} 
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEventObject();
+<br>
+&#160;&#160;&#160;&#160;node.fireEvent( "onclick", e );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+}
+<br>
+
+<br>
+if ( document.addEventListener ) {
+
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousedown", downHandler,&#160;&#160;true );
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( upHandler)
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;if( upHandler)
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousedown", downHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; node.setCapture();
+<br>
+&#160;&#160; if( clickHandler)
+
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onclick", clickHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousedown", downHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousemove", moveHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( upHandler )
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmouseup", upHandler );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; if( upHandler )
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmouseup", upHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousemove", moveHandler );
+
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousedown", downHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( clickHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onclick", clickHandler );
+<br>
+
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160; node.releaseCapture();
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;event.stopPropagation();
+<br>
+&#160;&#160;&#160;&#160;event.preventDefault();
+<br>
+&#160;&#160;&#160;&#160;return false;
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+<br>
+&#160;&#160;return event.target;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+&#160;&#160;return event.attrName;
+<br>
+
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+ 
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+<br>
+&#160;&#160;&#160;&#160; return event.charCode;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+<br>
+
+&#160;&#160;return node.offsetLeft;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function( node ) {
+<br>
+&#160;&#160;return node.offsetTop;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+
+<br>
+&#160;&#160;&#160;&#160;return e.pageX;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.pageY;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left+"px";
+<br>
+&#160;&#160;&#160;&#160;node.style.top = top+"px";
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+
+<br>
+&#160;&#160;&#160;&#160;event.cancelBubble = true; 
+<br>
+&#160;&#160;&#160;&#160;event.returnValue = false;
+<br>
+&#160;&#160;&#160;&#160;return false;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+<br>
+&#160;&#160;&#160;&#160;return window.browser.keyCode( event );
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;return event.srcElement;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+&#160;&#160;return event.propertyName;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function(node) {
+<br>
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset += node.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function(node) {
+<br>
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset = offset + node.offsetTop;
+<br>
+
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;offsetx = 0;
+
+<br>
+&#160;&#160;&#160;&#160;offsety = 0;
+<br>
+&#160;&#160;&#160;&#160;nnode = node.offsetParent
+<br>
+&#160;&#160;&#160;&#160;while( nnode ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsetx = offsetx + nnode.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsety = offsety + nnode.offsetTop;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;nnode = nnode.offsetParent;
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left-offsetx+"px";
+<br>
+
+&#160;&#160;&#160;&#160;node.style.top = top-offsety+"px";
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+};
+<br>
+
+<br>
+
+<br>
+if (document.addEventListener) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // Functions for W3C Standards compliant implementation of adding event handlers
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.addEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.removeEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = true;
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;if(document.attachEvent) {
+<br>
+
+<br>
+
+&#160;&#160;&#160;&#160; // IE Specific Event handler functions
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+
+&#160;&#160;} else {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // For browsers that do not support W3C or IE event functions
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+}
+<br>
+
+<br>
+var browser = new WebBrowser();
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <p><a id="lsc3"href="#lsc3" onclick="changeSourceCodeView(this, 'sc3')">Show Javascript Source Code: widgets.js</a></p>
+  <div id="sc3" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+// JavaScript Document
+<br>
+// Widgets is a way to initialize widgets in the ARIA examples
+<br>
+
+<br>
+ 
+<br>
+function Widgets() {
+<br>
+&#160;&#160;this.widgets = new Array();
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ * add is member of the Widgets Object 
+<br>
+ * and used add a widget ot the list of widgets to be intitialized 
+
+<br>
+ * as part of the onload event
+<br>
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+Widgets.prototype.add = function(obj) {
+<br>
+&#160;&#160;this.widgets[this.widgets.length] = obj;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ * init is member of the Widgets Object 
+<br>
+ * and is called by the onload event to initialize widgets in the web resource
+<br>
+
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+Widgets.prototype.init = function() {
+<br>
+&#160;&#160; &#160;&#160;
+
+<br>
+&#160;&#160; for(var i = 0; i &lt; this.widgets.length; i++ )
+<br>
+&#160;&#160;&#160;&#160; this.widgets[i].init();
+<br>
+}
+<br>
+
+<br>
+var widgets = new Widgets();
+<br>
+
+<br>
+
+function initApp() {
+<br>
+&#160;&#160;widgets.init();
+<br>
+}
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <p><a id="lsc4"href="#lsc4" onclick="changeSourceCodeView(this, 'sc4')">Show Javascript Source Code: slider2.js</a></p>
+  <div id="sc4" class="codebox" style="display: none">
+
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+
+<br>
+/* 
+<br>
+ * moveSliderLower
+<br>
+ *
+<br>
+ * @param ( slider object ) slider object
+<br>
+ * @param 
+
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+function moveSliderLower( slider, value ) {
+<br>
+
+<br>
+&#160;&#160;var value_min&#160;&#160;&#160;&#160;= slider.node_lower.getAttribute("aria-valuemin");
+
+<br>
+&#160;&#160;var value_max&#160;&#160;&#160;&#160;= slider.node_higher.getAttribute("aria-valuemax");
+<br>
+&#160;&#160;var value_range&#160;&#160;= value_max - value_min;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;var value_higher = slider.node_higher.getAttribute("aria-valuenow");
+<br>
+
+<br>
+&#160;&#160;if( value ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;if(value &gt; value_higher)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value = value_higher;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if(value &lt; value_min)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value = value_min;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower.setAttribute("aria-valuenow", value );&#160;&#160;
+
+<br>
+&#160;&#160;&#160;&#160;slider.node_higher.setAttribute("aria-valuemin", value );&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endif&#160;&#160;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;var top&#160;&#160;= browser.calculateOffsetTop( slider.node );
+<br>
+&#160;&#160;var left = browser.calculateOffsetLeft( slider.node );
+<br>
+
+&#160;&#160;var width = slider.node.clientWidth;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;top -= 25;
+<br>
+&#160;&#160;left = left - 30 + (( slider.node_lower.getAttribute("aria-valuenow").valueOf() - value_min ) * width) / value_range;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;slider.node_lower.style.position = "absolute";
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower.style.top&#160;&#160;= top + "px";
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower.style.left = left + "px";
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;setTextContentOfNode(slider.node_lower_text, value);
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower_text.style.position = "absolute";
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower_text.style.top&#160;&#160;= top + 80 + "px";
+<br>
+&#160;&#160;&#160;&#160;slider.node_lower_text.style.left = left + "px";
+<br>
+}
+<br>
+
+<br>
+/* 
+<br>
+
+ * moveSliderHigher
+<br>
+ *
+<br>
+ * @param ( id ) id of text to style
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+
+<br>
+
+<br>
+function moveSliderHigher( slider, value ) {
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;var value_min&#160;&#160;&#160;&#160;= slider.node_lower.getAttribute("aria-valuemin");
+<br>
+&#160;&#160;var value_max&#160;&#160;&#160;&#160;= slider.node_higher.getAttribute("aria-valuemax");
+<br>
+&#160;&#160;var value_range&#160;&#160;= value_max - value_min;
+<br>
+
+<br>
+&#160;&#160;var value_lower&#160;&#160;= slider.node_lower.getAttribute("aria-valuenow");
+<br>
+
+<br>
+&#160;&#160;if( value ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160; if(value &lt; value_lower)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; value = value_lower;
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160; if(value &gt; value_max)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; value = value_max;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160; slider.node_higher.setAttribute("aria-valuenow", value );&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160; slider.node_lower.setAttribute( "aria-valuemax", value );&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endif
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;var top&#160;&#160;= browser.calculateOffsetTop( slider.node );
+<br>
+&#160;&#160;var left = browser.calculateOffsetLeft( slider.node );
+<br>
+&#160;&#160;var width = slider.node.clientWidth;
+
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;top -= 25;
+<br>
+&#160;&#160;left = left + (( slider.node_higher.getAttribute("aria-valuenow").valueOf() - value_min ) * width) / value_range;
+<br>
+
+<br>
+&#160;&#160;slider.node_higher.style.position = "absolute";
+<br>
+&#160;&#160;slider.node_higher.style.top = top + "px";
+<br>
+&#160;&#160;slider.node_higher.style.left = left + "px";
+<br>
+
+<br>
+
+&#160;&#160;setTextContentOfNode(slider.node_higher_text, value);
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;slider.node_higher_text.style.position = "absolute";
+<br>
+&#160;&#160;slider.node_higher_text.style.top&#160;&#160;= top + 80 + "px";
+<br>
+&#160;&#160;slider.node_higher_text.style.left = left + "px";
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+
+/* 
+<br>
+ * SliderRange Object
+<br>
+ *
+<br>
+ * @param ( id ) id of text to style
+<br>
+ *
+<br>
+ * @return none
+<br>
+
+ */
+<br>
+
+<br>
+function SliderRange( id, id_lower, id_higher ) {
+<br>
+
+<br>
+&#160;&#160;this.id = id;
+<br>
+&#160;&#160;this.id_lower&#160;&#160;= id_lower;
+<br>
+&#160;&#160;this.id_higher = id_higher
+<br>
+&#160;&#160;this.id_lower_text&#160;&#160;= id_lower + "_text";
+
+<br>
+&#160;&#160;this.id_higher_text = id_higher + "_text";
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;this.mouse_down = false;
+<br>
+
+<br>
+}
+<br>
+
+<br>
+/* 
+<br>
+ * Init
+
+<br>
+ *
+<br>
+ * @member SliderRange
+<br>
+ * @param ( id ) id of text to style
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+
+<br>
+
+<br>
+SliderRange.prototype.init = function() {
+<br>
+
+<br>
+&#160;&#160;this.node&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= document.getElementById(this.id);
+<br>
+&#160;&#160;this.node_lower&#160;&#160;= document.getElementById(this.id_lower);
+<br>
+&#160;&#160;this.node_higher = document.getElementById(this.id_higher);
+<br>
+&#160;&#160;this.node_lower_text&#160;&#160;= document.getElementById(this.id_lower_text);
+
+<br>
+&#160;&#160;this.node_higher_text = document.getElementById(this.id_higher_text);
+<br>
+
+<br>
+&#160;&#160;this.value_min = this.node_lower.getAttribute("aria-valuemin");
+<br>
+&#160;&#160;this.value_max = this.node_higher.getAttribute("aria-valuemax");
+<br>
+&#160;&#160;this.value_range = this.value_max - this.value_min;
+<br>
+
+<br>
+&#160;&#160;// Initialize position of the pointers
+<br>
+&#160;&#160;moveSliderLower( this, this.node_lower.getAttribute("aria-valuenow") );
+<br>
+
+&#160;&#160;moveSliderHigher( this, this.node_higher.getAttribute("aria-valuenow") );
+<br>
+
+<br>
+&#160;&#160;var obj1 = this.node_lower;
+<br>
+&#160;&#160;var obj2 = this.node_higher;
+<br>
+
+<br>
+&#160;&#160;// add focus and blur event handlers
+<br>
+&#160;&#160;browser.addEvent(this.node_lower,&#160;&#160;"focus", function(event) {handleSliderFocusEvent(event, obj1 );}, false);
+<br>
+&#160;&#160;browser.addEvent(this.node_lower,&#160;&#160;"blur",&#160;&#160;function(event) {handleSliderBlurEvent(event, obj1 );}, false);
+
+<br>
+
+<br>
+&#160;&#160;browser.addEvent(this.node_higher, "focus", function(event) {handleSliderFocusEvent(event, obj2 );}, false);
+<br>
+&#160;&#160;browser.addEvent(this.node_higher, "blur", function(event) {handleSliderBlurEvent(event, obj2 );}, false);
+<br>
+
+<br>
+&#160;&#160;var obj = this;
+<br>
+
+<br>
+&#160;&#160;// add keyboard event handlers
+<br>
+&#160;&#160;browser.addEvent(this.node_lower,&#160;&#160;"keydown", function(event) {handleLowerSliderKeyDownEvent(event, obj );}, false);
+
+<br>
+&#160;&#160;browser.addEvent(this.node_higher, "keydown", function(event) {handleHigherSliderKeyDownEvent(event, obj );}, false);
+<br>
+
+<br>
+&#160;&#160;// add mouse event handlers
+<br>
+&#160;&#160;browser.addEvent(this.node_lower,&#160;&#160;"mousedown", function(event) {handleLowerSliderMouseDownEvent(event, obj );}, false);
+<br>
+&#160;&#160;browser.addEvent(this.node_higher, "mousedown", function(event) {handleHigherSliderMouseDownEvent(event, obj );}, false);
+<br>
+
+<br>
+
+<br>
+}
+
+<br>
+
+<br>
+// handleSliderKeyDownEvent
+<br>
+// 
+<br>
+function handleLowerSliderKeyDownEvent(event, slider ) {
+<br>
+&#160;&#160;&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( e.ctrlKey || e.shiftKey || e.altKey )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;return true;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;switch( e.keyCode ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_END:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuenow"));
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_HOME:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuemin"));
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_PAGEUP:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) + 10;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;case KEY_PAGEDOWN:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) - 10;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;case KEY_UP:
+<br>
+&#160;&#160;&#160;&#160;case KEY_RIGHT:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) + 1;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;case KEY_DOWN:
+<br>
+&#160;&#160;&#160;&#160;case KEY_LEFT:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuenow")) - 1;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderLower( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+
+<br>
+ 
+<br>
+&#160;&#160;&#160;&#160;} // end switch
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+&#160;&#160; 
+<br>
+}
+<br>
+
+<br>
+
+<br>
+
+// handleSliderKeyDownEvent
+<br>
+// 
+<br>
+function handleHigherSliderKeyDownEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;if( e.ctrlKey || e.shiftKey || e.altKey )
+<br>
+&#160;&#160;&#160;&#160;return true;
+<br>
+
+<br>
+&#160;&#160;switch( e.keyCode ) {
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_END:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuemax"));
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_HOME:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_lower.getAttribute("aria-valuenow"));
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_PAGEUP:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) + 10;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_PAGEDOWN:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) - 10;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_UP:
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_RIGHT:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) + 1;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_DOWN:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;case KEY_LEFT:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; var value = new Number(slider.node_higher.getAttribute("aria-valuenow")) - 1;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; moveSliderHigher( slider, value );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation( event);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+ 
+
+<br>
+&#160;&#160;&#160;&#160;} // end switch
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+&#160;&#160; 
+<br>
+}
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+// handleLowerSliderMouseDownEvent
+<br>
+// 
+<br>
+function handleLowerSliderMouseDownEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;slider.node_lower.src = "images/slider2.gif";
+<br>
+&#160;&#160;slider.node_lower.focus();
+<br>
+
+<br>
+&#160;&#160;slider.mouse_down = true;
+
+<br>
+&#160;&#160;slider.move_function = function( event ) { handleLowerSliderMouseMoveEvent(event, slider ); }; 
+<br>
+&#160;&#160;slider.up_function = function( event ) { handleLowerSliderMouseUpEvent(event, slider ); }; 
+<br>
+
+<br>
+&#160;&#160;browser.setMouseCapture( slider.node_lower, null, null, slider.move_function, slider.up_function );
+<br>
+
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+// handleLowerSliderMouseDownEvent
+<br>
+// 
+<br>
+function handleLowerSliderMouseMoveEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;if (e.type == "mousemove" &amp;&amp; slider.mouse_down)&#160;&#160;{
+<br>
+
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;pointer_page_x = Math.round( browser.pageX( e) );
+<br>
+&#160;&#160;slider_page_x = Math.round(browser.calculateOffsetLeft( slider.node ));
+<br>
+&#160;&#160;button_width = Math.round((slider.node_lower.offsetWidth) / 2 );
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;diff = pointer_page_x - slider_page_x + button_width;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;if( diff &gt; 0 ) {
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_min&#160;&#160; = Math.round(slider.node_lower.getAttribute("aria-valuemin"));&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_max&#160;&#160; = Math.round(slider.node_lower.getAttribute("aria-valuemax"));&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;slider_max&#160;&#160;= Math.round(slider.node_higher.getAttribute("aria-valuemax"));&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;value_size = slider_max - value_min;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;// calculate the percentage of the slider bar where the user clicked
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value_now = value_min + Math.round(( diff * value_size )/ slider.node.offsetWidth);
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;if( value_now &gt; value_max )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value_now = value_max;
+<br>
+&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;} else {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_now =&#160;&#160;slider.node_lower.getAttribute("aria-valuemin"); &#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;moveSliderLower( slider, value_now );
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;}&#160;&#160;//endif
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+// handleLowerSliderMouseUpEvent
+<br>
+//
+<br>
+function handleLowerSliderMouseUpEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;slider.node_lower.src = "images/slider2a.gif";
+<br>
+
+<br>
+&#160;&#160;slider.mouse_down = false;
+
+<br>
+&#160;&#160;browser.releaseMouseCapture( slider.node_lower, null, null, slider.move_function, slider.up_function );
+<br>
+
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+// handleHigherSliderMouseDownEvent
+<br>
+
+// 
+<br>
+function handleHigherSliderMouseDownEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;// Update impage to show focus is on slider
+<br>
+&#160;&#160;slider.node_higher.src = "images/slider2.gif";
+<br>
+&#160;&#160;// Move keyboard focus to slider
+<br>
+&#160;&#160;slider.node_higher.focus();
+<br>
+
+<br>
+&#160;&#160;slider.mouse_down = true;
+<br>
+&#160;&#160;slider.move_function = function( event ) { handleHigherSliderMouseMoveEvent(event, slider ); }; 
+<br>
+&#160;&#160;slider.up_function = function( event ) { handleHigherSliderMouseUpEvent(event, slider ); }; 
+<br>
+
+<br>
+&#160;&#160;browser.setMouseCapture( slider.node_higher, null, null, slider.move_function, slider.up_function );
+<br>
+
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+
+}
+<br>
+
+<br>
+// handleHigherSliderMouseDownEvent
+<br>
+// 
+<br>
+function handleHigherSliderMouseMoveEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;if (e.type == "mousemove" &amp;&amp; slider.mouse_down)&#160;&#160;{
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;pointer_page_x = Math.round( browser.pageX( e) );
+<br>
+&#160;&#160;slider_page_x = Math.round(browser.calculateOffsetLeft( slider.node ));
+<br>
+&#160;&#160;button_width = Math.round((slider.node_higher.offsetWidth) / 2 );
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;diff = pointer_page_x - slider_page_x - button_width;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;if( diff &gt; 0 ) {
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_min&#160;&#160; = Math.round(slider.node_higher.getAttribute("aria-valuemin"));&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_max&#160;&#160; = Math.round(slider.node_higher.getAttribute("aria-valuemax"));&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;slider_min&#160;&#160;= Math.round(slider.node_lower.getAttribute("aria-valuemin"));&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;value_size = value_max - slider_min;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;// calculate the percentage of the slider bar where the user clicked
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value_now = slider_min + Math.round(( diff * value_size )/ slider.node.offsetWidth);
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;if( value_now &lt; value_min )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;value_now = value_min;
+<br>
+&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;} else {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;value_now =&#160;&#160;slider.node_higher.getAttribute("aria-valuemin"); &#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;moveSliderHigher( slider, value_now );
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;}&#160;&#160;//endif
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+// handleHigherSliderMouseUpEvent
+<br>
+//
+<br>
+function handleHigherSliderMouseUpEvent(event, slider ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;slider.node_higher.src = "images/slider2a.gif";
+<br>
+
+<br>
+&#160;&#160;slider.mouse_down = false;
+
+<br>
+&#160;&#160;browser.releaseMouseCapture( slider.node_higher, null, null, slider.move_function, slider.up_function );
+<br>
+
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+// handleSliderFocusEvent
+<br>
+
+//
+<br>
+function handleSliderFocusEvent(event, node ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;node.src = "images/slider2.gif";
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+
+<br>
+
+<br>
+
+<br>
+// handleSliderBlurEvent
+<br>
+//
+<br>
+function handleSliderBlurEvent(event, node ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;node.src = "images/slider2a.gif";
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;return browser.stopPropagation( e );
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <h2>CSS Source Code</h2>
+
+  <p><a id="lsc5"href="#lsc5" onclick="changeSourceCodeView(this, 'sc5')">Show CSS Source Code: slider2.css</a></p>
+  <div id="sc5" class="codebox" style="display: none">
+&#160;&#160;&lt;style type="text/css"&gt;<br>
+/* CSS Document */
+<br>
+
+<br>
+.label {
+<br>
+&#160;&#160;margin: 0;
+<br>
+&#160;&#160;padding: 0;
+<br>
+
+&#160;&#160;margin-top: 2em;
+<br>
+&#160;&#160;margin-bottom: .5em;&#160;&#160;
+<br>
+&#160;&#160;clear: both;
+<br>
+&#160;&#160;font-weight: bold;
+<br>
+}
+<br>
+
+<br>
+
+<br>
+div.slider {
+<br>
+
+&#160;&#160;margin: 0;
+<br>
+&#160;&#160;padding: 0;
+<br>
+&#160;&#160;margin-top: 100px;
+<br>
+&#160;&#160;margin-bottom: 100px;
+<br>
+&#160;&#160;width: 540px;
+<br>
+&#160;&#160;height: 20px;
+<br>
+&#160;&#160;border: 2px solid black;
+<br>
+&#160;&#160;background-color: #A0A0A0;
+<br>
+}
+
+<br>
+
+<br>
+div.slider img&#160;&#160;{
+<br>
+&#160;&#160;margin: 0;
+<br>
+&#160;&#160;padding: 0;
+<br>
+&#160;&#160;position: absolute;
+<br>
+&#160;&#160;left: -30em;
+<br>
+&#160;&#160;top: -30em;
+<br>
+}
+
+<br>
+
+<br>
+.hidden {
+<br>
+&#160;&#160;position: absolute;
+<br>
+&#160;&#160;top: -20em;
+<br>
+&#160;&#160;left: -200em;
+<br>
+}
+<br>
+&#160;&#160;&lt;/style&gt;<br>
+  </div>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-dual-inline-img.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:28 GMT -->
+</html>
+

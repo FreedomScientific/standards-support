@@ -1,0 +1,68 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/presentation nested table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:23 GMT -->
+<head>
+   <title>Testing</title>
+</head>
+<body>
+	<div role="main">
+		<p>Below this is a table element with a nested table in the last cell of the last row.  The nested table has role=&quot;presentation&quot;.  This should cause the nested table structure to be ignored, only the content of the cells should be left.  Each cell content in the nested table has nested added to the beginning of each cell content.  The outer table without the role attribute just has the numbers written without "nested" prepended.  Using table navigation keys should cause the entire content of the nested cell to be spoken.
+		</p>
+		<table cellspacing="0" cellpadding="0" border="1">
+			<tbody>
+				<tr>
+					<th>
+						one
+					</th>
+					<th>
+						two
+					</th>
+				<th>
+					three
+				</th>
+			</tr>
+			<tr>
+				<td>
+					four
+				</td>
+				<td>
+					five
+				</td>
+				<td><table cellspacing="0" cellpadding="0" border="1" role="presentation">
+							<tbody>
+								<tr>
+									<th>
+										nested one
+									</th>
+								<th>
+									nested two
+								</th>
+								<th>
+									nested three
+								</th>
+							</tr>
+							<tr>
+								<td>
+									nested four
+								</td>
+								<td>
+									nested five
+								</td>
+								<td>
+									nested six
+								</td>
+							</tr>
+						</tbody>
+					</table></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/presentation nested table.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:23 GMT -->
+</html>

@@ -1,0 +1,1 @@
+Change the value in the edit, and make sure jaws reads the edit field label in its entirety.

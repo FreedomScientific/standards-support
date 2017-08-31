@@ -1,0 +1,3 @@
+jaws should announce the value of the progress bar as it changes.
+The progress bar control should be announced when you read the page with a say all or arrows.
+To make sure that jaws is not reading live region updates for the progressbar, turn off the announcement of live regions in the jaws verbosity dialog.

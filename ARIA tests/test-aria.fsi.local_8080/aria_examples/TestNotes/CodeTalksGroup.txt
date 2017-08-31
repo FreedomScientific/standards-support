@@ -1,0 +1,5 @@
+Use tab to navigate through the controls on the page.
+When tabbing into the first control on the form (the edit), jaws should read the text of the group element, which is the order tracking information.
+When tabbing to the next control in the form (the button) jaws should not read the group information again.
+When shift tabbing to the last control in the form (the button), jaws should read the text of the group element.
+When shift tabbing to the previous element in the form (the edit), jaws should not read the group information again.

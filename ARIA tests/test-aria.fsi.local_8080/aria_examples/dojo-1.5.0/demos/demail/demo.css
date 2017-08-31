@@ -1,0 +1,250 @@
+@import "../../dojo/resources/dojo.css";
+@import "../../dijit/themes/tundra/tundra.css";
+@import "../../dojox/grid/resources/tundraGrid.css";
+
+html, body, #main{	
+	width: 100%;	/* make the body expand to fill the visible window */
+	height: 100%;
+	overflow: hidden;	/* erase window level scrollbars */
+	padding: 0;
+	margin: 0;
+}
+
+.app .leftTree {
+	/* make it use mac-like fonts */
+	/* font-family: "Myriad Pro", Myriad, Geneva, sans-serif; */
+	padding: 0 0 0 0;
+	background-color: #d6dde5;
+	width: 200px;
+}
+
+.tundra .app .subNode {
+	/* clobber the lines */
+	background-image: none;
+	/* set the individual items to be left-aligned */
+	margin-left: 0px;
+}
+
+/* rules to set up the visual hierarchy */
+
+.app .subNode .subNode .subNode .dijitTreeRow {
+	padding-left: 18px;
+}
+
+.app .subNode .subNode .subNode .subNode .dijitTreeRow {
+	padding-left: 36px;
+}
+
+.app .subNode .subNode .subNode .subNode .subNode .dijitTreeRow {
+	padding-left: 48px;
+}
+
+.app .subNode .subNode .subNode .subNode .subNode .subNode .dijitTreeRow {
+	padding-left: 60px;
+}
+
+.app .subNode .subNode .subNode .subNode .subNode .subNode .subNode .dijitTreeRow {
+	padding-left: 72px;
+}
+
+/* make the open/close buttons smaller */
+
+.app .dijitTreeExpando {
+	width: 14px;
+	height: 10px;
+}
+
+.app .dijitTreeExpandoClosed {
+	background: url("resources/arrow-closed.png") no-repeat;
+}
+
+.app .dijitTreeExpandoOpened {
+	background: url("resources/arrow-open.png") no-repeat;
+}
+
+.app .subNode .subNodeDetail {
+	height: 14px;
+	color: white;
+	background-color: #8b9ab8;
+	background-color: #8799bd;
+	float: right;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	padding: 1px 5px 0px 5px;
+	margin-right: 4px;
+	font-weight: bold;
+	font-size: 10px;
+	min-width: 8px;
+	text-align: center;
+}
+
+.app .dijitTreeIsRoot .subNode .dijitTreeExpando {
+	/* clobber the lines */
+	/*
+	background-image: none;
+	*/
+}
+
+/* hide parts of the tree node that we don't want to see for top-level items */
+.app .dijitTreeIsRoot > .dijitTreeRow .dijitTreeIcon,
+.app .dijitTreeIsRoot > .dijitTreeRow .dijitTreeExpando,
+.app .dijitTreeIsRoot > .dijitTreeRow .subNodeDetail
+{
+	display: none;
+}
+.app .dijitTreeIsRoot > .dijitTreeRow {
+	color: #606e8e;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Verdana;
+	margin-left: 5px;
+	border: none;
+	/*
+	border-top: 1px solid transparent;
+	*/
+}
+
+.app .dijitSplitterV {
+	width: 0px;
+	border: none;
+	border-left: 1px solid #8b8b8b; 
+	/* #555555; */
+	
+}
+.app .dijitSplitterV .dijitSplitterThumb {
+	display: none;
+}
+
+.app .dijitSplitterH {
+	height: 7px;
+	border-top: 0.6px solid #a5a5a5;
+	border-bottom: 0.6px solid #a5a5a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#dfdfdf));
+	-webkit-background-origin: border;
+	-webkit-background-clip: border;
+}
+
+.app .dijitTreeRow {
+	padding-top: 2px;
+	border-top: none;
+	height: 16px;
+
+	/*
+	overflow: hidden;
+	white-space: nowrap;
+	-webkit-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	*/
+}
+
+.app .dijitTreeNodeSelected {
+	outline: none;
+	border: none;
+
+	/** dark gradient bg **/
+	border-top: 1px solid #67788c;
+	background: #9499b0;
+	color: white;
+	background: -webkit-gradient(linear, left top, left bottom, from(#8092a5), to(#415a73));
+	-webkit-background-origin: border;
+	-webkit-background-clip: border;
+
+	/** the lighter version **/
+	/*
+	border-top: 1px solid #9499b0;
+	background: #9499b0;
+	color: white;
+	background: -webkit-gradient(linear, left top, left bottom, from(#a7b5c2), to(#8091a3));
+	-webkit-background-origin: border;
+	-webkit-background-clip: border;
+	*/
+	/*
+	background-color: #8091a3;
+	*/
+
+}
+
+.app .dijitTreeIsRoot > .dijitTreeRow {
+	background: none;
+}
+
+.app .dijitTreeIsRoot > .dijitTreeRow .dijitTreeNodeSelected {
+	border-top: 1px solid transparent;
+	background: none;
+}
+
+.app .dijitTreeNodeSelected .subNodeDetail {
+	color: #8b9ab8;
+	background-color: white;
+}
+
+.app .dijitTreeLabel {
+	/*	clobber the text outline since we give visual indication 
+		with a background 
+	*/
+	outline: none;
+}
+
+.app .dijitTreeNodeSelected .dijitTreeLabel {
+	background-color: transparent;
+}
+
+.app .dijitTreeExpandoLeaf {
+	background: none;
+}
+
+.app .messagePane {
+	border-left: none;
+	border-bottom: none;
+}
+
+.app .dojoxGrid {
+	border-left: none;
+	border-top: none;
+}
+
+.app .dojoxGridRowOdd {
+	background-color: #f1f5fa;
+}
+
+.app .dojoxGridCell {
+	font-family: "Helvetica Neue", Helvetica, Verdana;
+	font-size: 11px;
+	border-bottom: none;
+	border-right: 1px solid #dadada;
+}
+
+.app .dojoxGridHeader .dojoxGridCell {
+	border-bottom: 1px solid #575757;
+	background: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#bbbbbb), color-stop(0.4, #dbdbdb));
+	-webkit-background-origin: border;
+	-webkit-background-clip: border;
+}
+
+.app .dojoxGridCellFocus.dojoxGridCellOver,
+.app .dojoxGridCellFocus {
+	outline: none;
+	border: none;
+	border-right: 1px solid #dadada;
+	border-left: 1px solid transparent;
+}
+
+
+/*
+.app .dojoxGridRowSelected,
+.app .dojoxGridRowSelected.dojoxGridRowOver .dojoxGridCell {
+*/
+.app .dojoxGridCellFocus {
+	border-right: 1px solid #dadada;
+	background-color: #3580e0;
+	color: white;
+}
+
+.app .dojoxGridRowOver .dojoxGridCell {
+	color: black;
+	background-color: transparent;
+}
+.app .dojoxGridCellOver {
+	border-left: 1px solid transparent;
+	border-top: 1px solid transparent;
+}
+

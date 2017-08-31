@@ -1,0 +1,5 @@
+Use the arrow keys to move from cell to cell.
+JAWS should read column headers as you move left and right.
+Use home and end to move to the beginning and end of rows.
+Use ctrl home and end to move to the beginning and end of the table.
+Note: Although the example says the grid is selectable, I found no evidence that selection properties are exposed to jaws. 

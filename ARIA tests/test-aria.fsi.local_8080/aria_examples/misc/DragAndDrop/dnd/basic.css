@@ -1,0 +1,161 @@
+body {
+	margin: 0;
+	padding: 0 0.8em;
+	color: #111;
+	background: #fff;
+	font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
+	font-size: 0.9em;
+	line-height: 1.5;
+	max-width: 800px;
+	min-width: 600px;
+	margin: auto;
+	text-align: left;
+}
+
+a:link, a:visited {
+	color: #0082e0;
+	text-decoration: underline;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+img {
+	border: none;
+}
+
+pre {
+	max-width: 100%;
+	overflow: auto;
+	line-height: 1.4;
+	background: #ffe;
+	padding: 0.5em;
+	border: 1px dotted #cc9;
+}
+
+pre, code, tt, kbd {
+	font-family: "Andale Mono",courier,monospace;
+}
+
+h1 {
+	margin: 0 0 0.25em 0;
+	font-size: 1.7em;
+}
+
+
+h2 {
+	margin: 0 0 0.25em 0;
+	font-size: 1.3em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2em;
+}
+
+h4, h5, h6, input, select, li {
+	margin: 0;
+	font-size: 1em;
+}
+
+.comment
+{
+	font-style: italic;
+	color: #999;
+}
+
+table
+{
+	border-collapse: collapse;
+}
+
+td, th
+{
+	border: 1px solid #000;
+	padding: 0.3em;
+	text-align: left;
+	vertical-align: top;
+}
+
+caption
+{
+	font-size: 1.3em;
+	text-align: left;
+}
+
+ul
+{
+	position: relative;
+	width: 11em;
+	list-style-type: none;
+	margin: 0;
+	padding: 0.5em;
+	background: #000;
+	color: #fff;
+	margin-bottom: 1em;	
+}
+
+ul.instructions
+{
+	width: auto;
+	list-style-type: disc;
+	margin-left: 0;
+	padding: 0.5em;
+	background: #fff;
+	color: #000;
+	margin-bottom: 1em;	
+}
+
+ul#popup
+{
+	position: absolute;
+	width: 10em;
+	padding: 0.3em;
+	background: #ccc;
+	color: #000;
+	border: 1px solid #000;
+	top: 1em;
+	left: 1em;
+	cursor: default;
+	z-index: 40;
+}
+
+ul#popup li
+{
+	text-align: left;
+	margin: 0.3em 0;
+	padding: 0 0.2em;
+}
+
+ul#popup li.focus, ul#popup li.hover
+{
+	background: #00c;
+	color: #fff;
+}
+
+ul.highlight
+{
+	background: #c00;
+	color: #000;	
+}
+
+li.draggable
+{
+	cursor: move;
+}
+
+ul li.hover, ul li.focused
+{
+	background: #fc0;
+}
+
+li.draggable, li.empty
+{
+	position: relative;
+	border: 1px solid #666;
+	padding: 0.5em;
+	width: 10em;
+	text-align: center;
+	color: #000;
+	background: #fff;
+}

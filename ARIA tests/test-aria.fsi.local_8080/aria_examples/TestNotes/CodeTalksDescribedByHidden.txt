@@ -1,0 +1,1 @@
+JAWS should announce the description after reading the type and text of the edit field. The description should not appear in the jaws VB.

@@ -1,0 +1,89 @@
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+<head>
+<title>
+The ARIA math role
+</title>
+</head>
+<body>
+<p>
+Use of generic HTML to approximate a visual rendering of a mathematical expression:
+</p>
+<p>
+<i>a</i><i>x</i><sup>2</sup> + <i>b</i><i>x</i> + <i>c</i> = 0
+</p>
+<p>
+Accessible example of the same function, using the math role, appropriate label, and MathML rendering:
+</p>
+<p>
+<div role="math" aria-label="a times x squared plus b times x plus c equals 0">
+  <math xmlns='../../../external.html?link=http://www.w3.org/1998/Math/MathML'>
+    <mrow>
+      <mrow>
+         <mrow>
+            <mi>a</mi>
+            <mo>&#x2062; <!-- invisible times --></mo>
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+         </mrow>
+         <mo>+</mo>
+         <mrow>
+            <mi>b</mi>
+            <mo>&#x2062; <!-- invisible times --></mo>
+            <mi>x</mi>
+         </mrow>
+         <mo>+</mo>
+         <mi>c</mi>
+      </mrow>
+      <mo>=</mo>
+      <mn>0</mn>
+    </mrow>
+  </math>
+</div>
+</p>
+<p>
+Similarly:
+</p>
+<p>
+<i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + <i>x</i> - 2
+</p>
+<p>
+Accessible example of the same function, using the math role, appropriate label, and MathML rendering:
+</p>
+<p>
+<div role="math">
+  <math xmlns='../../../external.html?link=http://www.w3.org/1998/Math/MathML'>
+    <mrow>
+      <mrow>
+         <mi>f</mi>
+         <mo>&#x2061;</mo>
+         <mrow>
+            <mo>(</mo>
+            <mrow>
+               <mi>x</mi>
+            </mrow>
+            <mo>)</mo>
+         </mrow>
+      </mrow>
+      <mo>=</mo>
+      <mrow>
+         <msup>
+           <mi>x</mi>
+           <mn>2</mn>
+         </msup>
+         <mo>+</mo>
+         <mi>x</mi>
+         <mo>&#x2212;</mo>
+         <mn>2</mn>
+      </mrow>
+    </mrow>
+  </math>
+</div>
+</p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+</html>

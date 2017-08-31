@@ -1,0 +1,4 @@
+When tabbing to the tab strip, jaws should go into forms mode automatically.
+Use left and right or up and down arrows to switch tabs.
+When switching tabs, jaws will speak the state changes for the old tab then the new tab, so jaws will announce one as closed then the other as opened. This is not a bug.
+Turn off the virtual cursor to see the links that are brought up for each tab.

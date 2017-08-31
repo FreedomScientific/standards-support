@@ -1,0 +1,1 @@
+Make sure the button is announced by jaws as controlling another element.

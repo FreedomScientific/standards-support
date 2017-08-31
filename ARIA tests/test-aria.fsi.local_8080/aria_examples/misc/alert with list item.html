@@ -1,0 +1,38 @@
+<!-- saved from url=(0014)about:internet -->
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/alert with list item.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:07 GMT -->
+<HEAD>
+
+<script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+$("#butAlert").click( function () {
+if ($("#myAlert").css("display") == 'block') {
+$("#myAlert").css("display","none");
+}
+else {
+$("#myAlert").css("display","block");
+}
+});
+});
+</SCRIPT>
+
+</HEAD>
+<BODY>
+<div>
+<input id="butAlert" type="button" name="toggle alert" />
+</div>
+<br>
+
+<div  role="alert" style="display:none" id="myAlert">
+<center>test message
+<ul>
+<li>first list item</li>
+</ul>
+</center>
+</DIV>
+</BODY>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/alert with list item.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:10 GMT -->
+</HTML>

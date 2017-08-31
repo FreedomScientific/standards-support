@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/live_nested-regions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<title>
+Nested Live Regions ("assertive" inside of "off") - Advanced Test Case
+</title>
+<script type="text/javascript">
+window.onload = runExample;
+var minimumTime = 1000;
+var index1=0;
+var index2=0;
+var lrID1 = "myLiveRegion1";
+var lrID2 = "myLiveRegion2";
+var messagesArray1 = new Array("0","1","2","3","4","5","6","7","8","9");
+var messagesArray2 = new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+
+
+
+function updateLiveRegion(liveRegionID, textString){
+  textNode = document.createTextNode(textString);
+        targetNode = document.getElementById(liveRegionID);
+        while (targetNode.firstChild) {
+           targetNode.removeChild(targetNode.firstChild);
+           }
+  targetNode.appendChild(textNode);
+        }
+
+function runLiveRegion1(){
+   updateLiveRegion(lrID1, messagesArray1[index1++]);
+   if (index1 > 9){
+      index1=0;
+      }
+   window.setTimeout(runLiveRegion1, minimumTime);
+   }
+
+function runLiveRegion2(){
+   updateLiveRegion(lrID2, messagesArray2[index2++]);
+   if (index2 > 25){
+      index2=0;
+      }
+   window.setTimeout(runLiveRegion2, minimumTime*1.8);
+   }
+
+function runExample(){
+   runLiveRegion1();
+   runLiveRegion2();
+   }
+
+function setMinimumTime(){
+   minimumTimeStr = document.getElementById("throttle").options[document.getElementById("throttle").selectedIndex].text;
+   minimumTime = minimumTimeStr * 1000;
+   }
+</script>
+</head>
+<body>
+<div>
+<label for="throttle">Minimum number of seconds before a change</label>
+<select id="throttle" onblur="setMinimumTime();" onchange="setMinimumTime();">
+<option>1</option>
+<option>2</option>
+
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+</select>
+
+<hr/>
+</div>
+<h1>
+Live Region - Nested Live Regions ("assertive" inside of "off")
+</h1>
+<p>
+
+<span id="mainLiveRegion" aria-live="off">
+<span id="myLiveRegion1">
+
+</span>
+<span id="myLiveRegion2" aria-live="assertive">
+
+</span>
+</span>
+</p>
+<h2>
+Important: This case is not defined in the spec. The "Summary" and "Description of the expected behavior" are based solely on what I feel makes the most sense.
+</h2>
+<p>
+Summary: There is one live region on this page which contains two live regions inside of it on this page. The mainLiveRegion has live="off". The first subregion, myLiveRegion1, has no live property specified; therefore it inherits the "off" property from its parent. The second subregion, myLiveRegion2, has live="assertive"; therefore it should be treated as a live region that is "assertive", despite its parent's live="off" setting. The rule here is that the closest live=X setting wins. This will make things easier on web developers as they only need to consider the liveness of a particular element without needing to think through its entire chain of parents. This solution is also rather elegant since it keeps the entire system of using live=X logically consistent. Since the live="off" property is the default if nothing is specified, one can argue that the main BODY element of an HTML page which does not have a live=X property is "off". If that is the case, then having the closest live=X setting win is an idea that naturally follows from our expectation that live="assertive" will make a SPAN element "assertive" under a BODY which is "off".
+</p>
+<p>
+Description of the expected behavior: After presenting the heading, the user agent should present the text in each of the live region areas at the time. After presenting the "Important" note, it should then proceed to the "Summary" section followed by the "Description of expected behavior" section. It should then continue to read the filler text until the end of the document and stop. Updates to the first live region should be ignored as the first live region inherits live="off" from the mainLiveRegion since it does not have a live=X of its own. However, updates to the second live region should be announced as soon as possible as it is "assertive".
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/live_nested-regions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+</html>

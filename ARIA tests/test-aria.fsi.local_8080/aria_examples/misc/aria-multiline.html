@@ -1,0 +1,223 @@
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-multiline.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<!-- 
+Copyright (c) Freedom Scientific 2015. All rights reserved. 
+-->
+<style>
+  h1.multiline { 
+    background-color: #EAEAFA 
+  }
+  h1.singleline { 
+    background-color: #CCFF99 
+  }
+</style>
+</head>
+<body> 
+<form name="Simple Form">
+
+<p> 
+  This file contains various tests that can be used for ari-multiline functionality verification.
+</p>
+<p> 
+  You can use Braille display to verify if a specific edit is treated as a single line or a
+multiline edit. Single line edits will have their label displayed prior to edit content 
+on the Braille display. Muiltiline edits will only have content of a current line.
+</p>
+<p>
+  You can also use Script utility mode for verification and make sure that both single 
+  line and multiline edits have type code = edit, but subtype code is different: 3 for 
+  single line edit and 66 for a multiline.                    
+</p>
+
+<h1 class="multiline"> Test 1 </h1>
+A regular edit with role="textbox" and aria-multiline="true".<br> 
+<b> Interpretation: </b> multiline edit <br>
+<INPUT  type="text" 
+          role="textbox" 
+          aria-label="control 1" 
+          value="Hello World" 
+          aria-multiline="true"/> <br>
+
+<h1 class="multiline"> Test 2 </h1>
+Content editable div with role="textbox" and aria-multiline="true"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<div  contenteditable="true" 
+      role="textbox" 
+      aria-multiline="true" 
+      aria-label="control 2">
+  Text inside content editable div. Line 1 <br>
+  Line 2  <br>
+  Line 3  <br>
+</div>   
+
+<h1 class="multiline"> Test 3 </h1>
+Content editable div with role="textbox" and aria-multiline="tRuE"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<div  contenteditable="true" 
+      role="textbox" 
+      aria-multiline="tRuE" 
+      aria-label="control 3">
+  Text inside content editable div. Line 1 <br>
+  Line 2  <br>
+  Line 3  <br>
+</div>   
+
+<h1 class="singleline"> Test 4 </h1>
+Content editable div with role="textbox" and aria-multiline without value <br>
+<b> Interpretation: </b> single line edit <br> 
+<div  contenteditable="true" 
+      role="textbox" 
+      aria-multiline 
+      aria-label="control 4">
+  Text inside content editable div  
+</div>   
+
+<h1 class="multiline"> Test 5 </h1>
+Content editable div with aria-multiline="true", but without role="textbox"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<div  contenteditable="true" 
+      aria-multiline="true" 
+      aria-label="control 5">
+  Text inside content editable div. Line 1 <br>
+  Line 2  <br>
+  Line 3  <br>
+</div>   
+
+<h1 class="multiline"> Test 6 </h1>
+Regular edit with aria-multiline="true", without role="textbox"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<INPUT  type="text" 
+        aria-label="control 6" 
+        value="Hello World" 
+        aria-multiline="true"/> <br>
+<br>
+
+<h1 class="singleline"> Test 7 </h1>
+Content editable div with aria-multiline="false", without role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<div  contenteditable="true" 
+      aria-multiline="false" 
+      aria-label="control 7">
+  Text inside content editable div   
+</div>   
+
+<h1 class="singleline"> Test 8 </h1>
+Content editable div with aria-multiline="", without role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<div  contenteditable="true" 
+      aria-multiline="" 
+      aria-label="control 8">
+  Text inside content editable div   
+</div>   
+
+<h1 class="multiline"> Test 9 </h1>
+Regular edit with aria-multiline="hello", without role="textbox"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<INPUT  type="text" 
+        aria-label="control 9" 
+        value="Hello World" 
+        aria-multiline="hello"/> <br>
+<br>
+
+<h1 class="multiline"> Test 10 </h1>
+Regular edit with aria-multiline="undefined", without role="textbox"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<INPUT  type="text" 
+        aria-label="control 10" 
+        value="Hello World" 
+        aria-multiline="undefined"/> <br>
+<br>
+
+<h1 class="singleline"> Test 11 </h1>
+Content editable div with aria-multiline="", with role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<div  contenteditable="true"
+      role="textbox"  
+      aria-multiline="" 
+      aria-label="control 11">
+Text inside content editable div   
+</div>   
+
+<h1 class="multiline"> Test 12 </h1>
+Regular edit with aria-multiline="hello", with role="textbox"<br>
+<b> Interpretation: </b> multiline line edit <br> 
+<INPUT  type="text" 
+        role="textbox" 
+        aria-label="control 12" 
+        value="Hello World" 
+        aria-multiline="hello"/> <br>
+<br>
+
+<h1 class="multiline"> Test 13 </h1>
+Regular edit with aria-multiline="undefined", with role="textbox"<br>
+<b> Interpretation: </b> multiline edit <br> 
+<INPUT  type="text" 
+        role="textbox" 
+        aria-label="control 13" 
+        value="Hello World" 
+        aria-multiline="undefined"/> <br>
+<br>
+
+<h1 class="singleline"> Test 14 </h1>
+Textarea with aria-multiline="false", without role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<TEXTAREA
+        rows="5" cols="25"  
+        aria-label="control 14"  
+        aria-multiline="false">
+line 1
+line 2
+line 3
+</TEXTAREA> 
+
+<h1 class="singleline"> Test 15 </h1>
+Content editable div with aria-multiline="", with role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<div  contenteditable="true" 
+      role="textbox" 
+      aria-multiline="" 
+      aria-label="control 15">
+  Text inside content editable div 
+</div>   
+
+<h1 class="singleline"> Test 16 </h1>
+Regular edit with aria-multiline="", without role="textbox"<br>
+<b> Interpretation: </b> single line edit <br> 
+<input  aria-multiline="" 
+        value="Hello World" 
+        aria-label="control 16" />
+
+
+<br>
+<br>
+
+<h1 class="multiline"> Test 17 </h1>
+Just a TEXTAREA without any special attirbutes<br>
+<b> Interpretation: </b> multiline edit <br>
+ 
+<TEXTAREA rows="5" cols="25"  
+          aria-label="control 17" >
+line 1
+line 2
+line 3
+</TEXTAREA> 
+<br>
+Text after the edit 
+
+<h1 class="singleline"> Test 18 </h1>
+Just an edit field without any special attirbutes<br>
+<b> Interpretation: </b> single line edit <br>
+ 
+<input  value="Hello World" 
+        aria-label="control 18" />
+<br>
+Text after the edit 
+
+</form>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-multiline.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+</html>

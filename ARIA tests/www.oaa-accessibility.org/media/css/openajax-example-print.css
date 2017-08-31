@@ -1,0 +1,430 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family:arial, helvetica, sans-serif;
+}
+
+.offscreen {
+  position: absolute;
+  left: -300em;
+  top: -30em;
+}
+
+div#banner {
+  margin: 0;
+  padding: 0;
+  height: 120px;
+  border-bottom: medium solid black;
+}
+
+div#title {
+  margin: 0;
+  margin-left: .25em;
+  padding: 0;
+  padding-top: 16px;
+  padding-bottom: 1em;
+  font-family: 'times new roman', times, serif;
+}
+div#title div.user {
+  display: none;
+}
+
+div#title div.title {
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+  font-size: 350%;
+  font-weight: bold;
+  letter-spacing: .05em;
+  color: #F9F9F9;
+}
+
+
+div#title div.link {
+  display: none;
+}
+
+div#nav {
+  display: none;
+}
+div.perm {
+   margin-right: 90px;
+   text-align: right;
+   font-size: 90%;
+}
+div.perm a,
+div.perm a:link,
+div.perm a:visited {
+  color: #004400;
+}
+div.perm a:hover {
+  color: #880000;
+}
+
+*.fail,
+*.bad {
+  color: red;
+}
+
+*.warning,
+*.poor {
+  color: #C08b00;
+}
+
+*.good,
+*.pass {
+  color: green;
+}
+
+*.exp,
+*.check {
+  color: purple;
+}
+
+div#example {
+  margin: 0;
+  padding: 1em;
+  background-color: white;
+  color: black;
+}
+
+div#example h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8em;
+}
+
+
+div#example ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 4em;
+  margin-bottom: 1em;
+  font-size: 120%;
+}
+
+div#example ul li {
+  line-height: 1.25em;
+}
+
+div#example div#example_code {
+  margin: 0;
+  padding: 1em;
+  border: black 2px solid;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+div#example div#edit {
+  display: none;
+}
+
+div#example div.code {
+  background-color: #F9F9F9;
+  border: solid black thin;
+  font-family:courier, fixed, monospace;
+  margin: 0;
+  padding: .5em;
+}
+
+div#example h2 {
+  margin: 1em 0 0 1.65em;
+  padding: .25em .5em;
+  font-size: 120%;
+}
+
+h2#start {
+  width: 7em;
+  font-size: 100%;
+  border: 2px solid black;
+  border-bottom: none;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+
+h2#end {
+  margin: 0 0 3em 1.65em !important;
+  width: 7em;
+  font-size: 100%;
+  border: 2px solid black;
+  border-top: none;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-left-radius: 10px;
+
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+div#footer {
+  margin: 0;
+  padding: 0;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border-top:1px solid black;
+  border-bottom:1px solid black;
+  color: black;
+  clear:both;
+  font-size: 80%;
+}
+
+div#footer h2 {
+  position:absolute;
+  left: -330em;
+  top: -30em;
+}
+
+div#footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+div#footer ul li {
+  list-style:none;
+  margin: 0;
+  padding: 0;
+  text-align:center;
+}
+
+div#footer li a {
+  display: none;
+}
+
+div#footer div.copyright {
+  text-align: center;
+}
+
+fieldset.result {
+ margin: 0;
+ padding: .5em;
+ margin-top: 1em;
+ margin-bottom: .25m;
+ margin-left: 5%;
+ width: 70%;
+}
+
+fieldset.result legend {
+  font-weight: bold;
+}
+
+fieldset.result p {
+ margin: 0;
+ padding: 0;
+ margin-top: .5em;
+}
+
+fieldset.result label { 
+ margin: 0;
+ padding: 0;
+ display: block;
+ width: 5em;
+ text-align: right;
+ float: left;
+ padding-right: .25em;
+}
+
+fieldset.result p.delete input { 
+ margin: 0;
+ padding: 0;
+ margin-top: .25em;
+ margin-left: 6em;
+ float: left;
+}
+
+fieldset.result p.delete label {
+ margin: 0;
+ padding: 0;
+ display: block;
+ text-align: left; 
+ padding-left: 0.5em;
+ width:auto;
+}
+
+div.addremove {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+div.addremove a:link img,
+div.addremove a:visited img
+{
+  margin: 0;
+  padding: 0;
+  margin-right: .25em;
+  border: none;
+}
+
+
+div.section {
+  padding-bottom: 1em;
+  border-bottom: black double medium;
+  margin-bottom: 1em;
+}
+
+ul.remove {
+  margin: 0;
+  padding: 0;
+  margin-left: 5%;
+  list-style: none;
+}
+
+ul.remove li {
+  margin: 0;
+  padding: 0;
+}
+
+ul.remove li input {
+  margin: 0;
+  padding: 0;
+  display: block;
+  float: left;
+  margin-top: .5em;
+  margin-right: .5em;
+}
+
+ul.remove li label {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+div.desc {
+  margin-left: 3em;
+}
+
+dl.results dt {
+  margin: 0;
+  padding: 0;
+  margin-top: .5em;
+  margin-left: 3em;
+  font-weight: normal;
+  font-size: 100%;
+}
+
+dl.results dd {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  font-size: 90%;
+}
+
+div.buttons {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  margin-top: 1em;
+}
+
+div#example input[type="submit"] {
+  font-size: 110%;
+  margin-right: .5em;
+  padding: .25em
+}
+
+ul.edit {
+  padding: .25em;
+  font-size: 90%;
+  text-align: right;
+  list-style: none;
+}
+
+ul.edit li a:before {
+	content: "[ ";  
+}
+
+ul.edit li a:after {
+	content: " ]";  
+}
+
+table.form h2 {
+  border: none;
+}
+
+table.form p.textile {
+  font-size: 80%;
+  text-align: right
+}
+
+table.form td.sect {
+  background-color: #F9F9F9;
+}
+
+table.form td.checkbox {
+  text-align: right;
+}
+
+
+div#example ul.errorlist {
+  margin: 0;
+  padding: 0;
+  margin-top: .25em;
+  margin-left: 1em;
+  margin-bottom: .25em;
+  color: red;
+}
+
+div#example ul.errorlist li  {
+  line-height: normal;
+}
+
+div#errors {
+  border: red double medium;
+  margin-left: 2em;
+  margin-right: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+} 
+
+div#errors h2 {
+  border: none;
+  color: red;
+}
+
+div#errors a:link,
+div#errors a:visited
+{
+  color: red;
+  text-decoration: none;
+} 
+
+div#errors a:active,
+div#errors a:focus,
+div#errors a:hover
+{
+  text-decoration: underline;
+}
+
+div#example p.textile {
+  font-size: 80%;
+  text-align: right
+}

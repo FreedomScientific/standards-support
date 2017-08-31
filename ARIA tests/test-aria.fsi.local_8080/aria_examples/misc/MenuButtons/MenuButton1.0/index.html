@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.0/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:14 GMT -->
+<head>
+	<meta charset="utf-8" />
+	<title>MenuButton Example</title>
+	<link rel="stylesheet" href="app.css" type="text/css" />
+	<script src="../../../../../code.jquery.com/jquery-2.2.3.js"
+					integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="
+					crossorigin="anonymous"></script>
+
+	<script src="app.js"></script>
+</head>
+<body>
+    <h1>Menu Button Example</h1>
+    <p>The Authoring Guide for ARIA has changed their recommendations between ARIA 1.0 and ARIA 1.1 with regard to the menu button.  This example implements the 1.0 design pattern.</p>
+    <br />
+    <button aria-expanded="false" role="button" class="menubutton" id="move-btn" type="button" aria-haspopup="true">Move To</button>
+
+    <p>some text between the button and the list</p>
+    <ul id="menuitems" class="menu hidden" aria-hidden="true" role="menu" aria-label="folders" tabindex="-1">
+        <li role="menuitem" tabindex="-1">Inbox</li>
+        <li role="menuitem" tabindex="-1">Archive</li>
+        <li role="menuitem" tabindex="-1">Trash</li>
+    </ul>
+    <div>
+        <h1>Some interactions you should try</h1>
+        <ul>
+            <li>Click the trigger to toggle the menu.</li>
+            <li>With focus on the trigger, press Enter or Space to toggle the menu.</li>
+            <li>With the menu opened and focus on the trigger, press ArrowDown to move focus to the first menu item.</li>
+            <li>With the menu closed and focus on the trigger, press ArrowDown to open the menu and move focus to the first menu item.</li>
+            <li>With the menu opened, press ArrowDown or ArrowUp to cycle focus through the menu items.</li>
+            <li>With the menu opened, press letter keys to navigate to items that start with whatever you type.</li>
+            <li>With the menu opened, click a menu item to fire the handler.</li>
+            <li>With the menu opened, use the keyboard to move focus to a menu item and press Enter or Space to fire the handler.</li>
+            <li>With the menu opened and focus on either the trigger or a menu item, move focus outside of the menu — by clicking outside of it or pressing Tab — to close the menu.</li>
+            <li>With the menu opened, press Escape to close the menu and return focus to the trigger.</li>
+        </ul>
+        <p>
+            All of these keyboard interactions follow the
+            <a href="../../../../../external.html?link=https://www.w3.org/TR/wai-aria-practices/#menubutton">WAI-ARIA Design Pattern for Menu Button.</a>
+        </p>
+    </div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.0/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:15 GMT -->
+</html>

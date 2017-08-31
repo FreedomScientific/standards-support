@@ -1,0 +1,2 @@
+JAWS should announce the column and row headers when the values in the cells change.
+JAWS should not announce the text changing at the bottom reading "oh what a beautiful morning".

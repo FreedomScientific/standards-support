@@ -1,0 +1,437 @@
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/DatePicker/datepicker.sample.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+<head>
+    <title>ARIA Datepicker Sample</title>
+    
+    <style>
+        BODY {}
+         h3 {margin-bottom:2px}
+        .datepicker {
+            cursor:default;
+         }
+        .datepicker .maintable {
+            border-collapse:collapse;
+            width:190;
+            cursor:default;
+         }
+        .datepicker .maintable TD {
+            width: 25px;
+            text-align:right;
+            border:1px solid gray;
+            padding: 1px 4px;
+         }
+         .datepicker .maintable TH {
+            width: 25px;
+            text-align:center;
+            border:1px solid gray;
+            background-color:#d0d0d0;
+         }
+         .datepicker .today {
+            background-color:lightblue;
+         }
+         .datepicker .disabledDay {
+            color:gray;
+         }
+    </style>
+    <script type="text/javascript">
+        var sap = {ui:{keycodes:{SPACE:32, 
+                                 ENTER:13, 
+                                 PAGE_UP : 33,
+	                             PAGE_DOWN : 34,
+	                             END : 35,
+	                             HOME : 36,
+	                             ARROW_LEFT : 37,
+	                             ARROW_UP : 38,
+	                             ARROW_RIGHT : 39,
+	                             ARROW_DOWN : 40,
+	                             TAB : 9
+                                 },
+
+                        monthnames:{
+                                 0:"January", 
+                                 1:"February", 
+                                 2:"March",
+	                             3:"April",
+	                             4:"May",
+	                             5:"June",
+	                             6:"July",
+	                             7:"August",
+	                             8:"September",
+	                             9:"October",
+	                             10:"November",
+	                             11:"December"
+                                 },
+                                 
+                        daynames:{
+                                 0:"So", 
+                                 1:"Mo", 
+                                 2:"Tu",
+	                             3:"We",
+	                             4:"Th",
+	                             5:"Fr",
+	                             6:"Sa"
+                                 }}};
+        var datePickers = [];
+        
+        function activateDatePicker(domRef) {
+            var id = domRef.id;
+            if (!id) return;
+            if (!datePickers[id]) {
+          
+                var datePicker = {domRef:domRef,focusedIndex:null,cells:null,actMonth:0,actYear:0},
+                    monthRef = document.getElementById(id + "-month");
+                datePicker.actMonth = parseInt(domRef.getAttribute("actualMonth"));
+                datePicker.actYear = parseInt(domRef.getAttribute("actualYear"));
+                initCells(datePicker);
+                domRef.tabIndex = "-1";
+                focusCell(datePicker.cells,0,0);
+                datePicker.focusedIndex = 0;
+                datePicker.selectedIndex = -1;
+                datePickers[id] = datePicker;
+                
+            }
+        }
+        function initCells(datePicker) {
+            var allCells = datePicker.domRef.getElementsByTagName("TD"),
+                focusCells = [];
+            for (var n=0;n<allCells.length;n++) {
+                if (allCells[n].className=="disabledDay") continue;
+                focusCells.push(allCells[n]);
+            }
+            datePicker.cells = focusCells;
+        }    
+        function navigateDatePicker(datePicker, month, year, day) {
+            if (month < 0) {
+                month = 11;
+                year--;
+            }
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
+            datePicker.actMonth = month;
+            datePicker.actYear = year;
+            renderDatePicker(datePicker);
+            initCells(datePicker);
+            datePicker.cells
+            while (datePicker.cells.length < day) {
+                day--;
+            }
+            datePicker.focusedIndex = day-1;
+            datePicker.selectedIndex = -1;
+        }
+        
+        function renderDatePicker(datePicker) {
+            var dom = [],
+                month = datePicker.actMonth
+                year = datePicker.actYear,
+                startDate = new Date();
+            today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            today.setMilliseconds(0);
+            
+            startDate.setMonth(month);
+            startDate.setYear(year);
+            startDate.setDate(1);
+            startDate.setHours(0);
+            startDate.setMinutes(0);
+            startDate.setSeconds(0);
+            startDate.setMilliseconds(0);
+            
+            startDate.setDate(startDate.getDate() + (startDate.getDay()*-1));
+            var calendarWeek = startDate
+            dom.push("<table role=\"grid\" aria-labelledby=\"datepicker1-month\"><thead><tr><th colspan=\"8\"><table role=\"presentation\"><thead><th id=\"datepicker1-prev-year\">&lt;&lt;</th><th id=\"datepicker1-prev-month\">&lt;</th><th style=\"width:100%\" id=\"datepicker1-month\">");
+            dom.push(sap.ui.monthnames[month]+ " " + year);
+            dom.push("</th><th id=\"datepicker1-next-month\">&gt;</th><th id=\"datepicker1-next-year\">&gt;&gt;</th></thead></table></th></tr></thead>");
+            dom.push("<tbody class=\"maintable\"><tr>");
+            for (var n=0;n<7;n++) {
+                dom.push("<th id=\"" + sap.ui.daynames[n] +"\" role=\"columnheader\">" + sap.ui.daynames[n] + "</th>");
+            }
+            dom.push("</tr>");
+            for (var n=0;n<6;n++) {
+                dom.push("<tr>");
+                for (var m=0;m<7;m++) {
+                    dom.push("<td class=\"");
+                    if (startDate.getTime() == today.getTime()) {
+                         dom.push("today ");
+                    }
+                    if (startDate.getMonth()!=month) {
+                         dom.push("disabledDay");
+                    }    
+                    dom.push("\" headers=\"" + sap.ui.daynames[m] +"\" role=\"gridcell\" ");
+                    if (startDate.getTime() == today.getTime()) {
+                         dom.push(" aria-labledby=\"todayText\"");
+                    }
+                    dom.push(">"+startDate.getDate() + "</td>");
+                    startDate.setDate(startDate.getDate()+1);
+                }
+                dom.push("</tr>");
+            }
+            dom.push("</tbody></table>");
+            datePicker.domRef.innerHTML = dom.join("");
+        }
+        
+        function handleKeyDown(domRef,evt) {
+            if (!domRef || !datePickers[domRef.id]) return;
+            var keyCode = evt.keyCode,
+                datePicker = datePickers[domRef.id],
+                currentIdx = datePicker.focusedIndex,
+                evtTarget = evt.target ? evt.target : evt.srcElement;
+            if (keyCode == sap.ui.keycodes.SPACE || keyCode == sap.ui.keycodes.ENTER) {
+                selectCell(datePicker.cells,datePicker.selectedIndex,datePicker.focusedIndex);
+                datePicker.selectedIndex = datePicker.focusedIndex;
+                
+                window.status = "You selected: " + datePicker.actYear + "-" + (datePicker.actMonth+1) +"-" + evtTarget.firstChild.nodeValue;
+            } else if (keyCode == sap.ui.keycodes.ARROW_LEFT) {
+                datePicker.focusedIndex--;
+                if (datePicker.focusedIndex < 0) {
+                    datePicker.focusedIndex = 0;
+                    previousMonth(datePicker);
+                    datePicker.focusedIndex = datePicker.cells.length-1;
+                }
+            } else if (keyCode == sap.ui.keycodes.ARROW_RIGHT) {
+                datePicker.focusedIndex++;
+                if (datePicker.focusedIndex >= datePicker.cells.length) {
+                    datePicker.focusedIndex = 0;
+                    nextMonth(datePicker);
+                }
+            } else if (keyCode == sap.ui.keycodes.ARROW_UP) {
+                if (datePicker.focusedIndex-7 < 0) {
+                    var focusedColumn = datePicker.cells[datePicker.focusedIndex].cellIndex;
+                    previousMonth(datePicker);
+                    for (var i=datePicker.cells.length-1;i>0;i--) {
+                        var currentColumn = datePicker.cells[i].cellIndex;
+                        if (currentColumn == focusedColumn) {
+                            datePicker.focusedIndex = i;
+                            break;
+                        }
+                    }
+                } else {
+                    datePicker.focusedIndex-=7;
+                }
+            } else if (keyCode == sap.ui.keycodes.ARROW_DOWN) {
+                if (datePicker.focusedIndex+7 >= datePicker.cells.length) {
+                    var focusedColumn = datePicker.cells[datePicker.focusedIndex].cellIndex;
+                    previousMonth(datePicker);
+                    for (var i=0;i<datePicker.cells.length-1;i++) {
+                        var currentColumn = datePicker.cells[i].cellIndex;
+                        if (currentColumn == focusedColumn) {
+                            datePicker.focusedIndex = i;
+                            break;
+                        }
+                    }
+                } else {
+                    datePicker.focusedIndex+=7;
+                }
+            } else if (keyCode == sap.ui.keycodes.HOME && evt.shiftKey) {
+                navigateDatePicker(datePicker,0,datePicker.actYear,1);
+            } else if (keyCode == sap.ui.keycodes.END && evt.shiftKey) {
+                navigateDatePicker(datePicker,11,datePicker.actYear,31);
+            } else if (keyCode == sap.ui.keycodes.HOME) {
+                datePicker.focusedIndex = 0;
+            } else if (keyCode == sap.ui.keycodes.END) {
+                datePicker.focusedIndex = datePicker.cells.length-1;
+            } else if (keyCode == sap.ui.keycodes.PAGE_UP && evt.shiftKey) {
+                previousYear(datePicker);
+            } else if (keyCode == sap.ui.keycodes.PAGE_DOWN && evt.shiftKey) {
+                nextYear(datePicker);
+            } else if (keyCode == sap.ui.keycodes.PAGE_UP) {
+                previousMonth(datePicker);
+            } else if (keyCode == sap.ui.keycodes.PAGE_DOWN) {
+                nextMonth(datePicker);
+            } 
+            if (keyCode != sap.ui.keycodes.TAB){
+                focusCell(datePicker.cells,currentIdx,datePicker.focusedIndex);
+                evt.cancelBubble = true;
+                
+                if (evt.preventDefault)
+                    evt.preventDefault();
+                if (evt.stopPropagation) {
+                    evt.stopPropagation();
+                } else {
+                    evt.cancelBubble = true;
+                    evt.returnValue = false;
+                }
+            }
+            
+        }
+        function focusCell(cells,oldindex,index) {
+            if (cells[oldindex]) {
+                cells[oldindex].tabIndex = "-1";
+            }
+            cells[index].tabIndex = "0";
+            cells[index].focus();
+        } 
+        function selectCell(cells,oldindex,index) {
+            if (cells[oldindex]) {
+                cells[oldindex].style.backgroundColor = "";
+                cells[oldindex].setAttribute("aria-selected","false");
+            }
+            cells[index].style.backgroundColor = "orange";
+            cells[index].setAttribute("aria-selected","true");
+        }
+        
+        function getDay(datePicker) {
+            return parseInt(datePicker.cells[datePicker.focusedIndex].firstChild.nodeValue)
+        }
+        function previousYear(datePicker) {
+                var day = getDay(datePicker);
+                if (day > 28 && datePicker.actMonth == 1) day=28; 
+                navigateDatePicker(datePicker,datePicker.actMonth,datePicker.actYear-1,day);
+        }
+        function nextYear(datePicker) {
+                var day = getDay(datePicker);
+                if (day > 28 && datePicker.actMonth == 1) day=28; 
+                navigateDatePicker(datePicker,datePicker.actMonth,datePicker.actYear+1,day);
+        }
+        function previousMonth(datePicker) {
+                var day = getDay(datePicker);
+                navigateDatePicker(datePicker,datePicker.actMonth-1,datePicker.actYear,day);
+        }
+        function nextMonth(datePicker) {
+                var day = getDay(datePicker);
+                navigateDatePicker(datePicker,datePicker.actMonth+1,datePicker.actYear,day);
+        }
+        
+        function handleClick(domRef,evt) {
+            var datePicker = datePickers[domRef.id],
+                currentIdx = datePicker.focusedIndex,
+                evtTarget = evt.target ? evt.target : evt.srcElement;
+            if (evtTarget.id == "datepicker1-prev-year") {
+                previousYear(datePicker);
+            } else if (evtTarget.id == "datepicker1-prev-month") {
+                previousMonth(datePicker);
+            } else if (evtTarget.id == "datepicker1-next-month") {
+                nextMonth(datePicker);
+            } else if (evtTarget.id == "datepicker1-next-year") {
+                nextYear(datePicker);
+            } else if (evtTarget.tagName == "TD" && evtTarget.className != "disabledDay")  {
+                focusCell(datePicker.cells,datePicker.focusedIndex,parseInt(evtTarget.firstChild.nodeValue)-1);
+                datePicker.focusedIndex = parseInt(evtTarget.firstChild.nodeValue)-1;
+                selectCell(datePicker.cells,datePicker.selectedIndex,parseInt(evtTarget.firstChild.nodeValue)-1);
+                datePicker.selectedIndex = parseInt(evtTarget.firstChild.nodeValue)-1;
+            } 
+        }
+        
+    </script>
+</head>
+<body>
+   <h1>
+            Accessible ARIA DatePicker</h1>
+        <p>
+            This example requires Firefox 3 or later to work with screen readers.</p>
+    <div style="width:100%">
+    <div id="todayText" style="display:none">Today</div>
+    <div id="datepicker1" actualMonth="6" actualYear="2008" class="datepicker" aria-labelledby="datepicker1-month" tabindex="0" onfocus="activateDatePicker(this)" onkeydown="handleKeyDown(this,event)" onclick="activateDatePicker(this);handleClick(this,event)">
+        <table role="grid" aria-labelledby="datepicker1-month">
+            <thead>
+                <tr>
+                    <th colspan="8">
+                        <table role="presentation">
+                            <thead>
+                                <th id="datepicker1-prev-year">&lt;&lt;</th>
+                                <th id="datepicker1-prev-month">&lt;</th>
+                                <th style="width:100%" id="datepicker1-month" >July 2008</th>
+                                <th id="datepicker1-next-month">&gt;</th>
+                                <th id="datepicker1-next-year">&gt;&gt;</th>
+                            </thead>
+                        </table>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="maintable">
+                <tr>
+                    <th id="So" role="columnheader">Su</th>
+                    <th id="Mo" role="columnheader">Mo</th>
+                    <th id="Tu" role="columnheader">Tu</th>
+                    <th id="We" role="columnheader">We</th>
+                    <th id="Th" role="columnheader">Th</th>
+                    <th id="Fr" role="columnheader">Fr</th>
+                    <th id="Sa" role="columnheader">Sa</th>
+                   
+                </tr>
+                <tr>
+                    <td class="disabledDay" headers="So" role="gridcell">29</td>
+                    <td class="disabledDay" headers="Mo" role="gridcell">30</td>
+                    <td headers="Tu" role="gridcell">1</td>
+                    <td headers="We" role="gridcell">2</td>
+                    <td headers="Th" role="gridcell">3</td>
+                    <td headers="Fr" role="gridcell">4</td>
+                    <td headers="Sa" role="gridcell">5</td>
+                </tr>
+                <tr>
+                    <td headers="So" role="gridcell">6</td>
+                    <td headers="Mo" role="gridcell">7</td>
+                    <td headers="Tu" role="gridcell">8</td>
+                    <td headers="We" role="gridcell">9</td>
+                    <td headers="Th" role="gridcell">10</td>
+                    <td headers="Fr" role="gridcell">11</td>
+                    <td headers="Sa" role="gridcell">12</td>
+                </tr>
+                <tr>
+                    <td headers="So" role="gridcell">13</td>
+                    <td headers="Mo" role="gridcell">14</td>
+                    <td headers="Tu" role="gridcell">15</td>
+                    <td headers="We" role="gridcell">16</td>
+                    <td headers="Th" role="gridcell">17</td>
+                    <td headers="Fr" role="gridcell">18</td>
+                    <td headers="Sa" role="gridcell">19</td>
+                </tr>
+                <tr>
+                    <td headers="So" role="gridcell">20</td>
+                    <td headers="Mo" role="gridcell">21</td>
+                    <td headers="Tu" role="gridcell">22</td>
+                    <td headers="We" role="gridcell">23</td>
+                    <td headers="Th" role="gridcell">24</td>
+                    <td headers="Fr" role="gridcell">25</td>
+                    <td headers="Sa" role="gridcell">26</td>
+                </tr>
+                <tr>
+                    <td headers="So" role="gridcell">27</td>
+                    <td headers="Mo" role="gridcell">28</td>
+                    <td headers="Tu" role="gridcell">29</td>
+                    <td headers="We" role="gridcell">30</td>
+                    <td headers="Th" role="gridcell">31</td>
+                    <td class="disabledDay" headers="Fr" role="gridcell">1</td>
+                    <td class="disabledDay" headers="Sa" role="gridcell">2</td>
+                </tr>
+                <tr>
+                    <td class="disabledDay" headers="So" role="gridcell">3</td>
+                    <td class="disabledDay" headers="Mo" role="gridcell">4</td>
+                    <td class="disabledDay" headers="Tu" role="gridcell">5</td>
+                    <td class="disabledDay" headers="We" role="gridcell">6</td>
+                    <td class="disabledDay" headers="Th" role="gridcell">7</td>
+                    <td class="disabledDay" headers="Fr" role="gridcell">8</td>
+                    <td class="disabledDay" headers="Sa" role="gridcell">9</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<p>
+            <b>Implemented features:</b><br />
+            <ul>
+                <li>Tab/Shift Tab focus in and out of the control.</li>
+                <li>Arrow Key Navigation moves to previous/next month.</li>
+                <li>Page Up and Page Down Key Navigation moves to previous/next month.</li>
+                <li>Shift+Page Up and Shift+Page Down Key Navigation moves to previous/next year.</li>
+                <li>Home and End Key Navigation moves to first and last day of the month.</li>
+                <li>Shift+Home and Shift+End Key Navigation moves to first and last day of the year.</li>
+                <li>Space or enter selects a day.</li>
+                <li>Click also moves to focus to enable mixed mouse and key navigation.</li>
+            </ul>
+            <b>Missing features:</b>
+            <ul>
+                <li>Range selection with space and Shift Arrow Keys</li>
+                <li>Multiple selection with space and Ctrl Arrow Keys</li>
+                <li>Datepicker as a popup</li>
+            </p>    
+    </p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/DatePicker/datepicker.sample.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+</html>

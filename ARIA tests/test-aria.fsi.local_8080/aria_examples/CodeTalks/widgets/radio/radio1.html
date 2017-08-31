@@ -1,0 +1,3442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" >
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/radio/radio1.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:23 GMT -->
+<head>
+  <title>ARIA Example: Radio Example 1</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+
+  <style type="text/css">
+  
+    div.codebox {
+      background-color: #E0E0E0;
+      color: black;
+      font-family: monospace;
+      padding: .5em;
+      margin: .5em;
+      border: black medium solid;
+    }
+	
+	h2.nav {
+	  position: absolute;
+	  left: -200em;
+	  top: -20em;
+	}
+	
+	ul.nav {
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	ul.nav li {
+	  display: inline;
+	  list-style: none;
+	  padding-right: 1em;
+	}
+  
+  </style>
+
+  <script type="text/javascript">
+  
+  function changeSourceCodeView(node_link, sc_id  ) {
+   
+     var node_sc = document.getElementById( sc_id );
+	 
+	 if( node_sc ) 
+	   if( node_sc.style.display == "none" ) {
+	      node_sc.style.display = "block";
+		  node_link.innerHTML = node_link.innerHTML.replace(/Show/, "Hide");
+	   } else {
+	      node_sc.style.display = "none";	 
+		  node_link.innerHTML = node_link.innerHTML.replace(/Hide/, "Show");
+	   } // endif
+     else 
+	   alert("Id not found");
+  }
+  
+  </script>
+
+  <style type="text/css">
+
+ ul[role="radiogroup"] {
+  margin: 0;
+  padding: 0;
+  margin-left: 1em;
+  list-style: none;
+}
+
+ li[role="radio"]{
+  padding-left: 16px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url('images/unchecked.gif');
+} 
+
+ li[aria-checked="true"] {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url('images/checked.html'); 
+}     
+
+ li[aria-checked="true"]:active,
+ li[aria-checked="true"]:focus{
+    border: black 1px solid;
+	font-weight: bold;
+	width:10em;
+	background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url('images/checked.html');
+}
+
+ li[aria-checked="false"]:active,
+ li[aria-checked="false"]:focus{
+    border: black 1px solid;
+	font-weight: bold;
+	width: 10em;
+}
+  </style>
+
+  <script type="text/javascript">
+/**
+ *
+ * The Globale Variables
+ */
+
+if (!window.Node) {
+  var Node = {            // If there is no Node object, define one
+    ELEMENT_NODE: 1,    // with the following properties and values.
+    ATTRIBUTE_NODE: 2,  // Note that these are HTML node types only.
+    TEXT_NODE: 3,       // For XML-specific nodes, you need to add
+    COMMENT_NODE: 8,    // other constants here.
+    DOCUMENT_NODE: 9,
+    DOCUMENT_FRAGMENT_NODE: 11
+  }
+} 
+
+
+var KEY_PAGEUP   = 33;
+var KEY_PAGEDOWN = 34;
+var KEY_END      = 35;
+var KEY_HOME     = 36;
+
+var KEY_LEFT     = 37;
+var KEY_UP       = 38;
+var KEY_RIGHT    = 39;
+var KEY_DOWN     = 40;
+
+var KEY_SPACE    = 32;
+var KEY_TAB      = 9;
+
+var KEY_BACKSPACE = 8;
+var KEY_DELETE    = 46;
+var KEY_ENTER     = 13;
+var KEY_INSERT    = 45;
+var KEY_ESCAPE    = 27;
+
+var KEY_F1        = 112;
+var KEY_F2        = 113;
+var KEY_F3        = 114;
+var KEY_F4        = 115;
+var KEY_F5        = 116;
+var KEY_F6        = 117;
+var KEY_F7        = 118;
+var KEY_F8        = 119;
+var KEY_F9        = 120;
+var KEY_F10       = 121;
+
+var KEY_M         = 77;
+
+var NS_XHTML = "../../../../../external.html?link=http://www.w3.org/1999/xhtml"
+var NS_STATE = "../../../../../external.html?link=http://www.w3.org/2005/07/aaa";
+
+// **********************************************
+// *
+// * Commonly used helper functions
+// *
+// **********************************************
+
+/**
+ *
+ * nextSiblingElement
+ * 
+ * @contructor
+ */
+ 
+function nextSiblingElement( node ) {
+
+  var next_node = node.nextSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * previousSiblingElement 
+ * 
+ * @param ( node ) node object for which you are looking for the next sibling element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+
+function previousSiblingElement( node ) {
+
+  var next_node = node.previousSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.previousSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * firstChildElement 
+ * 
+ * @param ( node ) node object for which you are looking for the first child element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+function firstChildElement( node ) {
+
+  var next_node = node.firstChild;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * getTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function getTextContentOfNode( node ) {
+
+  var next_node = node.firstChild;
+  var str = "";
+
+  while( next_node ) {
+		
+	  if( (next_node.nodeType == Node.TEXT_NODE ) &&
+		  (next_node.length > 0 )
+		 )
+	    str += next_node.data;
+	  
+	  
+	  next_node = next_node.nextSibling;
+	  
+  }  // endwhile
+
+  return str;
+  
+}
+
+/**
+ *
+ * setTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function setTextContentOfNode( node, text ) {
+
+   // Generate a new text node with the text value
+    var text_node = document.createTextNode(text);
+  
+    // Remove child nodes to remove text
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    } // while
+
+    // Append new text to the container element
+    node.appendChild( text_node );
+
+}
+  </script>
+
+  <script type="text/javascript">
+// JavaScript Document
+
+
+if (!window.Node) {
+  var Node = {            // If there is no Node object, define one
+    ELEMENT_NODE: 1,    // with the following properties and values.
+    ATTRIBUTE_NODE: 2,  // Note that these are HTML node types only.
+    TEXT_NODE: 3,       // For XML-specific nodes, you need to add
+    COMMENT_NODE: 8,    // other constants here.
+    DOCUMENT_NODE: 9,
+    DOCUMENT_FRAGMENT_NODE: 11
+  }
+} 
+
+var ARIA_STATE = "aria-";
+
+/**
+ * Widgets Object is used to initialize a set of controls 
+ * and provide a conveinence fuction to cancel event propagration
+ * @construtor
+ */
+ 
+function Widgets() {
+  this.widgets = new Array();
+}
+
+/**
+ * add is member of the Widgets Object 
+ * and used add a widget ot the list of widgets to be intitialized 
+ * as part of the onload event
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.add = function(obj) {
+  this.widgets[this.widgets.length] = obj;
+}
+
+/**
+ * init is member of the Widgets Object 
+ * and is called by the onload event to initialize widgets in the web resource
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.init = function() {
+   	
+   for(var i = 0; i < this.widgets.length; i++ )
+     this.widgets[i].init();
+}
+
+//
+// convience function for getting the node based on id
+
+function _$( id ) {
+  return document.getElementById( id );	
+}
+
+
+//
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+//
+// The state variable keeps track of current state of checkbox
+function WebBrowser() {
+
+}
+
+
+//
+// keyCode is a function to get the keycode from a keypress event
+//
+// @param ( event object) event is an event object
+//
+// @return ( keycode ) 
+
+WebBrowser.prototype.keyCode = function( event ) {
+  var e = event || window.event;
+  
+  return e.keyCode;
+}  
+
+/**
+ * OnClick Event Simulator
+ *
+ * @param ( node ) DOM node object
+ * @return nothing
+ */
+
+if( document.createEvent ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+    // W3C DOM Events way to trigger a "click" event
+    var e = document.createEvent('MouseEvents');
+    e.initEvent( 'click', true, true );
+
+    node.dispatchEvent( e );
+
+  } 
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+  
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+
+    var e = document.createEventObject();
+    node.fireEvent( "onclick", e );
+
+  } // endif
+
+}
+
+if ( document.addEventListener ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+    if( clickHandler )
+      document.addEventListener( "click",     clickHandler, true );
+		
+    if( downHandler )
+      document.addEventListener( "mousedown", downHandler,  true );
+
+    if( moveHandler )
+      document.addEventListener( "mousemove", moveHandler,  true );
+		
+		if( upHandler)
+      document.addEventListener( "mouseup",   upHandler,    true );
+
+  }
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+	if( upHandler)
+      document.removeEventListener( "mouseup",   upHandler,    true );
+			
+    if( moveHandler )
+      document.removeEventListener( "mousemove", moveHandler,  true );
+		
+    if( downHandler )
+      document.removeEventListener( "mousedown", downHandler,  true );
+			
+    if( clickHandler )
+      document.removeEventListener( "click",     clickHandler, true );
+
+  }
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   node.setCapture();
+   if( clickHandler)
+	   node.attachEvent( "onclick", clickHandler );
+		 
+   if( downHandler)
+     node.attachEvent( "onmousedown", downHandler );
+		 
+   if( moveHandler )
+	   node.attachEvent( "onmousemove", moveHandler );
+		 
+   if( upHandler )
+	   node.attachEvent( "onmouseup", upHandler );
+
+  } // endif
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   if( upHandler )
+     node.detachEvent( "onmouseup", upHandler );
+		 
+   if( moveHandler )
+     node.detachEvent( "onmousemove", moveHandler );
+		 
+   if( downHandler)
+     node.detachEvent( "onmousedown", downHandler );
+		 
+   if( clickHandler)
+     node.detachEvent( "onclick", clickHandler );
+		 
+     node.releaseCapture();
+
+  } // endif
+
+
+}
+
+
+
+
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+	return event.target;
+  }
+  
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.attrName
+  }
+  
+  WebBrowser.prototype.charCode = function(event) {
+     return event.charCode;
+  }
+
+  WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+	return node.offsetLeft;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function( node ) {
+	return node.offsetTop;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.pageX;	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.pageY;	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		node.style.left = left+"px";
+		node.style.top = top+"px";
+  }
+
+
+} else {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.cancelBubble = true; 
+    event.returnValue = false;
+    return false;
+  }
+
+  WebBrowser.prototype.charCode = function(event) {
+    return window.browser.keyCode( event );
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+    return event.srcElement;
+  }
+
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.propertyName;
+  }
+  
+  WebBrowser.prototype.calculateOffsetLeft = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+	  offset += node.offsetLeft;
+	  node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+		offset = offset + node.offsetTop;
+		node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		offsetx = 0;
+		offsety = 0;
+		nnode = node.offsetParent
+		while( nnode ) {
+			offsetx = offsetx + nnode.offsetLeft;
+			offsety = offsety + nnode.offsetTop;
+			nnode = nnode.offsetParent;
+		}
+		node.style.left = left-offsetx+"px";
+		node.style.top = top-offsety+"px";
+  }
+  
+};
+
+
+if (document.addEventListener) {
+
+     // Functions for W3C Standards compliant implementation of adding event handlers
+
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.addEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.removeEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+      returnValue = true;
+    };
+
+} else {
+
+  if(document.attachEvent) {
+
+     // IE Specific Event handler functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+     };
+
+    WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+    };
+
+  } else {
+
+     // For browsers that do not support W3C or IE event functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+       return false;
+     };
+
+  }
+
+}
+
+widgets_flag = true;
+var widgets = new Widgets();
+var browser = new WebBrowser();
+
+function initApp() {
+  widgets.init();
+}
+
+  </script>
+
+  <script type="text/javascript">
+/**
+ *
+ * The RadioGroup object is used to maintain information about a radio group widget
+ * including the collection of Radio button objects
+ *
+ * @constructor
+ */
+ 
+function RadioGroup( id ) {
+
+  this.id = id;
+  this.radio_buttons = new Array();
+  this.radio_selected = -1;
+  this.radio_focus = -1;
+
+} // end RadioGroup
+
+/**
+ * init is a subclass of RadioGroup and is used to initialize the event handlers and 
+ * radio buttons of a radio group.
+ *
+ * @member RadioGroup
+ *
+ * @return none
+ */
+ 
+RadioGroup.prototype.init = function() {
+
+  var obj = this;
+  this.node = document.getElementById( this.id );
+
+  // Initialize radio Buttons
+  for(var i = 0; i < this.radio_buttons.length; i++ ) {
+    this.radio_buttons[i].init();
+  } // endfor
+  
+  // Check to see if any radio buttons is selected in the group from markup
+  for(var i = 0; i < this.radio_buttons.length; i++ ) {
+      if( this.radio_buttons[i].node.getAttribute("aria-checked") =="true") {
+	  this.radio_buttons[i].node.className = "";
+	  selectRadioButton( this, i, (0) );
+	  }
+  } // endfor
+
+  // Add event handlers for first and last radio buttons to emulate IE radio button behavior for TAB navigation
+  browser.addEvent(this.radio_buttons[0].node, "focus", function(event) {handleRadioFirstFocus(event, obj);}, false); 
+  browser.addEvent(this.radio_buttons[0].node, "blur", function(event) {handleRadioFirstBlur(event, obj);}, false); 
+  browser.addEvent(this.radio_buttons[this.radio_buttons.length-1].node, "focus", function(event) {handleRadioLastFocus(event, obj);}, false); 
+  browser.addEvent(this.radio_buttons[this.radio_buttons.length-1].node, "blur", function(event) {handleRadioLastBlur(event, obj);}, false); 
+  
+  // Add event handlers for selecting a radio button
+  browser.addEvent(this.node, "keydown", function(event) {handleRadioGroupKeyDownEvent(event, obj);}, false); 
+  browser.addEvent(this.node, "click", function(event) {handleRadioGroupClickEvent(event, obj);}, false); 
+  
+  
+
+} // end RadioGroup.prototype.init
+
+/**
+ * add is a subclass of RadioGroup and adds a Radio object to the RadioGroup list
+ *
+ * @member RadioGroup
+ *
+ * @param ( Radio object ) obj Radio button to be added to radio button list
+ *
+ * @return none
+ */
+ 
+RadioGroup.prototype.add = function( obj ) {
+
+  this.radio_buttons[this.radio_buttons.length] = obj;
+
+} // end RadioGroup.prototype.add
+
+/**
+ * selectRadioButton is called by event handlers to select one of the radio buttons in a group
+ *
+ * @param ( RadioGroup object ) radio_group  Radio Group to change selected radio button
+ * @param ( integer ) index Index of radio button to be selected
+ * @param ( integer ) focus_flag If value is set to 1 then keyboard focus will be moved to the selected radio button
+ *
+ * @return none
+ */
+ 
+function selectRadioButton( radio_group, index, focus_flag ) {
+
+  // Check to see if index is larger than the number of buttons, if so wrap to first button
+  
+  if( index >= radio_group.radio_buttons.length )
+    index = 0;
+
+  // Check to see if index is less than zero, if so wrap to last radio button
+  
+  if( index < 0)
+    index = radio_group.radio_buttons.length - 1;
+
+  // Check to make sure the index value is valid before changing states
+
+  if( (index >= 0 ) && (index < radio_group.radio_buttons.length) ) {
+	  
+    // Set all radio buttons to not selected 
+    // CSS selectors based on the "checked" attribute value change the visual rendering
+    // The checked attribute is used communicate radio button state information to assitive technologies
+    // Tabindex is set to -1 so the control can still receive focus, but is removed from tab order
+	
+    for(var i = 0; i < radio_group.radio_buttons.length; i++ ) {
+      radio_group.radio_buttons[i].node.setAttribute("aria-checked","false");
+
+      // Kick IE 7 to update styling based on ARIA attribute
+      radio_group.radio_buttons[i].node.className = "";
+      
+      radio_group.radio_buttons[i].node.tabIndex = -1;
+    }  // endfor
+
+    // Set radio button based on the index value
+    // CSS selectors based on the "checked" attribute change the visual rendering
+    // The checked attribute is used communicate radio button state information to assitive technologies
+    // Tabindex is set to 0 so the control is added to tab order
+	
+    radio_group.radio_buttons[index].node.setAttribute("aria-checked","true");
+
+    // Kick IE 7 to update styling based on ARIA attribute
+    
+	radio_group.radio_buttons[index].node.className += "";
+      
+    radio_group.radio_buttons[index].node.tabIndex = 0;
+	
+    // Check focus flag to see if keyboard focus should be moved to selected control
+    if( focus_flag == 1 ) {
+      radio_group.radio_buttons[index].node.focus();
+      // keep track of the last radio button with focus 
+	  radio_group.radio_focus = index;
+
+	} // end if
+	  
+    // Keep track of the last radio button selected
+    // Once a Radio button is selected the RadioGroup is removed from tab order by setting its tabindex to -1
+    
+    radio_group.radio_selected = index;
+    radio_group.node.tabIndex = -1;
+	
+  }  // endif
+
+} // end selectRadioButton
+
+
+/**
+ *
+ * The Radio object is used to maintain information about a radio button widget
+ * including the collection of Radio button objects
+ *
+ * @constructor
+ */
+ 
+function Radio( id ) {
+
+  this.id = id;
+
+} // end Radio
+
+/**
+ * init is a subclass of Radio and is used to initialize the state and tabindex of 
+ * the radio button
+ *
+ * @member Radio
+ *
+ * @return none
+ */
+ 
+Radio.prototype.init = function() {
+   
+   
+   this.node = document.getElementById( this.id );
+   var obj = this; 
+   
+   // Add event handlers for a radiobutton geeting and losing focus
+  browser.addEvent(this.node, "focus", function(event) {handleRadioButtonFocusEvent(event);}, false);
+  browser.addEvent(this.node, "blur",  function(event) {handleRadioButtonBlurEvent(event); }, false);
+  
+} // end Radio.prototype.init
+
+/**
+ * handleRadioButtonFocusEvent processes keys associated with a Radio_group
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the RadioGroup object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio_group, else true
+ */
+
+handleRadioButtonFocusEvent = function(event) {
+     var e = event || window.event;
+    
+       // Kick IE 7 to update styling based on ARIA attribute
+       browser.target(e).className += ""; 
+	
+  return true;
+
+} // end handleRadioGroupFocusEvent
+
+/**
+ * handleRadioGroupBlurEvent processes keys associated with a radio_group
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the RadioGroup object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio_group, else true
+ */
+
+handleRadioButtonBlurEvent = function(event) {
+	
+    var e = event || window.event;
+       // Kick IE 7 to update styling based on ARIA attribute
+       browser.target(e).className += ""; 
+  return true;
+
+} // end handleRadioGroupBlurEvent
+
+
+/**
+ * handleRadioFirstFocus processes onFocus event when TAB has been pressed  
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio group, else true
+ */
+ 
+
+function handleRadioFirstFocus( event, radio_group ) {
+
+  // check to see if any radio buttons are selected
+  if( radio_group.radio_selected < 0 ) {
+	  
+	// if a radio button is not selected, remove the last radio button to tab order  
+    radio_group.radio_buttons[radio_group.radio_buttons.length-1].node.tabIndex = -1;
+
+	// keep track of the last radio button with focus
+	radio_group.radio_focus = 0;
+  } // end if
+  
+  return true;
+
+} // end handleRadioFirstFocus
+
+/**
+ * handleRadioFirstBlur processes onBlur event when TAB has been pressed  
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio group, else true
+ */
+ 
+
+
+function handleRadioFirstBlur( event, radio_group ) {
+
+  // check to see if any radio buttons are selected
+  if( radio_group.radio_selected < 0 ) {
+	  
+	// if a radio button is not selected, add the last radio button to tab order  
+    radio_group.radio_buttons[radio_group.radio_buttons.length-1].node.tabIndex = 0;
+	
+  } // end if
+  
+  return true;
+
+} // end handleRadioFirstBlur
+
+/**
+ * handleRadioLastFocus processes onFocus event when SHIFT+TAB has been pressed  
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio group, else true
+ */
+ 
+
+function handleRadioLastFocus( event, radio_group ) {
+
+  // check to see if any radio buttons are selected
+  if( radio_group.radio_selected < 0 ) {
+	  
+	// if a radio button is not selected, remove the first radio button to tab order  
+    radio_group.radio_buttons[0].node.tabIndex = -1;
+		  
+	// keep track of the last radio button with focus
+	radio_group.radio_focus = radio_group.radio_buttons.length-1;
+   } // end if
+  
+  return true;
+
+} // end handleRadioLastFocus
+
+/**
+ * handleRadioLastBlur processes onBlur event when SHIFT+TAB has been pressed  
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio group, else true
+ */
+ 
+
+function handleRadioLastBlur( event, radio_group ) {
+
+  // check to see if any radio buttons are selected
+  if( radio_group.radio_selected < 0 ) {
+	  
+	// if a radio button is not selected, the add the first radio button to tab order  
+    radio_group.radio_buttons[0].node.tabIndex = 0;
+		  
+  } // end if
+  
+  return true;
+
+} // end handleRadioLastBlur
+
+
+/**
+ * handleRadioGroupKeyDownEvent processes keys associated with a radio button group
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by radio group, else true
+ */
+ 
+function handleRadioGroupKeyDownEvent( event, radio_group ) {
+	// If IE get the IE event object
+	var e = event || window.event;
+	
+	// If any modifier keys are pressed do not process this event
+	if( e.altKey || e.ctrlKey || e.shiftKey )
+	  return true;
+
+  switch( e.keyCode ) {
+   
+    case KEY_DOWN:
+	     // Hitting down will switch the focus and selected to the next item in the radio group
+         if( (radio_group.radio_selected < 0 )  &&
+			 (radio_group.radio_focus >= 0 ) ){
+		   selectRadioButton( radio_group, (radio_group.radio_focus + 1), 1);
+		   radio_group.radio_buttons[radio_group.radio_focus ].node.className += ""; 
+		 }
+		   
+         else	{
+			 
+           selectRadioButton( radio_group, (radio_group.radio_selected + 1), 1);
+		   radio_group.radio_buttons[radio_group.radio_selected ].node.className += "";
+		 }
+		 // Tell browser we handled this event and not to process any other actions   
+		 return browser.stopPropagation( e );
+	     break;
+	
+	case KEY_UP:
+	     // Hitting up will switch the focus and selected to the previous item in the radio group
+         if( (radio_group.radio_selected < 0 )  &&
+			 (radio_group.radio_focus >= 0 ) )
+		   selectRadioButton( radio_group, (radio_group.radio_focus - 1), 1);
+		   
+         else	
+           selectRadioButton( radio_group, (radio_group.radio_selected - 1), 1);
+		 // Tell browser we handled this event and not to process any other actions    
+		 return browser.stopPropagation( e );
+	     break;
+		 
+	case KEY_SPACE:
+	     // Hitting space will select the current item in the radio group
+         if( (radio_group.radio_selected < 0 )  &&
+			 (radio_group.radio_focus >= 0 ) )
+		   selectRadioButton( radio_group, radio_group.radio_focus, 1);
+		 // Tell browser we handled this event and not to process any other actions    
+		 return browser.stopPropagation( e );
+	     break;	
+  
+  } // end switch
+  
+  return true;
+
+} // end handleRadioGroupKeyDownEvent
+
+/**
+ * handleRadioGroupClickEvent processes pointer click events with in the radio group
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the pointer event
+ *
+ * @return false if pointer event was used by radio group, else true
+ */
+ 
+
+function handleRadioGroupClickEvent( event, radio_group ) {
+  // If IE get the IE event object
+  var e = event || window.event;
+  // Select a radio button by clicking
+  for(var i = 0; i < radio_group.radio_buttons.length; i++ ) {
+    if( radio_group.radio_buttons[i].node == browser.target(e) ) {
+      selectRadioButton( radio_group, i, 1);
+	} // endif  
+  } // end for
+
+} // end handleRadioGroupClickEvent
+  </script>
+
+
+
+<body onLoad="initApp()">
+ 
+  <h1>Radio Example 1: Using CSS Background Images</h1>
+  
+  
+     <p>
+	 Based on example from <a href="../../../../../external.html?link=http://test.cita.uiuc.edu/aria/radio/radio1.php">iCITA ARIA Radio</a><br />
+	<a target="_validationreport" href="javascript:(function(){ var str = ''; if (document.innerHTML) str += document.innerHTML; else { if (document.doctype) { str += '&lt;!DOCTYPE '; str += document.doctype.name; if (document.doctype.publicId) { str += ' PUBLIC &quot;' + document.doctype.publicId + '&quot;'; if (document.doctype.systemId) str += ' &quot;' + document.doctype.systemId + '&quot;'; } else if (document.doctype.systemId) { str += ' SYSTEM &quot;' + document.doctype.systemId + '&quot;'; } str += '>\n'; } var dummy = document.createElementNS('http://www.w3.org/1999/xhtml', 'div'); dummy.appendChild(document.documentElement); str += dummy.innerHTML; } var form = document.createElementNS('http://www.w3.org/1999/xhtml', 'form'); form.enctype = 'multipart/form-data'; form.method = 'post'; form.acceptCharset = 'utf-8'; form.action = 'http://html5.validator.nu/'; form.innerHTML = '&lt;input name=&quot;parser&quot;/>&lt;input name=&quot;showsource&quot; value=&quot;yes&quot;/>&lt;textarea name=&quot;content&quot;>&lt;/textarea>'; form.parser.value = document.createElement('div').tagName == 'DIV' ? 'html' : 'xml'; form.content.value = str; if (document.documentElement) document.documentElement.appendChild(form); else document.appendChild(form); form.submit(); })()">Validate DOM (HTML5)</a></p>
+
+<div role="application">
+<!--
+  The id attriute of elements are used to identify which elements to initialize as Radio Group and Radio buttons.  
+  The init() method of the Radio Group will be used to intialize Radio group and Radio button widgets.
+-->
+  <script type="text/javascript">
+	
+    rg1 = new RadioGroup("rg1");
+    widgets.add(rg1);
+    r1 = new Radio("r1");
+    rg1.add(r1);
+    r2 = new Radio("r2");
+    rg1.add(r2);
+    r3 = new Radio("r3");
+    rg1.add(r3);
+    r4 = new Radio("r4");
+    rg1.add(r4);
+    r5 = new Radio("r5");
+    rg1.add(r5);
+
+    rg2 = new RadioGroup("rg2");
+    widgets.add(rg2);
+    r6 = new Radio("r6");
+    rg2.add(r6);
+    r7 = new Radio("r7");
+    rg2.add(r7);
+    r8 = new Radio("r8");
+    rg2.add(r8);
+    r9 = new Radio("r9");
+    rg2.add(r9);
+    r10 = new Radio("r10");
+    rg2.add(r10);
+  </script>
+ 
+ <!-- Start of first Radio Group  -->
+
+ 
+  <h3 id="rg1_label">Lunch Options</h3>
+ 
+  <ul id="rg1" 
+     role="radiogroup"
+     aria-labelledby="rg1_label"
+	 >
+    <li id="r1" tabindex="0"  role="radio" aria-checked="false">Thai</li>
+    <li id="r2" tabindex="-1" role="radio" aria-checked="false">Subway</li>
+    <li id="r3" tabindex="-1" role="radio" aria-checked="false">Jimmy Johns</li>
+    <li id="r4" tabindex="-1" role="radio" aria-checked="false">Radio Maria</li>
+
+    <li id="r5" tabindex="0"  role="radio" aria-checked="false">Rainbow Gardens</li>	 
+  </ul>	
+
+ <!-- Start of second Radio Group  -->
+ 
+  <h3 id="rg2_label">Drink Options</h3>
+   
+  <ul id="rg2" 
+     tabindex="-1"
+     role="radiogroup"
+	 aria-labelledby="rg2_label"
+	 >
+    <li id="r6"  tabindex="0"  role="radio" aria-checked="false">Water</li>
+    <li id="r7"  tabindex="-1" role="radio" aria-checked="false">Tea</li>
+    <li id="r8"  tabindex="-1" role="radio" aria-checked="true">Coffee</li>
+
+    <li id="r9"  tabindex="-1" role="radio" aria-checked="false">Cola</li>
+    <li id="r10" tabindex="0"  role="radio" aria-checked="false">Ginger Ale</li>	 
+  </ul>	
+  
+
+
+</div>
+<h2>Keyboard Shortcuts</h2>
+<ul>
+    <li>Tab: Move focus between radio button groups
+	   <ul>
+	      <li>If no radio button has been checked, TAB moves focus to the first radio button in the group, but does not check the radio button</li>
+
+		  <li>If no radio button has been checked, SHIFT+TAB moves focus to the last radio button in the group, but does not check the radio button</li>
+		  <li>if a radio button is checked, TAB and SHIFT+TAB move focus to the radio button that is checked</li>
+	   </ul>
+	</li>
+    <li>Up Arrow: Move focus to the radio button before the current radio button with focus, if the first radio button has focus, focus is moved to the last radio button.  The radio button is checked. </li>
+    <li>Down Arrow: Move focus to the radio button after the current radio button with focus, if the last radio button has focus, focus is moved to the first radio button.  The radio button is checked. </li>
+	<li>Space Bar: Checks the radio button that currently has focus</li>
+
+</ul>
+
+<h2>ARIA Roles and Properties used</h2>
+<ul>
+<li>
+    Roles:
+	<ul>
+	<li><code>role="application"</code></li>
+    <li><code>role="radiogroup"</code></li>
+    <li><code>role="radio"</code></li>
+
+	</ul>
+	</li>
+    <li>States and properties: 
+        <ul>
+            <li><code>aria-checked</code></li>
+            <li><code>aria-labelledby</code></li>
+        </ul>
+    </li>
+
+</ul>
+
+<h2>Compatible Browsers</h2>
+
+<h3>HTML Version</h3>
+<ul>
+  <li>Internet Explorer 6.0+</li>
+  <li>Mozilla Firefox 1.5+</li>
+</ul>
+
+<h3>xhtml Version</h3>
+
+<ul>
+  <li>Mozilla Firefox 1.5+</li>
+</ul>
+
+  <h2>HTML Source Code</h2>
+  <p><a id="lsc"href="#lsc" onclick="changeSourceCodeView(this, 'sc')">Show HTML Source Code: radio1_inline.inc</a></p>
+  <div id="sc" class="codebox" style="display: none">
+&lt;div role="application"&gt;
+<br>
+
+&lt;!--
+<br>
+&#160;&#160;The id attriute of elements are used to identify which elements to initialize as Radio Group and Radio buttons.&#160;&#160;
+<br>
+&#160;&#160;The init() method of the Radio Group will be used to intialize Radio group and Radio button widgets.
+<br>
+--&gt;
+<br>
+&#160;&#160;&lt;script type="text/javascript"&gt;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;rg1 = new RadioGroup("rg1");
+<br>
+
+&#160;&#160;&#160;&#160;widgets.add(rg1);
+<br>
+&#160;&#160;&#160;&#160;r1 = new Radio("r1");
+<br>
+&#160;&#160;&#160;&#160;rg1.add(r1);
+<br>
+&#160;&#160;&#160;&#160;r2 = new Radio("r2");
+<br>
+&#160;&#160;&#160;&#160;rg1.add(r2);
+<br>
+&#160;&#160;&#160;&#160;r3 = new Radio("r3");
+<br>
+&#160;&#160;&#160;&#160;rg1.add(r3);
+<br>
+&#160;&#160;&#160;&#160;r4 = new Radio("r4");
+<br>
+&#160;&#160;&#160;&#160;rg1.add(r4);
+
+<br>
+&#160;&#160;&#160;&#160;r5 = new Radio("r5");
+<br>
+&#160;&#160;&#160;&#160;rg1.add(r5);
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;rg2 = new RadioGroup("rg2");
+<br>
+&#160;&#160;&#160;&#160;widgets.add(rg2);
+<br>
+&#160;&#160;&#160;&#160;r6 = new Radio("r6");
+<br>
+&#160;&#160;&#160;&#160;rg2.add(r6);
+<br>
+&#160;&#160;&#160;&#160;r7 = new Radio("r7");
+<br>
+
+&#160;&#160;&#160;&#160;rg2.add(r7);
+<br>
+&#160;&#160;&#160;&#160;r8 = new Radio("r8");
+<br>
+&#160;&#160;&#160;&#160;rg2.add(r8);
+<br>
+&#160;&#160;&#160;&#160;r9 = new Radio("r9");
+<br>
+&#160;&#160;&#160;&#160;rg2.add(r9);
+<br>
+&#160;&#160;&#160;&#160;r10 = new Radio("r10");
+<br>
+&#160;&#160;&#160;&#160;rg2.add(r10);
+<br>
+&#160;&#160;&lt;/script&gt;
+<br>
+
+ 
+<br>
+ &lt;!-- Start of first Radio Group&#160;&#160;--&gt;
+<br>
+ 
+<br>
+&#160;&#160;&lt;h3 id="rg1_label"&gt;Lunch Options&lt;/h3&gt;
+<br>
+ 
+<br>
+&#160;&#160;&lt;ul id="rg1" 
+
+<br>
+&#160;&#160;&#160;&#160; role="radiogroup"
+<br>
+&#160;&#160;&#160;&#160; aria-labelledby="rg1_label"
+<br>
+&#160;&#160; &gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r1" tabindex="0"&#160;&#160;role="radio" aria-checked="false"&gt;Thai&lt;/li&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r2" tabindex="-1" role="radio" aria-checked="false"&gt;Subway&lt;/li&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r3" tabindex="-1" role="radio" aria-checked="false"&gt;Jimmy Johns&lt;/li&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r4" tabindex="-1" role="radio" aria-checked="false"&gt;Radio Maria&lt;/li&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r5" tabindex="0"&#160;&#160;role="radio" aria-checked="false"&gt;Rainbow Gardens&lt;/li&gt;&#160;&#160; 
+<br>
+
+&#160;&#160;&lt;/ul&gt;&#160;&#160;
+<br>
+
+<br>
+ &lt;!-- Start of second Radio Group&#160;&#160;--&gt;
+<br>
+ 
+<br>
+&#160;&#160;&lt;h3 id="rg2_label"&gt;Drink Options&lt;/h3&gt;
+<br>
+
+&#160;&#160; 
+<br>
+&#160;&#160;&lt;ul id="rg2" 
+<br>
+&#160;&#160;&#160;&#160; tabindex="-1"
+<br>
+&#160;&#160;&#160;&#160; role="radiogroup"
+<br>
+&#160;&#160; aria-labelledby="rg2_label"
+<br>
+&#160;&#160; &gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r6"&#160;&#160;tabindex="0"&#160;&#160;role="radio" aria-checked="false"&gt;Water&lt;/li&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r7"&#160;&#160;tabindex="-1" role="radio" aria-checked="false"&gt;Tea&lt;/li&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r8"&#160;&#160;tabindex="-1" role="radio" aria-checked="true"&gt;Coffee&lt;/li&gt;
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r9"&#160;&#160;tabindex="-1" role="radio" aria-checked="false"&gt;Cola&lt;/li&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&lt;li id="r10" tabindex="0"&#160;&#160;role="radio" aria-checked="false"&gt;Ginger Ale&lt;/li&gt;&#160;&#160; 
+<br>
+&#160;&#160;&lt;/ul&gt;&#160;&#160;
+<br>
+&#160;&#160;
+<br>
+
+<br>
+
+<br>
+&lt;/div&gt;  </div>
+
+  <h2>Javascript Source Code</h2>
+  <p><a id="lsc1"href="#lsc1" onclick="changeSourceCodeView(this, 'sc1')">Show Javascript Source Code: globals.js</a></p>
+  <div id="sc1" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+/**
+<br>
+ *
+<br>
+ * The Globale Variables
+
+<br>
+ */
+<br>
+
+<br>
+if (!window.Node) {
+<br>
+&#160;&#160;var Node = {&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// If there is no Node object, define one
+<br>
+&#160;&#160;&#160;&#160;ELEMENT_NODE: 1,&#160;&#160;&#160;&#160;// with the following properties and values.
+<br>
+&#160;&#160;&#160;&#160;ATTRIBUTE_NODE: 2,&#160;&#160;// Note that these are HTML node types only.
+<br>
+
+&#160;&#160;&#160;&#160;TEXT_NODE: 3,&#160;&#160;&#160;&#160;&#160;&#160; // For XML-specific nodes, you need to add
+<br>
+&#160;&#160;&#160;&#160;COMMENT_NODE: 8,&#160;&#160;&#160;&#160;// other constants here.
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_NODE: 9,
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_FRAGMENT_NODE: 11
+<br>
+&#160;&#160;}
+<br>
+} 
+<br>
+
+<br>
+
+<br>
+var KEY_PAGEUP&#160;&#160; = 33;
+<br>
+var KEY_PAGEDOWN = 34;
+<br>
+var KEY_END&#160;&#160;&#160;&#160;&#160;&#160;= 35;
+<br>
+var KEY_HOME&#160;&#160;&#160;&#160; = 36;
+<br>
+
+<br>
+
+var KEY_LEFT&#160;&#160;&#160;&#160; = 37;
+<br>
+var KEY_UP&#160;&#160;&#160;&#160;&#160;&#160; = 38;
+<br>
+var KEY_RIGHT&#160;&#160;&#160;&#160;= 39;
+<br>
+var KEY_DOWN&#160;&#160;&#160;&#160; = 40;
+<br>
+
+<br>
+
+var KEY_SPACE&#160;&#160;&#160;&#160;= 32;
+<br>
+var KEY_TAB&#160;&#160;&#160;&#160;&#160;&#160;= 9;
+<br>
+
+<br>
+var KEY_BACKSPACE = 8;
+<br>
+var KEY_DELETE&#160;&#160;&#160;&#160;= 46;
+<br>
+var KEY_ENTER&#160;&#160;&#160;&#160; = 13;
+<br>
+
+var KEY_INSERT&#160;&#160;&#160;&#160;= 45;
+<br>
+var KEY_ESCAPE&#160;&#160;&#160;&#160;= 27;
+<br>
+
+<br>
+var KEY_F1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 112;
+<br>
+var KEY_F2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 113;
+<br>
+var KEY_F3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 114;
+<br>
+
+var KEY_F4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 115;
+<br>
+var KEY_F5&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 116;
+<br>
+var KEY_F6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 117;
+<br>
+var KEY_F7&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 118;
+<br>
+var KEY_F8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 119;
+<br>
+var KEY_F9&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 120;
+
+<br>
+var KEY_F10&#160;&#160;&#160;&#160;&#160;&#160; = 121;
+<br>
+
+<br>
+var KEY_M&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = 77;
+<br>
+
+<br>
+var NS_XHTML = "http://www.w3.org/1999/xhtml"
+<br>
+var NS_STATE = "http://www.w3.org/2005/07/aaa";
+<br>
+
+<br>
+// **********************************************
+<br>
+// *
+<br>
+// * Commonly used helper functions
+<br>
+// *
+<br>
+// **********************************************
+<br>
+
+<br>
+/**
+<br>
+ *
+
+<br>
+ * nextSiblingElement
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+<br>
+ 
+<br>
+function nextSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.nextSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * previousSiblingElement 
+<br>
+
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the next sibling element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+<br>
+ */
+<br>
+ 
+<br>
+
+function previousSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.previousSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.previousSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * firstChildElement 
+
+<br>
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the first child element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+<br>
+ */
+<br>
+ 
+
+<br>
+function firstChildElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+
+<br>
+
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+
+<br>
+ * getTextContentOfNode
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+<br>
+ 
+<br>
+function getTextContentOfNode( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+&#160;&#160;var str = "";
+<br>
+
+<br>
+&#160;&#160;while( next_node ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( (next_node.nodeType == Node.TEXT_NODE ) &amp;&amp;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;(next_node.length &gt; 0 )
+
+<br>
+&#160;&#160;&#160;&#160; )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;str += next_node.data;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return str;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * setTextContentOfNode
+
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+<br>
+ 
+<br>
+function setTextContentOfNode( node, text ) {
+<br>
+
+<br>
+&#160;&#160; // Generate a new text node with the text value
+
+<br>
+&#160;&#160;&#160;&#160;var text_node = document.createTextNode(text);
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Remove child nodes to remove text
+<br>
+&#160;&#160;&#160;&#160;while (node.firstChild) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;node.removeChild(node.firstChild);
+<br>
+&#160;&#160;&#160;&#160;} // while
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// Append new text to the container element
+<br>
+
+&#160;&#160;&#160;&#160;node.appendChild( text_node );
+<br>
+
+<br>
+}
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <p><a id="lsc2"href="#lsc2" onclick="changeSourceCodeView(this, 'sc2')">Show Javascript Source Code: widgets_inline.js</a></p>
+  <div id="sc2" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+
+// JavaScript Document
+<br>
+
+<br>
+
+<br>
+if (!window.Node) {
+<br>
+&#160;&#160;var Node = {&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// If there is no Node object, define one
+<br>
+&#160;&#160;&#160;&#160;ELEMENT_NODE: 1,&#160;&#160;&#160;&#160;// with the following properties and values.
+<br>
+&#160;&#160;&#160;&#160;ATTRIBUTE_NODE: 2,&#160;&#160;// Note that these are HTML node types only.
+<br>
+
+&#160;&#160;&#160;&#160;TEXT_NODE: 3,&#160;&#160;&#160;&#160;&#160;&#160; // For XML-specific nodes, you need to add
+<br>
+&#160;&#160;&#160;&#160;COMMENT_NODE: 8,&#160;&#160;&#160;&#160;// other constants here.
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_NODE: 9,
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_FRAGMENT_NODE: 11
+<br>
+&#160;&#160;}
+<br>
+} 
+<br>
+
+<br>
+
+var ARIA_STATE = "aria-";
+<br>
+
+<br>
+/**
+<br>
+ * Widgets Object is used to initialize a set of controls 
+<br>
+ * and provide a conveinence fuction to cancel event propagration
+<br>
+ * @construtor
+<br>
+ */
+
+<br>
+ 
+<br>
+function Widgets() {
+<br>
+&#160;&#160;this.widgets = new Array();
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ * add is member of the Widgets Object 
+<br>
+ * and used add a widget ot the list of widgets to be intitialized 
+
+<br>
+ * as part of the onload event
+<br>
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+Widgets.prototype.add = function(obj) {
+<br>
+&#160;&#160;this.widgets[this.widgets.length] = obj;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ * init is member of the Widgets Object 
+<br>
+ * and is called by the onload event to initialize widgets in the web resource
+<br>
+
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+Widgets.prototype.init = function() {
+<br>
+&#160;&#160; &#160;&#160;
+
+<br>
+&#160;&#160; for(var i = 0; i &lt; this.widgets.length; i++ )
+<br>
+&#160;&#160;&#160;&#160; this.widgets[i].init();
+<br>
+}
+<br>
+
+<br>
+//
+<br>
+// convience function for getting the node based on id
+<br>
+
+<br>
+function _$( id ) {
+<br>
+&#160;&#160;return document.getElementById( id );&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+
+<br>
+//
+<br>
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+<br>
+
+//
+<br>
+// The state variable keeps track of current state of checkbox
+<br>
+function WebBrowser() {
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+//
+<br>
+// keyCode is a function to get the keycode from a keypress event
+
+<br>
+//
+<br>
+// @param ( event object) event is an event object
+<br>
+//
+<br>
+// @return ( keycode ) 
+<br>
+
+<br>
+WebBrowser.prototype.keyCode = function( event ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;
+<br>
+
+&#160;&#160;return e.keyCode;
+<br>
+}&#160;&#160;
+<br>
+
+<br>
+/**
+<br>
+ * OnClick Event Simulator
+<br>
+ *
+<br>
+ * @param ( node ) DOM node object
+
+<br>
+ * @return nothing
+<br>
+ */
+<br>
+
+<br>
+if( document.createEvent ) {
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+&#160;&#160;&#160;&#160;// W3C DOM Events way to trigger a "click" event
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEvent('MouseEvents');
+<br>
+&#160;&#160;&#160;&#160;e.initEvent( 'click', true, true );
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;node.dispatchEvent( e );
+<br>
+
+<br>
+&#160;&#160;} 
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEventObject();
+<br>
+&#160;&#160;&#160;&#160;node.fireEvent( "onclick", e );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+}
+<br>
+
+<br>
+if ( document.addEventListener ) {
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousedown", downHandler,&#160;&#160;true );
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( upHandler)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;if( upHandler)
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousedown", downHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; node.setCapture();
+<br>
+&#160;&#160; if( clickHandler)
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onclick", clickHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousedown", downHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousemove", moveHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( upHandler )
+
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmouseup", upHandler );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; if( upHandler )
+<br>
+
+&#160;&#160;&#160;&#160; node.detachEvent( "onmouseup", upHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousemove", moveHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousedown", downHandler );
+
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( clickHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onclick", clickHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160; node.releaseCapture();
+<br>
+
+<br>
+&#160;&#160;} // endif
+
+<br>
+
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;event.stopPropagation();
+<br>
+&#160;&#160;&#160;&#160;event.preventDefault();
+<br>
+&#160;&#160;&#160;&#160;return false;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+<br>
+&#160;&#160;return event.target;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+&#160;&#160;return event.attrName
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+<br>
+&#160;&#160;&#160;&#160; return event.charCode;
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+<br>
+&#160;&#160;return node.offsetLeft;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function( node ) {
+<br>
+&#160;&#160;return node.offsetTop;&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.pageX;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.pageY;&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left+"px";
+<br>
+&#160;&#160;&#160;&#160;node.style.top = top+"px";
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+
+<br>
+
+} else {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;event.cancelBubble = true; 
+<br>
+&#160;&#160;&#160;&#160;event.returnValue = false;
+<br>
+&#160;&#160;&#160;&#160;return false;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+
+<br>
+&#160;&#160;&#160;&#160;return window.browser.keyCode( event );
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;return event.srcElement;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+
+&#160;&#160;return event.propertyName;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function(node) {
+<br>
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset += node.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function(node) {
+<br>
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset = offset + node.offsetTop;
+<br>
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;offsetx = 0;
+<br>
+&#160;&#160;&#160;&#160;offsety = 0;
+<br>
+&#160;&#160;&#160;&#160;nnode = node.offsetParent
+<br>
+&#160;&#160;&#160;&#160;while( nnode ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsetx = offsetx + nnode.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsety = offsety + nnode.offsetTop;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;nnode = nnode.offsetParent;
+
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left-offsetx+"px";
+<br>
+&#160;&#160;&#160;&#160;node.style.top = top-offsety+"px";
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+};
+<br>
+
+<br>
+
+<br>
+
+if (document.addEventListener) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // Functions for W3C Standards compliant implementation of adding event handlers
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.addEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.removeEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+<br>
+&#160;&#160;&#160;&#160; };
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = true;
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;if(document.attachEvent) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // IE Specific Event handler functions
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+<br>
+&#160;&#160;&#160;&#160; };
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+&#160;&#160;} else {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // For browsers that do not support W3C or IE event functions
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+}
+
+<br>
+
+<br>
+widgets_flag = true;
+<br>
+var widgets = new Widgets();
+<br>
+var browser = new WebBrowser();
+<br>
+
+<br>
+function initApp() {
+<br>
+&#160;&#160;widgets.init();
+<br>
+}
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <p><a id="lsc3"href="#lsc3" onclick="changeSourceCodeView(this, 'sc3')">Show Javascript Source Code: radio1_inline.js</a></p>
+  <div id="sc3" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+/**
+<br>
+ *
+
+<br>
+ * The RadioGroup object is used to maintain information about a radio group widget
+<br>
+ * including the collection of Radio button objects
+<br>
+ *
+<br>
+ * @constructor
+<br>
+ */
+<br>
+ 
+
+<br>
+function RadioGroup( id ) {
+<br>
+
+<br>
+&#160;&#160;this.id = id;
+<br>
+&#160;&#160;this.radio_buttons = new Array();
+<br>
+&#160;&#160;this.radio_selected = -1;
+<br>
+&#160;&#160;this.radio_focus = -1;
+<br>
+
+<br>
+} // end RadioGroup
+<br>
+
+<br>
+/**
+<br>
+ * init is a subclass of RadioGroup and is used to initialize the event handlers and 
+<br>
+ * radio buttons of a radio group.
+<br>
+ *
+<br>
+ * @member RadioGroup
+<br>
+ *
+
+<br>
+ * @return none
+<br>
+ */
+<br>
+ 
+<br>
+RadioGroup.prototype.init = function() {
+<br>
+
+<br>
+&#160;&#160;var obj = this;
+<br>
+&#160;&#160;this.node = document.getElementById( this.id );
+<br>
+
+<br>
+&#160;&#160;// Initialize radio Buttons
+<br>
+&#160;&#160;for(var i = 0; i &lt; this.radio_buttons.length; i++ ) {
+<br>
+&#160;&#160;&#160;&#160;this.radio_buttons[i].init();
+<br>
+&#160;&#160;} // endfor
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;// Check to see if any radio buttons is selected in the group from markup
+<br>
+&#160;&#160;for(var i = 0; i &lt; this.radio_buttons.length; i++ ) {
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;if( this.radio_buttons[i].node.getAttribute("aria-checked") =="true") {
+<br>
+&#160;&#160;&#160;&#160;this.radio_buttons[i].node.className = "";
+<br>
+&#160;&#160;&#160;&#160;selectRadioButton( this, i, (0) );
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+&#160;&#160;} // endfor
+<br>
+
+<br>
+&#160;&#160;// Add event handlers for first and last radio buttons to emulate IE radio button behavior for TAB navigation
+<br>
+&#160;&#160;browser.addEvent(this.radio_buttons[0].node, "focus", function(event) {handleRadioFirstFocus(event, obj);}, false); 
+<br>
+
+&#160;&#160;browser.addEvent(this.radio_buttons[0].node, "blur", function(event) {handleRadioFirstBlur(event, obj);}, false); 
+<br>
+&#160;&#160;browser.addEvent(this.radio_buttons[this.radio_buttons.length-1].node, "focus", function(event) {handleRadioLastFocus(event, obj);}, false); 
+<br>
+&#160;&#160;browser.addEvent(this.radio_buttons[this.radio_buttons.length-1].node, "blur", function(event) {handleRadioLastBlur(event, obj);}, false); 
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;// Add event handlers for selecting a radio button
+<br>
+&#160;&#160;browser.addEvent(this.node, "keydown", function(event) {handleRadioGroupKeyDownEvent(event, obj);}, false); 
+<br>
+&#160;&#160;browser.addEvent(this.node, "click", function(event) {handleRadioGroupClickEvent(event, obj);}, false); 
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;
+
+<br>
+
+<br>
+} // end RadioGroup.prototype.init
+<br>
+
+<br>
+/**
+<br>
+ * add is a subclass of RadioGroup and adds a Radio object to the RadioGroup list
+<br>
+ *
+<br>
+ * @member RadioGroup
+
+<br>
+ *
+<br>
+ * @param ( Radio object ) obj Radio button to be added to radio button list
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+<br>
+ 
+
+<br>
+RadioGroup.prototype.add = function( obj ) {
+<br>
+
+<br>
+&#160;&#160;this.radio_buttons[this.radio_buttons.length] = obj;
+<br>
+
+<br>
+} // end RadioGroup.prototype.add
+<br>
+
+<br>
+/**
+<br>
+ * selectRadioButton is called by event handlers to select one of the radio buttons in a group
+
+<br>
+ *
+<br>
+ * @param ( RadioGroup object ) radio_group&#160;&#160;Radio Group to change selected radio button
+<br>
+ * @param ( integer ) index Index of radio button to be selected
+<br>
+ * @param ( integer ) focus_flag If value is set to 1 then keyboard focus will be moved to the selected radio button
+<br>
+ *
+<br>
+
+ * @return none
+<br>
+ */
+<br>
+ 
+<br>
+function selectRadioButton( radio_group, index, focus_flag ) {
+<br>
+
+<br>
+&#160;&#160;// Check to see if index is larger than the number of buttons, if so wrap to first button
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;if( index &gt;= radio_group.radio_buttons.length )
+
+<br>
+&#160;&#160;&#160;&#160;index = 0;
+<br>
+
+<br>
+&#160;&#160;// Check to see if index is less than zero, if so wrap to last radio button
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;if( index &lt; 0)
+<br>
+&#160;&#160;&#160;&#160;index = radio_group.radio_buttons.length - 1;
+<br>
+
+<br>
+
+&#160;&#160;// Check to make sure the index value is valid before changing states
+<br>
+
+<br>
+&#160;&#160;if( (index &gt;= 0 ) &amp;&amp; (index &lt; radio_group.radio_buttons.length) ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Set all radio buttons to not selected 
+<br>
+&#160;&#160;&#160;&#160;// CSS selectors based on the "checked" attribute value change the visual rendering
+<br>
+
+&#160;&#160;&#160;&#160;// The checked attribute is used communicate radio button state information to assitive technologies
+<br>
+&#160;&#160;&#160;&#160;// Tabindex is set to -1 so the control can still receive focus, but is removed from tab order
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;for(var i = 0; i &lt; radio_group.radio_buttons.length; i++ ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;radio_group.radio_buttons[i].node.setAttribute("aria-checked","false");
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;// Kick IE 7 to update styling based on ARIA attribute
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;radio_group.radio_buttons[i].node.className = "";
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;radio_group.radio_buttons[i].node.tabIndex = -1;
+<br>
+&#160;&#160;&#160;&#160;}&#160;&#160;// endfor
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// Set radio button based on the index value
+<br>
+&#160;&#160;&#160;&#160;// CSS selectors based on the "checked" attribute change the visual rendering
+<br>
+&#160;&#160;&#160;&#160;// The checked attribute is used communicate radio button state information to assitive technologies
+<br>
+&#160;&#160;&#160;&#160;// Tabindex is set to 0 so the control is added to tab order
+
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[index].node.setAttribute("aria-checked","true");
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// Kick IE 7 to update styling based on ARIA attribute
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;radio_group.radio_buttons[index].node.className += "";
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[index].node.tabIndex = 0;
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Check focus flag to see if keyboard focus should be moved to selected control
+<br>
+&#160;&#160;&#160;&#160;if( focus_flag == 1 ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;radio_group.radio_buttons[index].node.focus();
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;// keep track of the last radio button with focus 
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_focus = index;
+<br>
+
+<br>
+&#160;&#160;} // end if
+<br>
+
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Keep track of the last radio button selected
+<br>
+&#160;&#160;&#160;&#160;// Once a Radio button is selected the RadioGroup is removed from tab order by setting its tabindex to -1
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_selected = index;
+<br>
+&#160;&#160;&#160;&#160;radio_group.node.tabIndex = -1;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endif
+<br>
+
+<br>
+} // end selectRadioButton
+<br>
+
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * The Radio object is used to maintain information about a radio button widget
+<br>
+ * including the collection of Radio button objects
+
+<br>
+ *
+<br>
+ * @constructor
+<br>
+ */
+<br>
+ 
+<br>
+function Radio( id ) {
+<br>
+
+<br>
+&#160;&#160;this.id = id;
+
+<br>
+
+<br>
+} // end Radio
+<br>
+
+<br>
+/**
+<br>
+ * init is a subclass of Radio and is used to initialize the state and tabindex of 
+<br>
+ * the radio button
+<br>
+ *
+
+<br>
+ * @member Radio
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+<br>
+ 
+<br>
+Radio.prototype.init = function() {
+<br>
+
+&#160;&#160; 
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160; this.node = document.getElementById( this.id );
+<br>
+&#160;&#160; var obj = this; 
+<br>
+&#160;&#160; 
+<br>
+&#160;&#160; // Add event handlers for a radiobutton geeting and losing focus
+<br>
+&#160;&#160;browser.addEvent(this.node, "focus", function(event) {handleRadioButtonFocusEvent(event);}, false);
+<br>
+
+&#160;&#160;browser.addEvent(this.node, "blur",&#160;&#160;function(event) {handleRadioButtonBlurEvent(event); }, false);
+<br>
+&#160;&#160;
+<br>
+} // end Radio.prototype.init
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioButtonFocusEvent processes keys associated with a Radio_group
+<br>
+ *
+<br>
+
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the RadioGroup object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by radio_group, else true
+<br>
+ */
+<br>
+
+<br>
+
+handleRadioButtonFocusEvent = function(event) {
+<br>
+&#160;&#160;&#160;&#160; var e = event || window.event;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // Kick IE 7 to update styling based on ARIA attribute
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; browser.target(e).className += ""; 
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioGroupFocusEvent
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioGroupBlurEvent processes keys associated with a radio_group
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+
+ * @param ( RadioGroup object ) radio_group is the RadioGroup object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by radio_group, else true
+<br>
+ */
+<br>
+
+<br>
+handleRadioButtonBlurEvent = function(event) {
+<br>
+&#160;&#160;
+
+<br>
+&#160;&#160;&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // Kick IE 7 to update styling based on ARIA attribute
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; browser.target(e).className += ""; 
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioGroupBlurEvent
+<br>
+
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioFirstFocus processes onFocus event when TAB has been pressed&#160;&#160;
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+<br>
+
+ *
+<br>
+ * @return false if keyboard event was used by radio group, else true
+<br>
+ */
+<br>
+ 
+<br>
+
+<br>
+function handleRadioFirstFocus( event, radio_group ) {
+<br>
+
+<br>
+
+&#160;&#160;// check to see if any radio buttons are selected
+<br>
+&#160;&#160;if( radio_group.radio_selected &lt; 0 ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;// if a radio button is not selected, remove the last radio button to tab order&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[radio_group.radio_buttons.length-1].node.tabIndex = -1;
+<br>
+
+<br>
+&#160;&#160;// keep track of the last radio button with focus
+<br>
+
+&#160;&#160;radio_group.radio_focus = 0;
+<br>
+&#160;&#160;} // end if
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioFirstFocus
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioFirstBlur processes onBlur event when TAB has been pressed&#160;&#160;
+
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by radio group, else true
+<br>
+ */
+
+<br>
+ 
+<br>
+
+<br>
+function handleRadioFirstBlur( event, radio_group ) {
+<br>
+
+<br>
+&#160;&#160;// check to see if any radio buttons are selected
+<br>
+&#160;&#160;if( radio_group.radio_selected &lt; 0 ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;// if a radio button is not selected, add the last radio button to tab order&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[radio_group.radio_buttons.length-1].node.tabIndex = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;} // end if
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioFirstBlur
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioLastFocus processes onFocus event when SHIFT+TAB has been pressed&#160;&#160;
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+<br>
+
+ *
+<br>
+ * @return false if keyboard event was used by radio group, else true
+<br>
+ */
+<br>
+ 
+<br>
+
+<br>
+function handleRadioLastFocus( event, radio_group ) {
+<br>
+
+<br>
+
+&#160;&#160;// check to see if any radio buttons are selected
+<br>
+&#160;&#160;if( radio_group.radio_selected &lt; 0 ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;// if a radio button is not selected, remove the first radio button to tab order&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[0].node.tabIndex = -1;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;// keep track of the last radio button with focus
+<br>
+
+&#160;&#160;radio_group.radio_focus = radio_group.radio_buttons.length-1;
+<br>
+&#160;&#160; } // end if
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioLastFocus
+<br>
+
+<br>
+/**
+<br>
+
+ * handleRadioLastBlur processes onBlur event when SHIFT+TAB has been pressed&#160;&#160;
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by radio group, else true
+
+<br>
+ */
+<br>
+ 
+<br>
+
+<br>
+function handleRadioLastBlur( event, radio_group ) {
+<br>
+
+<br>
+&#160;&#160;// check to see if any radio buttons are selected
+<br>
+&#160;&#160;if( radio_group.radio_selected &lt; 0 ) {
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;// if a radio button is not selected, the add the first radio button to tab order&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;radio_group.radio_buttons[0].node.tabIndex = 0;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;} // end if
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioLastBlur
+<br>
+
+<br>
+
+<br>
+/**
+<br>
+ * handleRadioGroupKeyDownEvent processes keys associated with a radio button group
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by radio group, else true
+<br>
+ */
+<br>
+ 
+<br>
+function handleRadioGroupKeyDownEvent( event, radio_group ) {
+<br>
+
+&#160;&#160;// If IE get the IE event object
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;// If any modifier keys are pressed do not process this event
+<br>
+&#160;&#160;if( e.altKey || e.ctrlKey || e.shiftKey )
+<br>
+&#160;&#160;&#160;&#160;return true;
+<br>
+
+<br>
+&#160;&#160;switch( e.keyCode ) {
+<br>
+&#160;&#160; 
+
+<br>
+&#160;&#160;&#160;&#160;case KEY_DOWN:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // Hitting down will switch the focus and selected to the next item in the radio group
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; if( (radio_group.radio_selected &lt; 0 )&#160;&#160;&amp;&amp;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; (radio_group.radio_focus &gt;= 0 ) ){
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; selectRadioButton( radio_group, (radio_group.radio_focus + 1), 1);
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; radio_group.radio_buttons[radio_group.radio_focus ].node.className += ""; 
+<br>
+&#160;&#160;&#160;&#160; }
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; else&#160;&#160;{
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; selectRadioButton( radio_group, (radio_group.radio_selected + 1), 1);
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; radio_group.radio_buttons[radio_group.radio_selected ].node.className += "";
+<br>
+&#160;&#160;&#160;&#160; }
+<br>
+&#160;&#160;&#160;&#160; // Tell browser we handled this event and not to process any other actions&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160; return browser.stopPropagation( e );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;case KEY_UP:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // Hitting up will switch the focus and selected to the previous item in the radio group
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; if( (radio_group.radio_selected &lt; 0 )&#160;&#160;&amp;&amp;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; (radio_group.radio_focus &gt;= 0 ) )
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160; selectRadioButton( radio_group, (radio_group.radio_focus - 1), 1);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; else&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; selectRadioButton( radio_group, (radio_group.radio_selected - 1), 1);
+<br>
+&#160;&#160;&#160;&#160; // Tell browser we handled this event and not to process any other actions&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160; return browser.stopPropagation( e );
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;case KEY_SPACE:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // Hitting space will select the current item in the radio group
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; if( (radio_group.radio_selected &lt; 0 )&#160;&#160;&amp;&amp;
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160; (radio_group.radio_focus &gt;= 0 ) )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; selectRadioButton( radio_group, radio_group.radio_focus, 1);
+<br>
+&#160;&#160;&#160;&#160; // Tell browser we handled this event and not to process any other actions&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160; return browser.stopPropagation( e );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; break;&#160;&#160;
+
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;} // end switch
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleRadioGroupKeyDownEvent
+<br>
+
+<br>
+/**
+<br>
+
+ * handleRadioGroupClickEvent processes pointer click events with in the radio group
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( RadioGroup object ) radio_group is the Radio Group object that is the target of the pointer event
+<br>
+ *
+<br>
+ * @return false if pointer event was used by radio group, else true
+
+<br>
+ */
+<br>
+ 
+<br>
+
+<br>
+function handleRadioGroupClickEvent( event, radio_group ) {
+<br>
+&#160;&#160;// If IE get the IE event object
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;// Select a radio button by clicking
+<br>
+&#160;&#160;for(var i = 0; i &lt; radio_group.radio_buttons.length; i++ ) {
+
+<br>
+&#160;&#160;&#160;&#160;if( radio_group.radio_buttons[i].node == browser.target(e) ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;selectRadioButton( radio_group, i, 1);
+<br>
+&#160;&#160;} // endif&#160;&#160;
+<br>
+&#160;&#160;} // end for
+<br>
+
+<br>
+} // end handleRadioGroupClickEvent
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+
+  <h2>CSS Source Code</h2>
+  <p><a id="lsc4"href="#lsc4" onclick="changeSourceCodeView(this, 'sc4')">Show CSS Source Code: radio1_inline.css</a></p>
+  <div id="sc4" class="codebox" style="display: none">
+&#160;&#160;&lt;style type="text/css"&gt;<br>
+
+<br>
+ ul[role="radiogroup"] {
+<br>
+&#160;&#160;margin: 0;
+<br>
+
+&#160;&#160;padding: 0;
+<br>
+&#160;&#160;margin-left: 1em;
+<br>
+&#160;&#160;list-style: none;
+<br>
+}
+<br>
+
+<br>
+ li[role="radio"]{
+<br>
+&#160;&#160;padding-left: 16px;
+<br>
+&#160;&#160;background-repeat: no-repeat;
+<br>
+
+&#160;&#160;background-position: left center;
+<br>
+&#160;&#160;background-image: url('images/unchecked.gif');
+<br>
+} 
+<br>
+
+<br>
+ li[aria-checked="true"] {
+<br>
+&#160;&#160;background-repeat: no-repeat;
+<br>
+&#160;&#160;background-position: left center;
+<br>
+&#160;&#160;background-image: url('images/checked.gif'); 
+<br>
+
+}&#160;&#160;&#160;&#160; 
+<br>
+
+<br>
+ li[aria-checked="true"]:active,
+<br>
+ li[aria-checked="true"]:focus{
+<br>
+&#160;&#160;&#160;&#160;border: black 1px solid;
+<br>
+&#160;&#160;font-weight: bold;
+<br>
+&#160;&#160;width:10em;
+<br>
+
+&#160;&#160;background-repeat: no-repeat;
+<br>
+&#160;&#160;&#160;&#160;background-position: left center;
+<br>
+&#160;&#160;&#160;&#160;background-image: url('images/checked.gif');
+<br>
+}
+<br>
+
+<br>
+ li[aria-checked="false"]:active,
+<br>
+ li[aria-checked="false"]:focus{
+<br>
+&#160;&#160;&#160;&#160;border: black 1px solid;
+
+<br>
+&#160;&#160;font-weight: bold;
+<br>
+&#160;&#160;width: 10em;
+<br>
+}
+<br>
+&#160;&#160;&lt;/style&gt;<br>
+  </div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/radio/radio1.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:24 GMT -->
+</html>

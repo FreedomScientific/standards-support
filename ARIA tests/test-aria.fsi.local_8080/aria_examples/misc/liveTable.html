@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/liveTable.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<title>
+Live table cell
+</title>
+<script type="text/javascript">
+window.onload = runExample;
+var minimumTime = 3000;
+var index=0;
+var lrID = "myLiveRegion1";
+var messagesArray = new Array("0","1","2","3","4","5","6","7","8","9");
+var messagesArray2 = new Array("oh","what","a","beautiful","morning","oh","what","a","beautiful","day");
+
+function updateLiveRegion(liveRegionID, textString)
+{
+  textNode = document.createTextNode(textString);
+        targetNode = document.getElementById(liveRegionID);
+        while (targetNode.firstChild)
+        {
+           targetNode.removeChild(targetNode.firstChild);
+           }
+  targetNode.appendChild(textNode);
+        }
+
+function runExample()
+{
+   updateLiveRegion(lrID, messagesArray[index]);
+   updateLiveRegion("div1", messagesArray2[index]);
+   index++;
+   if (index > 9){
+      index=0;
+      }
+   window.setTimeout(runExample, minimumTime);
+   }
+
+function setMinimumTime()
+{
+   minimumTimeStr = document.getElementById("throttle").options[document.getElementById("throttle").selectedIndex].text;
+   minimumTime = minimumTimeStr * 1000;
+   }
+</script>
+</head>
+<body>
+<!--
+<div>
+<label for="throttle">Minimum number of seconds before a change</label>
+<select id="throttle" onblur="setMinimumTime();" onchange="setMinimumTime();">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+</select>
+<hr/>
+</div>
+-->
+
+<h1>
+Live table with an active celll
+</h1>
+<p>
+<table aria-live="polite" aria-relevant="additions removals">
+<tr>
+<td>
+Stock Symbol
+</td>
+<td>
+Bid
+</td>
+<td>
+Ask
+</td>
+<td>
+Value
+</td>
+</tr>
+<tr>
+<td>
+IBM
+</td>
+<td>
+27
+</td>
+<td>
+36
+</td>
+<td>
+17
+</td>
+</tr>
+<tr>
+<td>
+HOG
+</td>
+<td>
+15
+</td>
+<td>
+30
+</td>
+<td id="myLiveRegion1">
+empty
+</td>
+</tr>
+</table>
+
+<p>
+<div aria-live="off" id="div1">
+</div>
+</p>
+
+<!--
+
+-->
+</p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/liveTable.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+</html>

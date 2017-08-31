@@ -1,0 +1,607 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family:arial, helvetica, sans-serif;
+}
+
+.offscreen {
+  position: absolute;
+  left: -300em;
+  top: -30em;
+}
+
+div#banner {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/OpenAjaxAllianceBanner.jpg);
+  background-repeat: no-repeat;
+  background-color: #4C8303;
+  height: 120px;
+  border-bottom: medium solid #fbcb46;
+}
+
+div#banner div.title {
+
+}
+div#banner div.user {
+  margin: 0;
+  padding: 0;
+  font-size: 80%;
+  margin-right: 2em;
+  text-align: right;
+  color: #F9F9F9;
+}
+
+div#banner div.user a:link,
+div#banner div.user a:visited
+{
+  color: #fbcb46;
+  text-decoration: none;
+  padding-left: .25em;
+  padding-right: .25em;
+  border: 1px solid transparent;
+  border-bottom: #E0E0E0 solid 1px;
+}
+
+div#banner title div.user a:active,
+div#banner title div.user a:focus,
+div#banner title div.user a:hover
+{
+  color: white;
+  border: #fbcb46 thin solid;
+}
+
+div#banner div.content {
+  margin: 0;
+  padding: 0;
+  margin-left: 270px;
+}
+
+
+div#banner div.title {
+  margin: 0;
+  padding: 0;
+  padding-top: 16px;
+  font-size: 350%;
+  font-weight: bold;
+  letter-spacing: .05em;
+  color: #F9F9F9;
+  font-family: 'times new roman', times, serif;
+  background-color: transparent;
+}
+
+
+div#banner div.banner_nav  {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 2em;
+  font-size: 90%;
+  font-family:arial, helvetica, sans-serif;
+}
+
+
+div#banner div.banner_nav a {
+  padding-left: .25em;
+  padding-right: .25em;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  border-bottom: #E0E0E0 1px solid;
+}
+
+div#banner div.banner_nav a:link,
+div#banner div.banner_nav a:visited
+{
+  color: #fbcb46;
+}
+
+div#banner div.banner_nav a:hover,
+div#banner div.banner_nav a:focus,
+div#banner div.banner_nav a:active
+{
+  color: white;
+  border-color: #fbcb46;
+}
+
+div#banner div.banner_nav h2 {
+  position: absolute;
+  top: -30em;
+  left:-300em;
+}
+
+div#banner div.banner_nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+div#banner div.banner_nav li {
+  margin: 0;
+  padding: 0;
+  padding-right: .5em;
+  display: inline;
+}
+
+div#nav {
+  margin: 0;
+  padding: 0 0 0 15%;
+  border-bottom:1px solid #DDD;
+  background-color: #FAF7F0;
+  color: black;
+  font-size: 125%;
+}
+
+div#nav h2 {
+  position: absolute;
+  top: -30em;
+  left:-300em;
+  
+}
+
+div#nav ul {
+  margin: 0;
+  padding: 5px 0 3px 3em;
+  list-style: none;
+}
+
+div#nav li {
+  margin: 0;
+  padding: 0 0.25em;
+  display: inline;
+}
+
+div#nav a {
+  text-decoration: none;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  border: 1px solid transparent;
+  border-bottom: 3px solid #888888;
+}
+
+div#nav a:visited,
+div#nav a:link {
+  color: #333333;
+}
+
+div#nav a:hover,
+div#nav a:active,
+div#nav a:focus {
+  color: #366dba;
+  background-color: #F4F4F4;
+  border-color: #366dba;
+}
+
+div#nav a.selected:visited,
+div#nav a.selected:link {
+  border-bottom-color: #880000;
+}
+
+div.perm {
+   margin-right: 90px;
+   text-align: right;
+   font-size: 90%;
+}
+div.perm a,
+div.perm a:link,
+div.perm a:visited {
+  color: #004400;
+}
+div.perm a:hover {
+  color: #880000;
+}
+
+*.fail,
+*.bad {
+  color: red;
+}
+
+*.warning,
+*.poor {
+  color: #C08B00;
+}
+
+*.good,
+*.pass {
+  color: green;
+}
+
+*.exp,
+*.check {
+  color: purple;
+}
+
+div#content {
+  margin: 0;
+  padding: 1em;
+  background-color: white;
+  color: black;
+}
+
+div#content h1 {
+  margin: 0;
+  padding: 0;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-left: 1em;
+  font-size: 200%;
+}
+
+
+div#content ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 4em;
+  margin-bottom: 1em;
+  font-size: 120%;
+}
+
+div#content ul li {
+  line-height: 1.25em;
+}
+
+div#content div#example_code {
+  margin: 0 5em 0 2em;
+  padding: 1em;
+  border: black 2px solid;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
+
+  overflow: visible;
+}
+
+div#content div#edit {
+  margin: 0;
+  padding: .25em;
+  font-size: 90%;
+  text-align: right;
+}
+
+div#content div.code {
+  background-color: #F9F9F9;
+  border: solid black thin;
+  font-family:courier, fixed, monospace;
+  margin-left: 2em;
+  margin-right: 2em;
+  padding: .5em;
+}
+
+div#content h2 {
+  margin: 1em 0 0 1.65em;
+  padding: .25em .5em;
+  font-size: 120%;
+}
+
+h2#start {
+  width: 7em;
+  font-size: 100%;
+  border: 2px solid black;
+  border-bottom: none;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-left-radius: 10px;
+
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-right-radius: 10px;
+}
+
+h2#end {
+  margin: 0 0 3em 1.65em !important;
+  width: 7em;
+  font-size: 100%;
+  border: 2px solid black;
+  border-top: none;
+  background-color: #F9F9F9;
+  
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-left-radius: 10px;
+
+  /* Do rounding (native in Firefox and Safari) */
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+div#footer {
+  margin: 0;
+  padding: 0;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border-top:#007700 medium double;
+  border-bottom:#007700 medium solid;
+  background-color: #FAF7F0;
+  color: #007700;
+  clear:both;
+  font-size: 80%;
+}
+
+div#footer h2 {
+  position:absolute;
+  left: -330em;
+  top: -30em;
+}
+
+div#footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+div#footer ul li {
+  list-style:none;
+  margin: 0;
+  padding: 0;
+  text-align:center;
+}
+
+div#footer li a {
+  text-decoration: none;
+  font-size: 100%;
+}
+
+div#footer li a:visited,
+div#footer li a:link {
+  color: #007700;
+  border-bottom: thin solid #DDDDDD;
+}
+
+div#footer li a:hover,
+div#footer li a:active,
+div#footer li a:focus {
+  border-bottom-color: #008800;
+}
+
+div#footer div.copyright {
+  text-align: center;
+}
+
+fieldset.result {
+ margin: 0;
+ padding: .5em;
+ margin-top: 1em;
+ margin-bottom: .25m;
+ margin-left: 5%;
+ width: 70%;
+}
+
+fieldset.result legend {
+  font-weight: bold;
+}
+
+fieldset.result p {
+ margin: 0;
+ padding: 0;
+ margin-top: .5em;
+}
+
+fieldset.result label { 
+ margin: 0;
+ padding: 0;
+ display: block;
+ width: 5em;
+ text-align: right;
+ float: left;
+ padding-right: .25em;
+}
+
+fieldset.result p.delete input { 
+ margin: 0;
+ padding: 0;
+ margin-top: .25em;
+ margin-left: 6em;
+ float: left;
+}
+
+fieldset.result p.delete label {
+ margin: 0;
+ padding: 0;
+ display: block;
+ text-align: left; 
+ padding-left: 0.5em;
+ width:auto;
+}
+
+div.addremove {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+div.addremove a:link img,
+div.addremove a:visited img
+{
+  margin: 0;
+  padding: 0;
+  margin-right: .25em;
+  border: none;
+}
+
+
+div.section {
+  padding-bottom: 1em;
+  border-bottom: black double medium;
+  margin-bottom: 1em;
+}
+
+ul.remove {
+  margin: 0;
+  padding: 0;
+  margin-left: 5%;
+  list-style: none;
+}
+
+ul.remove li {
+  margin: 0;
+  padding: 0;
+}
+
+ul.remove li input {
+  margin: 0;
+  padding: 0;
+  display: block;
+  float: left;
+  margin-top: .5em;
+  margin-right: .5em;
+}
+
+ul.remove li label {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+div.desc {
+  margin-left: 3em;
+}
+
+dl.results dt {
+  margin: 0;
+  padding: 0;
+  margin-top: .5em;
+  margin-left: 3em;
+  font-weight: normal;
+  font-size: 100%;
+}
+
+dl.results dd {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  font-size: 90%;
+}
+
+div.buttons {
+  margin: 0;
+  padding: 0;
+  margin-left: 5em;
+  margin-top: 1em;
+}
+
+div#example input[type="submit"] {
+  font-size: 110%;
+  margin-right: .5em;
+  padding: .25em
+}
+
+ul.edit {
+  padding: .25em;
+  font-size: 90%;
+  text-align: right;
+  list-style: none;
+}
+
+ul.edit li a:before {
+	content: "[ ";  
+}
+
+ul.edit li a:after {
+	content: " ]";  
+}
+
+table.form h2 {
+  border: none;
+}
+
+table.form p.textile {
+  font-size: 80%;
+  text-align: right
+}
+
+table.form td.sect {
+  background-color: #F9F9F9;
+}
+
+table.form td.checkbox {
+  text-align: right;
+}
+
+
+div#example ul.errorlist {
+  margin: 0;
+  padding: 0;
+  margin-top: .25em;
+  margin-left: 1em;
+  margin-bottom: .25em;
+  color: red;
+}
+
+div#example ul.errorlist li  {
+  line-height: normal;
+}
+
+div#errors {
+  border: red double medium;
+  margin-left: 2em;
+  margin-right: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+} 
+
+div#errors h2 {
+  border: none;
+  color: red;
+}
+
+div#errors a:link,
+div#errors a:visited
+{
+  color: red;
+  text-decoration: none;
+} 
+
+div#errors a:active,
+div#errors a:focus,
+div#errors a:hover
+{
+  text-decoration: underline;
+}
+
+div#example p.textile {
+  font-size: 80%;
+  text-align: right
+}
+table.testrefs {
+   border: 1px solid black;
+   border-collapse: collapse;
+}
+table.testrefs tr {
+   vertical-align: top;
+}
+table.testrefs th {
+   padding: 10px;
+   background-color: #f9f9f9;
+   border: 1px solid black;
+}
+table.testrefs td {
+   padding: 10px;
+   text-align: center;
+   border: 1px solid black;
+}
+table.testrefs ul {
+   list-style: none;
+   margin-left: 0px !important;
+   margin-right: 10px !important;
+   text-align: right;
+   font-weight: normal;
+   font-size: 100% !important;
+}

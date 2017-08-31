@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+	"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/demos/demail/demo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:01 GMT -->
+<head>
+	<title>Dojo Mail</title>
+	<link rel="stylesheet" href="demo.css">
+	<script type="text/javascript">
+		djConfig = {
+			parseOnLoad: true,
+			modulePaths: {
+				"acme": "../demos/demail"
+			}
+		};
+	</script>
+	<script type="text/javascript" src="../../dojo/dojo.js"></script>
+	<script type="text/javascript" src="src.js"></script>
+	<script type="text/javascript">
+		dojo.extend(dijit.layout._Splitter, {
+			_tickSize: 1
+		});
+
+		var csvStore = new dojox.data.CsvStore({
+			url: dojo.moduleUrl("dojox", "charting/tests/data/msft_prices.csv")
+		});
+
+		var d = { 
+			identifier: 'name',
+			label: 'name',
+			items: [
+				{ 
+					name:'Africa', 
+					type:'continent', 
+					population:'900 million', 
+					area: '30,221,532 sq km',
+					timezone: '-1 UTC to +4 UTC',
+					children:[
+						{_reference:'Egypt'}, 
+						{_reference:'Kenya'}, 
+						{_reference:'Sudan'}
+					]
+				},
+				{ name:'Egypt', type:'country' },
+				{ name:'Kenya', type:'country',
+					children: [
+						{_reference:'Nairobi'}, 
+						{_reference:'Mombasa'}
+					]
+				},
+				{ name:'Nairobi', type:'city' },
+				{ name:'Mombasa', type:'city' },
+				{ name:'Sudan', type:'country', children:[ { _reference:'Khartoum' } ] },
+				{ name:'Khartoum', type:'city' },
+				{ name:'Asia', type:'continent',
+					children: [
+						{ _reference: 'China' }, 
+						{ _reference: 'India' }, 
+						{ _reference: 'Russia' }
+					]
+				},
+				{ name:'China', type:'country' },
+				{ name:'India', type:'country' },
+				{ name:'Russia', type:'country' }
+			]
+		};
+
+		for(var x = 0; x < 100; x++){
+			d.items.push({ type: "country", name: "country"+x });
+			d.items[7].children.push({ _reference: "country"+x });
+		}
+
+		var folders = new dojo.data.ItemFileReadStore({ data: d });
+
+		var folderModel =  new dijit.tree.ForestStoreModel({
+			store: folders, 
+			query: { type: "continent" },
+			childrenAttrs: [ "children" ]
+		});
+
+		dojo.declare("acme._TreeNode", dijit._TreeNode, {
+			detail: "",
+			detailNode: null,
+			_onNodeFocus: function(){
+				// console.debug(this.domNode);
+				this.inherited(arguments);
+			},
+			_setDetail: function(v){
+				this._detailNode.innerHTML = v;
+			},
+			templatePath: dojo.moduleUrl("acme", "newTreeNode.html")
+		});
+
+		dijit.defaultDuration = 150;
+
+		dojo.extend(dijit.Tree, {
+			templatePath: dojo.moduleUrl("acme", "newTree.html"),
+			_createTreeNode: function(args){
+				if(args.label){
+					args.detail = ""+args.label.length;
+				}
+				return new acme._TreeNode(args);
+			}
+		});
+	</script>
+</head>
+<body class="tundra">
+	<div dojoType="dijit.layout.BorderContainer" design="sidebar" id="main" class="app">
+		<div dojoType="dijit.layout.ContentPane" 
+			class="leftTree"
+			region="leading" 
+			jsId="leading"
+			splitter="true">
+			<!--
+			<div id="treeContainer"></div>
+			-->
+			<div dojoType="dijit.Tree"
+				model="folderModel" openOnClick="true"
+				showRoot="false"></div>
+		</div>
+		<table dojoType="dojox.grid.DataGrid"
+			store="csvStore" query="{ Date: '*' }"
+			splitter="true" height="auto"
+			region="center" jsId="csvGrid">
+			<script type="dojo/method" event="onCellContextMenu">
+				return true; // allow context menus
+			</script>
+			<thead>
+				<tr>
+					<th width="20%">Date</th>
+					<th width="auto">Open</th>
+					<th>Close</th>
+				</tr>
+			</thead>
+		</table>
+		<div dojoType="dijit.layout.ContentPane" region="bottom" 
+			style="height: 100px;" splitter="true"
+			class="messagePane">
+			bottom bar
+		</div>
+		<!--
+		<div dojoType="dijit.layout.ContentPane" region="trailing">
+			right side-bar
+		</div>
+		-->
+	</div>
+
+	<!--
+	<div dojoType="dijit.Menu" jsId="rightClick" style="display: none;">
+		<script type="dojo/method">
+			this.bindDomNode(csvGrid.domNode);
+		</script>
+		<script type="dojo/connect" event="onOpen" args="evt">
+			for(var x in evt){
+				// console.debug(x);
+			}
+		</script>
+		<div dojoType="dijit.MenuItem" onClick="alert('Hello world');">Enabled Item</div>
+		<div dojoType="dijit.MenuItem" disabled="true">Disabled Item</div>
+		<div dojoType="dijit.MenuSeparator"></div>
+		<div dojoType="dijit.PopupMenuItem">
+			<span>Enabled Submenu</span>
+			<div dojoType="dijit.Menu" id="submenu2">
+				<div dojoType="dijit.MenuItem" onClick="alert('Submenu 1!')">Submenu Item One</div>
+				<div dojoType="dijit.MenuItem" onClick="alert('Submenu 2!')">Submenu Item Two</div>
+				<div dojoType="dijit.PopupMenuItem">
+					<span>Deeper Submenu</span>
+					<div dojoType="dijit.Menu" id="submenu4">
+						<div dojoType="dijit.MenuItem" onClick="alert('Sub-submenu 1!')">Sub-sub-menu Item One</div>
+						<div dojoType="dijit.MenuItem" onClick="alert('Sub-submenu 2!')">Sub-sub-menu Item Two</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div dojoType="dijit.PopupMenuItem" disabled="true">
+			<span>Disabled Submenu</span>
+			<div dojoType="dijit.Menu" id="submenu3" style="display: none;">
+				<div dojoType="dijit.MenuItem" onClick="alert('Submenu 1!')">Submenu Item One</div>
+				<div dojoType="dijit.MenuItem" onClick="alert('Submenu 2!')">Submenu Item Two</div>
+			</div>
+		</div>
+		<div dojoType="dijit.CheckedMenuItem" checked="true" onChange="alert('Now set to ' + arguments[0])">Checked</div>
+		<div dojoType="dijit.CheckedMenuItem">Not Checked</div>
+		<div dojoType="dijit.CheckedMenuItem" checked="true" disabled="true">Checked Disabled</div>
+	</div>
+	-->
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/demos/demail/demo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:02 GMT -->
+</html>

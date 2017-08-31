@@ -1,0 +1,120 @@
+body {
+	font-size: 100%;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.focused span {
+	color: navy;
+	font-weight: bold;
+	outline: 2px solid navy;
+	text-decoration:underline;
+}
+.selected span {
+	color: #000;	
+}
+
+.focused {
+	outline: none;	
+}
+
+.tpgTree {
+	list-style: none;
+	padding-left: 0em;
+	margin-left: 0em;	
+}
+
+.tpgTree li {
+	list-style: none;
+	width: 13em;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.tpgTree ul ul {
+	padding-left: 1em;
+}
+
+.tpgTree .leafFirst, .tpgTree .leafMid, .tpgTree .leafLast {
+	padding-left: 1em;
+}
+
+.tpgTree ul.collapsedGroup{
+	display: none;
+}
+
+.collapsedFirst {
+}
+.collapsedMid {
+}
+.collapsedLast {
+}
+.expandedFirst {
+}
+.expandedMid {
+}
+.expandedLast ul{
+}
+
+.expandedFirst, .expandedMid, .collapsedFirst, .collapsedMid {
+	background:  white url(../images/vertical_line.png) repeat-y left;
+}
+.expandedFirst ul, .expandedMid ul{
+	background:  url(../images/vertical_line.png) repeat-y        ;
+}
+.expandedLast ul{
+	background: none;
+}
+
+.leafFirst {
+	background:  url(../images/mid_line_long.png) no-repeat left center;
+}
+.leafMid{
+	background:  url(../images/mid_line_long.png) no-repeat left center;
+}
+
+.leafLast {
+	background:  white url(../images/last_line_long.png) no-repeat left bottom;
+}
+
+
+body .multiSelectable .selected {
+	background-image:  url(../images/checked.gif);
+}
+
+.multiSelectable .partial {
+	background-image:  url(../images/mixed.gif);
+}
+
+.multiSelectable .treeItem {
+	background-image:  url(../images/unchecked.gif);	
+}
+
+.multiSelectable .treeItem, .treeItem span{
+	background-repeat: no-repeat;
+	padding-left:20px;
+	background-position: left center;
+}
+
+.tpgTree .leafLabel span{
+	background-image: url(../images/file.png); 	
+}
+
+.tpgTree .collapsed span{
+	background-image: url(../images/folder.png); 
+}
+
+.tpgTree .expanded span {
+	background-image: url(../images/folder_open.png); 
+}
+
+.tpgTree .twisty {
+	width: 1em;
+}
+
+.tpgTree .selected span{
+	background-color: #9999FF;
+}
+
+.treeItem {
+	cursor: pointer;	
+}

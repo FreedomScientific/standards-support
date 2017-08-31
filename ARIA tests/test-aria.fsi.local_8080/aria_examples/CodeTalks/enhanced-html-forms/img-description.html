@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/img-description.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:23 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ARIA describedby for images test</title>
+</head>
+<body>
+  <h1>WAI-ARIA describedby examples</h1>
+  <p>
+    Various images that have a describedby property.
+  </p>
+  <h2>How to reproduce</h2>
+  <ol>
+    <li>Read with the jaws virtual cursor.</li>
+</ol>
+<h2>Expected result</h2>
+  <ol>
+    <li>jaws should read the describedby text (even when it's hidden).</li>
+  </ol>
+
+<h3>Example 1: description visibility:hidden;</h3>
+<img src="piechart.gif" alt="75% cars and 25% trucks" aria-describedby="chartDesc1" width="154" height="142">
+<div id="chartDesc1" style="visibility: hidden;">This is a description (1) of an image.</div>
+
+<h3>Example 2: description display="none"</h3>
+<img src="piechart.gif" alt="75% cars and 25% trucks" aria-describedby="chartDesc2" width="154" height="142">
+<div id="chartDesc2" style=display:none;">This is a description (2) of an image.</div>
+
+<h3>Example 3: description always visible</h3>
+<img src="piechart.gif" alt="75% cars and 25% trucks" aria-describedby="chartDesc3" width="154" height="142">
+<div id="chartDesc3">This is a long description (2) of an image.</div>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/img-description.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:24 GMT -->
+</html>

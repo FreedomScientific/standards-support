@@ -1,0 +1,4 @@
+Press each one of the buttons in the example. When pressed, each button should create an alert and jaws should announce the alert's contents.
+For the alerts which say "set focus", the position in the jaws virtual buffer should change to the text of the alert.
+Press the "close" link to remove the alert after each test. 
+Note: One problem with this example is that the alert element contains a link. Since alerts are not required to receive focus, content authors SHOULD NOT require users to close an alert. In this instance, the alertdialog role should have been used to create a dialog containing the alert text and link.

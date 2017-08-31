@@ -1,0 +1,65 @@
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/link/link.sample.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:16:03 GMT -->
+<head>
+    <title>Link</title>
+    <style type="text/css">
+    h3 {margin-bottom:2px}
+    .link {
+        cursor:pointer;
+        text-decoration:none;
+        color:blue;
+    }
+    .link:focus {
+        cursor:pointer;
+        text-decoration:underline;
+        color:red;
+    }
+     .link:hover {
+        cursor:pointer;
+        text-decoration:underline;
+        color:red;
+    }
+</style>
+
+    <script type="text/javascript">
+    sap = {ui:{keycodes:{SPACE:32, ENTER:13 }}};
+    //handles clicks and keydowns on the link
+    function navigateLink(evt) {
+        if (evt.type=="click" || 
+            evt.keyCode == sap.ui.keycodes.SPACE || 
+            evt.keyCode == sap.ui.keycodes.ENTER) {
+            var ref = evt.target != null ? evt.target : evt.srcElement;
+            if (ref) window.open(ref.getAttribute("href"),"_blank");
+        }
+    }
+
+    </script>
+
+    <body role="application">
+        <h1>
+            Accessible ARIA Link</h1>
+        <p>
+            This example requires Firefox 3 or later to work with screen readers.</p>
+        <h3>
+            Simple Link build with a span</h3>
+        <span href="../../../../../external.html?link=http://www.w3c.org/" onkeydown="navigateLink(event)" onclick="navigateLink(event)"
+            tabindex="0" id="link1" role="link" class="link">Activate this link using the space
+            bar or enter key</span><br />
+       
+        <h3>
+            Link that is labelled</h3>
+        <label id="label2" onclick="document.getElementById('link2').focus()">
+            Homepage:</label>
+        <span href="../../../../../external.html?link=http://www.w3c.org/" onkeydown="navigateLink(event)" onclick="navigateLink(event)"
+            tabindex="0" id="link2" role="link" class="link" aria-labelledby="label2">Activate
+            this link using the space bar or enter key</span>
+        
+        <h3>
+            Standard hyperlink tag that is described by an hidden element</h3>
+        <span id="desc3" style="display: none">Bacause this link is a actual HTML hyperlink
+            it cannot be executed with space bar key only enter will execute it.</span>
+        <a href="../../../../../external.html?link=http://www.w3c.org/" id="link3" role="link" class="link" aria-describedby="desc3"
+            target="_blank">Activate this link using the enter key</a>
+        
+    </body>

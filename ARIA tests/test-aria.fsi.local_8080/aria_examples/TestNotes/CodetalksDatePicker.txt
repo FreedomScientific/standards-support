@@ -1,0 +1,4 @@
+The example contains a section called "implemented features". This enumerates the features of the grid.
+Make sure that when tabbing to the table, jaws enters forms mode automatically, and does not exit forms mode unexpectedly when navigating within the table.
+Make sure that jaws reads table headers (the day of the week) as you navigate left and right between days.
+Note: The table navigation keystrokes do not work when in forms mode in a grid.

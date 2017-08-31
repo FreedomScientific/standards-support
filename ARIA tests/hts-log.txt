@@ -1,0 +1,37 @@
+HTTrack3.48-22+htsswf+htsjava launched on Thu, 31 Aug 2017 11:15:01 at http://test-aria.fsi.local:8080/aria_examples/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Pnxs2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://test-aria.fsi.local:8080/aria_examples/ -O1 "C:\My Web Sites\ARIA tests" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+11:16:07	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/jquery/src/aegisdemo/index.html (from test-aria.fsi.local:8080/aria_examples/)
+11:17:31	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/checkbox/images/mixed.gif (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/checkbox/checkbox.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/radio/images/checked.gif (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/radio/radio1.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/right.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/left.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/right_h.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/left_h.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/right_a.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/left_a.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/back.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/slider.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/slider_h.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/slider_a.png (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-background-images.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/images/slider2.gif (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/slider/pretty-slider-dual-inline-img.htm)
+11:17:57	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/css/table.css (from test-aria.fsi.local:8080/aria_examples/slider/slider1.html)
+11:18:02	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/SettingsPage.html (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html)
+11:18:02	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/CreatePage.html (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html)
+11:18:02	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/PlayPage.html (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html)
+11:18:02	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/LoginPage.html (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/toolbar/ToolbarTabIndex.html)
+11:18:02	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/widgets/tree/plus.gif (from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/tree/tree.htm)
+11:18:07	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/broken (from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/label.htm)
+11:18:51	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/demos/demail/${_blankGif} (from test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/demos/demail/newTreeNode.html)
+11:18:51	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.0/assets/menu-button-arrow.png (from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.0/app.css)
+11:18:51	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.1/assets/menu-button-arrow.png (from test-aria.fsi.local:8080/aria_examples/misc/MenuButtons/MenuButton1.1/app.css)
+11:18:51	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/dijit/tests/css/dijitTests.css (from test-aria.fsi.local:8080/aria_examples/dojo-1.5.0/demos/form/demo.css)
+11:18:51	Error: 	"Not Found" (404) at link test-aria.fsi.local:8080/aria_examples/aria 1.1/footer.php (from test-aria.fsi.local:8080/aria_examples/aria 1.1/aria-current/contact.html)
+
+HTTrack Website Copier/3.48-22 mirror complete in 3 minutes 50 seconds : 531 links scanned, 504 files written (4400887 bytes overall) [4293205 bytes received at 18666 bytes/sec], 442305 bytes transferred using HTTP compression in 5 files, ratio 37%, 12.0 requests per connection
+(26 errors, 0 warnings, 0 messages)

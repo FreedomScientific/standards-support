@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/ARIA-FlowTo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:24 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="NO-CACHE">
+<meta http-equiv="Pragma" content="NO-CACHE">
+<meta http-equiv="Expires" content="-1">
+
+<title>FlowsTo and FlowsFrom example</title>
+
+</head>
+<body>
+<h2>Example 1:</h2>
+
+<div aria-label="example 1 div 1" id="ex1content1" aria-flowto="ex1content3">
+This is content 1 div.  Reading order should jump to content 3.
+</div>
+<div id="ex1content2">
+This is content 2 div.
+</div>
+<div id="ex1content3">
+This is content 3 div.
+</div>
+
+<h2>Example 2:</h2>
+<div aria-label="example 2 div 1" id="ex2content1" aria-flowto="ex2content3 ex2content5">
+This is content 1 div.  Focus should flow to either content 3 or content 5.
+</div>
+<div aria-label="example2 div 2" id="ex2content2">
+This is content 2 div.
+</div>
+<div aria-label="example2 div 3" id="ex2content3">
+This is content 3 div.
+</div>
+<div aria-label="example2 div 4" id="ex2content4" aria-flowto="ex2content3 ex2content2">
+This is content 4 div.
+</div>
+<div aria-label="example2 div 5" id="ex2content5">
+This is content 5 div.
+</div>
+
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/ARIA-FlowTo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:24 GMT -->
+</html>

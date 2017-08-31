@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/CodeTalks/widgets/button/button.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:56 GMT -->
+<head>
+<title>ARIA Button</title>
+
+<script type="text/javascript" >
+<!--
+// Mouse and keyboard event handlers for controls
+function buttonEvent(event)
+{
+  if ((event.type == "click" && event.button == 0) ||
+      (event.type == "keydown" && (event.keyCode == 32 || event.keyCode ==13))) {
+    alert("Button pressed");
+  }
+};
+-->
+</script>
+
+<style type="text/css">
+  span[role="button"] { background-color: #eeeeee; margin: 1em; border: medium outset white;}
+
+  fieldset { max-width: 50%; }
+
+  fieldset > div { margin-top: 1em; }
+</style>
+
+</script>
+</head>
+
+<body>
+  <p>This example requires Firefox 3 or later to work with screen readers -- it uses ARIA properties without namespaces, which is now the correct markup.</p>
+  <p>There is a description associated with the entire groupbox, as well as a specific description associated with the button.</p>
+  <p>When any control is focused inside the groupbox, where focus was previously outside of the groupbox, the description for the entire groupbox should be read by a screen reader.</p>
+  <p>When the button is focused, the description of the button should be read after the button's label and role are read by the screen reader.</p>
+  <p>Regression testers should test both tabbing forward and back, to make sure that the groupbox description and button description are both read when the button is the first item focused in the groupbox.</p>
+  <p>Here is a link to some Mozilla <a href="../../../../../external.html?link=http://developer.mozilla.org/en/docs/ARIA:_Accessible_Rich_Internet_Applications">ARIA documentation</a>.</p>
+  <fieldset aria-describedby="groupdesc1">
+    <legend>
+      Order tracking
+    </legend>
+    <div role="description" id="groupdesc1">
+      Order tracking has been enabled for all shipments outside of Texas. For information on orders to Texas, please call 1-555-HELP-NOW for an automated recording.
+    </div>
+
+    <div>
+      <label for="tracknum">Tracking number</label> <input id="tracknum" type="text"/>
+    </div>
+    <div>
+    <span role="button" aria-checked="true" tabindex="0" aria-describedby="buttondesc1"
+      onkeydown="return buttonEvent(event);" onclick="return buttonEvent(event);" >
+    Check Now
+    </span>
+    <span role="description" id="buttondesc1">
+      Check to see if your order has been shipped.
+    </span>
+  </div>
+  </fieldset>
+  <p id="revision">$Revision: 180 $</p>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/CodeTalks/widgets/button/button.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:56 GMT -->
+</html>

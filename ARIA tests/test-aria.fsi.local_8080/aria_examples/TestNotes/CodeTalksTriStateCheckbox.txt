@@ -1,0 +1,2 @@
+Use arrow keys, tab keys, and quick nav keys to move to the various checkboxes.
+Make sure that checking, unchecking, and partially checking each checkbox works.

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/controls.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:23 GMT -->
+<head>
+<title>
+controls=[idlist] - Simple Test Case
+</title>
+<script type="text/javascript">
+window.onload = runExample;
+
+var index=0;
+var lrID = "myLiveRegion1";
+var messagesArray = new Array("0","1","2","3","4","5","6","7","8","9");
+
+function updateLiveRegion(liveRegionID, textString){
+  textNode = document.createTextNode(textString);
+        targetNode = document.getElementById(liveRegionID);
+        while (targetNode.firstChild) {
+           targetNode.removeChild(targetNode.firstChild);
+           }
+  targetNode.appendChild(textNode);
+        }
+
+function runExample(){
+   updateLiveRegion(lrID, messagesArray[index++]);
+   if (index > 9){
+      index=0;
+      }
+   }
+</script>
+</head>
+<body>
+<h1>
+Live Region - controls=[idlist]
+</h1>
+<p>
+<span id="myLiveRegion1" aria-live="assertive">
+
+</span>
+</p>
+<p>
+<input type="button" id="myButton" onclick="runExample()" aria-controls="myLiveRegion1" value="Update the live region"/>
+</p>
+<p>
+Summary: The live region is controlled by the button. After the button is clicked, the user agent should present the current state of the live region to inform users that their action of clicking on the button has had an effect on the live region that the button controls.
+</p>
+<p>
+Description of the expected behavior: After presenting the heading, the user agent should present the text in the live region area at the time, followed by the button. It should then proceed to the "Summary" section followed by the "Description of expected behavior" section. It should then continue to read the filler text until the end of the document and stop. If users ever click on the button, the updated state of the live region should be read to the users to let them know the result of activating the button.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/controls.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:23 GMT -->
+</html>

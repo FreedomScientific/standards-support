@@ -1,0 +1,2748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" >
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/checkbox/checkbox2.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:59 GMT -->
+<head>
+  <title>ARIA Example: Checkbox Example 2</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+
+  <style type="text/css">
+  
+    div.codebox {
+      background-color: #E0E0E0;
+      color: black;
+      font-family: monospace;
+      padding: .5em;
+      margin: .5em;
+      border: black medium solid;
+    }
+	
+	h2.nav {
+	  position: absolute;
+	  left: -200em;
+	  top: -20em;
+	}
+	
+	ul.nav {
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	ul.nav li {
+	  display: inline;
+	  list-style: none;
+	  padding-right: 1em;
+	}
+  
+  </style>
+
+  <script type="text/javascript">
+  
+  function changeSourceCodeView(node_link, sc_id  ) {
+   
+     var node_sc = document.getElementById( sc_id );
+	 
+	 if( node_sc ) 
+	   if( node_sc.style.display == "none" ) {
+	      node_sc.style.display = "block";
+		  node_link.innerHTML = node_link.innerHTML.replace(/Show/, "Hide");
+	   } else {
+	      node_sc.style.display = "none";	 
+		  node_link.innerHTML = node_link.innerHTML.replace(/Hide/, "Show");
+	   } // endif
+     else 
+	   alert("Id not found");
+  }
+  
+  </script>
+
+  <style type="text/css">
+/* Checkbox 2 CSS
+*/
+
+    
+    ul.checkboxes {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul.checkboxes li    {
+        padding: 0; 
+        margin: 0;
+        margin-left: .5em;
+        list-style: none;
+		padding-left: .5em;
+  }
+
+    ul.checkboxes li img    {
+        padding: 0; 
+        margin: 0;
+	    margin-right: .5em;
+    }
+
+    ul.checkboxes li[aria-checked="true"]:focus,
+    ul.checkboxes li[aria-checked="true"]:active{
+    border: black 1px solid;
+	font-weight: bold;
+	width: 6em;
+    }
+
+    ul.checkboxes li[aria-checked="false"]:focus,
+	ul.checkboxes li[aria-checked="false"]:active {
+    border: black 1px solid;
+    font-weight: bold;
+	width: 6em;
+	}
+
+    
+    .hidden{
+        display:none;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+/**
+ *
+ * The Globale Variables
+ */
+
+if (!window.Node) {
+  var Node = {            // If there is no Node object, define one
+    ELEMENT_NODE: 1,    // with the following properties and values.
+    ATTRIBUTE_NODE: 2,  // Note that these are HTML node types only.
+    TEXT_NODE: 3,       // For XML-specific nodes, you need to add
+    COMMENT_NODE: 8,    // other constants here.
+    DOCUMENT_NODE: 9,
+    DOCUMENT_FRAGMENT_NODE: 11
+  }
+} 
+
+
+var KEY_PAGEUP   = 33;
+var KEY_PAGEDOWN = 34;
+var KEY_END      = 35;
+var KEY_HOME     = 36;
+
+var KEY_LEFT     = 37;
+var KEY_UP       = 38;
+var KEY_RIGHT    = 39;
+var KEY_DOWN     = 40;
+
+var KEY_SPACE    = 32;
+var KEY_TAB      = 9;
+
+var KEY_BACKSPACE = 8;
+var KEY_DELETE    = 46;
+var KEY_ENTER     = 13;
+var KEY_INSERT    = 45;
+var KEY_ESCAPE    = 27;
+
+var KEY_F1        = 112;
+var KEY_F2        = 113;
+var KEY_F3        = 114;
+var KEY_F4        = 115;
+var KEY_F5        = 116;
+var KEY_F6        = 117;
+var KEY_F7        = 118;
+var KEY_F8        = 119;
+var KEY_F9        = 120;
+var KEY_F10       = 121;
+
+var KEY_M         = 77;
+
+var NS_XHTML = "../../../../../external.html?link=http://www.w3.org/1999/xhtml"
+var NS_STATE = "../../../../../external.html?link=http://www.w3.org/2005/07/aaa";
+
+// **********************************************
+// *
+// * Commonly used helper functions
+// *
+// **********************************************
+
+/**
+ *
+ * nextSiblingElement
+ * 
+ * @contructor
+ */
+ 
+function nextSiblingElement( node ) {
+
+  var next_node = node.nextSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * previousSiblingElement 
+ * 
+ * @param ( node ) node object for which you are looking for the next sibling element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+function previousSiblingElement( node ) {
+
+  var next_node = node.previousSibling;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.previousSibling;
+  }  // endwhile
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * firstChildElement 
+ * 
+ * @param ( node ) node object for which you are looking for the first child element node
+ *
+ * @return ( node) next sibling or "null"
+ */
+ 
+function firstChildElement( node ) {
+
+  var next_node = node.firstChild;
+
+  while( next_node
+		&& (next_node.nodeType != Node.ELEMENT_NODE) ) {
+	  next_node = next_node.nextSibling;
+  }  // endwhile
+
+
+  return next_node;
+  
+}
+
+/**
+ *
+ * getTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function getTextContentOfNode( node ) {
+
+  var next_node = node.firstChild;
+  var str = "";
+
+  while( next_node ) {
+		
+	  if( (next_node.nodeType == Node.TEXT_NODE ) &&
+		  (next_node.length > 0 )
+		 )
+	    str += next_node.data;
+	  
+	  
+	  next_node = next_node.nextSibling;
+	  
+  }  // endwhile
+
+  return str;
+  
+}
+
+/**
+ *
+ * setTextContentOfNode
+ * 
+ * @contructor
+ */
+ 
+function setTextContentOfNode( node, text ) {
+
+   // Generate a new text node with the text value
+    var text_node = document.createTextNode(text);
+  
+    // Remove child nodes to remove text
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    } // while
+
+    // Append new text to the container element
+    node.appendChild( text_node );
+
+}
+  </script>
+
+  <script type="text/javascript">
+// JavaScript Document
+
+
+if (!window.Node) {
+  var Node = {            // If there is no Node object, define one
+    ELEMENT_NODE: 1,    // with the following properties and values.
+    ATTRIBUTE_NODE: 2,  // Note that these are HTML node types only.
+    TEXT_NODE: 3,       // For XML-specific nodes, you need to add
+    COMMENT_NODE: 8,    // other constants here.
+    DOCUMENT_NODE: 9,
+    DOCUMENT_FRAGMENT_NODE: 11
+  }
+} 
+
+var ARIA_STATE = "aria-";
+
+/**
+ * Widgets Object is used to initialize a set of controls 
+ * and provide a conveinence fuction to cancel event propagration
+ * @construtor
+ */
+ 
+function Widgets() {
+  this.widgets = new Array();
+}
+
+/**
+ * add is member of the Widgets Object 
+ * and used add a widget ot the list of widgets to be intitialized 
+ * as part of the onload event
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.add = function(obj) {
+  this.widgets[this.widgets.length] = obj;
+}
+
+/**
+ * init is member of the Widgets Object 
+ * and is called by the onload event to initialize widgets in the web resource
+ * The controls array is the list of controls to initialize
+ * @member Enable
+ * @return none
+ */
+
+Widgets.prototype.init = function() {
+   	
+   for(var i = 0; i < this.widgets.length; i++ )
+     this.widgets[i].init();
+}
+
+//
+// convience function for getting the node based on id
+
+function _$( id ) {
+  return document.getElementById( id );	
+}
+
+
+//
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+//
+// The state variable keeps track of current state of checkbox
+function WebBrowser() {
+
+}
+
+
+//
+// keyCode is a function to get the keycode from a keypress event
+//
+// @param ( event object) event is an event object
+//
+// @return ( keycode ) 
+
+WebBrowser.prototype.keyCode = function( event ) {
+  var e = event || window.event;
+  
+  return e.keyCode;
+}  
+
+/**
+ * OnClick Event Simulator
+ *
+ * @param ( node ) DOM node object
+ * @return nothing
+ */
+
+if( document.createEvent ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+    // W3C DOM Events way to trigger a "click" event
+    var e = document.createEvent('MouseEvents');
+    e.initEvent( 'click', true, true );
+
+    node.dispatchEvent( e );
+
+  } 
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+  
+  WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+
+    var e = document.createEventObject();
+    node.fireEvent( "onclick", e );
+
+  } // endif
+
+}
+
+if ( document.addEventListener ) {
+
+  // If a web standards based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+    if( clickHandler )
+      document.addEventListener( "click",     clickHandler, true );
+		
+    if( downHandler )
+      document.addEventListener( "mousedown", downHandler,  true );
+
+    if( moveHandler )
+      document.addEventListener( "mousemove", moveHandler,  true );
+		
+		if( upHandler)
+      document.addEventListener( "mouseup",   upHandler,    true );
+
+  }
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+	if( upHandler)
+      document.removeEventListener( "mouseup",   upHandler,    true );
+			
+    if( moveHandler )
+      document.removeEventListener( "mousemove", moveHandler,  true );
+		
+    if( downHandler )
+      document.removeEventListener( "mousedown", downHandler,  true );
+			
+    if( clickHandler )
+      document.removeEventListener( "click",     clickHandler, true );
+
+  }
+
+} else {
+
+  // If a Microsoft IE based browser implement this function
+
+  WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   node.setCapture();
+   if( clickHandler)
+	   node.attachEvent( "onclick", clickHandler );
+		 
+   if( downHandler)
+     node.attachEvent( "onmousedown", downHandler );
+		 
+   if( moveHandler )
+	   node.attachEvent( "onmousemove", moveHandler );
+		 
+   if( upHandler )
+	   node.attachEvent( "onmouseup", upHandler );
+
+  } // endif
+
+  WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+
+   if( upHandler )
+     node.detachEvent( "onmouseup", upHandler );
+		 
+   if( moveHandler )
+     node.detachEvent( "onmousemove", moveHandler );
+		 
+   if( downHandler)
+     node.detachEvent( "onmousedown", downHandler );
+		 
+   if( clickHandler)
+     node.detachEvent( "onclick", clickHandler );
+		 
+     node.releaseCapture();
+
+  } // endif
+
+
+}
+
+
+
+
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+	return event.target;
+  }
+  
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.attrName
+  }
+  
+  WebBrowser.prototype.charCode = function(event) {
+     return event.charCode;
+  }
+
+  WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+	return node.offsetLeft;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function( node ) {
+	return node.offsetTop;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.pageX;	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.pageY;	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		node.style.left = left+"px";
+		node.style.top = top+"px";
+  }
+
+
+} else {
+
+  WebBrowser.prototype.stopPropagation = function( event ) {
+    event.cancelBubble = true; 
+    event.returnValue = false;
+    return false;
+  }
+
+  WebBrowser.prototype.charCode = function(event) {
+    return window.browser.keyCode( event );
+  }
+
+  WebBrowser.prototype.target = function( event ) {
+    return event.srcElement;
+  }
+
+  WebBrowser.prototype.attrName = function( event ) {
+	return event.propertyName;
+  }
+  
+  WebBrowser.prototype.calculateOffsetLeft = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+	  offset += node.offsetLeft;
+	  node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.calculateOffsetTop = function(node) {
+	var offset = 0;
+	
+	while( node ) {
+		offset = offset + node.offsetTop;
+		node = node.offsetParent;
+	}
+	
+	return offset;	  
+  }
+  
+  WebBrowser.prototype.pageX = function( e ) {
+		return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);	  
+  }
+  
+  WebBrowser.prototype.pageY = function( e ) {
+		return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);	  
+  }
+  
+  WebBrowser.prototype.setNodePosition = function(node,left,top) {
+		offsetx = 0;
+		offsety = 0;
+		nnode = node.offsetParent
+		while( nnode ) {
+			offsetx = offsetx + nnode.offsetLeft;
+			offsety = offsety + nnode.offsetTop;
+			nnode = nnode.offsetParent;
+		}
+		node.style.left = left-offsetx+"px";
+		node.style.top = top-offsety+"px";
+  }
+  
+};
+
+
+if (document.addEventListener) {
+
+     // Functions for W3C Standards compliant implementation of adding event handlers
+
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.addEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       elmTarget.removeEventListener(sEventName, fCallback, false);
+       returnValue = true;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+      returnValue = true;
+    };
+
+} else {
+
+  if(document.attachEvent) {
+
+     // IE Specific Event handler functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+     };
+
+    WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+      returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+    };
+
+  } else {
+
+     // For browsers that do not support W3C or IE event functions
+     WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+       return false;
+     };
+
+     WebBrowser.prototype.addChangeEvent =  function(elmTarget, fCallback) {
+       return false;
+     };
+
+  }
+
+}
+
+widgets_flag = true;
+var widgets = new Widgets();
+var browser = new WebBrowser();
+
+function initApp() {
+  widgets.init();
+}
+
+  </script>
+
+  <script type="text/javascript">
+/**
+ *
+ * The Checkbox object is used to maintain information about a checkbox widget
+ *
+ * @constructor
+ */
+
+function Checkbox( id ) {
+  this.id = id;
+} // end Checkbox
+
+
+/**
+ * init is a subclass of Checkbox and is used to initialize the event handlers 
+ *
+ * @member Checkbox
+ *
+ * @return none
+ */
+
+Checkbox.prototype.init = function() {
+
+  this.node = document.getElementById(this.id);
+  this.image_node = this.node.getElementsByTagName("img")[0];
+
+  if( this.node.getAttribute("aria-checked") == "true") 
+     this.image_node.src = "images/checked.gif";
+  
+  var obj = this; 
+  // Add event handlers for checking a checkbox
+  browser.addEvent(this.node, "keydown", function(event) {handleCheckboxKeyDownEvent(event, obj); }, false);
+  browser.addEvent(this.node, "click",   function(event) {handleCheckboxClickEvent(event, obj); },   false);
+  
+  // Add event handlers for a checkbox geeting and losing focus
+  browser.addEvent(this.node, "focus", function(event) {handleCheckboxFocusEvent(event, obj);}, false);
+  browser.addEvent(this.node, "blur",  function(event) {handleCheckboxBlurEvent(event, obj); }, false);
+
+
+  // Add event handlers for checking if something changed the aria-checked attribute
+  browser.addChangeEvent(this.node, function(event) {handleCheckboxModifyEvent(event, obj); }, false);
+
+
+} // end Checkbox.prototype.init
+
+/**
+ * toggleCheckbox is called by event handlers to toggle the state of the checkbox
+ *
+ * @param ( Checkbox object ) checkbox  Checkbox to toggle state
+ *
+ * @return none
+ */
+
+toggleCheckbox = function( checkbox ) {
+
+  if (checkbox.node.getAttribute("aria-checked") == "true") {
+
+    // If the checkbox is currently checked set the state to unchecked	
+
+    checkbox.node.setAttribute("aria-checked", "false");
+    checkbox.image_node.src= "images/unchecked.gif";
+
+  } else {
+
+    // If the checkbox is currently unchecked set the state to checked	
+
+    checkbox.node.setAttribute("aria-checked", "true");
+    checkbox.image_node.src= "images/checked.gif";
+
+  }  // endif
+  
+ 
+} // end toggleCheckbox
+
+
+/**
+ * handleCheckboxModifyEvent processes keys associated with a checkbox
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+ *
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+ */
+
+function handleCheckboxModifyEvent(event, checkbox){
+
+    // If IE get the IE event object
+   var e = event || window.event;
+
+   // Check
+   if( browser.attrName(e) == "aria-checked" ) {
+
+    // update state image
+
+    if (checkbox.node.getAttribute("aria-checked") == "true") 
+      checkbox.image_node.src= "images/checked.gif";
+    else
+      checkbox.image_node.src= "images/unchecked.gif";
+
+   }  // endif
+
+    return browser.stopPropagation(e);
+
+} // end handleCheckboxKeyDownEvent
+
+/**
+ * handleCheckboxKeyDownEvent processes keys associated with a checkbox 
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+ *
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+ */
+
+handleCheckboxKeyDownEvent = function(event, checkbox) {
+	// If IE get the IE event object
+	var e = event || window.event;
+
+  switch( browser.keyCode(e) ) {
+
+    case KEY_SPACE:
+	     // When space hit toggle the checkbox
+         toggleCheckbox( checkbox );
+		 // Tell browser we handled this event and not to process any other actions
+         return browser.stopPropagation(e);
+         break;
+
+  }  // end switch
+
+  return true;
+
+} // end handleCheckboxKeyDownEvent
+
+/**
+ * handleCheckboxFocusEvent processes keys associated with a Checkbox
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by checkbox, else true
+ */
+
+handleCheckboxFocusEvent = function(event, checkbox) {
+  //kick IE 7
+  checkbox.node.className += ""; 
+
+  return true;
+
+} // end handleCheckboxFocusEvent
+
+/**
+ * handleCheckboxBlurEvent processes keys associated with a checkbox
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+ *
+ * @return false if keyboard event was used by checkbox, else true
+ */
+
+handleCheckboxBlurEvent = function(event, checkbox) {
+  //Kick IE 7
+  checkbox.node.className += ""; 
+
+  return true;
+
+} // end handleCheckboxBlurEvent
+
+/**
+ * handleCheckboxClickEvent processes pointer click events with in the checkbox 
+ *
+ * @param ( event ) event is the event handler for the event
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the pointer event
+ *
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+ */
+
+function handleCheckboxClickEvent( event, checkbox ) {
+	// If IE get the IE event object
+	var e = event || window.event;
+
+  if( (checkbox.node == browser.target(e)) ||
+	  (checkbox.image_node == browser.target(e)) ) {
+	  // Toggle the checkbox
+      toggleCheckbox( checkbox );
+	  checkbox.node.focus();
+	  // Tell browser we handled this event and not to process any other actions
+	  return browser.stopPropagation(e);
+  } // endif
+
+  return true;
+} // end handleCheckboxClickEvent
+
+  </script>
+
+
+
+<body onLoad="initApp()">
+
+  <h1>Checkbox Example 2</h1>
+  
+  
+     <p>
+	 Based on example from <a href="../../../../../external.html?link=http://test.cita.uiuc.edu/aria/checkbox/checkbox2.php">iCITA ARIA Checkbox</a><br />
+	 <a target="_validationreport" href="javascript:(function(){ var str = ''; if (document.innerHTML) str += document.innerHTML; else { if (document.doctype) { str += '&lt;!DOCTYPE '; str += document.doctype.name; if (document.doctype.publicId) { str += ' PUBLIC &quot;' + document.doctype.publicId + '&quot;'; if (document.doctype.systemId) str += ' &quot;' + document.doctype.systemId + '&quot;'; } else if (document.doctype.systemId) { str += ' SYSTEM &quot;' + document.doctype.systemId + '&quot;'; } str += '>\n'; } var dummy = document.createElementNS('http://www.w3.org/1999/xhtml', 'div'); dummy.appendChild(document.documentElement); str += dummy.innerHTML; } var form = document.createElementNS('http://www.w3.org/1999/xhtml', 'form'); form.enctype = 'multipart/form-data'; form.method = 'post'; form.acceptCharset = 'utf-8'; form.action = 'http://html5.validator.nu/'; form.innerHTML = '&lt;input name=&quot;parser&quot;/>&lt;input name=&quot;showsource&quot; value=&quot;yes&quot;/>&lt;textarea name=&quot;content&quot;>&lt;/textarea>'; form.parser.value = document.createElement('div').tagName == 'DIV' ? 'html' : 'xml'; form.content.value = str; if (document.documentElement) document.documentElement.appendChild(form); else document.appendChild(form); form.submit(); })()">Validate DOM (HTML5)</a></p>
+
+<div role="application">
+
+<script type="text/javascript">
+
+  var lettuce = new Checkbox("cb1");
+  widgets.add(lettuce);
+
+  var tomato  = new Checkbox("cb2");
+  widgets.add(tomato);
+
+  var mustard = new Checkbox("cb3");
+  widgets.add(mustard);
+
+  var sprouts = new Checkbox("cb4");
+  widgets.add(sprouts);
+
+</script>
+
+<h3 id="cond" role="description">Sandwich Condiments</h3>
+
+<ul class="checkboxes" role="group" aria-labelledby="cond">
+
+  <li id="cb1" 
+      role="checkbox" 
+      aria-checked="false" 
+      aria-describedby="test1"
+      tabindex="0">
+      <img role="presentation" 
+	       src="images/unchecked.gif" 
+		   alt=""/>Lettuce
+  </li>
+
+  <li id="cb2" 
+      role="checkbox" 
+      aria-checked="true" 
+      tabindex="0">
+      <img role="presentation" 
+	       src="images/checked.gif" 
+		   alt=""/>Tomato
+  </li>
+
+  <li id="cb3" 
+      role="checkbox" 
+      aria-checked="false" 
+      tabindex="0">
+      <img role="presentation" 
+	       src="images/unchecked.gif" 
+		   alt=""/>Mustard
+  </li>
+
+  <li id="cb4" 
+      role="checkbox" 
+      aria-checked="true" 
+      tabindex="0">
+      <img role="presentation"
+           src="images/unchecked.gif" 
+		   alt=""/>Sprouts
+  </li>
+
+</ul>
+
+<p id="test1" class="hidden">Not your average lettuce</p>
+
+</div>
+<h2>Keyboard Shortcuts</h2>
+<ul>
+    <li>Tab: move between checkbox items.</li>
+    <li>Space: toggle <code>aria-checked</code> state of currently focused checkbox.</li>
+</ul>
+<h2>ARIA Roles and Properties</h2>
+<ul>
+
+<li>
+    Roles:
+	<ul>
+	<li><code>role="application"</code></li>
+    <li><code>role="checkbox"</code></li>
+    <li><code>role="group"</code></li>
+    <li><code>role="presentation"</code></li>
+	<li><code>role="description"</code></li>
+
+	</ul>
+	</li>
+    <li>States and properties: 
+        <ul>
+            <li><code>aria-checked</code></li>
+            <li><code>aria-describedby</code></li>
+            <li><code>aria-labelledby</code></li>
+        </ul>
+
+    </li>
+</ul>
+
+  <h2>HTML Source Code</h2>
+  <p><a id="lsc"href="#lsc" onclick="changeSourceCodeView(this, 'sc')">Show HTML Source Code: checkbox2_inline.inc</a></p>
+  <div id="sc" class="codebox" style="display: none">
+&lt;div role="application"&gt;
+<br>
+&lt;script type="text/javascript"&gt;
+
+<br>
+
+<br>
+&#160;&#160;var lettuce = new Checkbox("cb1");
+<br>
+&#160;&#160;widgets.add(lettuce);
+<br>
+
+<br>
+&#160;&#160;var tomato&#160;&#160;= new Checkbox("cb2");
+<br>
+&#160;&#160;widgets.add(tomato);
+<br>
+
+<br>
+&#160;&#160;var mustard = new Checkbox("cb3");
+
+<br>
+&#160;&#160;widgets.add(mustard);
+<br>
+
+<br>
+&#160;&#160;var sprouts = new Checkbox("cb4");
+<br>
+&#160;&#160;widgets.add(sprouts);
+<br>
+
+<br>
+&lt;/script&gt;
+<br>
+
+<br>
+&lt;h3 id="cond" role="description"&gt;Sandwich Condiments&lt;/h3&gt;
+
+<br>
+
+<br>
+&lt;ul class="checkboxes" role="group" aria-labelledby="cond"&gt;
+<br>
+
+<br>
+&#160;&#160;&lt;li id="cb1" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;role="checkbox" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-checked="false" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-describedby="test1"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;img role="presentation" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; src="images/unchecked.gif" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; alt=""/&gt;Lettuce
+<br>
+&#160;&#160;&lt;/li&gt;
+<br>
+
+<br>
+&#160;&#160;&lt;li id="cb2" 
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;role="checkbox" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-checked="true" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"&gt;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;img role="presentation" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; src="images/checked.gif" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; alt=""/&gt;Tomato
+<br>
+&#160;&#160;&lt;/li&gt;
+
+<br>
+
+<br>
+&#160;&#160;&lt;li id="cb3" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;role="checkbox" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-checked="false" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"&gt;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;img role="presentation" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; src="images/unchecked.gif" 
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160; alt=""/&gt;Mustard
+<br>
+&#160;&#160;&lt;/li&gt;
+<br>
+
+<br>
+&#160;&#160;&lt;li id="cb4" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;role="checkbox" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;aria-checked="true" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;tabindex="0"&gt;
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;img role="presentation"
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; src="images/unchecked.gif" 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; alt=""/&gt;Sprouts
+<br>
+&#160;&#160;&lt;/li&gt;
+<br>
+
+<br>
+&lt;/ul&gt;
+
+<br>
+
+<br>
+&lt;p id="test1" class="hidden"&gt;Not your average lettuce&lt;/p&gt;
+<br>
+&lt;/div&gt;  </div>
+  <h2>Javascript Source Code</h2>
+  <p><a id="lsc1"href="#lsc1" onclick="changeSourceCodeView(this, 'sc1')">Show Javascript Source Code: globals.js</a></p>
+
+  <div id="sc1" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+/**
+<br>
+ *
+<br>
+ * The Globale Variables
+<br>
+ */
+<br>
+
+<br>
+
+if (!window.Node) {
+<br>
+&#160;&#160;var Node = {&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// If there is no Node object, define one
+<br>
+&#160;&#160;&#160;&#160;ELEMENT_NODE: 1,&#160;&#160;&#160;&#160;// with the following properties and values.
+<br>
+&#160;&#160;&#160;&#160;ATTRIBUTE_NODE: 2,&#160;&#160;// Note that these are HTML node types only.
+<br>
+&#160;&#160;&#160;&#160;TEXT_NODE: 3,&#160;&#160;&#160;&#160;&#160;&#160; // For XML-specific nodes, you need to add
+<br>
+&#160;&#160;&#160;&#160;COMMENT_NODE: 8,&#160;&#160;&#160;&#160;// other constants here.
+
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_NODE: 9,
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_FRAGMENT_NODE: 11
+<br>
+&#160;&#160;}
+<br>
+} 
+<br>
+
+<br>
+
+<br>
+var KEY_PAGEUP&#160;&#160; = 33;
+<br>
+
+var KEY_PAGEDOWN = 34;
+<br>
+var KEY_END&#160;&#160;&#160;&#160;&#160;&#160;= 35;
+<br>
+var KEY_HOME&#160;&#160;&#160;&#160; = 36;
+<br>
+
+<br>
+var KEY_LEFT&#160;&#160;&#160;&#160; = 37;
+<br>
+var KEY_UP&#160;&#160;&#160;&#160;&#160;&#160; = 38;
+
+<br>
+var KEY_RIGHT&#160;&#160;&#160;&#160;= 39;
+<br>
+var KEY_DOWN&#160;&#160;&#160;&#160; = 40;
+<br>
+
+<br>
+var KEY_SPACE&#160;&#160;&#160;&#160;= 32;
+<br>
+var KEY_TAB&#160;&#160;&#160;&#160;&#160;&#160;= 9;
+<br>
+
+<br>
+var KEY_BACKSPACE = 8;
+<br>
+var KEY_DELETE&#160;&#160;&#160;&#160;= 46;
+<br>
+var KEY_ENTER&#160;&#160;&#160;&#160; = 13;
+<br>
+var KEY_INSERT&#160;&#160;&#160;&#160;= 45;
+<br>
+var KEY_ESCAPE&#160;&#160;&#160;&#160;= 27;
+<br>
+
+<br>
+var KEY_F1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 112;
+<br>
+var KEY_F2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 113;
+<br>
+var KEY_F3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 114;
+<br>
+var KEY_F4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 115;
+<br>
+var KEY_F5&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 116;
+<br>
+var KEY_F6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 117;
+
+<br>
+var KEY_F7&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 118;
+<br>
+var KEY_F8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 119;
+<br>
+var KEY_F9&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= 120;
+<br>
+var KEY_F10&#160;&#160;&#160;&#160;&#160;&#160; = 121;
+<br>
+
+<br>
+var KEY_M&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = 77;
+
+<br>
+
+<br>
+var NS_XHTML = "http://www.w3.org/1999/xhtml"
+<br>
+var NS_STATE = "http://www.w3.org/2005/07/aaa";
+<br>
+
+<br>
+// **********************************************
+<br>
+// *
+<br>
+// * Commonly used helper functions
+<br>
+// *
+<br>
+
+// **********************************************
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * nextSiblingElement
+<br>
+ * 
+<br>
+ * @contructor
+
+<br>
+ */
+<br>
+ 
+<br>
+function nextSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.nextSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * previousSiblingElement 
+<br>
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the next sibling element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+
+<br>
+ */
+<br>
+ 
+<br>
+function previousSiblingElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.previousSibling;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.previousSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * firstChildElement 
+<br>
+ * 
+<br>
+ * @param ( node ) node object for which you are looking for the first child element node
+<br>
+ *
+<br>
+ * @return ( node) next sibling or "null"
+
+<br>
+ */
+<br>
+ 
+<br>
+function firstChildElement( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+
+<br>
+&#160;&#160;while( next_node
+<br>
+&#160;&#160;&#160;&#160;&amp;&amp; (next_node.nodeType != Node.ELEMENT_NODE) ) {
+
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+
+<br>
+&#160;&#160;return next_node;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+<br>
+ *
+<br>
+ * getTextContentOfNode
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+
+<br>
+ 
+<br>
+function getTextContentOfNode( node ) {
+<br>
+
+<br>
+&#160;&#160;var next_node = node.firstChild;
+<br>
+&#160;&#160;var str = "";
+<br>
+
+<br>
+&#160;&#160;while( next_node ) {
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;&#160;&#160;if( (next_node.nodeType == Node.TEXT_NODE ) &amp;&amp;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;(next_node.length &gt; 0 )
+<br>
+&#160;&#160;&#160;&#160; )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;str += next_node.data;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;next_node = next_node.nextSibling;
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}&#160;&#160;// endwhile
+<br>
+
+<br>
+&#160;&#160;return str;
+<br>
+&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ *
+<br>
+ * setTextContentOfNode
+<br>
+ * 
+<br>
+ * @contructor
+<br>
+ */
+<br>
+ 
+
+<br>
+function setTextContentOfNode( node, text ) {
+<br>
+
+<br>
+&#160;&#160; // Generate a new text node with the text value
+<br>
+&#160;&#160;&#160;&#160;var text_node = document.createTextNode(text);
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;// Remove child nodes to remove text
+<br>
+&#160;&#160;&#160;&#160;while (node.firstChild) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;node.removeChild(node.firstChild);
+
+<br>
+&#160;&#160;&#160;&#160;} // while
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// Append new text to the container element
+<br>
+&#160;&#160;&#160;&#160;node.appendChild( text_node );
+<br>
+
+<br>
+}
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+
+  <p><a id="lsc2"href="#lsc2" onclick="changeSourceCodeView(this, 'sc2')">Show Javascript Source Code: widgets_inline.js</a></p>
+  <div id="sc2" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+// JavaScript Document
+<br>
+
+<br>
+
+<br>
+if (!window.Node) {
+<br>
+&#160;&#160;var Node = {&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// If there is no Node object, define one
+
+<br>
+&#160;&#160;&#160;&#160;ELEMENT_NODE: 1,&#160;&#160;&#160;&#160;// with the following properties and values.
+<br>
+&#160;&#160;&#160;&#160;ATTRIBUTE_NODE: 2,&#160;&#160;// Note that these are HTML node types only.
+<br>
+&#160;&#160;&#160;&#160;TEXT_NODE: 3,&#160;&#160;&#160;&#160;&#160;&#160; // For XML-specific nodes, you need to add
+<br>
+&#160;&#160;&#160;&#160;COMMENT_NODE: 8,&#160;&#160;&#160;&#160;// other constants here.
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_NODE: 9,
+<br>
+&#160;&#160;&#160;&#160;DOCUMENT_FRAGMENT_NODE: 11
+
+<br>
+&#160;&#160;}
+<br>
+} 
+<br>
+
+<br>
+var ARIA_STATE = "aria-";
+<br>
+
+<br>
+/**
+<br>
+ * Widgets Object is used to initialize a set of controls 
+<br>
+ * and provide a conveinence fuction to cancel event propagration
+
+<br>
+ * @construtor
+<br>
+ */
+<br>
+ 
+<br>
+function Widgets() {
+<br>
+&#160;&#160;this.widgets = new Array();
+<br>
+}
+<br>
+
+<br>
+
+/**
+<br>
+ * add is member of the Widgets Object 
+<br>
+ * and used add a widget ot the list of widgets to be intitialized 
+<br>
+ * as part of the onload event
+<br>
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+Widgets.prototype.add = function(obj) {
+<br>
+&#160;&#160;this.widgets[this.widgets.length] = obj;
+<br>
+}
+<br>
+
+<br>
+/**
+
+<br>
+ * init is member of the Widgets Object 
+<br>
+ * and is called by the onload event to initialize widgets in the web resource
+<br>
+ * The controls array is the list of controls to initialize
+<br>
+ * @member Enable
+<br>
+ * @return none
+<br>
+ */
+
+<br>
+
+<br>
+Widgets.prototype.init = function() {
+<br>
+&#160;&#160; &#160;&#160;
+<br>
+&#160;&#160; for(var i = 0; i &lt; this.widgets.length; i++ )
+<br>
+&#160;&#160;&#160;&#160; this.widgets[i].init();
+<br>
+}
+
+<br>
+
+<br>
+//
+<br>
+// convience function for getting the node based on id
+<br>
+
+<br>
+function _$( id ) {
+<br>
+&#160;&#160;return document.getElementById( id );&#160;&#160;
+<br>
+}
+<br>
+
+<br>
+
+<br>
+//
+<br>
+// WebBrowser object to abstract accessibility API differences between web standards supporting browsers and Internet Explorer 7.0
+<br>
+//
+<br>
+// The state variable keeps track of current state of checkbox
+<br>
+function WebBrowser() {
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+//
+<br>
+// keyCode is a function to get the keycode from a keypress event
+<br>
+//
+<br>
+// @param ( event object) event is an event object
+<br>
+//
+<br>
+// @return ( keycode ) 
+<br>
+
+<br>
+WebBrowser.prototype.keyCode = function( event ) {
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return e.keyCode;
+<br>
+}&#160;&#160;
+<br>
+
+<br>
+/**
+<br>
+ * OnClick Event Simulator
+
+<br>
+ *
+<br>
+ * @param ( node ) DOM node object
+<br>
+ * @return nothing
+<br>
+ */
+<br>
+
+<br>
+if( document.createEvent ) {
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+&#160;&#160;&#160;&#160;// W3C DOM Events way to trigger a "click" event
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEvent('MouseEvents');
+<br>
+&#160;&#160;&#160;&#160;e.initEvent( 'click', true, true );
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;node.dispatchEvent( e );
+
+<br>
+
+<br>
+&#160;&#160;} 
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.simulateOnClickEvent = function( node ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;var e = document.createEventObject();
+<br>
+&#160;&#160;&#160;&#160;node.fireEvent( "onclick", e );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+}
+<br>
+
+<br>
+if ( document.addEventListener ) {
+
+<br>
+
+<br>
+&#160;&#160;// If a web standards based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousedown", downHandler,&#160;&#160;true );
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( upHandler)
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.addEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160;if( upHandler)
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mouseup",&#160;&#160; upHandler,&#160;&#160;&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousemove", moveHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( downHandler )
+<br>
+
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "mousedown", downHandler,&#160;&#160;true );
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;if( clickHandler )
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;document.removeEventListener( "click",&#160;&#160;&#160;&#160; clickHandler, true );
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+
+} else {
+<br>
+
+<br>
+&#160;&#160;// If a Microsoft IE based browser implement this function
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.setMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; node.setCapture();
+<br>
+&#160;&#160; if( clickHandler)
+
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onclick", clickHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousedown", downHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+
+&#160;&#160;&#160;&#160; node.attachEvent( "onmousemove", moveHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( upHandler )
+<br>
+&#160;&#160;&#160;&#160; node.attachEvent( "onmouseup", upHandler );
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+
+&#160;&#160;WebBrowser.prototype.releaseMouseCapture = function( node, clickHandler, downHandler, moveHandler, upHandler ) {
+<br>
+
+<br>
+&#160;&#160; if( upHandler )
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmouseup", upHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( moveHandler )
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousemove", moveHandler );
+
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( downHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onmousedown", downHandler );
+<br>
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160; if( clickHandler)
+<br>
+&#160;&#160;&#160;&#160; node.detachEvent( "onclick", clickHandler );
+<br>
+
+&#160;&#160;&#160;&#160; 
+<br>
+&#160;&#160;&#160;&#160; node.releaseCapture();
+<br>
+
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+
+<br>
+}
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+if (typeof document.documentElement.setAttributeNS != 'undefined') {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;event.stopPropagation();
+<br>
+&#160;&#160;&#160;&#160;event.preventDefault();
+<br>
+&#160;&#160;&#160;&#160;return false;
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+<br>
+&#160;&#160;return event.target;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+&#160;&#160;return event.attrName
+<br>
+
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+<br>
+&#160;&#160;&#160;&#160; return event.charCode;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function( node ) {
+<br>
+&#160;&#160;return node.offsetLeft;&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function( node ) {
+<br>
+&#160;&#160;return node.offsetTop;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.pageX;&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.pageY;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left+"px";
+
+<br>
+&#160;&#160;&#160;&#160;node.style.top = top+"px";
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.stopPropagation = function( event ) {
+<br>
+&#160;&#160;&#160;&#160;event.cancelBubble = true; 
+<br>
+
+&#160;&#160;&#160;&#160;event.returnValue = false;
+<br>
+&#160;&#160;&#160;&#160;return false;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.charCode = function(event) {
+<br>
+&#160;&#160;&#160;&#160;return window.browser.keyCode( event );
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.target = function( event ) {
+
+<br>
+&#160;&#160;&#160;&#160;return event.srcElement;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;WebBrowser.prototype.attrName = function( event ) {
+<br>
+&#160;&#160;return event.propertyName;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetLeft = function(node) {
+<br>
+
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset += node.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.calculateOffsetTop = function(node) {
+<br>
+&#160;&#160;var offset = 0;
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;while( node ) {
+<br>
+&#160;&#160;&#160;&#160;offset = offset + node.offsetTop;
+<br>
+&#160;&#160;&#160;&#160;node = node.offsetParent;
+<br>
+&#160;&#160;}
+
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;return offset;&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageX = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.pageY = function( e ) {
+<br>
+&#160;&#160;&#160;&#160;return e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;}
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;WebBrowser.prototype.setNodePosition = function(node,left,top) {
+<br>
+&#160;&#160;&#160;&#160;offsetx = 0;
+<br>
+&#160;&#160;&#160;&#160;offsety = 0;
+<br>
+
+&#160;&#160;&#160;&#160;nnode = node.offsetParent
+<br>
+&#160;&#160;&#160;&#160;while( nnode ) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsetx = offsetx + nnode.offsetLeft;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;offsety = offsety + nnode.offsetTop;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;nnode = nnode.offsetParent;
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+&#160;&#160;&#160;&#160;node.style.left = left-offsetx+"px";
+<br>
+&#160;&#160;&#160;&#160;node.style.top = top-offsety+"px";
+<br>
+&#160;&#160;}
+
+<br>
+&#160;&#160;
+<br>
+};
+<br>
+
+<br>
+
+<br>
+if (document.addEventListener) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // Functions for W3C Standards compliant implementation of adding event handlers
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.addEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; elmTarget.removeEventListener(sEventName, fCallback, false);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = true;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;elmTarget.addEventListener("DOMAttrModified", fCallback, false);
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = true;
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+} else {
+<br>
+
+<br>
+&#160;&#160;if(document.attachEvent) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // IE Specific Event handler functions
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.attachEvent('on' + sEventName, fCallback);
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; returnValue = elmTarget.detachEvent('on' + sEventName, fCallback);
+
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;returnValue = elmTarget.attachEvent("onpropertychange", fCallback);
+<br>
+&#160;&#160;&#160;&#160;};
+<br>
+
+<br>
+&#160;&#160;} else {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; // For browsers that do not support W3C or IE event functions
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addEvent = function(elmTarget, sEventName, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.removeEvent = function(elmTarget, sEventName, fCallback) {
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+<br>
+
+<br>
+&#160;&#160;&#160;&#160; WebBrowser.prototype.addChangeEvent =&#160;&#160;function(elmTarget, fCallback) {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; return false;
+<br>
+&#160;&#160;&#160;&#160; };
+
+<br>
+
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+}
+<br>
+
+<br>
+widgets_flag = true;
+<br>
+var widgets = new Widgets();
+<br>
+var browser = new WebBrowser();
+<br>
+
+<br>
+function initApp() {
+<br>
+&#160;&#160;widgets.init();
+<br>
+}
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+  <p><a id="lsc3"href="#lsc3" onclick="changeSourceCodeView(this, 'sc3')">Show Javascript Source Code: checkbox2_inline.js</a></p>
+
+  <div id="sc3" class="codebox" style="display: none">
+&#160;&#160;&lt;script type="text/javascript"&gt;<br>
+/**
+<br>
+ *
+<br>
+ * The Checkbox object is used to maintain information about a checkbox widget
+<br>
+ *
+<br>
+ * @constructor
+
+<br>
+ */
+<br>
+
+<br>
+function Checkbox( id ) {
+<br>
+&#160;&#160;this.id = id;
+<br>
+} // end Checkbox
+<br>
+
+<br>
+
+<br>
+/**
+
+<br>
+ * init is a subclass of Checkbox and is used to initialize the event handlers 
+<br>
+ *
+<br>
+ * @member Checkbox
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+
+<br>
+
+<br>
+Checkbox.prototype.init = function() {
+<br>
+
+<br>
+&#160;&#160;this.node = document.getElementById(this.id);
+<br>
+&#160;&#160;this.image_node = this.node.getElementsByTagName("img")[0];
+<br>
+
+<br>
+&#160;&#160;if( this.node.getAttribute("aria-checked") == "true") 
+<br>
+&#160;&#160;&#160;&#160; this.image_node.src = "images/checked.gif";
+
+<br>
+&#160;&#160;
+<br>
+&#160;&#160;var obj = this; 
+<br>
+&#160;&#160;// Add event handlers for checking a checkbox
+<br>
+&#160;&#160;browser.addEvent(this.node, "keydown", function(event) {handleCheckboxKeyDownEvent(event, obj); }, false);
+<br>
+&#160;&#160;browser.addEvent(this.node, "click",&#160;&#160; function(event) {handleCheckboxClickEvent(event, obj); },&#160;&#160; false);
+<br>
+&#160;&#160;
+<br>
+
+&#160;&#160;// Add event handlers for a checkbox geeting and losing focus
+<br>
+&#160;&#160;browser.addEvent(this.node, "focus", function(event) {handleCheckboxFocusEvent(event, obj);}, false);
+<br>
+&#160;&#160;browser.addEvent(this.node, "blur",&#160;&#160;function(event) {handleCheckboxBlurEvent(event, obj); }, false);
+<br>
+
+<br>
+
+<br>
+&#160;&#160;// Add event handlers for checking if something changed the aria-checked attribute
+<br>
+&#160;&#160;browser.addChangeEvent(this.node, function(event) {handleCheckboxModifyEvent(event, obj); }, false);
+<br>
+
+<br>
+
+<br>
+} // end Checkbox.prototype.init
+<br>
+
+<br>
+/**
+<br>
+ * toggleCheckbox is called by event handlers to toggle the state of the checkbox
+<br>
+ *
+<br>
+ * @param ( Checkbox object ) checkbox&#160;&#160;Checkbox to toggle state
+
+<br>
+ *
+<br>
+ * @return none
+<br>
+ */
+<br>
+
+<br>
+toggleCheckbox = function( checkbox ) {
+<br>
+
+<br>
+&#160;&#160;if (checkbox.node.getAttribute("aria-checked") == "true") {
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// If the checkbox is currently checked set the state to unchecked&#160;&#160;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;checkbox.node.setAttribute("aria-checked", "false");
+<br>
+&#160;&#160;&#160;&#160;checkbox.image_node.src= "images/unchecked.gif";
+<br>
+
+<br>
+&#160;&#160;} else {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// If the checkbox is currently unchecked set the state to checked&#160;&#160;
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;checkbox.node.setAttribute("aria-checked", "true");
+<br>
+&#160;&#160;&#160;&#160;checkbox.image_node.src= "images/checked.gif";
+<br>
+
+<br>
+&#160;&#160;}&#160;&#160;// endif
+<br>
+&#160;&#160;
+<br>
+
+ 
+<br>
+} // end toggleCheckbox
+<br>
+
+<br>
+
+<br>
+/**
+<br>
+ * handleCheckboxModifyEvent processes keys associated with a checkbox
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+
+<br>
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+<br>
+ */
+<br>
+
+<br>
+function handleCheckboxModifyEvent(event, checkbox){
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;// If IE get the IE event object
+<br>
+&#160;&#160; var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160; // Check
+<br>
+&#160;&#160; if( browser.attrName(e) == "aria-checked" ) {
+<br>
+
+<br>
+
+&#160;&#160;&#160;&#160;// update state image
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;if (checkbox.node.getAttribute("aria-checked") == "true") 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;checkbox.image_node.src= "images/checked.gif";
+<br>
+&#160;&#160;&#160;&#160;else
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;checkbox.image_node.src= "images/unchecked.gif";
+<br>
+
+<br>
+&#160;&#160; }&#160;&#160;// endif
+
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;return browser.stopPropagation(e);
+<br>
+
+<br>
+} // end handleCheckboxKeyDownEvent
+<br>
+
+<br>
+/**
+<br>
+ * handleCheckboxKeyDownEvent processes keys associated with a checkbox 
+<br>
+ *
+
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+<br>
+ */
+<br>
+
+<br>
+handleCheckboxKeyDownEvent = function(event, checkbox) {
+<br>
+&#160;&#160;// If IE get the IE event object
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;switch( browser.keyCode(e) ) {
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;case KEY_SPACE:
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160; // When space hit toggle the checkbox
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; toggleCheckbox( checkbox );
+<br>
+&#160;&#160;&#160;&#160; // Tell browser we handled this event and not to process any other actions
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return browser.stopPropagation(e);
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;
+<br>
+
+<br>
+&#160;&#160;}&#160;&#160;// end switch
+
+<br>
+
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleCheckboxKeyDownEvent
+<br>
+
+<br>
+/**
+<br>
+ * handleCheckboxFocusEvent processes keys associated with a Checkbox
+<br>
+ *
+
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+<br>
+ *
+<br>
+ * @return false if keyboard event was used by checkbox, else true
+<br>
+ */
+<br>
+
+<br>
+handleCheckboxFocusEvent = function(event, checkbox) {
+<br>
+&#160;&#160;//kick IE 7
+<br>
+&#160;&#160;checkbox.node.className += ""; 
+<br>
+
+<br>
+&#160;&#160;return true;
+<br>
+
+<br>
+} // end handleCheckboxFocusEvent
+<br>
+
+<br>
+
+/**
+<br>
+ * handleCheckboxBlurEvent processes keys associated with a checkbox
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+<br>
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the keyboard event
+<br>
+ *
+<br>
+
+ * @return false if keyboard event was used by checkbox, else true
+<br>
+ */
+<br>
+
+<br>
+handleCheckboxBlurEvent = function(event, checkbox) {
+<br>
+&#160;&#160;//Kick IE 7
+<br>
+&#160;&#160;checkbox.node.className += ""; 
+<br>
+
+<br>
+&#160;&#160;return true;
+
+<br>
+
+<br>
+} // end handleCheckboxBlurEvent
+<br>
+
+<br>
+/**
+<br>
+ * handleCheckboxClickEvent processes pointer click events with in the checkbox 
+<br>
+ *
+<br>
+ * @param ( event ) event is the event handler for the event
+
+<br>
+ * @param ( Checkbox object ) checkbox is the Checkbox object that is the target of the pointer event
+<br>
+ *
+<br>
+ * @return false to stop event propagation if mouse event was used by checkbox, else true
+<br>
+ */
+<br>
+
+<br>
+function handleCheckboxClickEvent( event, checkbox ) {
+<br>
+
+&#160;&#160;// If IE get the IE event object
+<br>
+&#160;&#160;var e = event || window.event;
+<br>
+
+<br>
+&#160;&#160;if( (checkbox.node == browser.target(e)) ||
+<br>
+&#160;&#160;&#160;&#160;(checkbox.image_node == browser.target(e)) ) {
+<br>
+&#160;&#160;&#160;&#160;// Toggle the checkbox
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;toggleCheckbox( checkbox );
+<br>
+&#160;&#160;&#160;&#160;checkbox.node.focus();
+<br>
+&#160;&#160;&#160;&#160;// Tell browser we handled this event and not to process any other actions
+
+<br>
+&#160;&#160;&#160;&#160;return browser.stopPropagation(e);
+<br>
+&#160;&#160;} // endif
+<br>
+
+<br>
+&#160;&#160;return true;
+<br>
+} // end handleCheckboxClickEvent
+<br>
+
+<br>
+&#160;&#160;&lt;/script&gt;<br>
+  </div>
+
+  <h2>CSS Source Code</h2>
+  <p><a id="lsc4"href="#lsc4" onclick="changeSourceCodeView(this, 'sc4')">Show CSS Source Code: checkbox2.css</a></p>
+  <div id="sc4" class="codebox" style="display: none">
+&#160;&#160;&lt;style type="text/css"&gt;<br>
+/* Checkbox 2 CSS
+<br>
+*/
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;
+
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes {
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;margin: 0;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;padding: 0;
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes li&#160;&#160;&#160;&#160;{
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;padding: 0; 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;margin: 0;
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;margin-left: .5em;
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;list-style: none;
+<br>
+&#160;&#160;&#160;&#160;padding-left: .5em;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes li img&#160;&#160;&#160;&#160;{
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;padding: 0; 
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;margin: 0;
+
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;margin-right: .5em;
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes li[aria-checked="true"]:focus,
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes li[aria-checked="true"]:active{
+<br>
+&#160;&#160;&#160;&#160;border: black 1px solid;
+<br>
+&#160;&#160;font-weight: bold;
+<br>
+&#160;&#160;width: 6em;
+<br>
+
+&#160;&#160;&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;ul.checkboxes li[aria-checked="false"]:focus,
+<br>
+&#160;&#160;ul.checkboxes li[aria-checked="false"]:active {
+<br>
+&#160;&#160;&#160;&#160;border: black 1px solid;
+<br>
+&#160;&#160;&#160;&#160;font-weight: bold;
+<br>
+&#160;&#160;width: 6em;
+<br>
+&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&#160;&#160;
+<br>
+&#160;&#160;&#160;&#160;.hidden{
+<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;display:none;
+<br>
+&#160;&#160;&#160;&#160;}
+<br>
+
+<br>
+&#160;&#160;&lt;/style&gt;<br>
+  </div>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/widgets/checkbox/checkbox2.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:15:59 GMT -->
+</html>
+

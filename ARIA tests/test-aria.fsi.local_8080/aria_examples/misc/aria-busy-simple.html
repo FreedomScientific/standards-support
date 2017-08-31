@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-busy-simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Live Region example</title>
+<script src="../../../ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+	mymodule();
+}
+
+mymodule = (function ($) {
+	return function () {
+		var addBtn = $("#addnew");
+		var removeBtn = $("#remove");
+		var list = $("#list");
+
+		var addItem = function () {
+			var xhr = $.ajax({url: "/"});
+			list.attr("aria-busy", "true");//apply the busy state
+			xhr.done(function (data) {
+				var listItems = list.children();
+				var count = listItems.length + 1;
+				var newLi = $('<li>New item' + count + '</li>');
+				list.append(newLi);
+				count = count + 1;
+				newLi = $('<li>New item' + count + '</li>');
+				list.append(newLi);
+			});
+
+			xhr.fail(function (jqXHR, textStatus) {
+				alert(textStatus);
+				alert("something went wrong");
+			});
+
+			xhr.always(function () {
+				list.attr("aria-busy", "false"); // don't just do this on success, do it always. your server may return an error.
+			});
+		};
+
+		var removeItem = function (e) {
+			var c = list.children();
+			c.eq(c.length - 1).remove();
+		};
+
+		addBtn.on("click", addItem);
+		removeBtn.on("click", removeItem);
+	}
+}(jQuery));
+
+</script>
+<head>
+<body>
+<h1>Expected behavior</h1>
+<p>JAWS should only speak removals on this page.
+The aria-busy attribute is set to true before items are added which should prevent JAWS speaking while the new items are added.  Once the additions are complete, the aria-busy is removed.
+During removals there is no aria-busy state set so these should always be spoken.
+</p>
+<ul aria-live="assertive" aria-relevant="all" id="list">
+	<li>item one</li>
+	<li>item two</li>
+</ul>
+<button type="button" id="addnew" aria-controls="list">Add new item</button>
+<button type="button" id="remove" aria-controls="list">Remove last item</button>
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/aria-busy-simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/atomic_true.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<title>
+atomic="true" - Simple Test Case
+</title>
+
+<style type="text/css">
+
+span#myLiveRegion1{
+    border-style: ridge;
+    border-width: thick;
+    }
+</style>
+
+<script type="text/javascript">
+window.onload = runExample;
+var minimumTime = 1000;
+var index=0;
+var lrID = "myLiveSubRegion2";
+var messagesArray = new Array("0","1","2","3","4","5","6","7","8","9");
+
+function updateLiveRegion(liveRegionID, textString){
+  textNode = document.createTextNode(textString);
+        targetNode = document.getElementById(liveRegionID);
+        while (targetNode.firstChild) {
+           targetNode.removeChild(targetNode.firstChild);
+           }
+  targetNode.appendChild(textNode);
+        }
+
+function runExample(){
+   updateLiveRegion(lrID, messagesArray[index++]);
+   if (index > 9){
+      index=0;
+      }
+   window.setTimeout(runExample, minimumTime);
+   }
+
+
+function setMinimumTime(){
+   minimumTimeStr = document.getElementById("throttle").options[document.getElementById("throttle").selectedIndex].text;
+   minimumTime = minimumTimeStr * 1000;
+   }
+</script>
+</head>
+<body>
+<div>
+<label for="throttle">Minimum number of seconds before a change</label>
+<select id="throttle" onblur="setMinimumTime();" onchange="setMinimumTime();">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+</select>
+<hr/>
+</div>
+<h1>
+Live Region - atomic="true"
+</h1>
+<p>
+<span id="myLiveRegion1" aria-live="polite" aria-atomic="true">
+<span id="myLiveSubRegion1">This part of the live region will not change.</span>
+<span id="myLiveSubRegion2"></span>
+
+</span>
+</p>
+<p>
+Summary: The live region has the atomic property set to true. This means that the region must stand together and changes cannot be presented on their own without presenting the entire region.
+</p>
+<p>
+Description of the expected behavior: After presenting the heading, the user agent should present the text in the live region area at the time. It should then proceed to the "Summary" section followed by the "Description of expected behavior" section. It should then continue to read the filler text until the end of the document and stop. Since there is no more user activity at this point, all of the text in the live region area should be announced, including the first part of the live region which did not change as the live region has the atomic property set to true. In addition, if the user were reading and stopping intermittently, then when the user is idling, all of the text in the live region area should be announced when there is an update to part of that text.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+<p>
+The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should. The filler text is here to let developers run their user agents for a longer period of time to make sure that everything will continue to behave as it should.
+</p>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/live/atomic_true.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+</html>

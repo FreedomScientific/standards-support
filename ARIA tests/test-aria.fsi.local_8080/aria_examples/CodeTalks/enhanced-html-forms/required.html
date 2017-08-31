@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/required.htm by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:17 GMT -->
+<head>
+<title>
+Simple usage of aria-required in an HTML form
+</title>
+<style>
+input[aria-required="true"] { border: 3px solid black; background-color: pink; }
+</style>
+</head>
+<body>
+<p>The first two fields are required:</p>
+<form action="../../../../external.html?link=http://test-aria.fsi.local:8080/aria_examples/codetalks/enhanced-html-forms/post">
+    <label for="firstName">First name:</label>
+    <input id="firstName" type="text" aria-required="true" />
+    <br/>
+    <label for="lastName">Last name:</label>
+    <input id="lastName" type="text" aria-required="true" />
+    <br/>
+    <label for="streetAddress">Street address:</label>
+    <input id="streetAddress" type="text" />
+</form>
+</body>

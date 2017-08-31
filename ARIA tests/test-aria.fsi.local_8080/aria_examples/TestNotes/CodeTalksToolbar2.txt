@@ -1,0 +1,4 @@
+JAWS should go into application mode on this example.
+Use the left and right arrow keys to move between toolbar buttons.
+Use spacebar to activate.
+When pressing the buttons, jaws should announce that an item was pressed. This information comes from the status region below the toolbar.

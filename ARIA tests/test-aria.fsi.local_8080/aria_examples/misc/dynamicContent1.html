@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/dynamicContent1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:06 GMT -->
+<head>
+<title>Dynamic Content</title>
+
+<script src="../../../code.jquery.com/jquery.min.js"></script>
+
+<script>
+$(document).ready (function () {
+var entryCount = 1;
+
+	$("#addEntry").click (function () {
+$("#LiveRegion").attr("aria-atomic","false");
+$("#container").append (
+'<div class="entry">'
++ 'test stuff' + entryContent ()
++ '</div>\n'
+); // append
+
+}); // click #addEntry
+
+$("#addEntrySpeakAll").click (function () {
+$("#LiveRegion").attr("aria-atomic","true");
+$("#container").append (
+'<div class="entry" >'
++ entryContent ()
++ '</div>\n'
+); // append
+
+}); // click #addEntrySpeakAll
+
+function entryContent () {
+return '\n<h2 class="title">Entry #' + (entryCount++) + '</h2>\n'
++ '<p>first paragraph...</p>\n'
++ '<p>...</p>\n'
++ '<p>last paragraph...</p>\n';
+} // entryContent
+
+}); // ready
+</script>
+</head>
+<body>
+<h1>Alert Test</h1>
+<button id="addEntrySpeakAll">Add Entry and Speak All</button>
+
+<button id="addEntry">Add Entry</button>
+<div id="LiveRegion" aria-live="assertive" aria-relevant="additions">
+<div id="container">
+<div class="entry">
+<h2 class="title">Initial Entry</h2>
+<p>...</p>
+</div>
+<p>--end initial entry--</p>
+</div>
+</div>
+<a href="../../../external.html?link=http://www.google.com/">test link</a>
+
+</body>
+
+<!-- Mirrored from test-aria.fsi.local:8080/aria_examples/misc/dynamicContent1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2017 10:17:07 GMT -->
+</html>
