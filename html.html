@@ -1033,98 +1033,153 @@ To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  grou
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/imagemap.html"><code>map</code></a></th>
-<td><a href="http://www.w3.org/TR/html5/embedded-content-0.html#image-map">Image map</a></td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/mark.html"><code>mark</code></a></th>
-<td>Highlight</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/math.html"><code>math</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-menu-element"><code>menu [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<!--<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-menuitem-element"><code>menuitem [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>-->
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-meta-element"><code>meta [no test]</code></a></th>
-<td>Text metadata</td>
-<td><em><strong>none expected</strong></em></td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td><strong>No UI</strong></td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/meter.html"><code>meter</code></a></th>
-<td>Gauge</td>
-<td>&nbsp;</td>
-<td>No special commands</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-
-<tr id="toc-n">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/nav.html"><code>nav</code></a></th>
-<td>Section with navigational links</td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15+) </li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15+) </li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15+)</li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td><p>&nbsp;</p></td>
-</tr>
-<tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-noscript-element"><code>noscript [no test]</code></a></th>
-<td>Fallback content for script</td>
-<td><em>none expected</em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-o">
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/object.html"><code>object</code></a></th>
-<td>Image, <a href="http://www.w3.org/TR/html5/browsers.html#nested-browsing-context">nested browsing context</a>, or <a href="http://www.w3.org/TR/html5/infrastructure.html#plugin">plugin</a></td>
-<td>&nbsp;</td>
-<td>
-<ul>
-<li>Next Object Tag   <kbd>O</kbd></li>
-<li>Previous Object Tag <kbd>SHIFT+O</kbd></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-map-element"><code>map</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/imagemap.html"><code>map</code> test</a>
+            </td>
+            <td>
+              <a href="http://www.w3.org/TR/html5/embedded-content-0.html#image-map">Image map</a>
+            </td>
+            <td><em>None expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><strong>No UI</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-mark-element"><code>mark</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/mark.html"><code>mark</code> test</a>
+            </td>
+            <td>Highlight</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="https://www.w3.org/TR/html5/embedded-content-0.html#mathml"><code>math</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/math.html"><code>math</code> test</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <!--<tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/interactive-elements.html#the-menu-element"><code>menu</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>-->
+          <!--<tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/interactive-elements.html#the-menuitem-element"><code>menuitem</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>-->
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/document-metadata.html#the-meta-element"><code>meta</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>Text metadata</td>
+            <td><em>None expected</em></td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td><strong>No UI</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/sec-forms.html#the-meter-element"><code>meter</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/meter.html"><code>meter</code> test</a>
+            </td>
+            <td>Gauge</td>
+            <td>&nbsp;</td>
+            <td>No special commands</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-n">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/sections.html#the-nav-element"><code>nav</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/nav.html"><code>nav</code> test</a>
+            </td>
+            <td>Section with navigational links</td>
+            <td>&nbsp;</td>
+            <td>
+              <ul>
+                <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
+                <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS 15+) </li>
+                <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#"><code>noscript</code></a>
+            </th>
+            <td>
+              No test
+            </td>
+            <td>Fallback content for script</td>
+            <td><em>None expected</em></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="toc-o">
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-object-element"><code>object</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/object.html"><code>object</code> test</a>
+            </td>
+            <td>
+              Image,
+              <a href="http://www.w3.org/TR/html5/browsers.html#nested-browsing-context">nested browsing context</a>, or
+              <a href="http://www.w3.org/TR/html5/infrastructure.html#plugin">plugin</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <ul>
+                <li>Next Object Tag <kbd>O</kbd></li>
+                <li>Previous Object Tag <kbd>SHIFT+O</kbd></li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
           <tr>
             <th scope="row">
               <a href="http://w3c.github.io/html/grouping-content.html#the-ol-element"><code>ol</code></a>
