@@ -168,51 +168,70 @@
 <p>&nbsp;</p>
 </td>
 </tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/abbr.html"><code>abbr</code></a></th>
-<td>an abbreviation</td>
-<td><em>Element content</em></td>
-<td>
-<p>No special commands</p>
-<p>JAWS can read <code>title</code> text associated with abbreviations on web pages. <br>
-To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  group. Next, expand the Reading group and use the abbreviation and acronym options</p>
-</td>
-<td>
-<p>By default <img src="images/cross.png" width="16" height="16" alt="no"></p>
-<p>via preference<img src="images/tick.png" width="16" height="16" alt="yes"></p>
-</td>
-<td>
-<p>No semantics conveyed by default</p>
-<p>Note that expansions are not announced by default and that expansions provided using the <code>title</code> attribute are not available to keyboard only users. Refer to <a href="http://www.paciellogroup.com/blog/2013/01/using-the-html-title-attribute-updated/">Using the HTML title attribute</a>.</p>
-</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/address.html"><code>address</code></a></th>
-<td>Contact information for a page or <a href="http://www.w3.org/TR/html5/sections.html#the-article-element">article</a> element</td>
-<td><em>Element content</em></td>
-<td>No special commands</td>
-<td><img src="images/cross.png" width="16" height="16" alt="no"></td>
-<td>No semantics conveyed</td>
-</tr>
-<tr>
-<th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/area.html"><code>area</code></a></th>
-<td>Hyperlink or dead area on an image map</td>
-<td><p>&quot;graphic&quot;<em>, alt content </em>(when navigated using the <kbd>arrow</kbd> keys or the link navigation keys.)</p>
-  <p><em>alt content</em>, &quot;image map&quot; (when navigated using the <code>tab</code> key.</p></td>
-<td><ul>
-  <li>List Links <kbd>INSERT+F7</kbd></li>
-  <li>Next Link <code><kbd>TAB</kbd></code></li>
-  <li>Prior Link <kbd>SHIFT+TAB</kbd></li>
-  <li>Next Visited <kbd>Link V</kbd></li>
-  <li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
-  <li>Open Link <kbd>ENTER</kbd></li>
-  <li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
-  <li>Next Non Link Text <kbd>N</kbd></li>
-  <li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
-</ul></td>
-<td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
-<td>Although area elements are links they are not conveyed as links aurally. </td>
-</tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/textlevel-semantics.html#the-abbr-element"><code>abbr</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/abbr.html"><code>abbr</code> test</a>
+            </td>
+            <td>an abbreviation</td>
+            <td><em>Element content</em></td>
+            <td>
+            <p>No special commands</p>
+            <p>JAWS can read <code>title</code> text associated with abbreviations on web pages. <br>
+            To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  group. Next, expand the Reading group and use the abbreviation and acronym options</p>
+            </td>
+            <td>
+            <p>By default <img src="images/cross.png" class="status-icon" alt="no"></p>
+            <p>via preference<img src="images/tick.png" class="status-icon" alt="yes"></p>
+            </td>
+            <td>
+              <p>No semantics conveyed by default</p>
+              <p>Note that expansions are not announced by default and that expansions provided using the <code>title</code> attribute are not available to keyboard only users. Refer to <a href="https://www.paciellogroup.com/blog/2013/01/using-the-html-title-attribute-updated/">Using the HTML title attribute</a>.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/grouping-content.html#the-address-element"><code>address</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/address.html"><code>address</code> test</a>
+              </td>
+            <td>Contact information for a page or <a href="http://www.w3.org/TR/html5/sections.html#the-article-element">article</a> element</td>
+            <td><em>Element content</em></td>
+            <td>No special commands</td>
+            <td><img src="images/cross.png" class="status-icon" alt="no"></td>
+            <td>No semantics conveyed</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <a href="http://w3c.github.io/html/semantics-embedded-content.html#the-area-element"><code>area</code></a>
+            </th>
+            <td>
+              <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/area.html"><code>area</code> test</a>
+              </td>
+            <td>Hyperlink or dead area on an image map</td>
+            <td>
+              <p>&quot;graphic&quot;<em>, alt content </em>(when navigated using the <kbd>arrow</kbd> keys or the link navigation keys.)</p>
+              <p><em>alt content</em>, &quot;image map&quot; (when navigated using the <code>tab</code> key.</p>
+            </td>
+            <td>
+              <ul>
+                <li>List Links <kbd>INSERT+F7</kbd></li>
+                <li>Next Link <code><kbd>TAB</kbd></code></li>
+                <li>Prior Link <kbd>SHIFT+TAB</kbd></li>
+                <li>Next Visited <kbd>Link V</kbd></li>
+                <li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
+                <li>Open Link <kbd>ENTER</kbd></li>
+                <li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
+                <li>Next Non Link Text <kbd>N</kbd></li>
+                <li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
+              </ul>
+            </td>
+            <td><img src="images/tick.png" class="status-icon" alt="yes"></td>
+            <td>Although area elements are links they are not conveyed as links aurally.</td>
+          </tr>
 <tr>
 <th scope="row"><a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/article.html"><code>article</code></a></th>
 <td>Self-contained syndicatable or reusable composition</td>
