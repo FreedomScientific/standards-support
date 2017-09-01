@@ -5,6 +5,9 @@
     <title>JAWS ARIA Support</title>
     <script src="scripts/html5shiv.js"></script>
     <link rel="stylesheet" href="./assets/style/styles.css">
+    <style>
+      code {border: 2px solid #f00;}
+    </style>
   </head>
   <body>
     <header>
@@ -210,330 +213,569 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
-<tr>
-<TD tabindex="-1" id="index-aria-combobox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#combobox">combobox</a></code></TD>
-<TD>A presentation of a select; usually similar to a textbox where users can type ahead to select an option, or type to enter arbitrary text as a new item in the list. See related <code>listbox</code>.</TD>
-<td><a href="http://juicystudio.com/tpg/rbc/wrappedcombo/combo.html">combobox example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-complementary"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#complementary">complementary</a></code></TD>
-<TD>A supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains
-meaningful when separated from the main content.</TD>
-<td><!--<p>"complimentary information" <em></em> "complimentary information end"</p>
-<p>&nbsp;</p>--><a href="https://w3c.github.io/aria-practices/examples/landmarks/complementary.html">complementary examples</a></td>
-<td><ul>
-<li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
-<li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
-<li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-contentinfo"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#contentinfo">contentinfo</a></code></TD>
-<TD>A large perceivable region that contains information about the parent document.</TD>
-<td><a href="https://w3c.github.io/aria-practices/examples/landmarks/contentinfo.html">contentinfo example</a></td>
-<td><ul>
-  <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+)</li>
-  <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS 15+)</li>
-  <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-definition"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#definition">definition</a></code></TD>
-<TD>A definition of a term or concept.</TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-dialog"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#dialog">dialog</a></code></TD>
-<TD>A dialog is an application window that is designed to interrupt the current processing of an application in order to prompt the user to enter
-information or require a response. See related <code>alerTDialog</code>.</TD>
-<td><a href="https://w3c.github.io/aria-practices/examples/dialog-modal/dialog.html">dialog example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><em>Note (Aug 31, 2017): When tested with JAWS 18 & IE 11, dialog not announced when opened. Additionally, field names/labels shared across all input fields. JAWS 18 & FF 55 worked as expected.</em></td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-directory"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#directory">directory</a></code></TD>
-<TD>A list of references to members of a group, such as a static table of contents.</TD>
-<td><a href="http://w3c.github.io/html-aria/#toc">directory example</a> <p><em>See Table of Contents</em></p></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-c">
-<TD tabindex="-1" id="index-aria-document"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#document">document</a></code></TD>
-<TD>A region containing related information that is declared as document content, as opposed to a web application.</TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-feed"><code><a href="https://www.w3.org/TR/wai-aria-1.1/#feed">feed</a></code> <span class="new-feature" ></span></TD>
-<TD>A scrollable list of articles where scrolling may cause articles to be added to or removed from either end of the list.</TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-figure"><a href="https://www.w3.org/TR/wai-aria-1.1/#figure"><code>figure</code></a> <span class="new-feature" ></span></TD>
-<TD>A perceivable section of content that typically contains a graphical document, images, code snippets, or example text. </TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-form"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#form">form</a></code></TD>
-<TD>A landmark region that contains a collection of items and objects that, as a whole, combine to create a form. See related <code>search</code>. </TD>
-<td><a href="https://w3c.github.io/aria-practices/examples/landmarks/form.html">form example</a></td>
-<td><ul>
-  <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS15)</li>
-  <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS15)</li>
-  <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS15)</li>
-</ul></td>
-<td>&nbsp;</td>
-<td>Need to check whether it needs an accessible name to be announced/navigable</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-grid"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#grid">grid</a></code></TD>
-<TD>A grid is an interactive control which contains cells of tabular data arranged in rows and columns, like a table.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html">grid example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-gridcell"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#gridcell">gridcell</a></code></TD>
-<TD>A cell in a grid or treegrid.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html">grid example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-d">
-<TD tabindex="-1" id="index-aria-group"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#group">group</a></code></TD>
-<TD>A set of user interface objects which are not intended to be included in a page summary or table of contents by assistive technologies.</TD>
-<td><a href="http://mars.dequecloud.com/demo/form-markup.htm#tech6">group example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-heading"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#heading">heading</a></code></TD>
-<TD>A heading for a section of the page.</TD>
-<td><a href="https://patrickhlauke.github.io/aria/demos/role-heading.html">heading example</a></td>
-<td><ul>
-  <li>List Headings <kbd>INSERT</kbd>+<kbd>F6 </kbd></li>
-  <li>Next Heading <kbd>H</kbd></li>
-  <li>Prior Heading <kbd>SHIFT+H</kbd></li>
-  <li>First Heading <kbd>ALT+INSERT+HOME</kbd></li>
-  <li>Last Heading <kbd>ALT+INSERT+END </kbd></li>
-  <li>Next Heading at Level - number keys <kbd>1</kbd> through <kbd>6</kbd></li>
-  <li>Prior Heading at Level <kbd>SHIFT+1</kbd> through <kbd>6 </kbd></li>
-  <li>First Heading at Level <kbd>ALT+CTRL+INSERT+1</kbd> through <kbd>6</kbd></li>
-  <li>Last Heading at Level <kbd>ALT+CTRL+INSERT+ SHIFT+1</kbd> through <kbd>6</kbd></li>
-</ul></td>
-<td>&nbsp;</td>
-<td>requires aria-level attribute with a valid value to announce level</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-img"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#img">img</a></code></TD>
-<TD>A container for a collection of elements that form an image.</TD>
-<td>"graphic" <em>alt attribute content</em></td>
-<td><ul>
-<li>List of Graphics <kbd>CTRL+INSERT+G</kbd></li>
-<li>Next Graphic <kbd>G</kbd></li>
-<li>Previous Graphic <kbd>SHIFT+G</kbd></li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-link"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#link">link</a></code></TD>
-<TD>An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource. See
-related <code>button</code>.</TD>
-<td><em></em><a href="https://www.w3.org/TR/wai-aria-practices/examples/link/link.html">link example</a></td>
-<td><ul>
-<li>List Links <kbd>INSERT+F7</kbd></li>
-<li>Next Link <code><kbd>TAB</kbd></code></li>
-<li>Prior Link <kbd>SHIFT+TAB</kbd></li>
-<li>Next Visited <kbd>Link V</kbd></li>
-<li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
-<li>Open Link <kbd>ENTER</kbd></li>
-<li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
-<li>Next Non Link Text <kbd>N</kbd></li>
-<li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-list"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#list">list</a></code></TD>
-<TD>A group of non-interactive list items. See related <code>listbox</code>.</TD>
-<td><a href="https://patrickhlauke.github.io/aria/demos/role-list.html">list example</a></td>
-<td><ul>
-  <li>List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd></li>
-  <li>Next List <kbd>L</kbd></li>
-  <li>Previous List <kbd>SHIFT+I</kbd></li>
-  <li> Next Item in a List <kbd>I</kbd></li>
-  <li>Previous item in a List <kbd>SHIFT+I</kbd></li>
-</ul></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-listbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#listbox">listbox</a></code></TD>
-<TD>A widget that allows the user to select one or more items from a list of choices. See related <code>combobox</code> and <code>list</code>.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox.html">listbox example</a></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<!-- <tr>
-<th scope="row"><a href="http://www.w3.org/html/wg/drafts/html/master/commands.html#the-dialog-element"><code>dialog [no test]</code></a></th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr> -->
-
-<tr>
-<TD tabindex="-1" id="index-aria-listitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#listitem">listitem</a></code></TD>
-<TD>A single item in a <code>list</code> or <code>directory</code>.</TD>
-<td><a href="https://patrickhlauke.github.io/aria/demos/role-list.html">listitem example</a></td>
-<td><ul>
-  <li>Next Item in a List <kbd>I</kbd></li>
-  <li> Previous Item in a List <kbd>SHIFT+I</kbd></li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-log"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#log">log</a></code></TD>
-<TD>A type of live region where new information is added in meaningful order and old information may disappear. See related <code>marquee</code>. </TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-main"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#main">main</a></code></TD>
-<TD>The main content of a document.</TD>
-<td><a href="https://w3c.github.io/aria-practices/examples/landmarks/main.html">main example</a></td>
-<td><ul>
-  <li>Move to Main Region <kbd>Q</kbd></li>
-  <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+) </li>
-  <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS 15+) </li>
-  <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-e">
-<TD tabindex="-1" id="index-aria-marquee"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#marquee">marquee</a></code></TD>
-<TD>A type of live region where non-essential information changes frequently. See related <code>log</code>.</TD>
-<td><em></em></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-math"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#math">math</a></code></TD>
-<TD>Content that represents a mathematical expression. </TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-f">
-<TD tabindex="-1" id="index-aria-menu"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menu">menu</a></code></TD>
-<TD>A type of widget that offers a list of choices to the user.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html">menu example</a> (see sub-menu in example)</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-menubar"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menubar">menubar</a></code></TD>
-<TD>A presentation of menu that usually remains visible and is usually presented horizontally.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html">menubar example</a></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-menuitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitem">menuitem</a></code></TD>
-<TD>An option in a group of choices contained by a <code>menu</code> or <code>menubar</code>.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html">menuitem example</a> (included in menubar example)</td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-menuitemcheckbox"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox">menuitemcheckbox</a> </code></TD>
-<TD>A checkable menuitem that has three possible values: true, false, or mixed.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-2/menubar-2.html">menuitemcheckbox example</a></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-menuitemradio"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemradio">menuitemradio</a></code></TD>
-<TD>A checkable menuitem in a group of <code>menuitemradio</code> roles, only one of which can be checked at a time.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-2/menubar-2.html">menuitemradio example</a></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr id="toc-h">
-<TD tabindex="-1" id="index-aria-navigation"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#navigation">navigation</a></code></TD>
-<TD>A collection of navigational elements (usually links) for navigating the document or related documents.</TD>
-<td><a href="https://w3c.github.io/aria-practices/examples/landmarks/navigation.html">navigation example</a></td>
-<td><ul>
-  <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS14) <kbd>R</kbd> (JAWS 15+) </li>
-  <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS14) <kbd>SHIFT+R</kbd> (JAWS 15+) </li>
-  <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
-</ul></td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-none"><code><a href="https://www.w3.org/TR/wai-aria-1.1/#none">none</a></code> <span class="new-feature" ></span></TD>
-<TD>An element whose implicit native role semantics will not be mapped to the accessibility <abbr title="Application Programing Interfaces">API</abbr>. See synonym <a href="#index-aria-presentation">presentation</a></TD>
-<td><em><strong>none expected</strong></em></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-note"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#note">note</a></code></TD>
-<TD>A section whose content is parenthetic or ancillary to the main content of the resource.</TD>
-<td><a href="http://thepaciellogroup.github.io/w3c-footnote/">note example</a><p>(the footer of the blockquote)</p></td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<TD tabindex="-1" id="index-aria-option"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#option">option</a></code></TD>
-<TD>A selectable item in a select list.</TD>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-combobox">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#combobox"><code>combobox</code></a>
+            </td>
+            <td>
+              A presentation of a select; usually similar to a textbox where users can type ahead to select an option, or type to enter arbitrary text as a new item in the list. See related <code>listbox</code>.
+            </td>
+            <td>
+              <a href="http://juicystudio.com/tpg/rbc/wrappedcombo/combo.html"><code>combobox</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-complementary">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#complementary"><code>complementary</code></a>
+            </td>
+            <td>
+              A supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains meaningful when separated from the main content.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/landmarks/complementary.html"><code>complementary</code> examples</a>
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14)
+                  <kbd>R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>SHIFT+R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)
+                </li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-contentinfo">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#contentinfo"><code>contentinfo</code></a>
+            </td>
+            <td>
+              A large perceivable region that contains information about the parent document.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/landmarks/contentinfo.html"><code>contentinfo</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14)
+                  <kbd>R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>SHIFT+R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)
+                </li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-definition">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#definition"><code>definition</code></a>
+            </td>
+            <td>A definition of a term or concept.</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-dialog">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#dialog"><code>dialog</code></a>
+            </td>
+            <td>
+              A dialog is an application window that is designed to interrupt the current processing of an application in order to prompt the user to enter information or require a response. See related <code>alerTDialog</code>.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/dialog-modal/dialog.html"><code>dialog</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+              <strong>Note (Aug 31, 2017):</strong> When tested with JAWS 18 &amp; IE 11, dialog not announced when opened. Additionally, field names/labels shared across all input fields. JAWS 18 &amp; FF 55 worked as expected.
+            </td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-directory">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#directory"><code>directory</code></a>
+            </td>
+            <td>
+              A list of references to members of a group, such as a static table of contents.
+            </td>
+            <td>
+              <a href="http://w3c.github.io/html-aria/#toc"><code>directory</code> example</a>
+              <p><em>See Table of Contents</em></p>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-document">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#document"><code>document</code></a>
+            </td>
+            <td>
+              A region containing related information that is declared as document content, as opposed to a web application.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-feed">
+              <a href="https://www.w3.org/TR/wai-aria-1.1/#feed"><code>feed</code></a>
+              <span class="new-feature"></span></td>
+            <td>
+              A scrollable list of articles where scrolling may cause articles to be added to or removed from either end of the list.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-figure">
+              <a href="https://www.w3.org/TR/wai-aria-1.1/#figure"><code>figure</code></a> <span class="new-feature"></span>
+            </td>
+            <td>
+              A perceivable section of content that typically contains a graphical document, images, code snippets, or example text.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-form">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#form"><code>form</code></a>
+            </td>
+            <td>
+              A landmark region that contains a collection of items and objects that, as a whole, combine to create a form. See related <code>search</code>.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/landmarks/form.html"><code>form</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14)
+                  <kbd>R</kbd> (JAWS 15)
+                </li>
+                <li>
+                  Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>SHIFT+R</kbd> (JAWS 15)
+                </li>
+                <li>
+                  Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14)
+                  <kbd>INSERT+CTRL+R</kbd> (JAWS 15)
+                </li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              Need to check whether it needs an accessible name to be announced/navigable
+            </td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-grid">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#grid"><code>grid</code></a>
+            </td>
+            <td>
+              A <code>grid</code> is an interactive control which contains cells of tabular data arranged in rows and columns, like a table.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html"><code>grid</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-gridcell">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#gridcell"><code>gridcell</code></a>
+            </td>
+            <td>
+              A cell in a <code>grid</code> or <code>treegrid</code>.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html"><code>grid</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-group">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#group"><code>group</code></a>
+            </td>
+            <td>
+              A set of user interface objects which are not intended to be included in a page summary or table of contents by assistive technologies.
+            </td>
+            <td>
+              <a href="http://mars.dequecloud.com/demo/form-markup.htm#tech6"><code>group</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-heading">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#heading"><code>heading</code></a>
+            </td>
+            <td>
+              A <code>heading</code> for a section of the page.
+            </td>
+            <td>
+              <a href="https://patrickhlauke.github.io/aria/demos/role-heading.html"><code>heading</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>List Headings <kbd>INSERT</kbd>+<kbd>F6 </kbd></li>
+                <li>Next Heading <kbd>H</kbd></li>
+                <li>Prior Heading <kbd>SHIFT+H</kbd></li>
+                <li>First Heading <kbd>ALT+INSERT+HOME</kbd></li>
+                <li>Last Heading <kbd>ALT+INSERT+END </kbd></li>
+                <li>Next Heading at Level - number keys <kbd>1</kbd> through <kbd>6</kbd></li>
+                <li>Prior Heading at Level <kbd>SHIFT+1</kbd> through <kbd>6 </kbd></li>
+                <li>First Heading at Level <kbd>ALT+CTRL+INSERT+1</kbd> through <kbd>6</kbd></li>
+                <li>Last Heading at Level <kbd>ALT+CTRL+INSERT+ SHIFT+1</kbd> through <kbd>6</kbd></li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              Requires <code>aria-level</code> attribute with a valid value to announce level.
+            </td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-img">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#img"><code>img</code></a>
+            </td>
+            <td>
+              A container for a collection of elements that form an image.
+            </td>
+            <td>
+              "Graphic" <em>alt attribute content</em>
+            </td>
+            <td>
+              <ul>
+                <li>List of Graphics <kbd>CTRL+INSERT+G</kbd></li>
+                <li>Next Graphic <kbd>G</kbd></li>
+                <li>Previous Graphic <kbd>SHIFT+G</kbd></li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-link">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#link"><code>link</code></a>
+            </td>
+            <td>
+              An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource. See related <code>button</code>.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/link/link.html"><code>link</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>List Links <kbd>INSERT+F7</kbd></li>
+                <li>Next Link <code><kbd>TAB</kbd></code></li>
+                <li>Prior Link <kbd>SHIFT+TAB</kbd></li>
+                <li>Next Visited <kbd>Link V</kbd></li>
+                <li>Prior Visited Link <kbd>SHIFT+V</kbd></li>
+                <li>Open Link <kbd>ENTER</kbd></li>
+                <li>Open Link in New Window <kbd>SHIFT+ENTER</kbd></li>
+                <li>Next Non Link Text <kbd>N</kbd></li>
+                <li>Prior Non Link Text <kbd>SHIFT+N</kbd></li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-list">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#list"><code>list</code></a>
+            </td>
+            <td>
+              A group of non-interactive list items. See related <code>listbox</code>.
+            </td>
+            <td>
+              <a href="https://patrickhlauke.github.io/aria/demos/role-list.html"><code>list</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>
+                  List All Ordered, Unordered, and Definition Lists <kbd>CTRL+INSERT+L</kbd>
+                </li>
+                <li>
+                  Next List <kbd>L</kbd>
+                </li>
+                <li>
+                  Previous List <kbd>SHIFT+I</kbd>
+                </li>
+                <li>
+                   Next Item in a List <kbd>I</kbd>
+                </li>
+                <li>
+                  Previous item in a List <kbd>SHIFT+I</kbd>
+                </li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-listbox">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#listbox"><code>listbox</code></a>
+            </td>
+            <td>
+              A widget that allows the user to select one or more items from a list of choices. See related <code>combobox</code> and <code>list</code>.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox.html"><code>listbox</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-listitem">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#listitem"><code>listitem</code></a>
+            </td>
+            <td>
+              A single item in a <code>list</code> or <code>directory</code>.
+            </td>
+            <td>
+              <a href="https://patrickhlauke.github.io/aria/demos/role-list.html"><code>listitem</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>Next Item in a List <kbd>I</kbd></li>
+                <li>Previous Item in a List <kbd>SHIFT+I</kbd></li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-log">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#log"><code>log</code></a>
+            </td>
+            <td>
+              A type of live region where new information is added in meaningful order and old information may disappear. See related <code>marquee</code>.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-main">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#main"><code>main</code></a>
+            </td>
+            <td>
+              The main content of a document.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/landmarks/main.html"><code>main</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Move to Main Region <kbd>Q</kbd>
+                </li>
+                <li>
+                  Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+)
+                </li>
+                <li>
+                  Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)
+                </li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-marquee">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#marquee"><code>marquee</code></a>
+            </td>
+            <td>
+              A type of live region where non-essential information changes frequently. See related <code>log</code>.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-math">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#math"><code>math</code></a>
+            </td>
+            <td>
+              Content that represents a mathematical expression.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-menu">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#menu"><code>menu</code></a>
+            </td>
+            <td>
+              A type of widget that offers a list of choices to the user.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html"><code>menu</code> example</a> (see sub-menu in example)
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-menubar">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#menubar"><code>menubar</code></a>
+            </td>
+            <td>
+              A presentation of <code>menu</code> that usually remains visible and is usually presented horizontally.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html"><code>menubar</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-menuitem">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#menuitem"><code>menuitem</code></a>
+            </td>
+            <td>
+              An option in a group of choices contained by a
+              <code>menu</code> or <code>menubar</code>.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html"><code>menuitem</code> example</a> (included in <code>menubar</code> example)
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-menuitemcheckbox">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox"><code>menuitemcheckbox</code></a>
+            </td>
+            <td>
+              A checkable <code>menuitem</code> that has three possible values:
+              <code>true</code>, <code>false</code>, or <code>mixed</code>.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-2/menubar-2.html"><code>menuitemcheckbox</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-menuitemradio">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#menuitemradio"><code>menuitemradio</code></a>
+            </td>
+            <td>
+              A checkable <code>menuitem</code> in a group of
+              <code>menuitemradio</code> roles, only one of which
+              can be checked at a time.</td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-2/menubar-2.html"><code>menuitemradio</code> example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-navigation">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#navigation"><code>navigation</code></a>
+            </td>
+            <td>
+              A collection of navigational elements (usually links) for navigating the document or related documents.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/landmarks/navigation.html"><code>navigation</code> example</a>
+            </td>
+            <td>
+              <ul>
+                <li>Move to Next Region <kbd>SEMICOLON</kbd> (JAWS 14) <kbd>R</kbd> (JAWS 15+) </li>
+                <li>Move to Previous Region <kbd>SHIFT+SEMICOLON</kbd> (JAWS 14) <kbd>SHIFT+R</kbd> (JAWS 15+) </li>
+                <li>Select a Region <kbd>INSERT+CTRL+SEMICOLON</kbd> (JAWS 14) <kbd>INSERT+CTRL+R</kbd> (JAWS 15+)</li>
+              </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-none">
+              <a href="https://www.w3.org/TR/wai-aria-1.1/#none"><code>none</code></a>
+              <span class="new-feature"></span>
+            </td>
+            <td>
+              An element whose implicit native role semantics will
+              not be mapped to the accessibility
+              <abbr title="Application Programing Interfaces">API</abbr>.
+              See synonym <a href="#index-aria-presentation">presentation</a>.
+            </td>
+            <td><em><strong>none expected</strong></em></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-note">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#note"><code>note</code></a>
+            </td>
+            <td>
+              A section whose content is parenthetic or ancillary to the main content of the resource.
+            </td>
+            <td>
+              <a href="http://thepaciellogroup.github.io/w3c-footnote/"><code>note</code> example</a>
+              (the footer of the blockquote)
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td tabindex="-1" id="index-aria-option">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#option"><code>option</code></a>
+            </td>
+            <td>
+              A selectable item in a select list.
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
             <td tabindex="-1" id="index-aria-presentation">
               <a href="http://www.w3.org/TR/wai-aria-1.1/#presentation"><code>presentation</code></a>
             </td>
