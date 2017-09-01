@@ -1,67 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Jaws CSS support</title>
-<meta charset="utf-8">
-<script src="scripts/html5shiv.js"></script>
-<style>
-.note {
-padding: 0.5em 2em;
-background: none repeat scroll 0 0 #e9fbe9;
-border-left: 0.25em solid #52e052; }
+  <head>
+    <title>Jaws CSS Support</title>
+    <script src="scripts/html5shiv.js"></script>
+    <link rel="stylesheet" href="./assets/style/styles.css">
+  </head>
+  <body>
+  <header>
+    <img src="./assets/images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
+    <h1>Jaws CSS Support</h1>
 
-table {
-border-collapse: collapse;
-border: 1px solid #630;
-font: 0.8em Arial, Verdana, Helvetica, sans-serif; }
+    <p>A Work <em>in progress</em>: Last updated 31 May 2017</p>
+    <p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
+    <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
 
-th, td {
-text-align: left;
-vertical-align: top;
-padding: 0.3em;
-border: 1px solid #630; }
+    <p>Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.</p>
+  </header>
 
-th[scope='row'] { text-align:left; }
-
-tbody tr:hover { outline:solid 2px #666666; }
-
-.navlist li {
-display: inline;
-list-style-type: none;
-padding-right: 20px; }
-
-#logo {float:left}
-
-a:hover, a:focus { background-color:#99FF99; outline:solid thin #030; }
-
-kbd {
-background-color: #F1F1F1;
-border: 1px solid #666;
-border-radius: 5px;
-color: #333;
-padding: 0px 2px;
-margin: 1px;
-font-weight: bold;
-font-family: Arial,Helvetica,sans-serif;
-min-width: 17px;
-display: inline-block;
-}
-
-</style>
-<link href="https://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css"/>
-<head>
-<body>
-<header>
-<img src="images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
-<h1>Jaws CSS support</h1>
-
-<p>A Work <em>in progress</em>: Last updated 31 May 2017</p>
-<p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
-<p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
-
-<p>Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.</p>
-</header>
-<main>
+  <main>
 <h2>How HTML elements are supported by screen readers</h2>
 <p>Typical support patterns of HTML elements by screen readers:</p>
 <ul>
@@ -80,12 +36,12 @@ display: inline-block;
 <p class="note">JAWS testing - In progress</p>
 <table class="alt">
 <caption>
-JAWS ARIA Feature support (Firefox on Windows 10)
+JAWS CSS Feature support (Firefox on Windows 10)
 </caption>
 <thead>
 <tr>
 <th scope="col">Role [test file linked]</th>
-<th scope="col"> represents</th>
+<th scope="col">Represents</th>
 <th scope="col">AURAL UI</th>
 <th scope="col">Interaction</th>
 <th width="83" scope="col">ARIA Semantics conveyed?</th>
