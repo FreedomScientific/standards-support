@@ -47,6 +47,10 @@ label + * {
   margin-top: 0;
 }
 
+li {
+  margin-top: .25em;
+}
+
 /* Headings
 -------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
@@ -174,8 +178,9 @@ textarea:focus {
 
 /* Header Content Styles
 -------------------------------------------------- */
-header {
+body > header {
   background: #fafafa;
+  border-bottom: 1px solid #eee;
   margin: -2.5em -2.5em 1.5em;
   padding: 2.5em;
 }
@@ -268,10 +273,6 @@ table a:after {
 
 td ul {
   padding-left: 1.25em;
-}
-
-td li {
-  margin-top: .25em;
 }
 
 tbody th,
