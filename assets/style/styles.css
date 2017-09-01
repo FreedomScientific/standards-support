@@ -8,8 +8,12 @@
   font-style: normal;
 }
 
-/* Body
+/* Body & HTML
 -------------------------------------------------- */
+html {
+  font-family: Calibri, Candara, Geneva, sans-serif;
+}
+
 body {
   background: #fefefe;
   border-top: 6px solid #1b75bc;
@@ -19,6 +23,7 @@ body {
 /* Flow
 -------------------------------------------------- */
 * {
+  font-family: inherit;
   margin: 0;
 }
 
