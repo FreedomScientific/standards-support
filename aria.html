@@ -1,95 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Jaws ARIA support</title>
-<meta charset="utf-8">
-<script src="scripts/html5shiv.js"></script>
-<style>
-.note {
-padding: 0.5em 2em;
-background: none repeat scroll 0 0 #e9fbe9;
-border-left: 0.25em solid #52e052; }
+  <head>
+    <meta charset="utf-8">
+    <title>JAWS ARIA Support</title>
+    <script src="scripts/html5shiv.js"></script>
+    <link rel="stylesheet" href="./assets/style/styles.css">
+  </head>
+  <body>
+    <header>
+      <img src="assets/images/HTML5_Logo.png" alt="HTML5 logo" id="logo">
+      <h1>JAWS ARIA Role Support</h1>
 
-table {
-border-collapse: collapse;
-border: 1px solid #630;
-font: 0.8em Arial, Verdana, Helvetica, sans-serif; }
+      <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
 
-th, td {
-text-align: left;
-vertical-align: top;
-padding: 0.3em;
-border: 1px solid #630; }
+      <p>Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.</p>
+    </header>
 
-th[scope='row'] { text-align:left; }
+    <main>
+      <p>A Work <em>in progress</em>: Last updated 1 September 2017</p>
+      <p>Typical support patterns:</p>
+      <ul>
+        <li>***TBC***</li>
+      </ul>
 
-tbody tr:hover { outline:solid 2px #666666; }
+      <p class="note">JAWS testing - In progress</p>
 
-.navlist li {
-display: inline;
-list-style-type: none;
-padding-right: 20px; }
-
-#logo {float:left}
-
-a:hover, a:focus { background-color:#99FF99; outline:solid thin #030; }
-
-kbd {
-background-color: #F1F1F1;
-border: 1px solid #666;
-border-radius: 5px;
-color: #333;
-padding: 0px 2px;
-margin: 1px;
-font-weight: bold;
-font-family: Arial,Helvetica,sans-serif;
-min-width: 17px;
-display: inline-block;
-}
-
-</style>
-<link href="https://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css"/>
-<head>
-<body>
-<header>
-<img src="assets/images/HTML5_Logo.png" width="128" height="128" alt="HTML5 logo" id="logo">
-<h1>Jaws ARIA role support</h1>
-
-<p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a></p>
-
-<p>Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.</p>
-</header>
-
-<main>
-  <p>A Work <em>in progress</em>: Last updated 25 August 2017</p>
-<p>Typical support patterns:</p>
-<ul>
-<li>***TBC***</li>
-</ul>
-
-<p class="note">JAWS testing - In progress</p>
-
-<table class="alt">
-<caption>JAWS ARIA role support (chrome on Windows 10)</caption>
-<thead>
-<tr>
-<th scope="col">Role</th>
-<th scope="col">Description</th>
-<th scope="col">Test case</th>
-<th scope="col">Interaction</th>
-<th scope="col">Supported</th>
-<th scope="col">Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr id="toc-a2">
-<TD tabindex="-1" id="index-aria-alert"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#alert">alert</a></code></TD>
-<TD>A type of <code>live region</code> with important, and usually time-sensitive, information. See related <code>alerTDialog</code> and <code>status</code>.</TD>
-<td><a href="http://w3c.github.io/aria-practices/examples/alert/index.html">alert example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
+      <table class="alt">
+        <caption>JAWS ARIA role Support (chrome on Windows 10)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Role</th>
+            <th scope="col">Description</th>
+            <th scope="col">Test case</th>
+            <th scope="col">Interaction</th>
+            <th scope="col">Supported</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="toc-a2">
+            <td tabindex="-1" id="index-aria-alert">
+              <code><a href="http://www.w3.org/TR/wai-aria-1.1/#alert">alert</a></code>
+            </td>
+            <td>
+              A type of <code>live region</code> with important, and usually time-sensitive, information. See related <code>alertDialog</code> and <code>status</code>.
+            </td>
+            <td>
+              <a href="https://w3c.github.io/aria-practices/examples/alert/index.html">alert example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
 <tr>
 <TD tabindex="-1" id="index-aria-alerTDialog"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#alerTDialog">alertdialog</a></code></TD>
 <TD>A type of dialog that contains an alert message, where initial focus goes to an element within the dialog. See related <code>alert</code> and <code>dialog</code>.</TD>
@@ -760,29 +722,38 @@ presented as a status bar. See related <code>alert</code>.</TD>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr id="toc-l">
-<TD tabindex="-1" id="index-aria-treeitem"><code><a href="http://www.w3.org/TR/wai-aria-1.1/#treeitem">treeitem</a></code></TD>
-<TD>An option item of a tree. This is an element within a tree that may be expanded or collapsed if it contains a sub-level group of treeitems.</TD>
-<td><a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html">treeitem example</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<th scope="col">Role</th>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</tfoot>
-</table>
-</main>
-<footer>
-<p><strong>Editors:</strong> Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke</p>
-</footer>
-</body>
+          <tr id="toc-l">
+            <td tabindex="-1" id="index-aria-treeitem">
+              <a href="http://www.w3.org/TR/wai-aria-1.1/#treeitem"><code>treeitem</code></a>
+            </td>
+            <td>
+              An option item of a tree. This is an element within a tree that may be expanded or collapsed if it contains a sub-level group of treeitems.
+            </td>
+            <td>
+              <a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html">treeitem example</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td>Role</th>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        </tfoot>
+      </table>
+    </main>
+    <footer>
+      <p>
+        <strong>Editors:</strong>
+        Steve Faulkner, Leonie Watson, Ian Pouncey, Gez Lemon, Hans Hillen and Patrick Lauke
+      </p>
+    </footer>
+  </body>
 </html>
