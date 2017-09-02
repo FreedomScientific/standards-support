@@ -77,6 +77,10 @@ h2 {
   font-size: 2em;
 }
 
+h2:not(:first-child) {
+  margin-top: 1em;
+}
+
 h3 {
   border-top: lightgray solid 1px;
   font-size: 1.33em;
@@ -85,6 +89,8 @@ h3 {
 
 h4 {
   font-size: 1em;
+  font-variant: small-caps;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -95,10 +101,6 @@ h6 {
   font-size: .8em;
 }
 
-h4 {
-  font-variant: small-caps;
-  text-transform: uppercase;
-}
 
 /* Links & Buttons
 -------------------------------------------------- */
@@ -240,7 +242,7 @@ table {
 caption {
   font-size: 1em;
   font-weight: bold;
-  padding: 1em;
+  padding: 0 1em 1em;
 }
 
 th,
