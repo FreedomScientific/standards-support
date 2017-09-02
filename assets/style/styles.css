@@ -233,6 +233,7 @@ table {
   border: 0;
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: .9em;
   width: 100%;
 }
 
@@ -246,13 +247,22 @@ th,
 td {
   border: 1px solid #333;
   padding: .33em;
+  text-align: left;
+}
+
+thead th {
+  background-color: #1b75bc;
+  color: #fff;
 }
 
 thead th,
 tfoot tr:first-of-type td {
-  background-color: #1b75bc;
-  color: #fff;
   font-family: "Roboto Slab", Cambria, Georgia, serif;
+  font-weight: bold;
+}
+
+tfoot tr:first-of-type > * {
+  border-top: 4px solid #1b75bc;
 }
 
 tbody tr:nth-child(odd) {
@@ -288,6 +298,14 @@ tbody td {
 .status-icon {
   height: 16px;
   width: 16px;
+}
+
+.col-1 {
+  width: 180px;
+}
+
+.col-2 {
+  width: 320px;
 }
 
 /* Figures, note and kbd
