@@ -22,7 +22,7 @@
 
     <main>
       <p>
-        A Work <em>in progress</em>: Last updated 4 September 2017.
+        A Work <em>in progress</em>: Last updated 17 September 2017.
       </p>
       <p class="note">JAWS testing - In progress</p>
 
@@ -197,7 +197,15 @@
               A cell in a tabular container.
             </td>
             <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#cell">cell test</a></p>              <p><a href="http://test-cases.tink.uk/aria-tables">test-cases.tink.uk/aria-tables</a></p></td>
-            <td>&nbsp;</td>
+            <td><ul>
+              <li>Jump to Table Cell (from within a table) <kbd>CTRL+WINDOWS Key+J</kbd></li>
+              <li>Return to Previous Cell <kbd>CTRL+SHIFT+WINDOWS Key+J</kbd></li>
+              <li>Read current cell <kbd>CTRL+ALT+NUM PAD 5</kbd></li>
+              <li>Move to and Read Next Cell <kbd>CTRL+ALT+RIGHT ARROW</kbd></li>
+              <li>Move to and Read Prior Cell <kbd>CTRL+ALT+LEFT ARROW</kbd></li>
+              <li>Move to and Read Cell Above <kbd>CTRL+ALT+UP ARROW</kbd></li>
+              <li>Move to and Read Cell Below <kbd>CTRL+ALT+DOWN ARROW</kbd></li>
+            </ul></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -795,7 +803,8 @@
             <td>
               A selectable item in a select list.
             </td>
-            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#menuitemcheckbox">menuitemcheckbox test</a></td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#option">option test</a></p>
+            <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox.html"><code>option</code> example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -807,7 +816,7 @@
             <td>
               An element whose implicit native role semantics will not be mapped to the accessibility API.
             </td>
-            <td><em><strong>None expected</strong></em></td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#presentation">presentation test</a></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -819,7 +828,8 @@
             <td>
               An element that displays the progress status for tasks that take a long time.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#progressbar">progressbar test</a></p>
+            <p><a href="http://hanshillen.github.io/jqtest/#goto_progressbar">progressbar example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -832,7 +842,9 @@
               A checkable input in a group of <code>radio</code> roles, only one of which can be checked at a time.
             </td>
             <td>
-              <a href="https://w3c.github.io/aria-practices/examples/radio/radio-1/radio-1.html"><code>radio</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#radio">radio test</a></p>
+              <p><a href="https://w3c.github.io/aria-practices/examples/radio/radio-1/radio-1.html"><code>radio</code> example</a>
+              </p>
               <p>"radio button checked/not checked" <em>label content</em>
               "x of y" where x = position in radio group, y = number of radio
               buttons in group.</p>
@@ -853,7 +865,8 @@
             </td>
             <td>A group of radio buttons.</td>
             <td>
-              <a href="https://w3c.github.io/aria-practices/examples/radio/radio-1/radio-1.html"><code>radiogroup</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#radiogroup">radiogroup test</a></p>
+              <p><a href="https://w3c.github.io/aria-practices/examples/radio/radio-1/radio-1.html"><code>radiogroup</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -867,7 +880,8 @@
               A large perceivable section of a web page or document, that the author feels is important enough to be included in a page summary or table of contents, for example, an area of the page containing live sporting event statistics.
             </td>
             <td>
-              <a href="https://w3c.github.io/aria-practices/examples/landmarks/region.html"><code>region</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#region">region test</a></p>
+              <p><a href="https://w3c.github.io/aria-practices/examples/landmarks/region.html"><code>region</code> example</a></p>
             </td>
             <td>
               <p>If the region has an accessible name then:</p>
@@ -893,8 +907,15 @@
             <td>
               A row of cells in a tabular container.
             </td>
-            <td><a href="http://test-cases.tink.uk/aria-tables">test-cases.tink.uk/aria-tables</a></td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#row">row test</a></p>
+            <p><a href="http://test-cases.tink.uk/aria-tables">row example</a></p></td>
+            <td><ul>
+              <li>Read Next Row <kbd>WINDOWS Key+ALT+DOWN ARROW</kbd></li>
+              <li>Read Prior Row <kbd>WINDOWS Key+ALT+UP ARROW </kbd></li>
+              <li>Read Current Row <kbd>ALT+WINDOWS Key+COMMA</kbd></li>
+              <li> Read from Beginning of Row to Current Cell <kbd>INSERT+SHIFT+HOME</kbd></li>
+              <li>Read from Current Cell to End of Row <kbd>INSERT+SHIFT+PAGE UP</kbd></li>
+            </ul></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -905,7 +926,7 @@
             <td>
               A group containing one or more row elements in a grid.
             </td>
-            <td>&nbsp;</td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#rowgroup">rowgroup test</a></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -917,7 +938,8 @@
             <td>
               A cell containing header information for a row in a grid.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#rowheader">rowheader test</a></p>
+            <p><a href="http://test-cases.tink.uk/aria-tables">rowheader example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -929,7 +951,7 @@
             <td>
               A graphical object that controls the scrolling of content within a viewing area, regardless of whether the content is fully displayed within the viewing area.
             </td>
-            <td>&nbsp;</td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#scrollbar">scrollbar test</a></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -942,7 +964,8 @@
               A landmark region that contains a collection of items and objects that, as a whole, combine to create a search facility. See related <code>form </code>.
             </td>
             <td>
-              <a href="https://w3c.github.io/aria-practices/examples/landmarks/search.html"><code>search</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#search">search test</a></p>
+              <p><a href="https://w3c.github.io/aria-practices/examples/landmarks/search.html"><code>search</code> example</a></p>
             </td>
             <td>
               <ul>
@@ -962,7 +985,7 @@
             <td>
               A type of textbox intended for specifying search criteria.
             </td>
-            <td>&nbsp;</td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#searchbox">searchbox test</a></td>
             <td>
               <ul>
                 <li>List Edit Boxes <kbd>CTRL+INSERT+E</kbd></li>
@@ -981,7 +1004,9 @@
               A divider that separates and distinguishes sections of content or groups of menuitems.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html"><code>separator</code> (accordion) example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#separator">separator test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html"><code>separator</code> (accordion) example</a>
+              </p>
               <p>
                 <em>(When using JAWS, start at heading "Example," then read down)</em>
               </p>
@@ -1003,9 +1028,10 @@
               A user input where the user selects a value from within a given range.
             </td>
             <td>
-              <p>
-                <a href="https://w3c.github.io/aria-practices/examples/slider/slider-1.html">single <code>slider</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#slider">slider test</a>
                 </p>
+              <p><a href="https://w3c.github.io/aria-practices/examples/slider/slider-1.html">single <code>slider</code> example</a>
+              </p>
                 <p>
                   <a href="https://w3c.github.io/aria-practices/examples/slider/multithumb-slider.html">multi <code>slider</code> example</a>
                 </p>
@@ -1029,7 +1055,8 @@
             <td>
               A form of range that expects the user to select from among discrete choices.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#spinbutton">spinbutton test</a></p>
+            <p><a href="https://de.ryerson.ca/wa/aria/mootools/spinbutton.html">spinbutton example</a></p></td>
             <td>
               If the <code>spinbutton</code> has the appropriate scripted event handlers:
               <ul>
@@ -1050,7 +1077,8 @@
             <td>
               A container whose content is advisory information for the user but is not important enough to justify an alert, often but not necessarily presented as a status bar. See related <code>alert</code>.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#status">status test</a></p>
+            <p><a href="http://www.manateeroad.com/status.html">status example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1063,7 +1091,8 @@
             <td>
               A type of checkbox that represents on/off values, as opposed to checked/unchecked values.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#switch">switch test</a></p>
+            <p><a href="https://scottaohara.github.io/aria-switch-button/">switch button example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1076,7 +1105,8 @@
               A grouping label providing a mechanism for selecting the tab content that is to be rendered to the user.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tab</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#tab">tab test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tab</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1090,7 +1120,8 @@
             <td>
               A section containing data arranged in rows and columns. The table role is intended for tabular containers which are not interactive.
             </td>
-            <td><a href="http://test-cases.tink.uk/aria-tables">test-cases.tink.uk/aria-tables</a></td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#table">table test</a></p>
+            <p><a href="http://test-cases.tink.uk/aria-tables">table example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1104,7 +1135,8 @@
               to <code>tabpanel</code> elements.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tablist</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#tablist">tablist test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tablist</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1118,7 +1150,8 @@
               A container for the resources associated with a <code>tab</code>, where each <code>tab</code> is contained in a <code>tablist</code>.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tabpanel</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#tabpanel">tabpanel test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"><code>tabpanel</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1132,7 +1165,7 @@
               A word or phrase with a corresponding definition. See related
               <a href="#index-aria-definition">definition</a>.
             </td>
-            <td>&nbsp;</td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#term">term test</a></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1144,7 +1177,7 @@
             <td>
               Input that allows free-form text as its value.
             </td>
-            <td>&nbsp;</td>
+            <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#textbox">textbox test</a></td>
             <td>
               <ul>
                 <li>List Edit Boxes <kbd>CTRL+INSERT+E</kbd></li>
@@ -1162,7 +1195,8 @@
             <td>
               A type of live region containing a numerical counter which indicates an amount of elapsed time from a start point, or the time remaining until an end point.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#timer">timer test</a></p>
+            <p><a href="http://oaa-accessibility.org/examplep/live1/">timer example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1175,7 +1209,8 @@
               A collection of commonly used function buttons represented in compact visual form.
             </td>
             <td>
-              <a href="http://heydonworks.com/practical_aria_examples/#toolbar-widget"><code>toolbar</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#toolbar">toolbar test</a></p>
+              <p><a href="http://heydonworks.com/practical_aria_examples/#toolbar-widget"><code>toolbar</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1188,7 +1223,8 @@
               A contextual popup that displays a description for an element.
             </td>
             <td>
-              <a href="http://heydonworks.com/practical_aria_examples/#input-tooltip"><code>tooltip</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#tooltip">tooltip test</a></p>
+              <p><a href="http://heydonworks.com/practical_aria_examples/#input-tooltip"><code>tooltip</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1202,7 +1238,8 @@
               A type of list that may contain sub-level nested groups that can be collapsed and expanded.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#tree">tree test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1215,7 +1252,7 @@
             <td>
               A grid whose rows can be expanded and collapsed in the same manner as for a tree.
             </td>
-            <td>&nbsp;</td>
+            <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#treegrid">treegrid test</a></p>              <p><a href="https://rawgit.com/w3c/aria-practices/treegrid/examples/treegrid/treegrid-1.html">treegrid example</a></p></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1228,7 +1265,8 @@
               An option item of a <code>tree</code>. This is an element within a <code>tree</code> that may be expanded or collapsed if it contains a sub-level group of treeitems.
             </td>
             <td>
-              <a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a>
+              <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#treeitem">treeitem test</a></p>
+              <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a></p>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1236,14 +1274,6 @@
           </tr>
         </tbody>
         <tfoot>
-          <tr>
-            <td>Role</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
         </tfoot>
       </table>
 
@@ -1290,7 +1320,7 @@
             <td>Indicates an element is the current item in a collection</td>
             <td><a href="http://test-cases.tink.uk/aria-current/">test-cases.tink.uk/aria-current</a></td>
             <td>&nbsp;</td>
-            <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
             <td>All tokens supported in Chrome, Firefox, and IE</td>
           </tr>
           <tr>
@@ -1298,7 +1328,7 @@
             <td>Indicates an element is perceivable but disabled</td>
             <td><a href="http://test-cases.tink.uk/aria-disabled">test-cases.tink.uk/aria-disabled</a></td>
             <td>&nbsp;</td>
-            <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
             <td>Element reported as "unavailable" in Chrome, Firefox, and IE</td>
           </tr>
           <tr>
