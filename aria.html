@@ -19,7 +19,7 @@
         Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.
       </p> 
       <p>
-        A Work <em>in progress</em>: Last updated 17 September 2017.
+        A Work <em>in progress</em>: Last updated 19 September 2017.
       </p>
     </header>
 
@@ -234,7 +234,11 @@
               <p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#combobox">combobox test</a></p>
               <p><a href="http://juicystudio.com/tpg/rbc/wrappedcombo/combo.html"><code>combobox</code> example</a></p>
             </td>
-            <td>&nbsp;</td>
+            <td><ul>
+              <li>Move To Next Combo Box <kbd>C</kbd></li>
+              <li>Move to Prior Combo Box <kbd>SHIFT+C </kbd></li>
+              <li>List of Combo boxes <kbd>CTRL+INSERT+C</kbd></li>
+            </ul></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -340,7 +344,7 @@
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td><strong>Note (Sept 19, 2017):</strong> tested with JAWS 18 and FF, expected list commands to navigate to role=directory, does not occur.</td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-document">
@@ -1094,7 +1098,11 @@
             </td>
             <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#switch">switch test</a></p>
             <p><a href="https://scottaohara.github.io/aria-switch-button/">switch button example</a></p></td>
-            <td>&nbsp;</td>
+            <td><ul>
+              <li>List Check Boxes <kbd>CTRL+INSERT+X</kbd></li>
+              <li>Move To Next Check Box <kbd>X </kbd></li>
+              <li>Move to Prior Check Box <kbd>SHIFT+X</kbd></li>
+            </ul></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -1123,7 +1131,12 @@
             </td>
             <td><p><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#table">table test</a></p>
             <p><a href="http://test-cases.tink.uk/aria-tables">table example</a></p></td>
-            <td>&nbsp;</td>
+            <td><ul>
+              <li>List Tables <kbd>CTRL+INSERT+T</kbd></li>
+              <li>Next Table <kbd>T </kbd></li>
+              <li>Previous Table <kbd>SHIFT+T</kbd></li>
+              <li>Select Table use <kbd>F8</kbd>. To select an entire table, move  to the line that reads, "Table with x columns and y rows," and press <kbd>F8</kbd>.</li>
+            </ul></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
