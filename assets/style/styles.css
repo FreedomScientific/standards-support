@@ -397,3 +397,5 @@ code p {
   display: inline;
   padding: 0px;
 }
+
+strong.question { font-family: "Roboto Slab", Cambria, Georgia, serif; color:#900;font-size:larger;font weight:bold}
