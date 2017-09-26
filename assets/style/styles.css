@@ -283,10 +283,10 @@ table a {
   border: 0;
 }
 
-table a:after {
+/*table a:after {
   content: '\279C';
   margin-left: .25em;
-}
+}*/
 
 td ul {
   padding-left: 1.25em;
