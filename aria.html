@@ -12,7 +12,7 @@
       <h1>
         JAWS ARIA Role Support
       </h1>
-      <p>A Work <em>in progress</em>: Last updated 21 September 2017. </p>
+      <p>A Work <em>in progress</em>: Last updated 26 September 2017. </p>
       <p><strong>Editors:</strong> Steve Faulkner, L&eacute;onie Watson, Dennis Deacon and Scott O'Hara </p>
       <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a> </p>
       <p> Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.      </p>
@@ -24,7 +24,7 @@
       <ul>
         <li><img src="./assets/images/tick.png" class="status-icon" alt="yes"> means we have found this feature to be implemented interoperably (across multiple browsers)</li>
         <li><img src="./assets/images/cross.png" class="status-icon" alt="no"> means we have found that this feature is not implemented</li>
-        <li><strong class="question">?</strong> means we are unsure whether this feature is supported, this may be due to lack of testing or lack of clarity around what 'support' of this feature is supposed to convey to the user.    </li>
+        <li><strong class="question">?</strong> means we are unsure whether this feature is supported, this may be due to lack of testing or lack of clarity around what 'support' of this feature is supposed to convey to the user.</li>
       </ul>
       <p class="note">JAWS testing - In progress</p>
 
@@ -63,7 +63,9 @@
             </td>
             <td>&nbsp;</td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              This role does not appear  in either the virtual buffer or Forms Mode, but its contents are spoken by JAWS  when an alert is made visible.
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-alerTDialog">
@@ -328,8 +330,11 @@
             <td>&nbsp;</td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
             <td>
-              <strong>Note (Aug 31, 2017):</strong> When tested with JAWS 18 &amp; IE 11, dialog not announced when opened. Additionally, field names/labels shared across all input fields. JAWS 18 &amp; FF 55 worked as expected.
-            </td>
+              <p><strong>Note (Aug 31, 2017):</strong> When tested with JAWS 18 &amp; IE 11, dialog not announced when opened. Additionally, field names/labels shared across all input fields. JAWS 18 &amp; FF 55 worked as expected.
+            </p>
+              <blockquote>
+                <p>This role will be announced  only when a child of the dialog gets focus, and will not appear in the virtual  buffer.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-directory">
@@ -358,7 +363,9 @@
             <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#document">document test</a></td>
             <td>&nbsp;</td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              <p>This role may not be  explicitly announced by JAWS, but it indicates that the area it occupies is  meant to be read as a Web page. This is the default role of the topmost object  in a Web page (i.e., the <code>body</code> element).</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-feed">
@@ -459,7 +466,9 @@
             </td>
             <td>&nbsp;</td>
             <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              <p>Like document, this role  may not be explicitly announced by JAWS. However, when it surrounds a group of  form controls, JAWS should announce its name and description when entering the  group.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-heading">
@@ -612,8 +621,10 @@
             </td>
             <td><a href="http://stevefaulkner.github.io/HTML5accessibility/tests/ARIA-tests/#log">log test</a></td>
             <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
+            <td><blockquote>
+              <p>Presently, this role is  known to work with JAWS in Firefox only, and it functions as a type of live  region.  JAWS inserts start and end  strings into the virtual buffer to indicate the log.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-main">
@@ -801,7 +812,9 @@
             </p></td>
             <td>&nbsp;</td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              <p>JAWS inserts start and end  strings into the virtual buffer to indicate notes.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-option">
@@ -1075,7 +1088,9 @@
               </ul>
             </td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              <p>JAWS announces this role as  a &ldquo;spin box&rdquo;.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-status">
@@ -1229,8 +1244,10 @@
               <p><a href="http://heydonworks.com/practical_aria_examples/#toolbar-widget"><code>toolbar</code> example</a></p>
             </td>
             <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
+            <td><blockquote>
+              <p>This role is indicated in  the virtual buffer by start and end messages like those that exist for HTML  lists.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-tooltip">
@@ -1243,8 +1260,10 @@
               <p><a href="http://heydonworks.com/practical_aria_examples/#input-tooltip"><code>tooltip</code> example</a></p>
             </td>
             <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
+            <td><blockquote>
+              <p>This role is not shown by  JAWS in the virtual buffer or in Forms Mode, but its contents are spoken when  it becomes visible.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-tree">
@@ -1258,8 +1277,10 @@
               <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a></p>
             </td>
             <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
+            <td><blockquote>
+              <p>When in the virtual buffer,  JAWS may show only one item of a tree control. This allows the user to navigate  past the tree quickly.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td tabindex="-1" id="index-aria-treegrid">
@@ -1285,7 +1306,7 @@
               <p><a href="https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html"><code>treeitem</code> example</a></p>
             </td>
             <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
             <td>&nbsp;</td>
           </tr>
         </tbody>
@@ -1320,7 +1341,9 @@
             <td>&nbsp;</td>
             <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
               &nbsp;<strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><blockquote>
+              <p>In Firefox, an element  marked as aria-busy is omitted from the accessibility tree for the page.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/TR/wai-aria-1.1/#aria-checked"><code>aria-checked</code></a></td>
@@ -1345,7 +1368,10 @@
             <td><a href="http://test-cases.tink.uk/aria-disabled">test-cases.tink.uk/aria-disabled</a></td>
             <td>&nbsp;</td>
             <td><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
-            <td>Element reported as "unavailable" in Chrome, Firefox, and IE</td>
+            <td><p>Element reported as "unavailable" in Chrome, Firefox, and IE</p>
+              <blockquote>
+                <p>JAWS  announces this state for form controls.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/TR/wai-aria-1.1/#aria-expanded"><code>aria-expanded</code></a></td>
@@ -1436,9 +1462,10 @@
             <td>Identifies the currently active element when DOM focus is on a composite widdget, textbox, group, or application</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
-              &nbsp;<strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><blockquote>
+              <p>JAWS uses this state to  locate the focused items in tree views, list boxes, and other such controls  that manage multiple, focusable children.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/tr/wai-aria-1.1/aria-atomic"><code>aria-atomic</code></a></td>
@@ -1491,17 +1518,20 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
-              &nbsp;<strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+              &nbsp;<img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><blockquote>
+              <p>JAWS will announce that an  element has the &ldquo;controls&rdquo; relationship to another element on the page. The  user can move to the controlled element using <kbd>INSERT+ALT+M</kbd>.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/tr/wai-aria-1.1/aria-describedby"><code>aria-describedby</code></a></td>
             <td>Identifies the element (or elements) that describes the current element</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
-              &nbsp;<strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><blockquote>
+              <p>JAWS announces this state  for form controls. The user can read the describedby text using <kbd>INSERT+ALT+R</kbd>.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/tr/wai-aria-1.1/aria-details"><code>aria-details</code></a></td>
@@ -1535,9 +1565,10 @@
             <td>Identifies the next element (or elements) in an alternative reading order</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
-              &nbsp;<strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> --><img src="assets/images/tick.png" width="16" height="16" alt="yes"></td>
+            <td><blockquote>
+              <p>When the author defines  these relationships on elements in a Web page, JAWS will announce that the  element has a &ldquo;flows from&rdquo; or &ldquo;flows to&rdquo; relationship. The user can move to  &ldquo;flows to&rdquo; elements using the <kbd>EQUALS</kbd> Navigation Quick Key and to &ldquo;flows from&rdquo; using the <kbd>SHIFT+EQUALS</kbd> Navigation Quick Key.</p>
+            </blockquote></td>
           </tr>
           <tr>
             <td><a href="https://w3.org/tr/wai-aria-1.1/aria-haspopup"><code>aria-haspopup</code></a></td>
@@ -1785,8 +1816,23 @@
         </tfoot>
       </table>
       <p>&nbsp;</p>
-    </main>
-
+    
+  <h2>JAWS ARIA Support Notes </h2>
+  <h2>Preface</h2>
+  <p>Before  discussing JAWS support for ARIA, it is important to understand the  relationship between the ARIA markup itself, the browser in which the markup is  rendered, and JAWS as it provides spoken or Braille information to users.
+  <p>
+    First,  ARIA markup was designed to insert information useful to assistive technologies  into existing HTML code. It exists as a way to label controls and to provide  information about their states. But adding ARIA support to a Web page does not  change the presentation or behavior of that Web page to sighted users. For  example, adding the ARIA role of &ldquo;checkbox&rdquo; to a &ldquo;div&rdquo; tag within a Web page  will produce no visible effect on the page. Instead, if there is a check box on  the page which has been rendered without using the &ldquo;input&rdquo; tag, the ARIA role  of &ldquo;checkbox&rdquo; can be added to the code to inform assistive technology users  that a check box appears at that point on the page. 
+    <p>
+    Second,  the browser plays a big role in interpreting ARIA markup. Most browsers support  some type of accessibility API (application programming interface), and  assistive technologies use the API to get information about what is presented  on the screen. So, ARIA markup is transformed by the browser into information  that fits the accessibility API it supports. Then, the information provided by  the API is processed by the assistive technology. That means JAWS support of  ARIA depends heavily on the browser being used.
+    <p>
+    Third,  JAWS gathers information from the ARIA markup and the browser&rsquo;s API and  presents it in a meaningful way to screen reader users. Because of the above  interactions, the quality of JAWS support for ARIA markup is inextricably tied  to the careful, thorough application of ARIA markup on a Web page, and  comprehensive support provided by the browser in which the markup is rendered.
+    <p>
+    
+    For  best results, Freedom Scientific recommends that Web page authors read the <a href="http://w3c.github.io/aria-practices/">WAI-ARIA 1.1 Authoring  Practices</a> carefully before adding ARIA markup to their pages. Also,  concepts such as roles, states, landmarks, and so on are defined as part of the  ARIA specification, and are therefore not defined in this document. If you are  unfamiliar with these concepts please read through the ARIA documentation  before continuing.   </p>
+    <p class="note">For  the reasons described above, there may be differences in JAWS ARIA support  between Internet Explorer and Firefox. Please test any examples in both  browsers. And please specify which browser you&rsquo;re using when reporting problems  to Freedom Scientific.</p>
+<p>&nbsp;</p>
+  
+  </main>
     <footer>
       <p>&nbsp;</p>
     </footer>
