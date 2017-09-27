@@ -12,7 +12,7 @@
       <h1>
         JAWS ARIA Role Support
       </h1>
-      <p>A Work <em>in progress</em>: Last updated 26 September 2017. </p>
+      <p>A Work <em>in progress</em>: Last updated 27 September 2017. </p>
       <p><strong>Editors:</strong> Steve Faulkner, L&eacute;onie Watson, Dennis Deacon and Scott O'Hara </p>
       <p><strong>Github Repo:</strong> <a href="https://github.com/ThePacielloGroup/VFO-standards-support">ThePacielloGroup/VFO-standards-support</a> </p>
       <p> Found a bug? Please <a href="https://github.com/ThePacielloGroup/VFO-standards-support/issues?state=open">report it</a>.      </p>
@@ -20,6 +20,7 @@
     </header>
 
     <main>
+   <p class="note">Read the <a href="#jas">JAWS ARIA Support Notes</a> and <a href="#kc">Key Concepts</a></p>
       <h2>Support legend</h2>
       <ul>
         <li><img src="./assets/images/tick.png" class="status-icon" alt="yes"> means we have found this feature to be implemented interoperably (across multiple browsers)</li>
@@ -1817,7 +1818,7 @@
       </table>
       <p>&nbsp;</p>
     
-  <h2>JAWS ARIA Support Notes </h2>
+  <h2 id="jas" tabindex="-1">JAWS ARIA Support Notes</h2>
   <h2>Preface</h2>
   <p>Before  discussing JAWS support for ARIA, it is important to understand the  relationship between the ARIA markup itself, the browser in which the markup is  rendered, and JAWS as it provides spoken or Braille information to users.
   <p>
@@ -1830,8 +1831,8 @@
     
     For  best results, Freedom Scientific recommends that Web page authors read the <a href="http://w3c.github.io/aria-practices/">WAI-ARIA 1.1 Authoring  Practices</a> carefully before adding ARIA markup to their pages. Also,  concepts such as roles, states, landmarks, and so on are defined as part of the  ARIA specification, and are therefore not defined in this document. If you are  unfamiliar with these concepts please read through the ARIA documentation  before continuing.   </p>
     <p class="note">For  the reasons described above, there may be differences in JAWS ARIA support  between Internet Explorer and Firefox. Please test any examples in both  browsers. And please specify which browser you&rsquo;re using when reporting problems  to Freedom Scientific.</p>
-    <h2>Key Concepts</h2>
-    <p>It is a good idea to have a firm  grasp of the following concepts. These items form the basis of many  descriptions throughout the document.</p>
+    <h2 id="kc" tabidex="-1">Key Concepts</h2>
+    <p>It is a good idea to have a firm  grasp of the following concepts. These items form the basis of many  descriptions throughout the documentation.</p>
     <h3>Virtual Cursor</h3>
     <p>JAWS presents Web pages using the  JAWS Virtual Cursor. This allows users to read and navigate a Web page as  though it were a text document. Users press the <kbd>ARROW</kbd> keys to read line by line, word by word, character by  character, and so on. JAWS also provides Navigation Quick Keys, which are  alpha-numeric keys that move the Virtual Cursor to features of the page such as  links, headings, and form controls. In addition, users can press the <kbd>TAB</kbd> key to move between focusable  elements on the page.
       </p>
@@ -1870,10 +1871,10 @@
     <p>
       Forms Mode is required  for&nbsp;edit fields, combo boxes, spin controls, list controls, tab controls,  menu bars, tree views, and grid cells. For these controls, press <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to enter Forms Mode, and <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> to  exit Forms Mode.</p>
     <p>
-      For buttons and check boxes, use <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to activate the control at the location of the Virtual  Cursor. Users interact with these controls simply by pressing <strong>ENTER</strong> or <strong>SPACEBAR</strong>; so forms mode is unnecessary. Auto Forms Mode causes JAWS  to leave Forms Mode when it encounters these control types because they are  just as usable without Forms Mode.</p>
+      For buttons and check boxes, use <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to activate the control at the location of the Virtual  Cursor. Users interact with these controls simply by pressing <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd>; so forms mode is unnecessary. Auto Forms Mode causes JAWS  to leave Forms Mode when it encounters these control types because they are  just as usable without Forms Mode.</p>
     <p>
-      For combo boxes only, <strong>ALT+DOWN ARROW</strong> causes JAWS to enter Forms  Mode and drop down the list of combo box items. <strong>ALT+UP ARROW</strong> closes the list of combo box items and causes JAWS to  exit Forms Mode.</p>
-    <p> Finally, JAWS Auto Forms Mode behavior for radio  buttons is a little different from its behavior with other types of controls. This  is because unlike other controls, it is possible to interact with radio buttons  in both Forms Mode and with the Virtual Cursor. When navigating with the <strong>TAB</strong> key, JAWS will stay in Forms Mode  if it is already on, and it will not enter Forms Mode if it is off. Users can  press <strong>SPACEBAR</strong> to choose a specific  radio button when using the Virtual Cursor, and pressing the <strong>ARROW</strong> keys will not change the value of  the radio button group. Users can also press <strong>ENTER</strong> to activate Forms Mode, and subsequent presses of the <strong>UP</strong> and <strong>DOWN ARROW</strong> keys will change the value of the radio button group.  The following table contains the expected behavior for radio buttons with Auto Forms  Mode.<br>
+      For combo boxes only, <kbd>ALT+DOWN ARROW</kbd> causes JAWS to enter Forms  Mode and drop down the list of combo box items. <kbd>ALT+UP ARROW</kbd> closes the list of combo box items and causes JAWS to  exit Forms Mode.</p>
+    <p> Finally, JAWS Auto Forms Mode behavior for radio  buttons is a little different from its behavior with other types of controls. This  is because unlike other controls, it is possible to interact with radio buttons  in both Forms Mode and with the Virtual Cursor. When navigating with the <kbd>TAB</kbd> key, JAWS will stay in Forms Mode  if it is already on, and it will not enter Forms Mode if it is off. Users can  press <kbd>SPACEBAR</kbd> to choose a specific  radio button when using the Virtual Cursor, and pressing the <kbd>ARROW</kbd> keys will not change the value of  the radio button group. Users can also press <strong>ENTER</strong> to activate Forms Mode, and subsequent presses of the <kbd>UP</kbd> and <kbd>DOWN ARROW</kbd> keys will change the value of the radio button group.  The following table contains the expected behavior for radio buttons with Auto Forms  Mode.<br>
     </p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
