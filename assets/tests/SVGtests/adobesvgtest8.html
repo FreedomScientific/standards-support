@@ -1,24 +1,21 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>svg test - svg inline</title>
-<link href="test.css" rel="stylesheet" type="text/css">
-<style>button{background:transparent;border:transparent; font-size:1em; font-weight:bold}</style> 
+<link href="../test-styles.css" rel="stylesheet" type="text/css">
+<style>button{background:transparent;border:transparent; font-size:1em; font-weight:bold}</style>
 <script>
-function change(){
- C= document.getElementById('poot');
- if (C.getAttribute("fill")=='red') {
- C.setAttributeNS(null,"fill","blue");
- return false;
- }
- 
-else  {C.setAttributeNS(null,"fill","red");return false;}
- 
-}
+  function change(){
+    C= document.getElementById('poot');
+    if (C.getAttribute("fill")=='red') {
+    C.setAttributeNS(null,"fill","blue");
+    return false;
+    }
+    else  {C.setAttributeNS(null,"fill","red");return false;}
+  }
 </script>
 </head>
-
 <body>
 <h1>svg inline</h1>
 <ul>
@@ -29,10 +26,10 @@ else  {C.setAttributeNS(null,"fill","red");return false;}
 </ul>
 <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
    <title id="title">circle</title>
-   <desc id="desc">big red circle</desc> 
+   <desc id="desc">big red circle</desc>
    <circle role="presentation" cx="150" cy="60" r="55" stroke="black" id="poot" stroke-width="2" fill="red" />
  <a xlink:href="#" onkeypress="change()" onclick="change()" role="button" aria-labelledby="txt"><text x="115" y="50" fill="black" id="txt">CHANGE</text></a>
-</svg> 
+</svg>
 <p>
 <h2>testing results</h2>
 <table width="100%" border="1">

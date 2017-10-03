@@ -1,21 +1,19 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>svg test</title>
-<link href="test.css" rel="stylesheet" type="text/css">
+<link href="../test-styles.css" rel="stylesheet" type="text/css">
 <style> a[href] {width:100px;height:100px; background: url(test.svg);
-  background-size: 100px 100px;display:block;}</style> 
+  background-size: 100px 100px;display:block;}</style>
 <script>
-function change(){
- C= document.getElementById('poot');
- if (C.getAttribute("fill")=='red') {
- C.setAttributeNS(null,"fill","blue");
- }
- 
-else  {C.setAttributeNS(null,"fill","red")}
- 
-}
+	function change(){
+		C = document.getElementById('poot');
+		if (C.getAttribute("fill")=='red') {
+		C.setAttributeNS(null,"fill","blue");
+		}
+		else  {C.setAttributeNS(null,"fill","red")}
+	}
 </script>
 </head>
 
