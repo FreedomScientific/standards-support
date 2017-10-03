@@ -9,7 +9,7 @@ Contains documentation for VFO software support of Web standards (HTML, CSS, SVG
 
 ## Reporting issues
 
-If you find an issue with JAWS support for ARIA, CSS, HTML, or SVG, please [file an issue](https://github.com/ThePacielloGroup/VFO-standards-support/issues?q=is%3Aopen) with the following information:
+If you find an issue with JAWS support for ARIA, CSS, HTML, or SVG, please [file an issue](https://github.com/FreedomScientific/VFO-standards-support/issues?q=is%3Aopen) with the following information:
 * Concise title that summarises the issue;
 * Brief description of the issue;
 * JAWS version;
