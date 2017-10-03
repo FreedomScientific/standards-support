@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CSS Tests</title>
+	<link href="../test-styles.css" rel="stylesheet">
+	<style>
+		body { overflow-x: hidden; }
+		.css-test__cases--source { display: none; }
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>
+			CSS
+		</h1>
+	</header>
+	<main>
+		<div class="css-test">
+			<h2 class="css-test__heading">
+				<code>p</code> Element
+			</h2>
+			<div class="css-test__cases css-test__cases--source">
+				<p class="css-test-target">
+					Paragraph with <code class="css-test-target__code"></code>
+				</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="css-test">
+			<h2 class="css-test__heading">
+				<code>h1</code> Element
+			</h2>
+			<div class="css-test__cases css-test__cases--source">
+				<h1 class="css-test-target">
+					Heading 1 with <code class="css-test-target__code"></code>
+				</h1>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="css-test">
+			<h2 class="css-test__heading">
+				<code>table</code> Element
+			</h2>
+			<div class="css-test__cases css-test__cases--source">
+				<table class="css-test-target">
+					<caption>Table with <code class="css-test-target__code"></code></caption>
+					<tr>
+						<th scope="col">
+							Name
+						</th>
+						<th scope="col">
+							Location
+						</th>
+					</tr>
+					<tr>
+						<td>Markus</td>
+						<td>Antarctica</td>
+					</tr>
+					<tr>
+						<td>Kendra</td>
+						<td>Guam</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="css-test">
+			<h2 class="css-test__heading">
+				<code>ul</code> Element
+			</h2>
+			<div class="css-test__cases css-test__cases--source">
+				<ul class="css-test-target">
+					<li>A list item</li>
+					<li>A second list item</li>
+				</ul>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="css-test">
+			<h2 class="css-test__heading">
+				<code>li</code> Element
+			</h2>
+			<div class="css-test__cases css-test__cases--source">
+				<ul>
+					<li class="css-test-target">A list item</li>
+					<li>A second list item</li>
+				</ul>
+			</div>
+		</div>
+	</main>
+
+	<script src="./css-tests.js"></script>
+</body>
+</html>

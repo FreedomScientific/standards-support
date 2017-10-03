@@ -1,20 +1,18 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>svg test - svg inline</title>
-<link href="test.css" rel="stylesheet" type="text/css">
-<style>button{background:transparent;border:transparent; font-size:1em; font-weight:bold}</style> 
+<link href="../test-styles.css" rel="stylesheet" type="text/css">
+<style>button{background:transparent;border:transparent; font-size:1em; font-weight:bold}</style>
 <script>
-function change(){
- C= document.getElementById('poot');
- if (C.getAttribute("fill")=='red') {
- C.setAttributeNS(null,"fill","blue");
- }
- 
-else  {C.setAttributeNS(null,"fill","red")}
- 
-}
+  function change(){
+    C = document.getElementById('poot');
+    if (C.getAttribute("fill")=='red') {
+      C.setAttributeNS(null,"fill","blue");
+    }
+    else  {C.setAttributeNS(null,"fill","red")}
+  }
 </script>
 </head>
 
@@ -30,12 +28,12 @@ else  {C.setAttributeNS(null,"fill","red")}
   <circle cx="150" cy="60" r="55" stroke="black" id="poot"
   stroke-width="2" fill="red" focusable="true" onkeypress="change()" onclick="change()" />
   <title>circle</title>
-   <desc>big red circle</desc> 
+   <desc>big red circle</desc>
 <foreignObject x="115" y="50" width="70" height="30" xmlns="http://www.w3.org/1999/xhtml"><div>
    <button id="test1" onclick="change()">change</button></div></foreignObject>
 
-</svg> 
-<p>
+</svg>
+
 <h2>testing results</h2>
 <table width="100%" border="1">
   <caption>
@@ -114,7 +112,6 @@ else  {C.setAttributeNS(null,"fill","red")}
     <td>No - SVG ignored, button is available</td>
   </tr>
 </table>
-<p>&nbsp;</p>
-<p>
+
 </body>
 </html>
