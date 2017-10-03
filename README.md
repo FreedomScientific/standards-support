@@ -2,7 +2,7 @@
 Contains documentation for VFO software support of Web standards (HTML, CSS, SVG and ARIA).
 
 ## JAWS support
-* [ARIA Roles](aria.html)
+* [ARIA Roles, States and Properties](aria.html)
 * CSS(future link)
 * [HTML](html.html)
 * SVG(future link)
