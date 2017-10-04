@@ -79,3 +79,14 @@ img {
 	border: 1px solid #eee;
 	padding: 1em;
 }
+
+[style*="resize"] {
+	max-height: 10em;
+	min-height: 2.5em;
+	overflow: auto;
+}
+
+[style*="width"],
+[style*="height"] {
+	overflow: hidden;
+}
