@@ -5,8 +5,8 @@
 const cssProps = {
 	opacity: [0, .25],
 	display: ['contents','block','inline','run-in','flow','flow-root','flex','ruby','subgrid','list-item','table','table-row-group','table-header-group','table-footer-group','table-row','table-cell','table-column-group','table-caption'],
-	height: [0, '1px'],
-	width: [0, '1px'],
+	height: [0, '1px', '4em'],
+	width: [0, '1px', '4em'],
 	isolation: ['auto', 'isolate'],
 	'overflow-wrap': ['break-word'],
 	'word-spacing': [0, '4em'],
