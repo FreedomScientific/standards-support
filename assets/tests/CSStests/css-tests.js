@@ -16,7 +16,8 @@ const cssProps = {
 	'text-indent': [0, '20em', '-999999px'],
 	'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
 	overflow: ['hidden', 'scroll', 'auto', 'visible'],
-	resize: ['none', 'both', 'horizontal', 'vertical']
+	resize: ['none', 'both', 'horizontal', 'vertical'],
+	'pointer-events': ['auto', 'none', 'inherit', 'unset']
 };
 
 const paramKey = 'prop';
