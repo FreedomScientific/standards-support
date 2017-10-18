@@ -22,12 +22,12 @@
 
 #### JAWS version and build number
 
-> Example: JAWS 18.0.4104
+
  
 #### Operating System and version
 
-> Example: Windows 10 Home 64-bit
+
 
 #### Browser and version:
 
-> Example: Firefox 56.0
+
