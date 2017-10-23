@@ -3,21 +3,22 @@
  * @type {Object}
  */
 const cssProps = {
-	opacity: [0, .25],
-	display: ['contents','block','inline','run-in','flow','flow-root','flex','ruby','subgrid','list-item','table','table-row-group','table-header-group','table-footer-group','table-row','table-cell','table-column-group','table-caption'],
-	height: [0, '1px', '4em'],
-	width: [0, '1px', '4em'],
-	isolation: ['auto', 'isolate'],
-	'overflow-wrap': ['break-word'],
-	'word-spacing': [0, '4em'],
+	'direction': ['ltr', 'rtl'],
+	'display': ['contents','block','inline','run-in','flow','flow-root','flex','ruby','subgrid','list-item','table','table-row-group','table-header-group','table-footer-group','table-row','table-cell','table-column-group','table-caption'],
+	'height': [0, '1px', '4em'],
+	'isolation': ['auto', 'isolate'],
 	'list-style': ['square', 'inside', 'none inside', 'georgian inside', 'none'],
-	order: [0, 2, 5, 4, '-2', 1],
-	direction: ['ltr', 'rtl'],
+	'opacity': [0, .25],
+	'order': [0, 2, 5, 4, '-2', 1],
+	'overflow': ['hidden', 'scroll', 'auto', 'visible'],
+	'overflow-wrap': ['break-word'],
+	'pointer-events': ['auto', 'none', 'inherit', 'unset'],
+	'resize': ['none', 'both', 'horizontal', 'vertical'],
+	'text-decoration': ['underline', 'overline', 'line-through', 'wavy underline red'],
 	'text-indent': [0, '20em', '-999999px'],
-	'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr'],
-	overflow: ['hidden', 'scroll', 'auto', 'visible'],
-	resize: ['none', 'both', 'horizontal', 'vertical'],
-	'pointer-events': ['auto', 'none', 'inherit', 'unset']
+	'width': [0, '1px', '4em'],
+	'word-spacing': [0, '4em'],
+	'writing-mode': ['horizontal-tb', 'vertical-rl', 'vertical-lr']
 };
 
 const paramKey = 'prop';
