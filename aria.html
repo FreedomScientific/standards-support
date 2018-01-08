@@ -1819,71 +1819,86 @@
         </tfoot>
       </table>
       <p>&nbsp;</p>
-    
+
   <h2 id="jas" tabindex="-1">JAWS ARIA Support Notes</h2>
   <h2>Preface</h2>
-  <p>Before  discussing JAWS support for ARIA, it is important to understand the  relationship between the ARIA markup itself, the browser in which the markup is  rendered, and JAWS as it provides spoken or Braille information to users.
-  <p>
-    First,  ARIA markup was designed to insert information useful to assistive technologies  into existing HTML code. It exists as a way to label controls and to provide  information about their states. But adding ARIA support to a Web page does not  change the presentation or behavior of that Web page to sighted users. For  example, adding the ARIA role of &ldquo;checkbox&rdquo; to a &ldquo;div&rdquo; tag within a Web page  will produce no visible effect on the page. Instead, if there is a check box on  the page which has been rendered without using the &ldquo;input&rdquo; tag, the ARIA role  of &ldquo;checkbox&rdquo; can be added to the code to inform assistive technology users  that a check box appears at that point on the page. 
     <p>
-    Second,  the browser plays a big role in interpreting ARIA markup. Most browsers support  some type of accessibility API (application programming interface), and  assistive technologies use the API to get information about what is presented  on the screen. So, ARIA markup is transformed by the browser into information  that fits the accessibility API it supports. Then, the information provided by  the API is processed by the assistive technology. That means JAWS support of  ARIA depends heavily on the browser being used.
+      Before discussing JAWS support for ARIA, it is important to understand the relationship between the ARIA markup itself, the browser in which the markup is rendered, and JAWS as it provides spoken or Braille information to users.
+    </p>
     <p>
-    Third,  JAWS gathers information from the ARIA markup and the browser&rsquo;s API and  presents it in a meaningful way to screen reader users. Because of the above  interactions, the quality of JAWS support for ARIA markup is inextricably tied  to the careful, thorough application of ARIA markup on a Web page, and  comprehensive support provided by the browser in which the markup is rendered.
+      First, ARIA markup was designed to insert information useful to assistive technologies into existing HTML code. It exists as a way to label controls and to provide information about their states. But adding ARIA support to a Web page does not change the presentation or behavior of that Web page to sighted users. For example, adding the ARIA role of &ldquo;checkbox&rdquo; to a &ldquo;div&rdquo; tag within a Web page will produce no visible effect on the page. Instead, if there is a check box on the page which has been rendered without using the &ldquo;input&rdquo; tag, the ARIA role of &ldquo;checkbox&rdquo; can be added to the code to inform assistive technology users that a check box appears at that point on the page.
+    </p>
     <p>
-    
-    For  best results, Freedom Scientific recommends that Web page authors read the <a href="http://w3c.github.io/aria-practices/">WAI-ARIA 1.1 Authoring  Practices</a> carefully before adding ARIA markup to their pages. Also,  concepts such as roles, states, landmarks, and so on are defined as part of the  ARIA specification, and are therefore not defined in this document. If you are  unfamiliar with these concepts please read through the ARIA documentation  before continuing.   </p>
-    <p class="note">For  the reasons described above, there may be differences in JAWS ARIA support  between Internet Explorer and Firefox. Please test any examples in both  browsers. And please specify which browser you&rsquo;re using when reporting problems  to Freedom Scientific.</p>
+      Second, the browser plays a big role in interpreting ARIA markup. Most browsers support some type of accessibility API (application programming interface), and assistive technologies use the API to get information about what is presented on the screen. So, ARIA markup is transformed by the browser into information that fits the accessibility API it supports. Then, the information provided by the API is processed by the assistive technology. That means JAWS support of ARIA depends heavily on the browser being used.
+    </p>
+    <p>
+      Third, JAWS gathers information from the ARIA markup and the browser&rsquo;s API and presents it in a meaningful way to screen reader users. Because of the above interactions, the quality of JAWS support for ARIA markup is inextricably tied to the careful, thorough application of ARIA markup on a Web page, and comprehensive support provided by the browser in which the markup is rendered.
+    </p>
+    <p>
+      For best results, Freedom Scientific recommends that Web page authors read the <a href="https://w3c.github.io/aria-practices/">WAI-ARIA 1.1 Authoring Practices</a> carefully before adding ARIA markup to their pages. Also, concepts such as roles, states, landmarks, and so on are defined as part of the ARIA specification, and are therefore not defined in this document. If you are unfamiliar with these concepts please read through the ARIA documentation before continuing.
+    </p>
+    <p class="note">For the reasons described above, there may be differences in JAWS ARIA support between Internet Explorer and Firefox. Please test any examples in both browsers. And please specify which browser you&rsquo;re using when reporting problems to Freedom Scientific.
+    </p>
+
     <h2 id="kc" tabidex="-1">Key Concepts</h2>
-    <p>It is a good idea to have a firm  grasp of the following concepts. These items form the basis of many  descriptions throughout the documentation.</p>
+    <p>It is a good idea to have a firm grasp of the following concepts. These items form the basis of many descriptions throughout the documentation.</p>
     <h3>Virtual Cursor</h3>
-    <p>JAWS presents Web pages using the  JAWS Virtual Cursor. This allows users to read and navigate a Web page as  though it were a text document. Users press the <kbd>ARROW</kbd> keys to read line by line, word by word, character by  character, and so on. JAWS also provides Navigation Quick Keys, which are  alpha-numeric keys that move the Virtual Cursor to features of the page such as  links, headings, and form controls. In addition, users can press the <kbd>TAB</kbd> key to move between focusable  elements on the page.
+    <p>JAWS presents Web pages using the JAWS Virtual Cursor. This allows users to read and navigate a Web page as though it were a text document. Users press the <kbd>ARROW</kbd> keys to read line by line, word by word, character by character, and so on. JAWS also provides Navigation Quick Keys, which are alpha-numeric keys that move the Virtual Cursor to features of the page such as links, headings, and form controls. In addition, users can press the <kbd>TAB</kbd> key to move between focusable elements on the page.
       </p>
-    <p>Using the <kbd>ARROW</kbd> keys or Navigation Quick Keys to change the position of the Virtual  Cursor does not change the actual focus point in the application. This means  that even if JAWS reads the text of a given link on a Web page for example,  that link doesn't necessarily have the keyboard focus.
+    <p>Using the <kbd>ARROW</kbd> keys or Navigation Quick Keys to change the position of the Virtual Cursor does not change the actual focus point in the application. This means that even if JAWS reads the text of a given link on a Web page for example, that link doesn't necessarily have the keyboard focus.
     </p>
     <p class="note">The keyboard focus is typically represented visually as a  highlighted area surrounding a control.<br>
-      Conversely, pressing the <strong>TAB</strong> or <strong>SHIFT+TAB</strong> key to navigate moves the focus point and the Virtual  Cursor follows the focus.</p>
+      Conversely, pressing the <strong>TAB</strong> or <strong>SHIFT+TAB</strong> key to navigate moves the focus point and the Virtual Cursor follows the focus.</p>
     <h3>Forms Mode</h3>
-    <p>Because JAWS uses the arrow keys  and alpha-numeric keys for Virtual Cursor navigation, these keyboard commands  are not passed through to interactive controls (form fields) on the page. This  approach has the added benefit of protecting users from inadvertently changing  form field values or activating controls on the page while simply reviewing the  content.</p>
+    <p>Because JAWS uses the arrow keys and alpha-numeric keys for Virtual Cursor navigation, these keyboard commands are not passed through to interactive controls (form fields) on the page. This approach has the added benefit of protecting users from inadvertently changing form field values or activating controls on the page while simply reviewing the content.</p>
     <p>
-      Forms Mode is when JAWS&nbsp;turns  over processing of the above keys to form controls so that users can interact  with them. For example, when using the Virtual Cursor, pressing the letter <kbd>F</kbd> moves the Virtual Cursor to the next  form field on the Web page, while in Forms Mode, pressing the letter <strong>F</strong> types the character &quot;f&quot;.</p>
+      Forms Mode is when JAWS turns over processing of the above keys to form controls so that users can interact with them. For example, when using the Virtual Cursor, pressing the letter <kbd>F</kbd> moves the Virtual Cursor to the next form field on the Web page, while in Forms Mode, pressing the letter <strong>F</strong> types the character &quot;f&quot;.</p>
     <h3>Auto Forms Mode</h3>
-    <p>Before JAWS 10, JAWS users had  to enter and exit Forms Mode manually. Users navigated to a given control using  the Virtual Cursor, and would then press the <kbd>ENTER</kbd> key to activate Forms Mode. Pressing <kbd>NUM PAD PLUS</kbd>  (PC Cursor) caused  JAWS to exit forms mode.</p>
+    <p>Before JAWS 10, JAWS users had to enter and exit Forms Mode manually. Users navigated to a given control using the Virtual Cursor, and would then press the <kbd>ENTER</kbd> key to activate Forms Mode. Pressing <kbd>NUM PAD PLUS</kbd> (PC Cursor) caused JAWS to exit forms mode.</p>
     <p>
-      When Forms Mode is manually  activated on a given form control, focus is set to that control.</p>
+      When Forms Mode is manually activated on a given form control, focus is set to that control.</p>
     <p>
-      Auto Forms Mode is a feature  that tells JAWS to be smart about when to enter and exit Forms Mode. This is a  setting which is on by default. This approach provides a seamless experience  for JAWS users when both reading and interacting with a Web page.</p>
+      Auto Forms Mode is a feature that tells JAWS to be smart about when to enter and exit Forms Mode. This is a setting which is on by default. This approach provides a seamless experience for JAWS users when both reading and interacting with a Web page.</p>
     <p>
-      The behavior of Auto Forms Mode  depends on the type of form field in question and the keyboard command used to  navigate to it. The following is a description of the keyboard commands and how  they affect Web page form fields:</p>
+      The behavior of Auto Forms Mode depends on the type of form field in question and the keyboard command used to navigate to it. The following is a description of the keyboard commands and how they affect Web page form fields:</p>
     <h4>ARROW Keys</h4>
-    <p>When the Virtual Cursor is  active, JAWS enters Forms Mode upon encountering an edit field. Focus is moved  to the edit control, and users can begin typing. </p>
+    <p>When the Virtual Cursor is active, JAWS enters Forms Mode upon encountering an edit field. Focus is moved to the edit control, and users can begin typing. </p>
     <p>
-      In Forms Mode, the <kbd>ARROW</kbd> keys move the caret within the  edit field. If an <kbd>ARROW</kbd> key is  pressed and the caret has already reached the boundary of the edit field, JAWS  exits forms mode and resumes using the Virtual Cursor. Pressing <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> will cause JAWS to exit Forms Mode.</p>
+      In Forms Mode, the <kbd>ARROW</kbd> keys move the caret within the edit field. If an <kbd>ARROW</kbd> key is pressed and the caret has already reached the boundary of the edit field, JAWS exits forms mode and resumes using the Virtual Cursor. Pressing <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> will cause JAWS to exit Forms Mode.</p>
     <p>
-      Edit fields are the only  controls for which JAWS enters or exits Forms Mode automatically based on the <kbd>ARROW</kbd> keys. For other controls, if JAWS  is using the Virtual Cursor, it will continue to use the Virtual Cursor. This  is so that users don't accidentally change the value of a control while  attempting simply to navigate past it. If JAWS is already in Forms Mode, <kbd>ARROW</kbd> keys will not cause JAWS to leave  Forms Mode. This is so that users won't unintentionally leave Forms Mode while  interacting with a control. When <kbd>ARROW</kbd> keys are used to navigate to&nbsp;non-edit controls, users must activate Forms Mode  manually by pressing <kbd>ENTER</kbd>.</p>
-    <h4>TAB Key</h4>
-    <p>Using the <kbd>TAB</kbd> key always causes the focus point to move. When focus changes  to a given form control, JAWS activates Forms Mode automatically based on the  type of control in question.</p>
-    <p>
-      For edit fields, combo boxes,  spin controls, list controls, tab controls, menu bars, tree views, and grid  cells, JAWS enters Forms Mode automatically.      </p>
-    <p>For buttons and check boxes,  JAWS exits Forms Mode.      </p>
-    <p>Pressing <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> will  cause JAWS to exit Forms Mode if it is active.</p>
-    <p class="note">
-      It is possible to move to a form field by using <kbd>TAB</kbd> and to move away from that form  field using the <kbd>ARROW</kbd> keys, and vice  versa.</p>
-    <h4>Different Control Types</h4>
-    <p>In terms of Forms Mode, there  are two groups of controls: those that require Forms Mode to interact with  them, and those controls that never require Forms Mode to interact with them.</p>
-    <p>
-      Forms Mode is required  for&nbsp;edit fields, combo boxes, spin controls, list controls, tab controls,  menu bars, tree views, and grid cells. For these controls, press <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to enter Forms Mode, and <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> to  exit Forms Mode.</p>
-    <p>
-      For buttons and check boxes, use <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to activate the control at the location of the Virtual  Cursor. Users interact with these controls simply by pressing <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd>; so forms mode is unnecessary. Auto Forms Mode causes JAWS  to leave Forms Mode when it encounters these control types because they are  just as usable without Forms Mode.</p>
-    <p>
-      For combo boxes only, <kbd>ALT+DOWN ARROW</kbd> causes JAWS to enter Forms  Mode and drop down the list of combo box items. <kbd>ALT+UP ARROW</kbd> closes the list of combo box items and causes JAWS to  exit Forms Mode.</p>
-    <p> Finally, JAWS Auto Forms Mode behavior for radio  buttons is a little different from its behavior with other types of controls. This  is because unlike other controls, it is possible to interact with radio buttons  in both Forms Mode and with the Virtual Cursor. When navigating with the <kbd>TAB</kbd> key, JAWS will stay in Forms Mode  if it is already on, and it will not enter Forms Mode if it is off. Users can  press <kbd>SPACEBAR</kbd> to choose a specific  radio button when using the Virtual Cursor, and pressing the <kbd>ARROW</kbd> keys will not change the value of  the radio button group. Users can also press <strong>ENTER</strong> to activate Forms Mode, and subsequent presses of the <kbd>UP</kbd> and <kbd>DOWN ARROW</kbd> keys will change the value of the radio button group.  The following table contains the expected behavior for radio buttons with Auto Forms  Mode.<br>
+      Edit fields are the only controls for which JAWS enters or exits Forms Mode automatically based on the <kbd>ARROW</kbd> keys. For other controls, if JAWS is using the Virtual Cursor, it will continue to use the Virtual Cursor. This is so that users don't accidentally change the value of a control while attempting simply to navigate past it. If JAWS is already in Forms Mode, <kbd>ARROW</kbd> keys will not cause JAWS to leave Forms Mode. This is so that users won't unintentionally leave Forms Mode while interacting with a control. When <kbd>ARROW</kbd> keys are used to navigate to&nbsp;non-edit controls, users must activate Forms Mode manually by pressing <kbd>ENTER</kbd>.
     </p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-  
+    <h4>TAB Key</h4>
+    <p>
+      Using the <kbd>TAB</kbd> key always causes the focus point to move. When focus changes  to a given form control, JAWS activates Forms Mode automatically based on the type of control in question.
+    </p>
+    <p>
+      For edit fields, combo boxes, spin controls, list controls, tab controls, menu bars, tree views, and grid  cells, JAWS enters Forms Mode automatically.
+    </p>
+    <p>For buttons and check boxes, JAWS exits Forms Mode.
+    </p>
+    <p>
+      Pressing <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> will  cause JAWS to exit Forms Mode if it is active.
+    </p>
+    <p class="note">
+      It is possible to move to a form field by using <kbd>TAB</kbd> and to move away from that form  field using the <kbd>ARROW</kbd> keys, and vice  versa.
+    </p>
+    <h4>Different Control Types</h4>
+    <p>In terms of Forms Mode, there  are two groups of controls: those that require Forms Mode to interact with them, and those controls that never require Forms Mode to interact with them.
+    </p>
+    <p>
+      Forms Mode is required  for&nbsp;edit fields, combo boxes, spin controls, list controls, tab controls,  menu bars, tree views, and grid cells. For these controls, press <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to enter Forms Mode, and <kbd>ESC</kbd> or <kbd>NUM PAD PLUS</kbd> to  exit Forms Mode.
+    </p>
+    <p>
+      For buttons and check boxes, use <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd> to activate the control at the location of the Virtual  Cursor. Users interact with these controls simply by pressing <kbd>ENTER</kbd> or <kbd>SPACEBAR</kbd>; so forms mode is unnecessary. Auto Forms Mode causes JAWS  to leave Forms Mode when it encounters these control types because they are  just as usable without Forms Mode.
+    </p>
+    <p>
+      For combo boxes only, <kbd>ALT+DOWN ARROW</kbd> causes JAWS to enter Forms  Mode and drop down the list of combo box items. <kbd>ALT+UP ARROW</kbd> closes the list of combo box items and causes JAWS to  exit Forms Mode.
+    </p>
+    <p>
+      Finally, JAWS Auto Forms Mode behavior for radio  buttons is a little different from its behavior with other types of controls. This  is because unlike other controls, it is possible to interact with radio buttons  in both Forms Mode and with the Virtual Cursor. When navigating with the <kbd>TAB</kbd> key, JAWS will stay in Forms Mode  if it is already on, and it will not enter Forms Mode if it is off. Users can  press <kbd>SPACEBAR</kbd> to choose a specific  radio button when using the Virtual Cursor, and pressing the <kbd>ARROW</kbd> keys will not change the value of  the radio button group. Users can also press <strong>ENTER</strong> to activate Forms Mode, and subsequent presses of the <kbd>UP</kbd> and <kbd>DOWN ARROW</kbd> keys will change the value of the radio button group.  The following table contains the expected behavior for radio buttons with Auto Forms Mode.
+    </p>
   </main>
-    <footer>
-      <p>&nbsp;</p>
-    </footer>
+
   </body>
 </html>
