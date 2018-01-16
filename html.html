@@ -13,7 +13,7 @@
         Jaws HTML Support
       </h1>
       <p>
-        A Work <em>in progress</em>: Last updated 06 December 2017.
+        A Work <em>in progress</em>: Last updated 16 January 2018.
       </p>
       <p>
         <strong>Editors:</strong> Steve Faulkner, L&eacute;onie Watson and Scott O'Hara
@@ -1724,10 +1724,18 @@
               <a href="https://thepaciellogroup.github.io/AT-browser-tests/test-files/progress.html"><code>progress</code> test</a>
             </td>
             <td>Progress bar</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><strong class="question">?</strong></td>
-            <td>&nbsp;</td>
+            <td>
+              <p>
+                <em><code>value</code> content</em>, "progress bar" (if using arrow keys)
+              </p>
+            </td>
+            <td>No special commands</td>
+            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
+            <td>
+              <p>
+                Progress bars are not inherently focusable. But if a progress bar has a <code>tabindex="0"</code>, then the accessible name of the progress bar will be announced on focus.
+              </p>
+            </td>
           </tr>
           <tr id="toc-q">
             <th scope="row">
