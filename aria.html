@@ -12,7 +12,7 @@
       <h1>
         JAWS ARIA Role Support
       </h1>
-      <p>A Work <em>in progress</em>: Last updated 7 October 2017. </p>
+      <p>A Work <em>in progress</em>: Last updated 14 May 2018. </p>
       <p><strong>Editors:</strong> Steve Faulkner, L&eacute;onie Watson, Dennis Deacon and Scott O'Hara </p>
       <p><strong>Github Repo:</strong> <a href="https://github.com/FreedomScientific/VFO-standards-support">FreedomScientific/VFO-standards-support</a> </p>
       <p> Found a bug? Please <a href="https://github.com/FreedomScientific/VFO-standards-support/issues?state=open">report it</a>.      </p>
@@ -1354,13 +1354,12 @@
           <tr>
             <td><a href="https://w3.org/TR/wai-aria-1.1/#aria-busy"><code>aria-busy</code></a></td>
             <td>Indicates an element is being modified</td>
+            <td><a href="https://s.codepen.io/stevef/debug/OZwMqv">aria-busy testcase</a></td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><!--<img src="images/tick.png" width="16" height="16" alt="yes"> -->
-              &nbsp;<strong class="question">?</strong></td>
-            <td><blockquote>
-              <p>In Firefox, an element  marked as aria-busy is omitted from the accessibility tree for the page.</p>
-            </blockquote></td>
+            <td><img src="images/tick.png" width="16" height="16" alt="yes"></td>
+            <td>
+              <p>In Firefox & Chrome, an element  marked as aria-busy is omitted from the accessibility tree for the page. Does not work in IE11. Content cannot be navigated to or interacted with when <code>aria-busy=true</code> is set on a parent element.</p>
+          </td>
           </tr>
           <tr>
             <td><a href="https://w3.org/TR/wai-aria-1.1/#aria-checked"><code>aria-checked</code></a></td>
