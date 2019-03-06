@@ -1,5 +1,5 @@
-# VFO Standards Support
-Contains documentation for VFO software support of Web standards (HTML, CSS, SVG and ARIA).
+# Vispero Standards Support
+Contains documentation for Vispero software support of Web standards (HTML, CSS, SVG and ARIA).
 
 ## JAWS support
 * [ARIA Roles, States and Properties](aria.html)
