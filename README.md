@@ -35,7 +35,3 @@ Workflow is as follows:
 * Can't reproduce: If needed, ask more questions of the issue author. You can also reach out to Benilda Key with clarification questions. When you're confident it's the answer, tag with "Can't Reproduce" label and close.
 * Issue appears to be browser specific, not JAWS related: document your research in a comment, tag ticket with appropriate browser issue label (i.e. "Chrome Bug") and close.
 * After asking questions of the author you don't hear back and don't have enough to go on: after 15 days, tag issue with the "archive" label and close.
-
-### Questions
-
-Reach out to TPG's "JAWS BUG Working Group" on Skype.
