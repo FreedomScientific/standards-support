@@ -20,7 +20,7 @@ If you find an issue with JAWS support for ARIA, CSS, HTML, or SVG, please [file
 
 Note: please do not file general support issues here. Please [contact Freedom Scientific](https://www.freedomscientific.com/About/ContactUs) to report general issues with JAWS.
 
-## Triaging Issues
+## Triaging Procedure for Authorized Testers
 
 Workflow is as follows:
 
@@ -30,8 +30,8 @@ Workflow is as follows:
 
 ### Resolution
 
-* Issue is fixed in the most recent version of JAWS: tag ticket with "Fixed in JAWS 20XX" label and close
-* Issue is valid in most recent version of JAWS: document your research in a comment and assign issue to Benilda Key.
-* Can't reproduce: If needed, ask more questions of the issue author. You can also reach out to Benilda Key with clarification questions. When you're confident it's the answer, tag with "Can't Reproduce" label and close.
-* Issue appears to be browser specific, not JAWS related: document your research in a comment, tag ticket with appropriate browser issue label (i.e. "Chrome Bug") and close.
-* After asking questions of the author you don't hear back and don't have enough to go on: after 15 days, tag issue with the "archive" label and close.
+* If the issue is fixed in the most recent version of JAWS, tag ticket with "Fixed in JAWS 20XX" label and close.
+* If the issue stands after testing with the most recent version of JAWS, document your research in a comment and assign issue to Benilda Key.
+* If you can't reproduce the issue, ask more questions of the issue author. You can also reach out to Benilda Key with clarification questions. When you're confident the issue can't be duplicated, tag it with the "Can't Reproduce" label and close.
+* If Issue appears to be browser specific instead of JAWS related, document your research in a comment, tag ticket with appropriate browser issue label (i.e. "Chrome Bug") and close. Ideally you should also [file a bug on the browser](https://web.dev/how-to-file-a-good-bug/) if a similar one hasn't already been reported.
+* If after asking questions of the author you don't hear back within a reasonable amount of time (at least 15 days) and you don't have enough to go on, tag the issue with the "archive" label and close.
