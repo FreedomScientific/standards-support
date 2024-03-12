@@ -13,7 +13,7 @@
         Jaws HTML Support
       </h1>
       <p>
-        A Work <em>in progress</em>: Last updated 29 February 2023.
+        A Work <em>in progress</em>: Last updated 12 March 2023.
       </p>
       <p>
         <strong>Editors:</strong> Steve Faulkner
@@ -74,6 +74,9 @@
       <ul>
         <li><img src="./assets/images/tick.png" class="status-icon" alt="yes"> means were have found this feature to be implemented interoperably (across multiple browsers)</li>
         <li><img src="./assets/images/cross.png" class="status-icon" alt="no"> means we have found that this feature is not implemented</li>
+		<li><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg> means the element has no expected semantics</li>
         <li><strong class="question">?</strong> means we are unsure whether this feature is supported, this may be due to lack of testing or lack of clarity around what 'support' of this feature is supposed to convey to the user.</li>
       </ul>
       <p class="note">
@@ -82,7 +85,7 @@
 
       <table class="alt">
         <caption>
-          JAWS (2024 ) HTML Support (Version 121.0.6167.161 (Official Build) (64-bit) on Windows 11)
+          JAWS (2024 ) HTML Support (Chrome Version 121.0.6167.161 (Official Build) (64-bit) on Windows 11)
         </caption>
         <thead>
           <tr>
@@ -200,7 +203,9 @@
               To enable this feature, open Settings Center and expand the  Web/HTML/PDFs  group. Next, expand the Reading group and use the abbreviation and acronym options</p>
             </td>
             <td>
-              <p>By default <img src="./assets/images/cross.png" class="status-icon" alt="no"></p>
+              <p>By default <svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></p>
               <p>Via preference<img src="./assets/images/tick.png" class="status-icon" alt="yes"></p>
             </td>
             <td>
@@ -216,10 +221,11 @@
               <a href="https://stevefaulkner.github.io/AT-browser-tests/test-files/address.html"><code>address</code> test</a>
               </td>
             <td>Contact information for a page or <a href="https://html.spec.whatwg.org/multipage/sections.html#the-article-element">article</a> element</td>
-            <td><em>Element content</em></td>
+            <td><em>Element content</em> when no accessible name present. </td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
-            <td>No semantics conveyed</td>
+            <td><p>no accessible name <img src="./assets/images/cross.png" class="status-icon" alt="no"></p>
+              <p>With accessible name <img src="./assets/images/tick.png" class="status-icon" alt="yes"></p></td>
+            <td>With accessible name <code>address</code> is announced as a <code>group</code> Group - accessible name, start/end.</td>
           </tr>
           <tr>
             <th scope="row">
@@ -273,8 +279,8 @@
                 <li>Prior Heading at Level <kbd>SHIFT+1</kbd> through <kbd>6 </kbd></li>
                 <li>First Heading at Level <kbd>ALT+CTRL+INSERT+ SHIFT+1</kbd> through <kbd>6</kbd></li>
             </td>
-            <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
-            <td></td>
+            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td>Issue filed: <a href="https://github.com/FreedomScientific/standards-support/issues/814">JAWS does not support aria-level on h1-h6</a></td>
           </tr>
 
           <tr>
@@ -347,8 +353,10 @@
             <td>Keywords</td>
             <td><em>Element content</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
-            <td>No semantics conveyed</td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
+            <td>Refer to: <a href="https://www.tpgi.com/screen-readers-support-for-text-level-html-semantics/">Screen Readers support for text level HTML semantics</a></td>
           </tr>
           <tr>
             <th scope="row">
@@ -365,7 +373,9 @@
             </td>
             <td><em>None expected</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td><strong>No UI</strong></td>
           </tr>
           <tr>
@@ -378,7 +388,9 @@
             <td>Text directionality isolation</td>
             <td><em>Element content</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>No semantics conveyed</td>
           </tr>
           <tr>
@@ -391,7 +403,9 @@
             <td>Text directionality formatting</td>
             <td><em>Element content</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>No semantics conveyed</td>
           </tr>
           <tr>
@@ -423,7 +437,9 @@
             <td>Document body</td>
             <td><em>Element content</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>
               <p>No semantics conveyed</p>
               <p>Is included in focus order in most browsers.</p>
@@ -439,8 +455,10 @@
             <td>Line break, e.g. in poem or postal address</td>
             <td>&nbsp;</td>
             <td>No special commands</td>
-            <td><strong class="question">?</strong></td>
-            <td><em>Line break?</em></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
+            <td><em>Line break</em></td>
           </tr>
           <tr>
             <th scope="row">
@@ -473,7 +491,7 @@
             <td>No special commands</td>
             <td><img src="./assets/images/tick.png" class="status-icon" alt="yes"></td>
             <td>
-              The canvas is 'transparent' for screen reader users. HTML content included in the <a href="https://www.paciellogroup.com/blog/2015/02/html5-canvas-sub-dom/">HTML5 canvas sub DOM</a> is announced and navigable by screen reader users and is navigable by keyboard users. <b>Note:</b> advised to add <code>role=presentation</code> to <code>&lt;canvas></code> to avoid unecssary repetition of graphic role information. Also there is a <a href="https://github.com/FreedomScientific/VFO-standards-support/issues/114">JAWS bug in Edge</a>.
+              The canvas is 'transparent' for screen reader users. HTML content included in the <a href="https://www.tpgi.com/html5-canvas-sub-dom/">HTML5 canvas sub DOM</a> is announced and navigable by screen reader users and is navigable by keyboard users. <b>Note:</b> advised to add <code>role=presentation</code> to <code>&lt;canvas></code> to avoid unecssary repetition of graphic role information.
             </td>
           </tr>
           <tr>
@@ -527,7 +545,9 @@
             <td>Table column</td>
             <td><em>None expected</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>No semantics conveyed</td>
           </tr>
           <tr>
@@ -540,7 +560,9 @@
             <td>Group of columns in a table</td>
             <td><em>None expected</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>&nbsp;</td>
           </tr>
           <tr id="toc-d">
@@ -553,7 +575,9 @@
             <td>Machine-readable equivalent</td>
             <td><em>Element content</em></td>
             <td>No special commands</td>
-            <td><img src="./assets/images/cross.png" class="status-icon" alt="no"></td>
+            <td><svg viewBox="0 0 448 512" role="img" width="20" aria-label="none expected">
+  <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" />
+</svg></td>
             <td>No semantics conveyed</td>
           </tr>
           <tr>
