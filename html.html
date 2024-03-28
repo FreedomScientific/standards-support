@@ -230,27 +230,14 @@ href="https://stevefaulkner.github.io/AT-browser-tests/test-files/area.html"><co
             <th scope="row"><a href="#"><code>aria-level</code></a></th>
             <td><a href="#"><code>heading </code> level</a></td>
             <td>heading levels greater than 6</td>
-            <td>&nbsp;not supported<br>
+            <td>&nbsp;Not supported, announces heading level 2 for all<br>
             </td>
             <td>
-              <ul>
-                <li>List Headings <kbd>INSERT</kbd>+<kbd>F6</kbd></li>
-                <li>Next Heading <kbd>H</kbd></li>
-                <li>Prior Heading <kbd>SHIFT+H</kbd></li>
-                <li>First Heading <kbd>ALT+INSERT+HOME</kbd></li>
-                <li>Last Heading <kbd>ALT+INSERT+END </kbd></li>
-                <li>Next Heading at Level - number keys <kbd>1</kbd>
-                  through <kbd>6</kbd></li>
-                <li>Prior Heading at Level <kbd>SHIFT+1</kbd> through <kbd>6
-                  </kbd></li>
-                <li>First Heading at Level <kbd>ALT+CTRL+INSERT+
-                    SHIFT+1</kbd> through <kbd>6</kbd></li>
-              </ul>
+              <br>
             </td>
             <td>&nbsp;</td>
-            <td><code>aria-level</code> is not well supported on native
-              heading (h1-h6) elements. Issue filed: <a
-                href="https://github.com/FreedomScientific/standards-support/issues/814">JAWS
+            <td><code>aria-level</code> is not supported. Issue filed: <a
+href="https://github.com/FreedomScientific/standards-support/issues/814">JAWS
                 does not support aria-level on h1-h6</a></td>
           </tr>
           <tr>
@@ -773,7 +760,8 @@ href="https://html.spec.whatwg.org/multipage/sections.html#the-h1-h2-h3-h4-h5-an
 href="https://stevefaulkner.github.io/AT-browser-tests/test-files/h1-h6.html"><code>h1
                   - h6</code> test</a></td>
             <td>Section heading</td>
-            <td>&nbsp;</td>
+            <td>&nbsp;"heading level x" <em>element content</em> <br>
+            </td>
             <td>
               <ul>
                 <li>List Headings <kbd>INSERT</kbd>+<kbd>F6</kbd></li>
