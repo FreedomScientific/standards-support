@@ -905,7 +905,7 @@ svg.unknown {
             <th scope="row"> <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element"><code>dialog</code></a>
             </th>
             <td> <a href="https://cdpn.io/pen/debug/ZPQNLP">dialog test</a> </td>
-            <td>&nbsp;</td>
+            <td>The dialog element represents a transitory part of an application, in the form of a small window ("dialog box")</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -1149,24 +1149,31 @@ svg.unknown {
             <td> <a href="https://stevefaulkner.github.io/AT-browser-tests/test-files/form.html"><code>form</code>
                 test</a> </td>
             <td>User-submittable form</td>
-            <td>&nbsp;</td>
-            <td>
-              <ul>
-                <li>No special commands</li>
+            <td>With accessible name announced as <i>accessible name</i>, form, element content. <i>accessible name</i>, form end.</td>
+            <td><p>Without accessible name: ignored.
+            <p>With accessible name:
+               <ul>
+                <li>Move to Next Region&nbsp; <kbd>R</kbd> <br>
+                </li>
+                <li>Move to Previous Region <kbd>SHIFT+R</kbd> <br>
+</li>
+                <li>Select a Region <kbd>INSERT+CTRL+R</kbd> <br>
+                </li>
               </ul>
             </td>
-            <td><svg viewBox="0 0 512 512" width="20" role="img" aria-label="no" class="no"><path d="M464 32H48C21.5 32 0
-                  53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5
-                  48-48V80c0-26.5-21.5-48-48-48zm-83.6 290.5c4.8 4.8 4.8
-                  12.6 0 17.4l-40.5 40.5c-4.8 4.8-12.6 4.8-17.4 0L256
-                  313.3l-66.5 67.1c-4.8 4.8-12.6 4.8-17.4
-                  0l-40.5-40.5c-4.8-4.8-4.8-12.6
-                  0-17.4l67.1-66.5-67.1-66.5c-4.8-4.8-4.8-12.6
-                  0-17.4l40.5-40.5c4.8-4.8 12.6-4.8 17.4 0l66.5 67.1
-                  66.5-67.1c4.8-4.8 12.6-4.8 17.4 0l40.5 40.5c4.8 4.8
-                  4.8 12.6 0 17.4L313.3 256l67.1 66.5z"></path></svg><br>
+            <td><svg viewBox="0 0 448 512" width="20" aria-label="yes">
+                <path d="M400 480H48c-26.51 0-48-21.49-48-48V80c0-26.51
+                  21.49-48 48-48h352c26.51 0 48 21.49 48 48v352c0
+                  26.51-21.49 48-48
+                  48zm-204.686-98.059l184-184c6.248-6.248 6.248-16.379
+                  0-22.627l-22.627-22.627c-6.248-6.248-16.379-6.249-22.628
+                  0L184
+                  302.745l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628
+                  0l-22.627 22.627c-6.248 6.248-6.248 16.379 0
+                  22.627l104 104c6.249 6.25 16.379 6.25 22.628.001z"></path>
+              </svg>
             </td>
-            <td>No semantics conveyed</td>
+            <td>No semantics conveyed unless <code>form</code> has an accessible name, then exposed as a landmark.</td>
           </tr>
           <tr id="toc-h">
             <th scope="row"> <a href="https://html.spec.whatwg.org/multipage/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements"><code>h1
