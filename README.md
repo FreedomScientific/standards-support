@@ -31,7 +31,7 @@ Workflow is as follows:
 ### Resolution
 
 * If the issue is fixed in the most recent version of JAWS, tag ticket with "Fixed in JAWS 20XX" label and close.
-* If the issue stands after testing with the most recent version of JAWS, document your research in a comment and assign issue to Benilda Key.
-* If you can't reproduce the issue, ask more questions of the issue author. You can also reach out to Benilda Key with clarification questions. When you're confident the issue can't be duplicated, tag it with the "Can't Reproduce" label and close.
+* If the issue stands after testing with the most recent version of JAWS, document your research in a comment and assign issue to Brett Lewis.
+* If you can't reproduce the issue, ask more questions of the issue author. You can also reach out to Brett Lewis with clarification questions. When you're confident the issue can't be duplicated, tag it with the "Can't Reproduce" label and close.
 * If Issue appears to be browser specific instead of JAWS related, document your research in a comment, tag ticket with appropriate browser issue label (i.e. "Chrome Bug") and close. Ideally you should also [file a bug on the browser](https://web.dev/how-to-file-a-good-bug/) if a similar one hasn't already been reported.
-* If after asking questions of the author you don't hear back within a reasonable amount of time (at least 15 days) and you don't have enough to go on, tag the issue with the "archive" label and close.
+* If after asking questions of the author you don't hear back within a reasonable amount of time (at least 14 days) and you don't have enough to go on, tag the issue with the "archive" label and close.
