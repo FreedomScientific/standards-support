@@ -24,8 +24,8 @@ Note: please do not file general support issues here. Please [contact Freedom Sc
 
 Workflow is as follows:
 
-1. Find an unassigned issue. [Here is a good set of filters to start with](https://github.com/FreedomScientific/VFO-standards-support/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc+-label%3Abug+-label%3Aarchive+no%3Aassignee+-label%3A%22Not+a+JAWS+bug%22+-label%3A%22Feature+Request%22+-label%3A%22JAWS+bug+filed%22)
-2. Once you identify an issue to work on, make sure the author followed the guidelines provided above. If not, tag them in a comment asking for more info and tag the ticket with the "More Info Needed" label.
+1. Find an unassigned issue. [Here is a good set of filters to start with](https://github.com/FreedomScientific/standards-support/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc+-label%3Abug+-label%3Aarchive+no%3Aassignee+-label%3A%22Not+a+JAWS+bug%22+-label%3A%22Feature+Request%22+-label%3A%22JAWS+bug+filed%22+-label%3A%22triaged%22++-label%3A%22Imported+into+ADO%22+)
+2. Once you identify an issue to work on, make sure the author followed the [Reporting issues](https://github.com/FreedomScientific/standards-support/edit/master/README.md#reporting-issues) guidelines. If not, tag them in a comment asking for more info and tag the ticket with the "More Info Needed" label.
 3. Assign the ticket to yourself and start investigating.
 
 ### Resolution
