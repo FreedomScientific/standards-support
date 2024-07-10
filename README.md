@@ -2,10 +2,9 @@
 Contains documentation for Vispero software support of Web standards (HTML, CSS, SVG and ARIA).
 
 ## JAWS support
-* [ARIA Roles, States and Properties](aria.html)
-* CSS(future link)
 * [HTML](html.html)
-* SVG(future link)
+* [ARIA Roles, States and Properties](aria.html)
+
 
 ## Reporting issues
 
